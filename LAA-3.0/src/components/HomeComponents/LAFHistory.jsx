@@ -1,7 +1,7 @@
 
 import React from "react";
 
-import laf2022 from "../../assets/images/history1.png";
+import laf2022 from "../../assets/images/history123.jpeg";
 import laf2025 from "../../assets/images/history2.png";
 import laf2027 from "../../assets/images/history3.png";
 
