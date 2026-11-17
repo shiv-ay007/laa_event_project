@@ -363,7 +363,7 @@ export default function Footer() {
             <span className="bg-gradient-to-r from-[#FB7801] via-[#F59E0B] to-[#FBBF24] bg-clip-text text-transparent font-bold text-xs font-mono">&lt;/&gt;</span>
             <span className="tracking-tight text-neutral-300">Precision Crafted with Digital Intelligence by</span>
             <a
-              href="https://codecrafter.in"
+              href="https://www.codecrafter.co.in/"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-1.5 hover:scale-105 transition-transform duration-300"
