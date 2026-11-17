@@ -1,0 +1,1944 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { 
+  ArrowLeft, 
+  ChevronRight, 
+  Sparkles, 
+  UserCheck, 
+  Store, 
+  UploadCloud, 
+  CheckCircle2, 
+  CreditCard, 
+  FileText, 
+  ChevronDown, 
+  PhoneCall,
+  Mail,
+  MapPin,
+  X,
+  Layers,
+  Award,
+  HardHat
+} from 'lucide-react';
+
+const RegistrationPage = () => {
+  // Mode: 'architect' | 'engineer' | 'exhibitor'
+  const [activeFormMode, setActiveFormMode] = useState('architect');
+  
+  // Architect Form State
+  const [archStep, setArchStep] = useState(1);
+  const [archData, setArchData] = useState({
+    title: 'Ar.',
+    fullName: '',
+    email: '',
+    phone: '',
+    coaNumber: '',
+    firmName: '',
+    officeAddress: '',
+    residentialAddress: '',
+    category: 'Life Member Architect',
+    proposerName: '',
+    laaNumber: '',
+    declaration: false,
+    txnId: '',
+    chequeNumber: '',
+    paymentDate: '',
+    bankName: '',
+  });
+
+  const [archCoaFile, setArchCoaFile] = useState(null);
+  const [archPhotoFile, setArchPhotoFile] = useState(null);
+  const [archReceiptFile, setArchReceiptFile] = useState(null);
+
+  // Engineer / Consultant Form State
+  const [engStep, setEngStep] = useState(1);
+  const [engData, setEngData] = useState({
+    title: 'Er.',
+    fullName: '',
+    email: '',
+    phone: '',
+    regNumber: '',
+    firmName: '',
+    officeAddress: '',
+    category: 'LAA Member', // 'LAA Member' (Fee: 0) | 'Other than LAA' (Fee: 2000)
+    proposerName: '',
+    laaNumber: '',
+    declaration: false,
+    txnId: '',
+    chequeNumber: '',
+    paymentDate: '',
+    bankName: '',
+  });
+
+  const [engCertFile, setEngCertFile] = useState(null);
+  const [engReceiptFile, setEngReceiptFile] = useState(null);
+
+  // Exhibitor Form State
+  const [exhibitorStep, setExhibitorStep] = useState(1);
+  const [exhibitorData, setExhibitorData] = useState({
+    companyName: '',
+    contactPerson: '',
+    designation: '',
+    email: '',
+    phone: '',
+    website: '',
+    city: '',
+    industrySector: 'Luxury Interiors & Decor',
+    spaceRequired: 'Executive Stall (9 sqm)',
+    specialRequirements: '',
+    declaration: false,
+    txnId: '',
+    paymentDate: '',
+    bankName: '',
+  });
+
+  const [exhibitorLogoFile, setExhibitorLogoFile] = useState(null);
+  const [exhibitorReceiptFile, setExhibitorReceiptFile] = useState(null);
+
+  // Accordion State
+  const [activeAccordion, setActiveAccordion] = useState('eligibility');
+
+  // Submit Modal state
+  const [submittedModal, setSubmittedModal] = useState(null); // 'architect' | 'exhibitor' | null
+
+  const [archErrors, setArchErrors] = useState({});
+  const [engErrors, setEngErrors] = useState({});
+
+  // SweetAlert Toast Notification Configuration
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 4000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  const handleArchInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setArchData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+    if (archErrors[name]) {
+      setArchErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const handleEngInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setEngData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+    if (engErrors[name]) {
+      setEngErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const handleExhibitorInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setExhibitorData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const validateArchStep1 = () => {
+    const errors = {};
+    if (!archData.fullName?.trim()) errors.fullName = 'Full Name is required';
+    if (!archData.coaNumber?.trim()) errors.coaNumber = 'COA Registration No. is required';
+    if (!archData.category?.trim()) errors.category = 'Membership Category is required';
+    if (!archData.email?.trim()) {
+      errors.email = 'Email Address is required';
+    } else if (!/\S+@\S+\.\S+/.test(archData.email)) {
+      errors.email = 'Enter a valid Email Address';
+    }
+    if (!archData.phone?.trim()) errors.phone = 'Phone / WhatsApp No. is required';
+    if (!archData.officeAddress?.trim()) errors.officeAddress = 'Firm Name & Office Address is required';
+    if (!archData.proposerName?.trim()) errors.proposerName = 'Proposer LAA Member Name is required';
+    if (!archData.laaNumber?.trim()) errors.laaNumber = 'LAA Membership No. is required';
+    if (!archCoaFile) errors.archCoaFile = 'Please upload COA Certificate / ID Proof';
+
+    setArchErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleProceedArchStep2 = () => {
+    if (validateArchStep1()) {
+      setArchStep(2);
+      Toast.fire({
+        icon: 'success',
+        title: 'Step 1 verified! Proceeding to Payment Step 2.'
+      });
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Mandatory Fields Incomplete',
+        text: 'Please fill in all mandatory fields (*) and upload the required certificate before proceeding to Step 2.',
+        confirmButtonColor: '#B77A27',
+        confirmButtonText: 'OK, Got It',
+        customClass: {
+          popup: 'rounded-3xl font-sans',
+          confirmButton: 'rounded-xl px-6 py-2.5 font-bold uppercase text-xs shadow-md'
+        }
+      });
+      Toast.fire({
+        icon: 'warning',
+        title: 'Please fill in all mandatory fields (*)'
+      });
+    }
+  };
+
+  const validateEngStep1 = () => {
+    const errors = {};
+    if (!engData.fullName?.trim()) errors.fullName = 'Full Name is required';
+    if (!engData.regNumber?.trim()) errors.regNumber = 'Registration / License No. is required';
+    if (!engData.category?.trim()) errors.category = 'Membership Category is required';
+    if (!engData.email?.trim()) {
+      errors.email = 'Email Address is required';
+    } else if (!/\S+@\S+\.\S+/.test(engData.email)) {
+      errors.email = 'Enter a valid Email Address';
+    }
+    if (!engData.phone?.trim()) errors.phone = 'Phone / WhatsApp No. is required';
+    if (!engData.officeAddress?.trim()) errors.officeAddress = 'Firm Name & Office Address is required';
+    if (!engData.proposerName?.trim()) errors.proposerName = 'Proposer LAA Member Name is required';
+    if (!engData.laaNumber?.trim()) errors.laaNumber = 'LAA Membership No. is required';
+    if (!engCertFile) errors.engCertFile = 'Please upload Engineering / Consultant Certificate / ID Proof';
+
+    setEngErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleProceedEngStep2 = () => {
+    if (validateEngStep1()) {
+      setEngStep(2);
+      Toast.fire({
+        icon: 'success',
+        title: 'Step 1 verified! Proceeding to Payment Step 2.'
+      });
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Mandatory Fields Incomplete',
+        text: 'Please fill in all mandatory fields (*) and upload the required certificate before proceeding to Step 2.',
+        confirmButtonColor: '#B77A27',
+        confirmButtonText: 'OK, Got It',
+        customClass: {
+          popup: 'rounded-3xl font-sans',
+          confirmButton: 'rounded-xl px-6 py-2.5 font-bold uppercase text-xs shadow-md'
+        }
+      });
+      Toast.fire({
+        icon: 'warning',
+        title: 'Please fill in all mandatory fields (*)'
+      });
+    }
+  };
+
+  const handleArchSubmit = (e) => {
+    e.preventDefault();
+    if (!validateArchStep1()) {
+      setArchStep(1);
+      Swal.fire({
+        icon: 'warning',
+        title: 'Incomplete Details',
+        text: 'Please fill in all mandatory fields in Step 1 before submitting.',
+        confirmButtonColor: '#B77A27'
+      });
+      return;
+    }
+    if (!archReceiptFile) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Payment Receipt Required',
+        text: 'Please upload your payment receipt screenshot/copy to proceed.',
+        confirmButtonColor: '#B77A27'
+      });
+      Toast.fire({
+        icon: 'error',
+        title: 'Payment receipt is required'
+      });
+      return;
+    }
+    setSubmittedModal('architect');
+    Toast.fire({
+      icon: 'success',
+      title: 'Registration successfully submitted!'
+    });
+  };
+
+  const handleEngSubmit = (e) => {
+    e.preventDefault();
+    if (!validateEngStep1()) {
+      setEngStep(1);
+      Swal.fire({
+        icon: 'warning',
+        title: 'Incomplete Details',
+        text: 'Please fill in all mandatory fields in Step 1 before submitting.',
+        confirmButtonColor: '#B77A27'
+      });
+      return;
+    }
+    if (engData.category === 'Other than LAA' && !engReceiptFile) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Payment Receipt Required',
+        text: 'Please upload your payment receipt screenshot/copy to proceed.',
+        confirmButtonColor: '#B77A27'
+      });
+      Toast.fire({
+        icon: 'error',
+        title: 'Payment receipt is required'
+      });
+      return;
+    }
+    setSubmittedModal('engineer');
+    Toast.fire({
+      icon: 'success',
+      title: 'Registration successfully submitted!'
+    });
+  };
+
+  const handleExhibitorSubmit = (e) => {
+    e.preventDefault();
+    setSubmittedModal('exhibitor');
+  };
+
+  return (
+    <div className="min-h-screen bg-[#FAF7F2] text-[#171717] font-sans selection:bg-[#D4AF37]/30 pb-24 relative overflow-hidden">
+      
+      {/* Background Architectural Grid & Subtle Watermarks */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div 
+          className="absolute inset-0 opacity-[0.25]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(180, 140, 60, 0.08) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(180, 140, 60, 0.08) 1px, transparent 1px)
+            `,
+            backgroundSize: "48px 48px",
+          }}
+        />
+        <div className="absolute left-[6%] top-0 bottom-0 w-px bg-[#D4AF37]/15" />
+        <div className="absolute right-[6%] top-0 bottom-0 w-px bg-[#D4AF37]/15" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-amber-500/5 rounded-full blur-[140px]" />
+        <div className="absolute top-2/3 right-10 w-[450px] h-[350px] bg-[#D4AF37]/5 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-6">
+        
+        {/* ================= BREADCRUMBS & TOP NAV ================= */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+          <Link
+            to="/"
+            className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-neutral-600 hover:text-[#B77A27] transition-colors bg-white/80 border border-[#E6DFD3] hover:border-[#B77A27]/40 rounded-full px-4 py-2 shadow-2xs backdrop-blur-md"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+            <span>Back to Home</span>
+          </Link>
+
+          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-neutral-500 uppercase">
+            <Link to="/" className="hover:text-[#B77A27] transition-colors">LAF 3.0</Link>
+            <ChevronRight className="w-3 h-3 text-[#B77A27]" />
+            <span className="text-[#B77A27] font-bold">REGISTRATION PORTAL</span>
+          </div>
+        </div>
+
+        {/* ================= HERO HEADER ================= */}
+        <div className="mb-10 text-center max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#E6DFD3] text-[#B77A27] text-xs font-mono font-bold tracking-widest uppercase mb-4 shadow-2xs"
+          >
+            <Sparkles className="w-3.5 h-3.5 fill-[#B77A27] text-[#B77A27] animate-pulse" />
+            <span>LAF 3.0 OFFICIAL REGISTRATION & DELEGATES CONCLAVE</span>
+          </motion.div>
+
+          <motion.h1 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#171717] leading-tight"
+          >
+            Join North India's Premier <br className="hidden sm:inline" />
+            <span className="italic font-serif text-[#B77A27]">
+              Architectural &amp; Lifestyle Conclave
+            </span>
+          </motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mt-4 text-sm sm:text-base text-neutral-600 max-w-2xl mx-auto leading-relaxed font-normal"
+          >
+            Register as an <strong className="text-[#B77A27] font-semibold">Architect Delegate</strong> or <strong className="text-[#B77A27] font-semibold">Engineer / Consultant</strong> to join the conclave, or register as an <strong className="text-[#B77A27] font-semibold">Exhibitor / Brand Partner</strong> to showcase your products at LAF 3.0.
+          </motion.p>
+
+          {/* ================= FORM MODE TOGGLE SWITCHER ================= */}
+          <div className="mt-8 flex items-center justify-center">
+            <div className="bg-white/80 p-1.5 rounded-2xl border border-[#E6DFD3] shadow-sm flex flex-wrap items-center justify-center gap-2 max-w-full backdrop-blur-md">
+              
+              {/* Architect Mode Button */}
+              <button
+                onClick={() => setActiveFormMode('architect')}
+                className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 ${
+                  activeFormMode === 'architect'
+                    ? 'bg-[#B77A27] text-white shadow-md shadow-[#B77A27]/20 scale-[1.02]'
+                    : 'text-neutral-600 hover:text-[#171717] hover:bg-neutral-100/80'
+                }`}
+              >
+                <UserCheck className="w-4 h-4" />
+                <span>Architect Registration</span>
+              </button>
+
+              {/* Engineer / Consultant Mode Button */}
+              <button
+                onClick={() => setActiveFormMode('engineer')}
+                className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 ${
+                  activeFormMode === 'engineer'
+                    ? 'bg-[#B77A27] text-white shadow-md shadow-[#B77A27]/20 scale-[1.02]'
+                    : 'text-neutral-600 hover:text-[#171717] hover:bg-neutral-100/80'
+                }`}
+              >
+                <HardHat className="w-4 h-4" />
+                <span>Engineer / Consultant</span>
+              </button>
+
+              {/* Exhibitor Mode Button */}
+              <button
+                onClick={() => setActiveFormMode('exhibitor')}
+                className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 ${
+                  activeFormMode === 'exhibitor'
+                    ? 'bg-[#B77A27] text-white shadow-md shadow-[#B77A27]/20 scale-[1.02]'
+                    : 'text-neutral-600 hover:text-[#171717] hover:bg-neutral-100/80'
+                }`}
+              >
+                <Store className="w-4 h-4" />
+                <span>Exhibitors & Brand Form</span>
+              </button>
+
+            </div>
+          </div>
+        </div>
+
+        {/* ================= MAIN FORM CONTENT CONTAINER ================= */}
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
+
+          {/* LEFT / MAIN FORMS COLUMN */}
+          <div className="lg:col-span-8">
+            
+            <div className="grid grid-cols-1">
+              
+              {/* ================= ARCHITECT REGISTRATION FORM ================= */}
+              {activeFormMode === 'architect' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white/90 backdrop-blur-xl border border-[#E6DFD3] rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  
+                  {/* Form Header */}
+                  <div className="flex items-center justify-between border-b border-[#E6DFD3] pb-5 mb-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-2xl bg-[#B77A27]/10 border border-[#B77A27]/20 flex items-center justify-center text-[#B77A27]">
+                        <UserCheck className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h2 className="text-lg sm:text-xl font-bold font-serif text-[#171717] tracking-wide">
+                          Architect Registration
+                        </h2>
+                        <p className="text-xs text-neutral-500">
+                          Delegates & Lucknow Architects Association Membership
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-[#B77A27]/10 border border-[#B77A27]/25 text-[#B77A27] font-bold uppercase">
+                      COA Verified
+                    </span>
+                  </div>
+
+                  {/* Step Tabs */}
+                  <div className="flex items-center justify-between mb-6 bg-[#FAF7F2] p-1.5 rounded-xl border border-[#E6DFD3] text-xs font-semibold">
+                    <button
+                      type="button"
+                      onClick={() => setArchStep(1)}
+                      className={`flex-1 py-2 px-3 rounded-lg transition-all ${
+                        archStep === 1 
+                          ? 'bg-[#B77A27] text-white font-bold shadow-2xs' 
+                          : 'text-neutral-600 hover:text-[#171717]'
+                      }`}
+                    >
+                      Step 1: Personal Details
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleProceedArchStep2}
+                      className={`flex-1 py-2 px-3 rounded-lg transition-all ${
+                        archStep === 2 
+                          ? 'bg-[#B77A27] text-white font-bold shadow-2xs' 
+                          : 'text-neutral-600 hover:text-[#171717]'
+                      }`}
+                    >
+                      Step 2: Payment & Pay Receipt
+                    </button>
+                  </div>
+
+                  {/* Form Element */}
+                  <form onSubmit={handleArchSubmit} className="space-y-4">
+                    
+                    {/* STEP 1: PERSONAL & PROFESSIONAL DETAILS */}
+                    {archStep === 1 && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="space-y-4"
+                      >
+                        {/* Validation Error Banner */}
+                        {Object.keys(archErrors).length > 0 && (
+                          <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl flex items-center gap-2">
+                            <span className="font-bold">⚠️</span>
+                            <span>Please fill in all mandatory fields (*) and upload the required certificate before proceeding to Step 2.</span>
+                          </div>
+                        )}
+
+                        {/* Title & Full Name */}
+                        <div className="grid grid-cols-12 gap-3">
+                          <div className="col-span-4 sm:col-span-3">
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Title *
+                            </label>
+                            <select
+                              name="title"
+                              value={archData.title}
+                              onChange={handleArchInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3 py-2.5 text-xs sm:text-sm text-[#171717] focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            >
+                              <option value="Ar.">Ar.</option>
+                              <option value="Prof.">Prof.</option>
+                              <option value="Dr.">Dr.</option>
+                              <option value="Mr.">Mr.</option>
+                              <option value="Ms.">Ms.</option>
+                            </select>
+                          </div>
+                          <div className="col-span-8 sm:col-span-9">
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Full Name *
+                            </label>
+                            <input
+                              type="text"
+                              name="fullName"
+                              required
+                              placeholder="e.g. Ramesh Kumar Verma"
+                              value={archData.fullName}
+                              onChange={handleArchInputChange}
+                              className={`w-full bg-[#FDFBF7] border ${
+                                archErrors.fullName ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                              } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                            />
+                            {archErrors.fullName && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{archErrors.fullName}</p>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* COA Number & Category */}
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              COA Registration No. *
+                            </label>
+                            <input
+                              type="text"
+                              name="coaNumber"
+                              required
+                              placeholder="CA/20XX/XXXXX"
+                              value={archData.coaNumber}
+                              onChange={handleArchInputChange}
+                              className={`w-full bg-[#FDFBF7] border ${
+                                archErrors.coaNumber ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                              } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                            />
+                            {archErrors.coaNumber && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{archErrors.coaNumber}</p>
+                            )}
+                          </div>
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Membership Category *
+                            </label>
+                            <select
+                              name="category"
+                              value={archData.category}
+                              onChange={handleArchInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3 py-2.5 text-xs sm:text-sm text-[#171717] focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            >
+                              <option value="Life Member Architect">Life Member Architect (LAA)</option>
+                              <option value="Executive Member">Executive Member</option>
+                              <option value="Associate Architect">Associate Architect Delegate</option>
+                              <option value="Student Architect">Student / Emerging Architect</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        {/* Email & Phone */}
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Email Address *
+                            </label>
+                            <input
+                              type="email"
+                              name="email"
+                              required
+                              placeholder="architect@domain.com"
+                              value={archData.email}
+                              onChange={handleArchInputChange}
+                              className={`w-full bg-[#FDFBF7] border ${
+                                archErrors.email ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                              } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                            />
+                            {archErrors.email && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{archErrors.email}</p>
+                            )}
+                          </div>
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Phone / WhatsApp No. *
+                            </label>
+                            <input
+                              type="tel"
+                              name="phone"
+                              required
+                              placeholder="+91 98765 43210"
+                              value={archData.phone}
+                              onChange={handleArchInputChange}
+                              className={`w-full bg-[#FDFBF7] border ${
+                                archErrors.phone ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                              } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                            />
+                            {archErrors.phone && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{archErrors.phone}</p>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Firm / Office Name & Address */}
+                        <div>
+                          <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                            Firm Name &amp; Office Address *
+                          </label>
+                          <textarea
+                            name="officeAddress"
+                            required
+                            rows={2}
+                            placeholder="Complete Firm Name and Office Address in Lucknow/UP *"
+                            value={archData.officeAddress}
+                            onChange={handleArchInputChange}
+                            className={`w-full bg-[#FDFBF7] border ${
+                              archErrors.officeAddress ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                            } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                          />
+                          {archErrors.officeAddress && (
+                            <p className="text-[11px] text-red-600 font-medium mt-1">{archErrors.officeAddress}</p>
+                          )}
+                        </div>
+
+                        {/* Proposer Name & LAA Number */}
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Proposer LAA Member Name *
+                            </label>
+                            <input
+                              type="text"
+                              name="proposerName"
+                              required
+                              placeholder="Endorsed by LAA Member *"
+                              value={archData.proposerName}
+                              onChange={handleArchInputChange}
+                              className={`w-full bg-[#FDFBF7] border ${
+                                archErrors.proposerName ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                              } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                            />
+                            {archErrors.proposerName && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{archErrors.proposerName}</p>
+                            )}
+                          </div>
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              LAA Membership No. *
+                            </label>
+                            <input
+                              type="text"
+                              name="laaNumber"
+                              required
+                              placeholder="LAA-XXXX *"
+                              value={archData.laaNumber}
+                              onChange={handleArchInputChange}
+                              className={`w-full bg-[#FDFBF7] border ${
+                                archErrors.laaNumber ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                              } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                            />
+                            {archErrors.laaNumber && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{archErrors.laaNumber}</p>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* COA Certificate / ID File Upload */}
+                        <div>
+                          <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                            Upload COA Certificate / ID Proof *
+                          </label>
+                          <div className={`border-2 border-dashed ${
+                            archErrors.archCoaFile ? 'border-red-400 bg-red-50/30' : 'border-[#E6DFD3] hover:border-[#B77A27]'
+                          } rounded-2xl p-4 text-center cursor-pointer transition-colors bg-[#FAF7F2]/60 hover:bg-white relative`}>
+                            <input
+                              type="file"
+                              required
+                              accept="image/*,.pdf"
+                              onChange={(e) => {
+                                setArchCoaFile(e.target.files[0]);
+                                if (archErrors.archCoaFile) setArchErrors(prev => ({ ...prev, archCoaFile: '' }));
+                              }}
+                              className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                            />
+                            <UploadCloud className="w-6 h-6 text-[#B77A27] mx-auto mb-1" />
+                            <span className="text-xs text-neutral-700 block font-medium">
+                              {archCoaFile ? archCoaFile.name : 'Click or drag COA Certificate file (PDF / JPG) *'}
+                            </span>
+                            <span className="text-[10px] text-neutral-500 mt-0.5 block">Max size: 5MB</span>
+                          </div>
+                          {archErrors.archCoaFile && (
+                            <p className="text-[11px] text-red-600 font-medium mt-1">{archErrors.archCoaFile}</p>
+                          )}
+                        </div>
+
+                        <div className="pt-2">
+                          <button
+                            type="button"
+                            onClick={handleProceedArchStep2}
+                            className="w-full py-3 px-6 rounded-xl bg-[#B77A27] hover:bg-[#a0681f] text-white font-bold uppercase tracking-wider text-xs shadow-md shadow-[#B77A27]/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                          >
+                            <span>Proceed to Payment Step 2</span>
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
+                        </div>
+
+                      </motion.div>
+                    )}
+
+                    {/* STEP 2: SCAN & PAY & RECEIPT UPLOAD */}
+                    {archStep === 2 && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="space-y-4"
+                      >
+                        {/* Payment Guidance Box */}
+                        <div className="p-4 rounded-2xl bg-[#FFFDF5] border border-[#EAD8B1] text-xs text-neutral-700 space-y-2">
+                          <div className="flex items-center gap-2 font-bold text-[#B77A27] text-sm">
+                            <CreditCard className="w-4 h-4" />
+                            <span>Payment Instructions &amp; Bank Account Details</span>
+                          </div>
+                          <p className="text-neutral-700 text-[11.5px] leading-relaxed">
+                            Life Membership / Delegate Fee: <strong className="text-[#B77A27]">₹5,000 + 18% GST (₹900) = ₹5,900/- Total</strong>
+                          </p>
+                          <div className="grid grid-cols-2 gap-2 text-[10.5px] font-mono bg-white p-2.5 rounded-xl border border-[#E6DFD3] text-neutral-700">
+                            <div>Bank: PNB (Punjab National Bank)</div>
+                            <div>A/C: 06871011001027</div>
+                            <div>IFSC: PUNB0068710</div>
+                            <div>Name: Lucknow Architects Association</div>
+                          </div>
+                        </div>
+
+                        {/* Payment Details Inputs */}
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Transaction ID / UTR No. *
+                            </label>
+                            <input
+                              type="text"
+                              name="txnId"
+                              required
+                              placeholder="e.g. UPI/123456789012"
+                              value={archData.txnId}
+                              onChange={handleArchInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Payment Date *
+                            </label>
+                            <input
+                              type="date"
+                              name="paymentDate"
+                              required
+                              value={archData.paymentDate}
+                              onChange={handleArchInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Name of Bank / Payment App *
+                            </label>
+                            <input
+                              type="text"
+                              name="bankName"
+                              required
+                              placeholder="GPay / PhonePe / PNB / SBI"
+                              value={archData.bankName}
+                              onChange={handleArchInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Cheque / Ref No. (If applicable)
+                            </label>
+                            <input
+                              type="text"
+                              name="chequeNumber"
+                              placeholder="Cheque No."
+                              value={archData.chequeNumber}
+                              onChange={handleArchInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Upload Receipt */}
+                        <div>
+                          <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                            Upload Payment Receipt Screenshot / Copy *
+                          </label>
+                          <div className="border-2 border-dashed border-[#E6DFD3] hover:border-[#B77A27] rounded-2xl p-4 text-center cursor-pointer transition-colors bg-[#FAF7F2]/60 hover:bg-white relative">
+                            <input
+                              type="file"
+                              required
+                              accept="image/*,.pdf"
+                              onChange={(e) => setArchReceiptFile(e.target.files[0])}
+                              className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                            />
+                            <UploadCloud className="w-6 h-6 text-[#B77A27] mx-auto mb-1" />
+                            <span className="text-xs text-neutral-700 block font-medium">
+                              {archReceiptFile ? archReceiptFile.name : 'Upload Payment Receipt (Screenshot / PDF) *'}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Declaration Checkbox */}
+                        <div className="flex items-start gap-2.5 pt-2">
+                          <input
+                            type="checkbox"
+                            name="declaration"
+                            id="archDeclaration"
+                            required
+                            checked={archData.declaration}
+                            onChange={handleArchInputChange}
+                            className="mt-0.5 accent-[#B77A27] w-4 h-4 rounded cursor-pointer"
+                          />
+                          <label htmlFor="archDeclaration" className="text-xs text-neutral-600 leading-normal cursor-pointer select-none">
+                            I hereby declare that I possess a recognized degree in Architecture and the information provided is accurate to the best of my knowledge.
+                          </label>
+                        </div>
+
+                        <div className="flex items-center gap-3 pt-3">
+                          <button
+                            type="button"
+                            onClick={() => setArchStep(1)}
+                            className="py-3 px-5 rounded-xl bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-bold uppercase tracking-wider text-xs transition-colors cursor-pointer"
+                          >
+                            Back to Step 1
+                          </button>
+
+                          <button
+                            type="submit"
+                            className="flex-1 py-3 px-6 rounded-xl bg-[#B77A27] hover:bg-[#a0681f] text-white font-bold uppercase tracking-wider text-xs shadow-md shadow-[#B77A27]/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                          >
+                            <Sparkles className="w-4 h-4 fill-white" />
+                            <span>Complete Architect Registration</span>
+                          </button>
+                        </div>
+
+                      </motion.div>
+                    )}
+
+                  </form>
+                </motion.div>
+              )}
+
+              {/* ================= ENGINEER / CONSULTANT REGISTRATION FORM ================= */}
+              {activeFormMode === 'engineer' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white/90 backdrop-blur-xl border border-[#E6DFD3] rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  
+                  {/* Form Header */}
+                  <div className="flex items-center justify-between border-b border-[#E6DFD3] pb-5 mb-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-2xl bg-[#B77A27]/10 border border-[#B77A27]/20 flex items-center justify-center text-[#B77A27]">
+                        <HardHat className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h2 className="text-lg sm:text-xl font-bold font-serif text-[#171717] tracking-wide">
+                          Engineer / Consultant Registration
+                        </h2>
+                        <p className="text-xs text-neutral-500">
+                          Engineers, Technical Specialists &amp; Consultants Conclave
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <span className={`text-[10px] font-mono px-3 py-1 rounded-full border font-bold uppercase transition-colors ${
+                      engData.category === 'LAA Member'
+                        ? 'bg-emerald-50 border-emerald-300 text-emerald-700'
+                        : 'bg-[#B77A27]/10 border-[#B77A27]/25 text-[#B77A27]'
+                    }`}>
+                      {engData.category === 'LAA Member' ? 'LAA Member • Fee: ₹0' : 'Other than LAA • Fee: ₹2,000'}
+                    </span>
+                  </div>
+
+                  {/* Step Tabs */}
+                  <div className="flex items-center justify-between mb-6 bg-[#FAF7F2] p-1.5 rounded-xl border border-[#E6DFD3] text-xs font-semibold">
+                    <button
+                      type="button"
+                      onClick={() => setEngStep(1)}
+                      className={`flex-1 py-2 px-3 rounded-lg transition-all ${
+                        engStep === 1 
+                          ? 'bg-[#B77A27] text-white font-bold shadow-2xs' 
+                          : 'text-neutral-600 hover:text-[#171717]'
+                      }`}
+                    >
+                      Step 1: Personal Details
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleProceedEngStep2}
+                      className={`flex-1 py-2 px-3 rounded-lg transition-all ${
+                        engStep === 2 
+                          ? 'bg-[#B77A27] text-white font-bold shadow-2xs' 
+                          : 'text-neutral-600 hover:text-[#171717]'
+                      }`}
+                    >
+                      Step 2: Payment &amp; Pay Receipt ({engData.category === 'LAA Member' ? 'Fee: ₹0' : 'Fee: ₹2,000'})
+                    </button>
+                  </div>
+
+                  {/* Form Element */}
+                  <form onSubmit={handleEngSubmit} className="space-y-4">
+                    
+                    {/* STEP 1: PERSONAL & PROFESSIONAL DETAILS */}
+                    {engStep === 1 && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="space-y-4"
+                      >
+                        {/* Validation Error Banner */}
+                        {Object.keys(engErrors).length > 0 && (
+                          <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl flex items-center gap-2">
+                            <span className="font-bold">⚠️</span>
+                            <span>Please fill in all mandatory fields (*) and upload the required certificate before proceeding to Step 2.</span>
+                          </div>
+                        )}
+
+                        {/* Title & Full Name */}
+                        <div className="grid grid-cols-12 gap-3">
+                          <div className="col-span-4 sm:col-span-3">
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Title *
+                            </label>
+                            <select
+                              name="title"
+                              value={engData.title}
+                              onChange={handleEngInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3 py-2.5 text-xs sm:text-sm text-[#171717] focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            >
+                              <option value="Er.">Er.</option>
+                              <option value="Eng.">Eng.</option>
+                              <option value="Dr.">Dr.</option>
+                              <option value="Prof.">Prof.</option>
+                              <option value="Mr.">Mr.</option>
+                              <option value="Ms.">Ms.</option>
+                            </select>
+                          </div>
+                          <div className="col-span-8 sm:col-span-9">
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Full Name *
+                            </label>
+                            <input
+                              type="text"
+                              name="fullName"
+                              required
+                              placeholder="e.g. Er. Ramesh Kumar Verma"
+                              value={engData.fullName}
+                              onChange={handleEngInputChange}
+                              className={`w-full bg-[#FDFBF7] border ${
+                                engErrors.fullName ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                              } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                            />
+                            {engErrors.fullName && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{engErrors.fullName}</p>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Engineering / License Number & Membership Category */}
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Registration / License No. *
+                            </label>
+                            <input
+                              type="text"
+                              name="regNumber"
+                              required
+                              placeholder="e.g. ER/UP/XXXXX or License No."
+                              value={engData.regNumber}
+                              onChange={handleEngInputChange}
+                              className={`w-full bg-[#FDFBF7] border ${
+                                engErrors.regNumber ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                              } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                            />
+                            {engErrors.regNumber && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{engErrors.regNumber}</p>
+                            )}
+                          </div>
+                          <div>
+                            <div className="flex items-center justify-between mb-1">
+                              <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700">
+                                Membership Category *
+                              </label>
+                              <span className={`text-[10px] font-bold font-mono px-2 py-0.5 rounded-full ${
+                                engData.category === 'LAA Member' 
+                                  ? 'bg-emerald-100 text-emerald-800' 
+                                  : 'bg-amber-100 text-amber-800'
+                              }`}>
+                                {engData.category === 'LAA Member' ? 'Fee: ₹0' : 'Fee: ₹2,000 INR'}
+                              </span>
+                            </div>
+                            <select
+                              name="category"
+                              value={engData.category}
+                              onChange={handleEngInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3 py-2.5 text-xs sm:text-sm text-[#171717] font-medium focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            >
+                              <option value="LAA Member">LAA Member (Fees: ₹0)</option>
+                              <option value="Other than LAA">Other than LAA (Fees: ₹2,000 INR)</option>
+                            </select>
+                            <p className="text-[10.5px] mt-1 text-neutral-500">
+                              {engData.category === 'LAA Member'
+                                ? '✦ Free entry for verified LAA Members (No registration fee).'
+                                : '✦ Standard delegate pass fee: ₹2,000 INR.'}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Email & Phone */}
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Email Address *
+                            </label>
+                            <input
+                              type="email"
+                              name="email"
+                              required
+                              placeholder="engineer@domain.com"
+                              value={engData.email}
+                              onChange={handleEngInputChange}
+                              className={`w-full bg-[#FDFBF7] border ${
+                                engErrors.email ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                              } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                            />
+                            {engErrors.email && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{engErrors.email}</p>
+                            )}
+                          </div>
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Phone / WhatsApp No. *
+                            </label>
+                            <input
+                              type="tel"
+                              name="phone"
+                              required
+                              placeholder="+91 98765 43210"
+                              value={engData.phone}
+                              onChange={handleEngInputChange}
+                              className={`w-full bg-[#FDFBF7] border ${
+                                engErrors.phone ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                              } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                            />
+                            {engErrors.phone && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{engErrors.phone}</p>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Firm / Office Name & Address */}
+                        <div>
+                          <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                            Firm Name &amp; Office Address *
+                          </label>
+                          <textarea
+                            name="officeAddress"
+                            required
+                            rows={2}
+                            placeholder="Complete Firm / Consultancy Name and Office Address *"
+                            value={engData.officeAddress}
+                            onChange={handleEngInputChange}
+                            className={`w-full bg-[#FDFBF7] border ${
+                              engErrors.officeAddress ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                            } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                          />
+                          {engErrors.officeAddress && (
+                            <p className="text-[11px] text-red-600 font-medium mt-1">{engErrors.officeAddress}</p>
+                          )}
+                        </div>
+
+                        {/* Proposer Name & LAA Number */}
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Proposer LAA Member Name *
+                            </label>
+                            <input
+                              type="text"
+                              name="proposerName"
+                              required
+                              placeholder="Endorsed by LAA Member *"
+                              value={engData.proposerName}
+                              onChange={handleEngInputChange}
+                              className={`w-full bg-[#FDFBF7] border ${
+                                engErrors.proposerName ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                              } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                            />
+                            {engErrors.proposerName && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{engErrors.proposerName}</p>
+                            )}
+                          </div>
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              LAA Membership No. *
+                            </label>
+                            <input
+                              type="text"
+                              name="laaNumber"
+                              required
+                              placeholder="LAA-XXXX *"
+                              value={engData.laaNumber}
+                              onChange={handleEngInputChange}
+                              className={`w-full bg-[#FDFBF7] border ${
+                                engErrors.laaNumber ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                              } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
+                            />
+                            {engErrors.laaNumber && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{engErrors.laaNumber}</p>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Degree / ID Proof / Certificate File Upload */}
+                        <div>
+                          <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                            Upload Engineering / Consultant Certificate / ID Proof *
+                          </label>
+                          <div className={`border-2 border-dashed ${
+                            engErrors.engCertFile ? 'border-red-400 bg-red-50/30' : 'border-[#E6DFD3] hover:border-[#B77A27]'
+                          } rounded-2xl p-4 text-center cursor-pointer transition-colors bg-[#FAF7F2]/60 hover:bg-white relative`}>
+                            <input
+                              type="file"
+                              required
+                              accept="image/*,.pdf"
+                              onChange={(e) => {
+                                setEngCertFile(e.target.files[0]);
+                                if (engErrors.engCertFile) setEngErrors(prev => ({ ...prev, engCertFile: '' }));
+                              }}
+                              className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                            />
+                            <UploadCloud className="w-6 h-6 text-[#B77A27] mx-auto mb-1" />
+                            <span className="text-xs text-neutral-700 block font-medium">
+                              {engCertFile ? engCertFile.name : 'Click or drag Certificate / ID Proof file (PDF / JPG) *'}
+                            </span>
+                            <span className="text-[10px] text-neutral-500 mt-0.5 block">Max size: 5MB</span>
+                          </div>
+                          {engErrors.engCertFile && (
+                            <p className="text-[11px] text-red-600 font-medium mt-1">{engErrors.engCertFile}</p>
+                          )}
+                        </div>
+
+                        <div className="pt-2">
+                          <button
+                            type="button"
+                            onClick={handleProceedEngStep2}
+                            className="w-full py-3 px-6 rounded-xl bg-[#B77A27] hover:bg-[#a0681f] text-white font-bold uppercase tracking-wider text-xs shadow-md shadow-[#B77A27]/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                          >
+                            <span>Proceed to Payment Step 2 ({engData.category === 'LAA Member' ? 'Fee: ₹0' : 'Fee: ₹2,000'})</span>
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
+                        </div>
+
+                      </motion.div>
+                    )}
+
+                    {/* STEP 2: SCAN & PAY & RECEIPT UPLOAD */}
+                    {engStep === 2 && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="space-y-4"
+                      >
+                        {/* Dynamic Payment Guidance Box */}
+                        {engData.category === 'LAA Member' ? (
+                          <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 space-y-2">
+                            <div className="flex items-center gap-2 font-bold text-emerald-800 text-sm">
+                              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                              <span>LAA Member Category — Complimentary Registration</span>
+                            </div>
+                            <p className="text-emerald-800 text-[12px] leading-relaxed">
+                              Engineer / Consultant Delegate Fee: <strong className="text-emerald-700 text-base font-bold">₹0 INR (FREE)</strong>
+                            </p>
+                            <div className="p-3 bg-white rounded-xl border border-emerald-200 text-[11px] text-emerald-800">
+                              ✦ No payment or bank transfer is required for verified LAA Members. You can directly proceed and complete your registration.
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="p-4 rounded-2xl bg-[#FFFDF5] border border-[#EAD8B1] text-xs text-neutral-700 space-y-2">
+                            <div className="flex items-center gap-2 font-bold text-[#B77A27] text-sm">
+                              <CreditCard className="w-4 h-4" />
+                              <span>Payment Instructions &amp; Bank Account Details</span>
+                            </div>
+                            <p className="text-neutral-700 text-[12px] leading-relaxed">
+                              Engineer / Consultant (Other than LAA) Fee: <strong className="text-[#B77A27] text-base font-bold">₹2,000 INR Total</strong>
+                            </p>
+                            <div className="grid grid-cols-2 gap-2 text-[10.5px] font-mono bg-white p-2.5 rounded-xl border border-[#E6DFD3] text-neutral-700">
+                              <div>Bank: PNB (Punjab National Bank)</div>
+                              <div>A/C: 06871011001027</div>
+                              <div>IFSC: PUNB0068710</div>
+                              <div>Name: Lucknow Architects Association</div>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Payment Details Inputs — Required only if Other than LAA */}
+                        {engData.category === 'Other than LAA' && (
+                          <>
+                            <div className="grid sm:grid-cols-2 gap-3">
+                              <div>
+                                <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                                  Transaction ID / UTR No. *
+                                </label>
+                                <input
+                                  type="text"
+                                  name="txnId"
+                                  required={engData.category === 'Other than LAA'}
+                                  placeholder="e.g. UPI/123456789012"
+                                  value={engData.txnId}
+                                  onChange={handleEngInputChange}
+                                  className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                                  Payment Date *
+                                </label>
+                                <input
+                                  type="date"
+                                  name="paymentDate"
+                                  required={engData.category === 'Other than LAA'}
+                                  value={engData.paymentDate}
+                                  onChange={handleEngInputChange}
+                                  className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                                />
+                              </div>
+                            </div>
+
+                            <div className="grid sm:grid-cols-2 gap-3">
+                              <div>
+                                <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                                  Name of Bank / Payment App *
+                                </label>
+                                <input
+                                  type="text"
+                                  name="bankName"
+                                  required={engData.category === 'Other than LAA'}
+                                  placeholder="GPay / PhonePe / PNB / SBI"
+                                  value={engData.bankName}
+                                  onChange={handleEngInputChange}
+                                  className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                                  Cheque / Ref No. (If applicable)
+                                </label>
+                                <input
+                                  type="text"
+                                  name="chequeNumber"
+                                  placeholder="Cheque No."
+                                  value={engData.chequeNumber}
+                                  onChange={handleEngInputChange}
+                                  className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                                />
+                              </div>
+                            </div>
+
+                            {/* Upload Receipt */}
+                            <div>
+                              <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                                Upload Payment Receipt Screenshot / Copy *
+                              </label>
+                              <div className="border-2 border-dashed border-[#E6DFD3] hover:border-[#B77A27] rounded-2xl p-4 text-center cursor-pointer transition-colors bg-[#FAF7F2]/60 hover:bg-white relative">
+                                <input
+                                  type="file"
+                                  required={engData.category === 'Other than LAA'}
+                                  accept="image/*,.pdf"
+                                  onChange={(e) => setEngReceiptFile(e.target.files[0])}
+                                  className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                                />
+                                <UploadCloud className="w-6 h-6 text-[#B77A27] mx-auto mb-1" />
+                                <span className="text-xs text-neutral-700 block font-medium">
+                                  {engReceiptFile ? engReceiptFile.name : 'Upload Payment Receipt (Screenshot / PDF) *'}
+                                </span>
+                              </div>
+                            </div>
+                          </>
+                        )}
+
+                        {/* Declaration Checkbox */}
+                        <div className="flex items-start gap-2.5 pt-2">
+                          <input
+                            type="checkbox"
+                            name="declaration"
+                            id="engDeclaration"
+                            required
+                            checked={engData.declaration}
+                            onChange={handleEngInputChange}
+                            className="mt-0.5 accent-[#B77A27] w-4 h-4 rounded cursor-pointer"
+                          />
+                          <label htmlFor="engDeclaration" className="text-xs text-neutral-600 leading-normal cursor-pointer select-none">
+                            I hereby declare that I possess recognized qualifications in Engineering / Technical Consultancy and the information provided is accurate to the best of my knowledge.
+                          </label>
+                        </div>
+
+                        <div className="flex items-center gap-3 pt-3">
+                          <button
+                            type="button"
+                            onClick={() => setEngStep(1)}
+                            className="py-3 px-5 rounded-xl bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-bold uppercase tracking-wider text-xs transition-colors cursor-pointer"
+                          >
+                            Back to Step 1
+                          </button>
+
+                          <button
+                            type="submit"
+                            className="flex-1 py-3 px-6 rounded-xl bg-[#B77A27] hover:bg-[#a0681f] text-white font-bold uppercase tracking-wider text-xs shadow-md shadow-[#B77A27]/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                          >
+                            <Sparkles className="w-4 h-4 fill-white" />
+                            <span>
+                              {engData.category === 'LAA Member'
+                                ? 'Complete Free Registration'
+                                : 'Complete Registration (₹2,000)'}
+                            </span>
+                          </button>
+                        </div>
+
+                      </motion.div>
+                    )}
+
+                  </form>
+                </motion.div>
+              )}
+
+              {/* ================= EXHIBITOR REGISTRATION FORM ================= */}
+              {activeFormMode === 'exhibitor' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="bg-white/90 backdrop-blur-xl border border-[#E6DFD3] rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  
+                  {/* Form Header */}
+                  <div className="flex items-center justify-between border-b border-[#E6DFD3] pb-5 mb-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-2xl bg-[#B77A27]/10 border border-[#B77A27]/20 flex items-center justify-center text-[#B77A27]">
+                        <Store className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h2 className="text-lg sm:text-xl font-bold font-serif text-[#171717] tracking-wide">
+                          Exhibitors &amp; Brand Registration
+                        </h2>
+                        <p className="text-xs text-neutral-500">
+                          Book your Stall &amp; Partner Pavilion at LAF 3.0
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-[#B77A27]/10 border border-[#B77A27]/25 text-[#B77A27] font-bold uppercase">
+                      Brand Partner
+                    </span>
+                  </div>
+
+                  {/* Step Tabs */}
+                  <div className="flex items-center justify-between mb-6 bg-[#FAF7F2] p-1.5 rounded-xl border border-[#E6DFD3] text-xs font-semibold">
+                    <button
+                      type="button"
+                      onClick={() => setExhibitorStep(1)}
+                      className={`flex-1 py-2 px-3 rounded-lg transition-all ${
+                        exhibitorStep === 1 
+                          ? 'bg-[#B77A27] text-white font-bold shadow-2xs' 
+                          : 'text-neutral-600 hover:text-[#171717]'
+                      }`}
+                    >
+                      Step 1: Brand &amp; Space Details
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setExhibitorStep(2)}
+                      className={`flex-1 py-2 px-3 rounded-lg transition-all ${
+                        exhibitorStep === 2 
+                          ? 'bg-[#B77A27] text-white font-bold shadow-2xs' 
+                          : 'text-neutral-600 hover:text-[#171717]'
+                      }`}
+                    >
+                      Step 2: Payment &amp; Booking
+                    </button>
+                  </div>
+
+                  {/* Form Element */}
+                  <form onSubmit={handleExhibitorSubmit} className="space-y-4">
+                    
+                    {/* STEP 1: BRAND & STALL REQUIREMENTS */}
+                    {exhibitorStep === 1 && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="space-y-4"
+                      >
+                        {/* Company & Representative Name */}
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Company / Brand Name *
+                            </label>
+                            <input
+                              type="text"
+                              name="companyName"
+                              required
+                              placeholder="e.g. Apex Luxury Lighting & Interiors"
+                              value={exhibitorData.companyName}
+                              onChange={handleExhibitorInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Contact Person Name *
+                            </label>
+                            <input
+                              type="text"
+                              name="contactPerson"
+                              required
+                              placeholder="e.g. Vikram Singh"
+                              value={exhibitorData.contactPerson}
+                              onChange={handleExhibitorInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Designation & Email */}
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Designation *
+                            </label>
+                            <input
+                              type="text"
+                              name="designation"
+                              required
+                              placeholder="e.g. Director / Marketing Lead"
+                              value={exhibitorData.designation}
+                              onChange={handleExhibitorInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Official Email *
+                            </label>
+                            <input
+                              type="email"
+                              name="email"
+                              required
+                              placeholder="info@brand.com"
+                              value={exhibitorData.email}
+                              onChange={handleExhibitorInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Phone & Website */}
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Mobile / WhatsApp No. *
+                            </label>
+                            <input
+                              type="tel"
+                              name="phone"
+                              required
+                              placeholder="+91 98765 00000"
+                              value={exhibitorData.phone}
+                              onChange={handleExhibitorInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Company Website / Catalog URL
+                            </label>
+                            <input
+                              type="text"
+                              name="website"
+                              placeholder="https://www.brand.com"
+                              value={exhibitorData.website}
+                              onChange={handleExhibitorInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Industry Sector & Space Type */}
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Product Sector / Category
+                            </label>
+                            <select
+                              name="industrySector"
+                              value={exhibitorData.industrySector}
+                              onChange={handleExhibitorInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3 py-2.5 text-xs sm:text-sm text-[#171717] focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            >
+                              <option value="Luxury Interiors & Decor">Luxury Interiors &amp; Decor</option>
+                              <option value="Architectural Lighting & Automation">Architectural Lighting &amp; Automation</option>
+                              <option value="Structural & Facade Materials">Structural &amp; Facade Materials</option>
+                              <option value="Tiles, Bathware & Stone">Tiles, Bathware &amp; Stone</option>
+                              <option value="Furniture & Outdoor Solutions">Furniture &amp; Outdoor Solutions</option>
+                              <option value="Green Building Tech & HVAC">Green Building Tech &amp; HVAC</option>
+                              <option value="Other Premium Products">Other Premium Products</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Stall / Pavilion Space Required
+                            </label>
+                            <select
+                              name="spaceRequired"
+                              value={exhibitorData.spaceRequired}
+                              onChange={handleExhibitorInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3 py-2.5 text-xs sm:text-sm text-[#171717] focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            >
+                              <option value="Executive Stall (9 sqm)">Executive Stall (9 sqm / 3x3m)</option>
+                              <option value="Gold Stall (18 sqm)">Gold Stall (18 sqm / 6x3m)</option>
+                              <option value="Platinum Pavilion (36 sqm)">Platinum Pavilion (36 sqm)</option>
+                              <option value="Custom Open Space / Sponsor Deck">Custom Pavilion / Sponsor Deck</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        {/* Special Requirements */}
+                        <div>
+                          <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                            Special Display / Power / Height Requirements
+                          </label>
+                          <textarea
+                            name="specialRequirements"
+                            rows={2}
+                            placeholder="e.g., Require 3-phase 5kW power, extra spotlighting, heavy floor load capacity..."
+                            value={exhibitorData.specialRequirements}
+                            onChange={handleExhibitorInputChange}
+                            className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                          />
+                        </div>
+
+                        {/* Brand Logo Upload */}
+                        <div>
+                          <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                            Upload Brand Logo (Vector / High Res PNG)
+                          </label>
+                          <div className="border-2 border-dashed border-[#E6DFD3] hover:border-[#B77A27] rounded-2xl p-4 text-center cursor-pointer transition-colors bg-[#FAF7F2]/60 hover:bg-white relative">
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => setExhibitorLogoFile(e.target.files[0])}
+                              className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                            />
+                            <UploadCloud className="w-6 h-6 text-[#B77A27] mx-auto mb-1" />
+                            <span className="text-xs text-neutral-700 block font-medium">
+                              {exhibitorLogoFile ? exhibitorLogoFile.name : 'Upload Brand Logo (PNG / SVG)'}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="pt-2">
+                          <button
+                            type="button"
+                            onClick={() => setExhibitorStep(2)}
+                            className="w-full py-3 px-6 rounded-xl bg-[#B77A27] hover:bg-[#a0681f] text-white font-bold uppercase tracking-wider text-xs shadow-md shadow-[#B77A27]/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                          >
+                            <span>Proceed to Payment Step 2</span>
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
+                        </div>
+
+                      </motion.div>
+                    )}
+
+                    {/* STEP 2: PAYMENT & ADVANCE BOOKING RECEIPT */}
+                    {exhibitorStep === 2 && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="space-y-4"
+                      >
+                        {/* Exhibitor Payment Box */}
+                        <div className="p-4 rounded-2xl bg-[#FFFDF5] border border-[#EAD8B1] text-xs text-neutral-700 space-y-2">
+                          <div className="flex items-center gap-2 font-bold text-[#B77A27] text-sm">
+                            <CreditCard className="w-4 h-4" />
+                            <span>Stall Token Deposit &amp; Bank Account Details</span>
+                          </div>
+                          <p className="text-neutral-700 text-[11.5px] leading-relaxed">
+                            Advance Stall Booking Token Deposit: <strong className="text-[#B77A27]">₹10,000 / ₹25,000</strong> (Adjustable in final invoice).
+                          </p>
+                          <div className="grid grid-cols-2 gap-2 text-[10.5px] font-mono bg-white p-2.5 rounded-xl border border-[#E6DFD3] text-neutral-700">
+                            <div>Bank: PNB (Punjab National Bank)</div>
+                            <div>A/C: 06871011001027</div>
+                            <div>IFSC: PUNB0068710</div>
+                            <div>A/C Holder: Lucknow Architects Association</div>
+                          </div>
+                        </div>
+
+                        {/* Transaction ID & Date */}
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Transaction ID / UTR No. *
+                            </label>
+                            <input
+                              type="text"
+                              name="txnId"
+                              required
+                              placeholder="e.g. UTR / NEFT Reference No."
+                              value={exhibitorData.txnId}
+                              onChange={handleExhibitorInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                              Payment Date
+                            </label>
+                            <input
+                              type="date"
+                              name="paymentDate"
+                              value={exhibitorData.paymentDate}
+                              onChange={handleExhibitorInputChange}
+                              className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Upload Receipt */}
+                        <div>
+                          <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-700 mb-1">
+                            Upload Payment Confirmation / Bank Receipt *
+                          </label>
+                          <div className="border-2 border-dashed border-[#E6DFD3] hover:border-[#B77A27] rounded-2xl p-4 text-center cursor-pointer transition-colors bg-[#FAF7F2]/60 hover:bg-white relative">
+                            <input
+                              type="file"
+                              required
+                              accept="image/*,.pdf"
+                              onChange={(e) => setExhibitorReceiptFile(e.target.files[0])}
+                              className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                            />
+                            <UploadCloud className="w-6 h-6 text-[#B77A27] mx-auto mb-1" />
+                            <span className="text-xs text-neutral-700 block font-medium">
+                              {exhibitorReceiptFile ? exhibitorReceiptFile.name : 'Upload Payment Receipt Screenshot / PDF'}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Declaration Checkbox */}
+                        <div className="flex items-start gap-2.5 pt-2">
+                          <input
+                            type="checkbox"
+                            name="declaration"
+                            id="exhibitorDeclaration"
+                            required
+                            checked={exhibitorData.declaration}
+                            onChange={handleExhibitorInputChange}
+                            className="mt-0.5 accent-[#B77A27] w-4 h-4 rounded cursor-pointer"
+                          />
+                          <label htmlFor="exhibitorDeclaration" className="text-xs text-neutral-600 leading-normal cursor-pointer select-none">
+                            I declare that our brand agrees to LAF 3.0 exhibition floor guidelines and stall space allocation rules.
+                          </label>
+                        </div>
+
+                        <div className="flex items-center gap-3 pt-3">
+                          <button
+                            type="button"
+                            onClick={() => setExhibitorStep(1)}
+                            className="py-3 px-5 rounded-xl bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-bold uppercase tracking-wider text-xs transition-colors cursor-pointer"
+                          >
+                            Back to Step 1
+                          </button>
+
+                          <button
+                            type="submit"
+                            className="flex-1 py-3 px-6 rounded-xl bg-[#B77A27] hover:bg-[#a0681f] text-white font-bold uppercase tracking-wider text-xs shadow-md shadow-[#B77A27]/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                          >
+                            <Sparkles className="w-4 h-4 fill-white" />
+                            <span>Submit Exhibitor Stall Request</span>
+                          </button>
+                        </div>
+
+                      </motion.div>
+                    )}
+
+                  </form>
+                </motion.div>
+              )}
+
+            </div>
+
+          </div>
+
+          {/* RIGHT SIDEBAR: ACCORDION, PROCESS & MEMBERSHIP BENEFITS */}
+          <div className="lg:col-span-4 space-y-6">
+              
+              {/* ACCORDION INFORMATION BOX */}
+              <div className="bg-white/90 backdrop-blur-xl border border-[#E6DFD3] rounded-3xl p-6 shadow-sm space-y-4">
+                
+                <div className="flex items-center gap-2 pb-3 border-b border-[#E6DFD3] text-[#B77A27] font-serif font-bold text-lg">
+                  <FileText className="w-5 h-5 text-[#B77A27]" />
+                  <span>Registration &amp; Process Guide</span>
+                </div>
+
+                <div className="space-y-3">
+                  
+                  {/* Accordion Item 1: Eligibility */}
+                  <div className="border border-[#E6DFD3] rounded-2xl overflow-hidden bg-[#FDFBF7]">
+                    <button
+                      type="button"
+                      onClick={() => setActiveAccordion(activeAccordion === 'eligibility' ? null : 'eligibility')}
+                      className="w-full flex items-center justify-between p-4 text-left font-bold text-xs uppercase tracking-wider text-[#B77A27] hover:bg-[#FAF7F2] transition-colors cursor-pointer"
+                    >
+                      <span className="flex items-center gap-2">
+                        <Award className="w-4 h-4 text-[#B77A27]" />
+                        Eligibility Criteria
+                      </span>
+                      <ChevronDown className={`w-4 h-4 text-[#B77A27] transition-transform ${activeAccordion === 'eligibility' ? 'rotate-180' : ''}`} />
+                    </button>
+                    {activeAccordion === 'eligibility' && (
+                      <div className="p-4 text-xs text-neutral-600 space-y-2 border-t border-[#E6DFD3] bg-white leading-relaxed">
+                        <ul className="list-disc pl-4 space-y-1 text-neutral-600">
+                          <li>Degree in Architecture (B.Arch) from a COA recognized institution/university.</li>
+                          <li>Possess valid Council of Architecture (COA) registration number.</li>
+                          <li>Practicing or living in Lucknow, UP, or neighboring districts.</li>
+                          <li>Endorsement / recommendation by at least one LAA Member (Optional for delegates).</li>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Accordion Item 2: Membership & Conclave Benefits */}
+                  <div className="border border-[#E6DFD3] rounded-2xl overflow-hidden bg-[#FDFBF7]">
+                    <button
+                      type="button"
+                      onClick={() => setActiveAccordion(activeAccordion === 'benefits' ? null : 'benefits')}
+                      className="w-full flex items-center justify-between p-4 text-left font-bold text-xs uppercase tracking-wider text-[#B77A27] hover:bg-[#FAF7F2] transition-colors cursor-pointer"
+                    >
+                      <span className="flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-[#B77A27]" />
+                        Delegate &amp; Member Benefits
+                      </span>
+                      <ChevronDown className={`w-4 h-4 text-[#B77A27] transition-transform ${activeAccordion === 'benefits' ? 'rotate-180' : ''}`} />
+                    </button>
+                    {activeAccordion === 'benefits' && (
+                      <div className="p-4 text-xs text-neutral-600 space-y-2 border-t border-[#E6DFD3] bg-white leading-relaxed">
+                        <ul className="list-disc pl-4 space-y-1 text-neutral-600">
+                          <li>Access to all 3 Days of LAF 3.0 Conclave, Keynotes &amp; Panel Symposiums.</li>
+                          <li>Direct networking with 500+ eminent architects, buyers &amp; government dignitaries.</li>
+                          <li>Delegate Kit, Certificate of Participation &amp; CPD points.</li>
+                          <li>LAA General Body Meeting (GBM) voting and directory inclusion rights.</li>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Accordion Item 3: Fee & Bank Details */}
+                  <div className="border border-[#E6DFD3] rounded-2xl overflow-hidden bg-[#FDFBF7]">
+                    <button
+                      type="button"
+                      onClick={() => setActiveAccordion(activeAccordion === 'fee' ? null : 'fee')}
+                      className="w-full flex items-center justify-between p-4 text-left font-bold text-xs uppercase tracking-wider text-[#B77A27] hover:bg-[#FAF7F2] transition-colors cursor-pointer"
+                    >
+                      <span className="flex items-center gap-2">
+                        <CreditCard className="w-4 h-4 text-[#B77A27]" />
+                        Fee Details &amp; Bank Info
+                      </span>
+                      <ChevronDown className={`w-4 h-4 text-[#B77A27] transition-transform ${activeAccordion === 'fee' ? 'rotate-180' : ''}`} />
+                    </button>
+                    {activeAccordion === 'fee' && (
+                      <div className="p-4 text-xs text-neutral-600 space-y-2 border-t border-[#E6DFD3] bg-white leading-relaxed font-mono">
+                        <p className="text-[#B77A27] font-bold">Registration &amp; Delegate Fee Details:</p>
+                        <p className="text-neutral-700">✦ Architect Life Membership: Rs. 5000/- + 18% GST (Rs. 900) = <span className="text-[#B77A27] font-bold">Rs. 5900/-</span></p>
+                        <p className="text-neutral-700">✦ Engineer / Consultant (LAA Member): <span className="text-emerald-600 font-bold">Rs. 0/- (FREE)</span></p>
+                        <p className="text-neutral-700">✦ Engineer / Consultant (Other than LAA): <span className="text-[#B77A27] font-bold">Rs. 2000/- INR</span></p>
+                        <hr className="border-[#E6DFD3] my-2" />
+                        <p className="text-neutral-600">Name of Bank: Punjab National Bank</p>
+                        <p className="text-neutral-600">A/C Name: Lucknow Architects Association</p>
+                        <p className="text-neutral-600">A/C No.: 06871011001027</p>
+                        <p className="text-neutral-600">IFSC Code: PUNB0068710</p>
+                      </div>
+                    )}
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* HELPLINE & CONTACT CARD */}
+              <div className="bg-white/90 backdrop-blur-xl border border-[#E6DFD3] rounded-3xl p-6 shadow-sm space-y-3">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-[#B77A27] font-bold block">
+                  ✦ NEED ASSISTANCE?
+                </span>
+                <h3 className="font-serif text-lg font-bold text-[#171717]">
+                  Registration Support Desk
+                </h3>
+                <p className="text-xs text-neutral-600 leading-relaxed">
+                  Have questions regarding COA verification, stall dimensions or payment assistance?
+                </p>
+                <div className="pt-2 space-y-2 text-xs">
+                  <a href="tel:917007973079" className="flex items-center gap-2.5 text-neutral-700 hover:text-[#B77A27] transition-colors font-medium">
+                    <PhoneCall className="w-4 h-4 text-[#B77A27]" />
+                    <span>+91 70079 73079</span>
+                  </a>
+                  <a href="mailto:info@lucknowarchitects.com" className="flex items-center gap-2.5 text-neutral-700 hover:text-[#B77A27] transition-colors font-medium">
+                    <Mail className="w-4 h-4 text-[#B77A27]" />
+                    <span>info@lucknowarchitects.com</span>
+                  </a>
+                  <div className="flex items-start gap-2.5 text-neutral-500 text-[11px] pt-1">
+                    <MapPin className="w-4 h-4 text-[#B77A27] shrink-0 mt-0.5" />
+                    <span>2/75A, Vibhuti Khand, Gomti Nagar, Lucknow - 226010, UP</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+        </div>
+
+      </div>
+
+      {/* ================= SUCCESS SUBMITTED MODAL ================= */}
+      <AnimatePresence>
+        {submittedModal && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] bg-neutral-900/50 backdrop-blur-sm flex items-center justify-center p-4"
+          >
+            <motion.div 
+              initial={{ scale: 0.95, y: 15 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 15 }}
+              className="bg-white border border-[#E6DFD3] rounded-3xl p-6 sm:p-8 max-w-md w-full text-center relative shadow-2xl"
+            >
+              <button 
+                onClick={() => setSubmittedModal(null)}
+                className="absolute top-4 right-4 text-neutral-400 hover:text-neutral-700 p-1 rounded-full bg-neutral-100 hover:bg-neutral-200 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="w-16 h-16 rounded-full bg-[#B77A27] text-white flex items-center justify-center mx-auto mb-4 shadow-md shadow-[#B77A27]/25">
+                <CheckCircle2 className="w-8 h-8" />
+              </div>
+
+              <span className="text-[10px] font-mono tracking-widest text-[#B77A27] font-bold uppercase block mb-1">
+                REGISTRATION SUBMITTED
+              </span>
+
+              <h3 className="font-serif text-2xl font-bold text-[#171717] mb-2">
+                Thank You for Registering!
+              </h3>
+
+              <p className="text-xs text-neutral-600 leading-relaxed mb-6">
+                {submittedModal === 'architect' && (
+                  `Your Architect Delegate registration details & payment receipt (Txn: ${archData.txnId || 'Received'}) have been successfully submitted for verification.`
+                )}
+                {submittedModal === 'engineer' && (
+                  `Your Engineer / Consultant registration details (${
+                    engData.category === 'LAA Member'
+                      ? 'LAA Member - Fee: ₹0'
+                      : `Other than LAA - Txn: ${engData.txnId || 'Received'} - Fee: ₹2,000 INR`
+                  }) have been successfully submitted for verification.`
+                )}
+                {submittedModal === 'exhibitor' && (
+                  `Your Exhibitor Stall booking request & payment receipt (Txn: ${exhibitorData.txnId || 'Received'}) have been received.`
+                )}
+                {" "}Our organizing desk will verify the details and send your official confirmation ticket to your email.
+              </p>
+
+              <div className="p-3 bg-[#FAF7F2] rounded-2xl border border-[#E6DFD3] text-[11px] font-mono text-neutral-600 mb-6 flex justify-between">
+                <span>Status: Under Verification</span>
+                <span className="text-[#B77A27] font-bold">LAF-3.0-REG</span>
+              </div>
+
+              <button
+                onClick={() => setSubmittedModal(null)}
+                className="w-full py-3 px-6 rounded-xl bg-[#B77A27] hover:bg-[#a0681f] text-white font-bold uppercase tracking-wider text-xs shadow-md transition-all cursor-pointer"
+              >
+                Done / Return to Registration
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+    </div>
+  );
+};
+
+export default RegistrationPage;
