@@ -39,7 +39,7 @@ const RegistrationPage = () => {
     residentialAddress: '',
     category: 'Life Member Architect',
     proposerName: '',
-    lafNumber: '',
+    laaNumber: '',
     declaration: false,
     txnId: '',
     chequeNumber: '',
@@ -61,9 +61,9 @@ const RegistrationPage = () => {
     regNumber: '',
     firmName: '',
     officeAddress: '',
-    category: 'LAF Member', // 'LAF Member' (Fee: 0) | 'Other than LAF' (Fee: 2000)
+    category: 'LAA Member', // 'LAA Member' (Fee: 0) | 'Other than LAA' (Fee: 2000)
     proposerName: '',
-    lafNumber: '',
+    laaNumber: '',
     declaration: false,
     txnId: '',
     chequeNumber: '',
@@ -165,7 +165,7 @@ const RegistrationPage = () => {
     if (!archData.phone?.trim()) errors.phone = 'Phone / WhatsApp No. is required';
     if (!archData.officeAddress?.trim()) errors.officeAddress = 'Firm Name & Office Address is required';
     if (!archData.proposerName?.trim()) errors.proposerName = 'Proposer LAF Member Name is required';
-    if (!archData.lafNumber?.trim()) errors.lafNumber = 'LAF Membership No. is required';
+    if (!archData.laaNumber?.trim()) errors.laaNumber = 'LAF Membership No. is required';
     if (!archCoaFile) errors.archCoaFile = 'Please upload COA Certificate / ID Proof';
 
     setArchErrors(errors);
@@ -211,7 +211,7 @@ const RegistrationPage = () => {
     if (!engData.phone?.trim()) errors.phone = 'Phone / WhatsApp No. is required';
     if (!engData.officeAddress?.trim()) errors.officeAddress = 'Firm Name & Office Address is required';
     if (!engData.proposerName?.trim()) errors.proposerName = 'Proposer LAF Member Name is required';
-    if (!engData.lafNumber?.trim()) errors.lafNumber = 'LAF Membership No. is required';
+    if (!engData.laaNumber?.trim()) errors.laaNumber = 'LAF Membership No. is required';
     if (!engCertFile) errors.engCertFile = 'Please upload Engineering / Consultant Certificate / ID Proof';
 
     setEngErrors(errors);
@@ -288,7 +288,7 @@ const RegistrationPage = () => {
       });
       return;
     }
-    if (engData.category === 'Other than LAF' && !engReceiptFile) {
+    if (engData.category === 'Other than LAA' && !engReceiptFile) {
       Swal.fire({
         icon: 'warning',
         title: 'Payment Receipt Required',
@@ -683,17 +683,17 @@ const RegistrationPage = () => {
                             </label>
                             <input
                               type="text"
-                              name="lafNumber"
+                              name="laaNumber"
                               required
                               placeholder="LAF-XXXX *"
-                              value={archData.lafNumber}
+                              value={archData.laaNumber}
                               onChange={handleArchInputChange}
                               className={`w-full bg-[#FDFBF7] border ${
-                                archErrors.lafNumber ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                                archErrors.laaNumber ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
                               } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
                             />
-                            {archErrors.lafNumber && (
-                              <p className="text-[11px] text-red-600 font-medium mt-1">{archErrors.lafNumber}</p>
+                            {archErrors.laaNumber && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{archErrors.laaNumber}</p>
                             )}
                           </div>
                         </div>
@@ -913,11 +913,11 @@ const RegistrationPage = () => {
                     </div>
                     
                     <span className={`text-[10px] font-mono px-3 py-1 rounded-full border font-bold uppercase transition-colors ${
-                      engData.category === 'LAF Member'
+                      engData.category === 'LAA Member'
                         ? 'bg-emerald-50 border-emerald-300 text-emerald-700'
                         : 'bg-[#B77A27]/10 border-[#B77A27]/25 text-[#B77A27]'
                     }`}>
-                      {engData.category === 'LAF Member' ? 'LAF Member • Fee: ₹0' : 'Other than LAF • Fee: ₹2,000'}
+                      {engData.category === 'LAA Member' ? 'LAF Member • Fee: ₹0' : 'Other than LAF • Fee: ₹2,000'}
                     </span>
                   </div>
 
@@ -943,7 +943,7 @@ const RegistrationPage = () => {
                           : 'text-neutral-600 hover:text-[#171717]'
                       }`}
                     >
-                      Step 2: Payment &amp; Pay Receipt ({engData.category === 'LAF Member' ? 'Fee: ₹0' : 'Fee: ₹2,000'})
+                      Step 2: Payment &amp; Pay Receipt ({engData.category === 'LAA Member' ? 'Fee: ₹0' : 'Fee: ₹2,000'})
                     </button>
                   </div>
 
@@ -1033,11 +1033,11 @@ const RegistrationPage = () => {
                                 Membership Category *
                               </label>
                               <span className={`text-[10px] font-bold font-mono px-2 py-0.5 rounded-full ${
-                                engData.category === 'LAF Member' 
+                                engData.category === 'LAA Member' 
                                   ? 'bg-emerald-100 text-emerald-800' 
                                   : 'bg-amber-100 text-amber-800'
                               }`}>
-                                {engData.category === 'LAF Member' ? 'Fee: ₹0' : 'Fee: ₹2,000 INR'}
+                                {engData.category === 'LAA Member' ? 'Fee: ₹0' : 'Fee: ₹2,000 INR'}
                               </span>
                             </div>
                             <select
@@ -1046,11 +1046,11 @@ const RegistrationPage = () => {
                               onChange={handleEngInputChange}
                               className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3 py-2.5 text-xs sm:text-sm text-[#171717] font-medium focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
                             >
-                              <option value="LAF Member">LAF Member (Fees: ₹0)</option>
-                              <option value="Other than LAF">Other than LAF (Fees: ₹2,000 INR)</option>
+                              <option value="LAA Member">LAF Member (Fees: ₹0)</option>
+                              <option value="Other than LAA">Other than LAF (Fees: ₹2,000 INR)</option>
                             </select>
                             <p className="text-[10.5px] mt-1 text-neutral-500">
-                              {engData.category === 'LAF Member'
+                              {engData.category === 'LAA Member'
                                 ? '✦ Free entry for verified LAF Members (No registration fee).'
                                 : '✦ Standard delegate pass fee: ₹2,000 INR.'}
                             </p>
@@ -1147,17 +1147,17 @@ const RegistrationPage = () => {
                             </label>
                             <input
                               type="text"
-                              name="lafNumber"
+                              name="laaNumber"
                               required
                               placeholder="LAF-XXXX *"
-                              value={engData.lafNumber}
+                              value={engData.laaNumber}
                               onChange={handleEngInputChange}
                               className={`w-full bg-[#FDFBF7] border ${
-                                engErrors.lafNumber ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
+                                engErrors.laaNumber ? 'border-red-400 bg-red-50/20 ring-1 ring-red-400' : 'border-[#E6DFD3]'
                               } focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all`}
                             />
-                            {engErrors.lafNumber && (
-                              <p className="text-[11px] text-red-600 font-medium mt-1">{engErrors.lafNumber}</p>
+                            {engErrors.laaNumber && (
+                              <p className="text-[11px] text-red-600 font-medium mt-1">{engErrors.laaNumber}</p>
                             )}
                           </div>
                         </div>
@@ -1197,7 +1197,7 @@ const RegistrationPage = () => {
                             onClick={handleProceedEngStep2}
                             className="w-full py-3 px-6 rounded-xl bg-[#B77A27] hover:bg-[#a0681f] text-white font-bold uppercase tracking-wider text-xs shadow-md shadow-[#B77A27]/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
                           >
-                            <span>Proceed to Payment Step 2 ({engData.category === 'LAF Member' ? 'Fee: ₹0' : 'Fee: ₹2,000'})</span>
+                            <span>Proceed to Payment Step 2 ({engData.category === 'LAA Member' ? 'Fee: ₹0' : 'Fee: ₹2,000'})</span>
                             <ChevronRight className="w-4 h-4" />
                           </button>
                         </div>
@@ -1213,7 +1213,7 @@ const RegistrationPage = () => {
                         className="space-y-4"
                       >
                         {/* Dynamic Payment Guidance Box */}
-                        {engData.category === 'LAF Member' ? (
+                        {engData.category === 'LAA Member' ? (
                           <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 space-y-2">
                             <div className="flex items-center gap-2 font-bold text-emerald-800 text-sm">
                               <CheckCircle2 className="w-5 h-5 text-emerald-600" />
@@ -1244,8 +1244,8 @@ const RegistrationPage = () => {
                           </div>
                         )}
 
-                        {/* Payment Details Inputs — Required only if Other than LAF */}
-                        {engData.category === 'Other than LAF' && (
+                        {/* Payment Details Inputs — Required only if Other than LAA */}
+                        {engData.category === 'Other than LAA' && (
                           <>
                             <div className="grid sm:grid-cols-2 gap-3">
                               <div>
@@ -1255,7 +1255,7 @@ const RegistrationPage = () => {
                                 <input
                                   type="text"
                                   name="txnId"
-                                  required={engData.category === 'Other than LAF'}
+                                  required={engData.category === 'Other than LAA'}
                                   placeholder="e.g. UPI/123456789012"
                                   value={engData.txnId}
                                   onChange={handleEngInputChange}
@@ -1269,7 +1269,7 @@ const RegistrationPage = () => {
                                 <input
                                   type="date"
                                   name="paymentDate"
-                                  required={engData.category === 'Other than LAF'}
+                                  required={engData.category === 'Other than LAA'}
                                   value={engData.paymentDate}
                                   onChange={handleEngInputChange}
                                   className="w-full bg-[#FDFBF7] border border-[#E6DFD3] focus:border-[#B77A27] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#171717] focus:outline-none focus:ring-2 focus:ring-[#B77A27]/20 transition-all"
@@ -1285,7 +1285,7 @@ const RegistrationPage = () => {
                                 <input
                                   type="text"
                                   name="bankName"
-                                  required={engData.category === 'Other than LAF'}
+                                  required={engData.category === 'Other than LAA'}
                                   placeholder="GPay / PhonePe / PNB / SBI"
                                   value={engData.bankName}
                                   onChange={handleEngInputChange}
@@ -1315,7 +1315,7 @@ const RegistrationPage = () => {
                               <div className="border-2 border-dashed border-[#E6DFD3] hover:border-[#B77A27] rounded-2xl p-4 text-center cursor-pointer transition-colors bg-[#FAF7F2]/60 hover:bg-white relative">
                                 <input
                                   type="file"
-                                  required={engData.category === 'Other than LAF'}
+                                  required={engData.category === 'Other than LAA'}
                                   accept="image/*,.pdf"
                                   onChange={(e) => setEngReceiptFile(e.target.files[0])}
                                   className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
@@ -1360,7 +1360,7 @@ const RegistrationPage = () => {
                           >
                             <Sparkles className="w-4 h-4 fill-white" />
                             <span>
-                              {engData.category === 'LAF Member'
+                              {engData.category === 'LAA Member'
                                 ? 'Complete Free Registration'
                                 : 'Complete Registration (₹2,000)'}
                             </span>
@@ -1910,7 +1910,7 @@ const RegistrationPage = () => {
                 )}
                 {submittedModal === 'engineer' && (
                   `Your Engineer / Consultant registration details (${
-                    engData.category === 'LAF Member'
+                    engData.category === 'LAA Member'
                       ? 'LAF Member - Fee: ₹0'
                       : `Other than LAF - Txn: ${engData.txnId || 'Received'} - Fee: ₹2,000 INR`
                   }) have been successfully submitted for verification.`
