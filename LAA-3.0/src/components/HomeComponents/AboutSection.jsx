@@ -244,10 +244,10 @@ const AboutSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-[#181818]"
+            className="font-serif text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-[#181818] leading-[1.15]"
           >
-            A LANDSCAPE OF
-            <span className="block mt-1">
+            <span className="block">A LANDSCAPE OF</span>
+            <span className="block mt-0.5 sm:mt-1 whitespace-nowrap">
               <span className="text-[#F26522]">CULTURE</span>
               {" & "}
               <span className="text-[#5B1A83]">GROWTH</span>

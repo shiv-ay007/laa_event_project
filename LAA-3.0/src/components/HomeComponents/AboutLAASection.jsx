@@ -685,13 +685,13 @@ const AboutLAASection = () => {
           </div>
 
           {/* ================= 3 STATS HORIZONTAL STRIP ================= */}
-          <div className="mt-10 sm:mt-12 pt-8 sm:pt-10 border-t border-[#FED7AA]/60 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-4 items-center">
+          <div className="mt-8 sm:mt-12 pt-6 sm:pt-10 border-t border-[#FED7AA]/60 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-4 items-center w-full">
             {/* STAT 1: ESTABLISHED 1960s */}
-            <div className="flex items-center justify-center md:justify-start gap-4 md:pl-4 lg:pl-8">
+            <div className="flex items-center justify-center md:justify-start gap-4 sm:gap-5 md:pl-4 lg:pl-8">
               <div className="w-14 h-14 rounded-2xl bg-white border border-orange-200/90 shadow-sm flex items-center justify-center shrink-0">
                 <CalendarDays className="w-7 h-7 text-[#EA580C]" strokeWidth={2} />
               </div>
-              <div>
+              <div className="w-[165px] sm:w-[185px] md:w-auto text-left">
                 <span className="block font-mono text-xs uppercase tracking-[0.2em] text-neutral-700 font-bold">
                   ESTABLISHED
                 </span>
@@ -703,11 +703,11 @@ const AboutLAASection = () => {
             </div>
 
             {/* STAT 2: COMMITTEES 13 Wings */}
-            <div className="flex items-center justify-center md:justify-start gap-4 md:border-l md:border-neutral-200/80 md:pl-8">
+            <div className="flex items-center justify-center md:justify-start gap-4 sm:gap-5 md:border-l md:border-neutral-200/80 md:pl-8">
               <div className="w-14 h-14 rounded-2xl bg-white border border-orange-200/90 shadow-sm flex items-center justify-center shrink-0">
                 <UsersRound className="w-7 h-7 text-[#EA580C]" strokeWidth={2} />
               </div>
-              <div>
+              <div className="w-[165px] sm:w-[185px] md:w-auto text-left">
                 <span className="block font-mono text-xs uppercase tracking-[0.2em] text-neutral-700 font-bold">
                   COMMITTEES
                 </span>
@@ -719,11 +719,11 @@ const AboutLAASection = () => {
             </div>
 
             {/* STAT 3: PILLARS 5 Leadership */}
-            <div className="flex items-center justify-center md:justify-start gap-4 md:border-l md:border-neutral-200/80 md:pl-8">
+            <div className="flex items-center justify-center md:justify-start gap-4 sm:gap-5 md:border-l md:border-neutral-200/80 md:pl-8">
               <div className="w-14 h-14 rounded-2xl bg-white border border-purple-200/90 shadow-sm flex items-center justify-center shrink-0">
                 <Landmark className="w-7 h-7 text-[#7C2D92]" strokeWidth={2} />
               </div>
-              <div>
+              <div className="w-[165px] sm:w-[185px] md:w-auto text-left">
                 <span className="block font-mono text-xs uppercase tracking-[0.2em] text-neutral-700 font-bold">
                   PILLARS
                 </span>
@@ -736,20 +736,20 @@ const AboutLAASection = () => {
           </div>
 
           {/* ================= BOTTOM TAG STRIP ================= */}
-          <div className="mt-10 sm:mt-12 flex items-center justify-center gap-3 sm:gap-4 select-none">
-            <span className="w-12 sm:w-20 h-px bg-orange-300" />
-            <span className="text-xs sm:text-[12.5px] font-mono font-bold tracking-[0.28em] text-neutral-800 uppercase">
+          <div className="mt-8 sm:mt-12 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 select-none px-4">
+            <span className="hidden sm:block w-12 sm:w-20 h-px bg-orange-300" />
+            <span className="text-[11px] sm:text-[12.5px] font-mono font-bold tracking-[0.14em] sm:tracking-[0.28em] text-neutral-800 uppercase">
               ARCHITECTURE
             </span>
-            <span className="w-2 h-2 rounded-full bg-[#EA580C]" />
-            <span className="text-xs sm:text-[12.5px] font-mono font-bold tracking-[0.28em] text-neutral-800 uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] shrink-0" />
+            <span className="text-[11px] sm:text-[12.5px] font-mono font-bold tracking-[0.14em] sm:tracking-[0.28em] text-neutral-800 uppercase">
               COMMUNITY
             </span>
-            <span className="w-2 h-2 rounded-full bg-[#EA580C]" />
-            <span className="text-xs sm:text-[12.5px] font-mono font-bold tracking-[0.28em] text-neutral-800 uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] shrink-0" />
+            <span className="text-[11px] sm:text-[12.5px] font-mono font-bold tracking-[0.14em] sm:tracking-[0.28em] text-neutral-800 uppercase">
               LEADERSHIP
             </span>
-            <span className="w-12 sm:w-20 h-px bg-orange-300" />
+            <span className="hidden sm:block w-12 sm:w-20 h-px bg-orange-300" />
           </div>
         </motion.div>
 

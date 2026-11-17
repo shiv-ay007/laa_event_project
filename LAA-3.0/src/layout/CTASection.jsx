@@ -131,7 +131,7 @@ const CTASection = () => {
                 EVENT DATE
               </div>
               <div className="text-xs sm:text-sm font-bold text-neutral-900 mt-0.5">
-                15 — 17 Nov 2026
+                22|23|24 JANUARY 2027
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#171717] font-sans selection:bg-[#D4AF37]/30 relative">
+    <div className="w-full bg-[#FAF7F2] text-[#171717] font-sans selection:bg-[#D4AF37]/30 relative">
       {/* Background Architectural Watermark Grid matching the rest of the website */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div
@@ -26,7 +26,6 @@ const About = () => {
 
       <div className="relative z-10 overflow-hidden">
         <AboutHero />
-     
       </div>
     </div>
   );
