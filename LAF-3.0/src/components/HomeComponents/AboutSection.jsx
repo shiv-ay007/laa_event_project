@@ -259,7 +259,7 @@ const AboutSection = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="max-w-2xl mx-auto mt-7 text-sm sm:text-base leading-7 text-neutral-500"
+            className="max-w-2xl mx-auto mt-7 text-[16px]  sm:text-base leading-7 text-neutral-500"
           >
             Uttar Pradesh brings together heritage, architecture, infrastructure
             and a rapidly evolving urban economy — creating a distinctive
