@@ -6,7 +6,7 @@ import AgendaSection from '../components/HomeComponents/AgendaSection';
 import PrePublicitySection from '../components/HomeComponents/PrePublicitySection';
 import VisitorsProfileSection from '../components/HomeComponents/VisitorsProfileSection';
 import OpportunitiesSection from '../components/HomeComponents/OpportunitiesSection';
-import FestivalTeamSection from '../components/HomeComponents/FestivalTeamSection';
+import TeamPage from './TeamPage';
 import SupportingOrganizationsSection from '../components/HomeComponents/SupportingOrganizationsSection';
 import LastEventGlanceSection from '../components/HomeComponents/LastEventGlanceSection';
 import AboutLAASection from '../components/HomeComponents/AboutLAASection';
@@ -15,6 +15,7 @@ import BrandShowcase from '../components/HomeComponents/BrandShowcase';
 import LocationLayoutSection from '../components/HomeComponents/LocationLayoutSection';
 import GetInTouchSection from '../components/HomeComponents/GetInTouchSection';
 import LAFHistory from '../components/HomeComponents/LAFHistory';
+import CorporateCommitteePage from '../components/HomeComponents/CorporateCommitteePage';
 
 const Home = () => {
   return (
@@ -27,7 +28,8 @@ const Home = () => {
       <PrePublicitySection/>
       <VisitorsProfileSection/>
       <OpportunitiesSection/>
-      <FestivalTeamSection/>
+      <TeamPage isEmbedded={true} />
+      <CorporateCommitteePage/>
       <SupportingOrganizationsSection/>
       <LastEventGlanceSection/>
       <AboutLAASection/>
