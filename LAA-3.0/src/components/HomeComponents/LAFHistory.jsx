@@ -169,39 +169,44 @@ const LAFHistory = () => {
                 className={`relative p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-[32px] lg:rounded-[44px] bg-white border ${item.cardBorder} shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow duration-300`}
               >
 
-                {/* ================= MOBILE / TABLET VIEW (< lg) ================= */}
+                {/* MOBILE / TABLET VIEW */}
                 <div className="block lg:hidden space-y-4">
-                  {/* Top Header: Badge, Title & Right-Aligned Circular Logo */}
+
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-stretch gap-2.5 sm:gap-3 min-w-0 flex-1">
-                      {/* Vertical Accent Bar */}
-                      <div className={`w-1 sm:w-[4px] rounded-full ${item.barBg} flex-shrink-0 self-stretch`} />
+
+                      <div
+                        className={`w-1 sm:w-[4px] rounded-full ${item.barBg} flex-shrink-0 self-stretch`}
+                      />
 
                       <div className="min-w-0 flex-1">
-                        {/* Version Badge */}
+
                         <span
                           className={`inline-block px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-[4px] text-white text-[11px] sm:text-xs font-bold tracking-wider uppercase ${item.badgeBg}`}
                         >
                           {item.version}
                         </span>
 
-                        {/* Title */}
                         <h3 className="mt-2 font-sans font-bold text-base sm:text-xl leading-snug text-[#111827]">
                           {item.title}
                         </h3>
 
-                        {/* Upcoming Badge (if any) */}
                         {item.upcoming && (
                           <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full bg-[#FDE8EF] text-[#D81B60] text-[9px] sm:text-[10px] font-bold tracking-wider uppercase border border-[#FBCFE8]">
                             UPCOMING EDITION
                           </span>
                         )}
+
                       </div>
                     </div>
 
-                    {/* Compact Circular Logo on Mobile */}
+                    {/* Mobile Logo */}
                     <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 flex items-center justify-center">
-                      <div className={`absolute inset-0 rounded-full border ${item.ringBorder}`} />
+
+                      <div
+                        className={`absolute inset-0 rounded-full border ${item.ringBorder}`}
+                      />
+
                       <div className="relative w-[88%] h-[88%] rounded-full bg-white border border-neutral-200/70 flex items-center justify-center p-1.5 sm:p-2 overflow-hidden shadow-xs">
                         <img
                           src={item.logo}
@@ -210,10 +215,11 @@ const LAFHistory = () => {
                           className="w-full h-full object-contain select-none"
                         />
                       </div>
+
                     </div>
                   </div>
 
-                  {/* Event Banner Photo on Mobile */}
+                  {/* Mobile Event Photo */}
                   <div className="w-full rounded-xl sm:rounded-2xl overflow-hidden border border-neutral-200/70 shadow-2xs bg-neutral-50 flex items-center justify-center">
                     <img
                       src={item.photo}
@@ -223,14 +229,15 @@ const LAFHistory = () => {
                     />
                   </div>
 
-                  {/* Description Paragraph on Mobile */}
+                  {/* Mobile Description */}
                   <p className="text-neutral-600 text-xs text-justify sm:text-[14px] leading-relaxed sm:leading-[1.8] font-normal">
                     {item.description}
                   </p>
+
                 </div>
 
-                {/* ================= DESKTOP VIEW (>= lg) ================= */}
-                <div className="hidden lg:grid grid-cols-2 items-center gap-10 lg:gap-12">
+                {/* DESKTOP VIEW — EQUAL HEIGHT */}
+                <div className="hidden lg:grid grid-cols-2 items-stretch gap-10 lg:gap-12">
 
                   {/* TEXT SECTION */}
                   <div
@@ -240,31 +247,26 @@ const LAFHistory = () => {
                   >
                     <div className="flex items-stretch gap-4">
 
-                      {/* VERTICAL ACCENT LINE */}
                       <div
                         className={`w-[5px] rounded-full ${item.barBg} flex-shrink-0`}
                       />
 
                       <div className="min-w-0 flex-1">
 
-                        {/* VERSION BADGE */}
                         <span
                           className={`inline-block px-3.5 py-1 rounded-[4px] text-white text-[13px] font-bold tracking-wider uppercase ${item.badgeBg}`}
                         >
                           {item.version}
                         </span>
 
-                        {/* FESTIVAL TITLE */}
                         <h3 className="mt-3 mb-3 font-sans font-bold text-xl lg:text-[22px] leading-snug text-[#111827]">
                           {item.title}
                         </h3>
 
-                        {/* FESTIVAL DESCRIPTION */}
                         <p className="text-neutral-600 text-[14px] lg:text-[14.5px] leading-[1.85] font-normal text-justify">
                           {item.description}
                         </p>
 
-                        {/* UPCOMING BADGE */}
                         {item.upcoming && (
                           <span className="inline-block mt-4 px-3.5 py-1 rounded-full bg-[#FDE8EF] text-[#D81B60] text-[11px] font-bold tracking-wider uppercase border border-[#FBCFE8] shadow-xs">
                             UPCOMING EDITION
@@ -275,44 +277,45 @@ const LAFHistory = () => {
                     </div>
                   </div>
 
-                  {/* IMAGE SECTION */}
+                  {/* IMAGE SECTION — MATCH TEXT HEIGHT */}
                   <div
-                    className={`w-full min-w-0 flex flex-col items-center justify-center gap-6 lg:gap-8 ${
+                    className={`relative w-full min-w-0 self-stretch ${
                       imageOnLeft ? "order-1" : "order-2"
                     }`}
                   >
 
-                    {/* FESTIVAL LOGO - TOP */}
-                    <div className="relative w-44 h-44 lg:w-48 lg:h-48 xl:w-52 xl:h-52 flex-shrink-0 flex items-center justify-center">
+                    <div className="absolute inset-0 flex flex-col items-center gap-3 lg:gap-4">
 
-                      {/* OUTER RING */}
-                      <div
-                        className={`absolute inset-0 rounded-full border ${item.ringBorder}`}
-                      />
+                      {/* Festival Logo */}
+                      <div className="relative h-[32%] max-h-[190px] aspect-square flex-shrink-0 flex items-center justify-center">
 
-                      {/* INNER LOGO */}
-                      <div className="relative w-[88%] h-[88%] rounded-full bg-white border border-neutral-200/70 flex items-center justify-center p-3 sm:p-4 overflow-hidden">
+                        <div
+                          className={`absolute inset-0 rounded-full border ${item.ringBorder}`}
+                        />
+
+                        <div className="relative w-[88%] h-[88%] rounded-full bg-white border border-neutral-200/70 flex items-center justify-center p-2 lg:p-3 overflow-hidden">
+
+                          <img
+                            src={item.logo}
+                            alt={`${item.version} Logo`}
+                            loading="lazy"
+                            className="w-full h-full object-contain select-none transition-transform duration-500 hover:scale-105"
+                          />
+
+                        </div>
+                      </div>
+
+                      {/* Event Photo — Remaining Height */}
+                      <div className="w-full flex-1 min-h-0 rounded-2xl overflow-hidden border border-neutral-200/70 shadow-2xs group">
 
                         <img
-                          src={item.logo}
-                          alt={`${item.version} Logo`}
+                          src={item.photo}
+                          alt={item.title}
                           loading="lazy"
-                          className="w-full h-full object-contain select-none transition-transform duration-500 hover:scale-105"
+                          className="w-full h-full object-cover object-center select-none transition-transform duration-500 group-hover:scale-[1.02]"
                         />
 
                       </div>
-                    </div>
-
-                    {/* EVENT PHOTO - BOTTOM */}
-                    <div className="w-full max-w-[470px] flex items-center justify-center group rounded-2xl overflow-hidden border border-neutral-200/70 shadow-2xs">
-
-                      <img
-                        src={item.photo}
-                        alt={item.title}
-                        loading="lazy"
-                        className="w-full h-auto object-contain select-none transition-transform duration-500 group-hover:scale-[1.02]"
-                      />
-
                     </div>
 
                   </div>

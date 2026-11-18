@@ -1,187 +1,61 @@
 import React from "react";
+import { NavLink } from "react-router-dom"; // NavLink import kiya
 import { motion } from "framer-motion";
 import { Clock3, MapPin, Download } from "lucide-react";
-import LAFLogo from "../LAFLogo";
+import LAFLogo from "../../assets/images/logo.webp";
+
+// PDFs ko import kiya aapke folder structure ke hisaab se
+import brochurePdf from "../../assets/lafpdf/lafbroucher.pdf";
+import layoutPdf from "../../assets/lafpdf/layout.pdf";
 
 const agendaDays = [
   {
     dayNumber: "01",
     label: "DAY 1",
     events: [
-      {
-        time: "9:00 - 10:00",
-        title: "Arrival of Delegate and Registrations at Venue",
-        dotColor: "#5B21B6", // Deep Purple
-      },
-      {
-        time: "10:00 - 11:30",
-        title: "Inaugural Session of LAF 3.0",
-        dotColor: "#06B6D4", // Teal / Cyan
-      },
-      {
-        time: "11:30 - 13:00",
-        title: "Technical Session 1:",
-        subtitle: "The Future of Urban Development",
-        dotColor: "#EAB308", // Yellow / Amber
-      },
-      {
-        time: "13:00 - 14:00",
-        title: "Networking Lunch",
-        dotColor: "#16A34A", // Green
-      },
-      {
-        time: "14:00 - 15:00",
-        title: "Technical Session 2:",
-        subtitle: "Public Spaces for the Future",
-        dotColor: "#06B6D4", // Teal / Cyan
-      },
-      {
-        time: "15:00 - 16:00",
-        title: "Live Workshops",
-        dotColor: "#5B21B6", // Deep Purple
-      },
-      {
-        time: "16:00 - 17:00",
-        title: "Delegates Visit to Exhibition Pavilion",
-        dotColor: "#EAB308", // Yellow / Amber
-      },
-      {
-        time: "17:30 Onwards",
-        title: "Cultural Programmes",
-        dotColor: "#16A34A", // Green
-      },
-      {
-        time: "19:00 Onwards",
-        title: "Architects Grand Dinner",
-        dotColor: "#06B6D4", // Teal / Cyan
-      },
+      { time: "9:00 - 10:00", title: "Arrival of Delegate and Registrations at Venue", dotColor: "#5B21B6" },
+      { time: "10:00 - 11:30", title: "Inaugural Session of LAF 3.0", dotColor: "#06B6D4" },
+      { time: "11:30 - 13:00", title: "Technical Session 1:", subtitle: "The Future of Urban Development", dotColor: "#EAB308" },
+      { time: "13:00 - 14:00", title: "Networking Lunch", dotColor: "#16A34A" },
+      { time: "14:00 - 15:00", title: "Technical Session 2:", subtitle: "Public Spaces for the Future", dotColor: "#06B6D4" },
+      { time: "15:00 - 16:00", title: "Live Workshops", dotColor: "#5B21B6" },
+      { time: "16:00 - 17:00", title: "Delegates Visit to Exhibition Pavilion", dotColor: "#EAB308" },
+      { time: "17:30 Onwards", title: "Cultural Programmes", dotColor: "#16A34A" },
+      { time: "19:00 Onwards", title: "Architects Grand Dinner", dotColor: "#06B6D4" },
     ],
   },
   {
     dayNumber: "02",
     label: "DAY 2",
     events: [
-      {
-        time: "6:30 - 10:30",
-        title: "Film Screening",
-        dotColor: "#5B21B6", // Deep Purple
-      },
-      {
-        time: "10:00 - 11:00",
-        title: "Delegates Visit to Exhibition Pavilion",
-        dotColor: "#06B6D4", // Teal / Cyan
-      },
-      {
-        time: "11:00 - 11:30",
-        title: "Technical Session 1:",
-        subtitle: "Energy Efficiency in Green Buildings",
-        dotColor: "#EAB308", // Yellow / Amber
-      },
-      {
-        time: "11:30 - 12:30",
-        title: "Technical Session 2:",
-        subtitle: "The 15-Minute City",
-        dotColor: "#16A34A", // Green
-      },
-      {
-        time: "12:30 - 13:30",
-        title: "Networking Lunch",
-        dotColor: "#06B6D4", // Teal / Cyan
-      },
-      {
-        time: "13:30 - 14:30",
-        title: "Key Note Presentation",
-        dotColor: "#5B21B6", // Deep Purple
-      },
-      {
-        time: "14:30 - 15:30",
-        title: "Technical Session 3:",
-        subtitle: "Adaptive Reuse & Regeneration",
-        dotColor: "#EAB308", // Yellow / Amber
-      },
-      {
-        time: "15:30 - 16:00",
-        title: "Live Workshops",
-        dotColor: "#16A34A", // Green
-      },
-      {
-        time: "16:00 - 17:30",
-        title: "Delegates Visit to Exhibition Pavilion",
-        dotColor: "#5B21B6", // Deep Purple
-      },
-      {
-        time: "17:30 - 17:45",
-        title: "Cultural Programmes",
-        dotColor: "#06B6D4", // Teal / Cyan
-      },
-      {
-        time: "17:45 Onwards",
-        title: "Gala Dinner of LAF 3.0",
-        dotColor: "#EAB308", // Yellow / Amber
-      },
+      { time: "6:30 - 10:30", title: "Film Screening", dotColor: "#5B21B6" },
+      { time: "10:00 - 11:00", title: "Delegates Visit to Exhibition Pavilion", dotColor: "#06B6D4" },
+      { time: "11:00 - 11:30", title: "Technical Session 1:", subtitle: "Energy Efficiency in Green Buildings", dotColor: "#EAB308" },
+      { time: "11:30 - 12:30", title: "Technical Session 2:", subtitle: "The 15-Minute City", dotColor: "#16A34A" },
+      { time: "12:30 - 13:30", title: "Networking Lunch", dotColor: "#06B6D4" },
+      { time: "13:30 - 14:30", title: "Key Note Presentation", dotColor: "#5B21B6" },
+      { time: "14:30 - 15:30", title: "Technical Session 3:", subtitle: "Adaptive Reuse & Regeneration", dotColor: "#EAB308" },
+      { time: "15:30 - 16:00", title: "Live Workshops", dotColor: "#16A34A" },
+      { time: "16:00 - 17:30", title: "Delegates Visit to Exhibition Pavilion", dotColor: "#5B21B6" },
+      { time: "17:30 - 17:45", title: "Cultural Programmes", dotColor: "#06B6D4" },
+      { time: "17:45 Onwards", title: "Gala Dinner of LAF 3.0", dotColor: "#EAB308" },
     ],
   },
   {
     dayNumber: "03",
     label: "DAY 3",
     events: [
-      {
-        time: "10:00 - 10:30",
-        title: "Heritage Walk",
-        dotColor: "#5B21B6", // Deep Purple
-      },
-      {
-        time: "10:30 - 11:00",
-        title: "Jury Panel for ADC",
-        dotColor: "#06B6D4", // Teal / Cyan
-      },
-      {
-        time: "11:00 - 12:00",
-        title: "Key Note Presentation",
-        dotColor: "#EAB308", // Yellow / Amber
-      },
-      {
-        time: "12:00 - 13:00",
-        title: "Technical Session 1:",
-        subtitle: "Beyond Skyscrapers - High-Density Design",
-        dotColor: "#16A34A", // Green
-      },
-      {
-        time: "13:00 - 14:00",
-        title: "Technical Session 2:",
-        subtitle: "Urban Mobility & Connectivity",
-        dotColor: "#06B6D4", // Teal / Cyan
-      },
-      {
-        time: "14:00 - 14:30",
-        title: "Networking Lunch",
-        dotColor: "#5B21B6", // Deep Purple
-      },
-      {
-        time: "14:30 - 15:30",
-        title: "Delegates Visit to Exhibition Pavilion",
-        dotColor: "#EAB308", // Yellow / Amber
-      },
-      {
-        time: "15:30 - 16:30",
-        title: "Preview of LAA & Future events",
-        dotColor: "#16A34A", // Green
-      },
-      {
-        time: "16:30 - 17:30",
-        title: "Valedictory Ceremony",
-        dotColor: "#5B21B6", // Deep Purple
-      },
-      {
-        time: "17:30 Onwards",
-        title: "Vote of Thanks by Ar. Repunjay Patel President- LAA",
-        dotColor: "#06B6D4", // Teal / Cyan
-      },
-      {
-        time: "19:00 Onwards",
-        title: "Cultural Programmes",
-        dotColor: "#EAB308", // Yellow / Amber
-      },
+      { time: "10:00 - 10:30", title: "Heritage Walk", dotColor: "#5B21B6" },
+      { time: "10:30 - 11:00", title: "Jury Panel for ADC", dotColor: "#06B6D4" },
+      { time: "11:00 - 12:00", title: "Key Note Presentation", dotColor: "#EAB308" },
+      { time: "12:00 - 13:00", title: "Technical Session 1:", subtitle: "Beyond Skyscrapers - High-Density Design", dotColor: "#16A34A" },
+      { time: "13:00 - 14:00", title: "Technical Session 2:", subtitle: "Urban Mobility & Connectivity", dotColor: "#06B6D4" },
+      { time: "14:00 - 14:30", title: "Networking Lunch", dotColor: "#5B21B6" },
+      { time: "14:30 - 15:30", title: "Delegates Visit to Exhibition Pavilion", dotColor: "#EAB308" },
+      { time: "15:30 - 16:30", title: "Preview of LAA & Future events", dotColor: "#16A34A" },
+      { time: "16:30 - 17:30", title: "Valedictory Ceremony", dotColor: "#5B21B6" },
+      { time: "17:30 Onwards", title: "Vote of Thanks by Ar. Repunjay Patel President- LAA", dotColor: "#06B6D4" },
+      { time: "19:00 Onwards", title: "Cultural Programmes", dotColor: "#EAB308" },
     ],
   },
 ];
@@ -211,6 +85,7 @@ const AgendaSection = () => {
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
+        
         {/* SECTION HEADER MATCHING FOCUS SECTORS THEME */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14">
           <motion.div
@@ -219,8 +94,6 @@ const AgendaSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-          
-
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-[46px] text-[#171717] font-semibold tracking-tight leading-tight">
               Agenda:{" "}
               <span className="bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] bg-clip-text text-transparent">
@@ -243,12 +116,16 @@ const AgendaSection = () => {
           >
             <div className="w-[1.5px] h-14 bg-[#EA580C]/30 hidden sm:block" />
             <div className="flex items-center gap-3">
-              <LAFLogo className="h-14 sm:h-16 w-auto" />
+              <img 
+                src={LAFLogo} 
+                alt="LAF Logo" 
+                className="h-14 sm:h-16 w-auto object-contain" 
+              />
             </div>
           </motion.div>
         </div>
 
-        {/* 3 SIDE-BY-SIDE COLUMNS (DAY 1, DAY 2, DAY 3) MATCHING IMAGE 3 */}
+        {/* 3 SIDE-BY-SIDE COLUMNS (DAY 1, DAY 2, DAY 3) */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {agendaDays.map((day, dayIdx) => (
             <motion.div
@@ -259,14 +136,14 @@ const AgendaSection = () => {
               transition={{ duration: 0.5, delay: dayIdx * 0.1 }}
               className="bg-white/95 backdrop-blur-xs rounded-[28px] border border-[#E8E2D8] p-5 sm:p-6 lg:p-7 shadow-[0_4px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_35px_rgba(234,88,12,0.08)] transition-all duration-300 flex flex-col justify-between"
             >
-              {/* Top Pill Header matching Image 3 */}
+              {/* Top Pill Header */}
               <div className="flex justify-center mb-6 sm:mb-7">
                 <div className="inline-flex items-center justify-center px-10 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#EA580C] to-[#F97316] text-white font-extrabold text-base sm:text-lg tracking-wider shadow-md shadow-orange-500/25">
                   {day.label}
                 </div>
               </div>
 
-              {/* TIMELINE LIST: Left timing | Center connecting line & dots | Right text */}
+              {/* TIMELINE LIST */}
               <div className="flex flex-col space-y-1 sm:space-y-1.5 flex-1">
                 {day.events.map((event, index) => (
                   <div
@@ -280,15 +157,12 @@ const AgendaSection = () => {
 
                     {/* Center: Timeline Connecting Line & Colored Dot */}
                     <div className="relative self-stretch flex items-center justify-center w-5 shrink-0">
-                      {/* Top connecting line segment */}
                       {index !== 0 && (
                         <div className="absolute top-0 bottom-1/2 w-[2px] bg-[#FDA4AF]" />
                       )}
-                      {/* Bottom connecting line segment */}
                       {index !== day.events.length - 1 && (
                         <div className="absolute top-1/2 bottom-0 w-[2px] bg-[#FDA4AF]" />
                       )}
-                      {/* Colored Dot on Timeline */}
                       <span
                         className="relative z-10 w-3.5 h-3.5 rounded-full border-2 border-white shadow-xs group-hover:scale-125 transition-transform duration-200 shrink-0"
                         style={{ backgroundColor: event.dotColor }}
@@ -313,63 +187,89 @@ const AgendaSection = () => {
           ))}
         </div>
 
-        {/* DOWNLOAD BUTTONS WITH FESTIVAL THEME */}
+        {/* DOWNLOAD BUTTONS & REGISTRATION */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6"
         >
-          {[
-            {
-              title: "DOWNLOAD EVENT BROCHURE",
-              subtitle: "Conclave Guide & Official Schedule",
-              file: "#brochure",
-              badge: "PDF • 4.2 MB",
-            },
-            {
-              title: "DOWNLOAD PARTICIPATION FORM",
-              subtitle: "Delegate & Exhibitor Entry Form",
-              file: "#participation",
-              badge: "PDF • 1.8 MB",
-            },
-            {
-              title: "DOWNLOAD LAYOUT",
-              subtitle: "Exhibition Floorplan & Stalls Map",
-              file: "#layout",
-              badge: "PDF • 3.5 MB",
-            },
-          ].map((item) => (
-            <a
-              key={item.title}
-              href={item.file}
-              className="group relative flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-[#0B1536] via-[#111C44] to-[#0B1536] border border-[#EA580C]/40 hover:border-[#EA580C] shadow-[0_4px_22px_rgba(11,21,54,0.12)] hover:shadow-[0_10px_30px_rgba(234,88,12,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
-            >
-              {/* Vibrant Orange/Crimson Shimmer Sweep Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#EA580C]/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
-
-              <div className="flex items-center gap-3.5 min-w-0 z-10">
-                <div className="w-11 h-11 rounded-xl bg-white/10 border border-[#EA580C]/40 flex items-center justify-center text-[#EA580C] group-hover:bg-gradient-to-r group-hover:from-[#EA580C] group-hover:to-[#D91A5B] group-hover:text-white group-hover:border-transparent transition-all duration-300 shrink-0 shadow-xs">
-                  <Download className="w-4.5 h-4.5 group-hover:translate-y-0.5 transition-transform" />
+          {/* 1. EVENT BROCHURE (Download) */}
+          <a
+            href={brochurePdf} // Yahan imported variable use kiya
+            download="LAF3.0 Brochure_FINAL.pdf" // File download trigger karne ke liye
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-[#0B1536] via-[#111C44] to-[#0B1536] border border-[#EA580C]/40 hover:border-[#EA580C] shadow-[0_4px_22px_rgba(11,21,54,0.12)] hover:shadow-[0_10px_30px_rgba(234,88,12,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#EA580C]/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
+            <div className="flex items-center gap-3.5 min-w-0 z-10">
+              <div className="w-11 h-11 rounded-xl bg-white/10 border border-[#EA580C]/40 flex items-center justify-center text-[#EA580C] group-hover:bg-gradient-to-r group-hover:from-[#EA580C] group-hover:to-[#D91A5B] group-hover:text-white group-hover:border-transparent transition-all duration-300 shrink-0 shadow-xs">
+                <Download className="w-4.5 h-4.5 group-hover:translate-y-0.5 transition-transform" />
+              </div>
+              <div className="text-left truncate">
+                <div className="text-[11.5px] sm:text-[12.5px] font-bold uppercase tracking-wider text-white group-hover:text-[#FDBA74] transition-colors truncate">
+                  DOWNLOAD EVENT BROCHURE
                 </div>
-
-                <div className="text-left truncate">
-                  <div className="text-[11.5px] sm:text-[12.5px] font-bold uppercase tracking-wider text-white group-hover:text-[#FDBA74] transition-colors truncate">
-                    {item.title}
-                  </div>
-                  <div className="text-[10.5px] text-neutral-400 truncate mt-0.5">
-                    {item.subtitle}
-                  </div>
+                <div className="text-[10.5px] text-neutral-400 truncate mt-0.5">
+                  Conclave Guide & Official Schedule
                 </div>
               </div>
+            </div>
+            {/* Size text hata diya gaya hai */}
+          </a>
 
-              <div className="z-10 ml-2 shrink-0">
-                <span className="text-[9.5px] font-mono font-bold tracking-widest text-[#FED7AA] bg-[#EA580C]/20 px-2.5 py-1 rounded-md border border-[#EA580C]/40 group-hover:border-[#EA580C] group-hover:bg-[#EA580C]/30 transition-all">
-                  {item.badge}
-                </span>
+          {/* 2. REGISTRATION BUTTON */}
+          <NavLink
+            to="/register"
+            className="group relative flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-[#FFB703] to-[#FB8500] border border-[#FFB703] shadow-[0_4px_22px_rgba(251,133,0,0.2)] hover:shadow-[0_10px_35px_rgba(251,133,0,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
+            
+            <div className="flex items-center gap-3.5 min-w-0 z-10">
+              <div className="w-11 h-11 rounded-xl bg-white/20 border border-white/40 flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#FB8500] group-hover:border-transparent transition-all duration-300 shrink-0 shadow-xs">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:-translate-y-0.5 transition-transform"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
               </div>
-            </a>
-          ))}
+              <div className="text-left truncate">
+                <div className="text-[12px] sm:text-[13px] font-black uppercase tracking-wider text-[#0B1536] truncate">
+                  REGISTER NOW
+                </div>
+                <div className="text-[10.5px] font-bold text-[#0B1536]/80 truncate mt-0.5">
+                  Secure Your Spot at LAF 3.0
+                </div>
+              </div>
+            </div>
+            <div className="z-10 ml-2 shrink-0">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#0B1536] bg-white/30 px-2.5 py-1 rounded-md border border-white/40 group-hover:bg-white/50 transition-all">
+                Click Here
+              </span>
+            </div>
+          </NavLink>
+
+          {/* 3. LAYOUT (Download) */}
+          <a
+            href={layoutPdf} // Yahan imported variable use kiya
+            download="LAF3.0 LAYOUT PLAN.pdf" // File download trigger karne ke liye
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-[#0B1536] via-[#111C44] to-[#0B1536] border border-[#EA580C]/40 hover:border-[#EA580C] shadow-[0_4px_22px_rgba(11,21,54,0.12)] hover:shadow-[0_10px_30px_rgba(234,88,12,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#EA580C]/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
+            <div className="flex items-center gap-3.5 min-w-0 z-10">
+              <div className="w-11 h-11 rounded-xl bg-white/10 border border-[#EA580C]/40 flex items-center justify-center text-[#EA580C] group-hover:bg-gradient-to-r group-hover:from-[#EA580C] group-hover:to-[#D91A5B] group-hover:text-white group-hover:border-transparent transition-all duration-300 shrink-0 shadow-xs">
+                <Download className="w-4.5 h-4.5 group-hover:translate-y-0.5 transition-transform" />
+              </div>
+              <div className="text-left truncate">
+                <div className="text-[11.5px] sm:text-[12.5px] font-bold uppercase tracking-wider text-white group-hover:text-[#FDBA74] transition-colors truncate">
+                  DOWNLOAD LAYOUT
+                </div>
+                <div className="text-[10.5px] text-neutral-400 truncate mt-0.5">
+                  Exhibition Floorplan & Stalls Map
+                </div>
+              </div>
+            </div>
+            {/* Size text hata diya gaya hai */}
+          </a>
         </motion.div>
 
         {/* FOOTER META */}

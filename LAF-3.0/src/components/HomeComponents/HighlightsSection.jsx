@@ -25,7 +25,7 @@ import khFinancing from "../../assets/images/key_highlights/kh-financing.png";
 import khExperts from "../../assets/images/key_highlights/kh-experts.png";
 import khArt from "../../assets/images/key_highlights/kh-art.png";
 import khMedia from "../../assets/images/key_highlights/kh-media.png";
-import khSkyline from "../../assets/images/key_highlights/kh-skyline.png";
+import khSkyline from "../../assets/images/key_highlights/image.png";
 
 import {
   Megaphone,
@@ -323,9 +323,12 @@ const HighlightsSection = () => {
         overflow-hidden
         bg-[#FAF8F5]
         text-[#171717]
-        py-12
-        sm:py-16
-        lg:py-20
+        pt-12
+        sm:pt-16
+        lg:pt-20
+        pb-8
+        sm:pb-12
+        lg:pb-16
       "
     >
       <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
@@ -341,9 +344,9 @@ const HighlightsSection = () => {
           className="mb-10 sm:mb-12 lg:mb-14"
         >
 
-          {/* Gradient Serif Title: Highlights. */}
+          {/* Gradient Serif Title: LAF 3.0 HIGHLIGHTS */}
           <h2 className="inline-block font-serif font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.15] pb-2 sm:pb-3 pr-2 bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] bg-clip-text text-transparent">
-            Highlights.
+            LAF <span className="font-sans font-normal">3.0</span> HIGHLIGHTS
           </h2>
 
           {/* Gradient Pill Underline Bar */}
@@ -372,7 +375,6 @@ const HighlightsSection = () => {
                   className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Smooth gradient blend into the card background */}
-                {/* Smooth light shaded gradient so the photo remains visible while blending into card */}
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
@@ -389,6 +391,7 @@ const HighlightsSection = () => {
                     THE EXPERIENCE
                   </span>
 
+                  {/* Heading now in exactly 2 lines */}
                   <h3 className="flex flex-col leading-tight">
                     <span className="font-sans font-bold text-white text-lg sm:text-xl lg:text-lg xl:text-xl tracking-wider uppercase">
                       3 DAYS OF
@@ -618,7 +621,7 @@ const HighlightsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-20 lg:mt-28"
+          className="mt-10 lg:mt-14"
         >
           {/* Header matching Image 2 */}
           <div className="mb-8 sm:mb-10">
@@ -698,64 +701,18 @@ const HighlightsSection = () => {
           </div>
 
           {/* Bottom Gradient Skyline Illustration & Line matching Image 2 */}
-          <div className="mt-10 sm:mt-14 w-full flex flex-col items-center pointer-events-none select-none">
-            <img
-              src={khSkyline}
-              alt="Lucknow Architecture Skyline"
-              className="w-full h-auto object-contain opacity-95"
-            />
-            {/* Orange/Amber Horizontal Line below skyline matching Image 2 */}
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#EA580C] to-transparent mt-1" />
+          <div className="mt-10 sm:mt-12 w-full flex flex-col items-center pointer-events-none select-none">
+            <div className="w-full relative">
+              <img
+                src={khSkyline}
+                alt="Lucknow Architecture Skyline"
+                className="w-full h-auto object-contain opacity-95 -mt-8 sm:-mt-12 lg:-mt-16" 
+              />
+            </div>
+            
+            {/* Orange/Amber Horizontal Line placed at the bottom of the image */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#EA580C] to-transparent -mt-1 relative z-20" />
           </div>
-        </motion.div>
-
-        {/* =====================================================
-            CLOSING STATEMENT
-        ====================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.8,
-          }}
-          className="
-            mt-6
-            lg:mt-8
-            border-t
-            border-b
-            border-[#D9D0C2]
-            py-4
-            sm:py-5
-            text-center
-          "
-        >
-
-          <p
-            className="
-              max-w-4xl
-              mx-auto
-              font-serif
-              text-xl
-              sm:text-2xl
-              md:text-3xl
-              leading-relaxed
-            "
-          >
-            A meeting ground for
-            <span className="text-[#B77A27]">
-              {" "}architecture, industry, academia
-            </span>
-            {" "}and culture.
-          </p>
-
         </motion.div>
 
       </div>

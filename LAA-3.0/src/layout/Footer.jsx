@@ -20,6 +20,11 @@ import {
 import LAFLogo from "../assets/images/logo.webp";
 import CCWSLogo from "../assets/images/CodeCrafterlogo.webp";
 
+// PDF Imports (Path apne folder structure ke hisaab se check karlein)
+// Agar file ke naam me space hai to use '-' se replace kar dein (jaise LAF3.0-Brochure_FINAL.pdf)
+import brochurePdf from "../assets/lafpdf/lafbroucher.pdf"; 
+import layoutPdf from "../assets/lafpdf/layout.pdf";
+
 const InstagramIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -63,12 +68,6 @@ const festivalLinks = [
   { label: "Location", href: "/location", icon: MapPin },
   { label: "Contact", href: "#contact", icon: Mail },
   { label: "Registration", href: "/register", icon: Award },
-];
-
-const downloads = [
-  { label: "Event Brochure", href: "#" },
-  { label: "Participation Form", href: "#" },
-  { label: "Event Layout", href: "#" },
 ];
 
 const TwitterIcon = () => (
@@ -128,7 +127,7 @@ export default function Footer() {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(78,12,123,0.22),rgba(12,7,20,0))]" />
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-900/10 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Top Vibrant Brand Gradient Accent Line (Orange → Pink → Purple) matching Header Bar */}
+      {/* Top Vibrant Brand Gradient Accent Line */}
       <div
         className="h-[3px] w-full shadow-[0_1px_14px_rgba(236,38,86,0.45)] relative z-10"
         style={{
@@ -138,7 +137,7 @@ export default function Footer() {
       />
 
       {/* =====================================================
-          MAIN FOOTER CONTENT (COMPACT LOW-HEIGHT LAYOUT)
+          MAIN FOOTER CONTENT
       ====================================================== */}
       <div className="relative z-10 mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 py-6 sm:py-8">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-12 lg:gap-8 items-start">
@@ -261,29 +260,67 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ================= DOWNLOADS ================= */}
+          {/* ================= DOWNLOADS & REGISTER ================= */}
           <div className="lg:col-span-3">
             <h4 className="font-mono text-xs tracking-[0.2em] font-bold uppercase mb-3 pb-0.5 border-b border-orange-500/30 inline-block bg-gradient-to-r from-[#FB7801] via-[#F59E0B] to-[#FBBF24] bg-clip-text text-transparent">
               EVENT DOCUMENTS
             </h4>
             <div className="space-y-2.5">
-              {downloads.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="group relative block p-[1px] rounded-xl bg-gradient-to-r from-[#FB7801]/60 via-[#EC2656]/50 to-[#930777]/50 hover:from-[#FB7801] hover:via-[#EC2656] hover:to-[#D8066B] shadow-[0_2px_12px_rgba(251,120,1,0.12)] hover:shadow-[0_4px_18px_rgba(236,38,86,0.35)] hover:-translate-y-0.5 transition-all duration-300"
-                >
-                  <div className="flex items-center justify-between rounded-[11px] bg-[#140b22]/95 hover:bg-[#1a0f2b] px-3.5 py-2 transition-colors">
-                    <div className="flex items-center gap-2.5">
-                      <FileText size={14} className="text-[#FB7801] drop-shadow-[0_0_8px_rgba(251,120,1,0.55)]" />
-                      <span className="font-semibold text-xs sm:text-sm text-neutral-100 group-hover:text-white transition-colors">{item.label}</span>
-                    </div>
-                    <div className="flex items-center justify-center w-6 h-6 rounded-md bg-gradient-to-r from-[#FB7801]/20 to-[#EC2656]/20 border border-[#FB7801]/30 text-[#FB7801] group-hover:from-[#FB7801] group-hover:to-[#EC2656] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_0_10px_rgba(251,120,1,0.6)] transition-all duration-300">
-                      <Download size={12} className="group-hover:translate-y-0.5 transition-transform" />
-                    </div>
+              
+              {/* Event Brochure */}
+              <a
+                href={brochurePdf}
+                download="LAF3.0 Brochure_FINAL.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block p-[1px] rounded-xl bg-gradient-to-r from-[#FB7801]/60 via-[#EC2656]/50 to-[#930777]/50 hover:from-[#FB7801] hover:via-[#EC2656] hover:to-[#D8066B] shadow-[0_2px_12px_rgba(251,120,1,0.12)] hover:shadow-[0_4px_18px_rgba(236,38,86,0.35)] hover:-translate-y-0.5 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between rounded-[11px] bg-[#140b22]/95 hover:bg-[#1a0f2b] px-3.5 py-2 transition-colors">
+                  <div className="flex items-center gap-2.5">
+                    <FileText size={14} className="text-[#FB7801] drop-shadow-[0_0_8px_rgba(251,120,1,0.55)]" />
+                    <span className="font-semibold text-xs sm:text-sm text-neutral-100 group-hover:text-white transition-colors">Event Brochure</span>
                   </div>
-                </a>
-              ))}
+                  <div className="flex items-center justify-center w-6 h-6 rounded-md bg-gradient-to-r from-[#FB7801]/20 to-[#EC2656]/20 border border-[#FB7801]/30 text-[#FB7801] group-hover:from-[#FB7801] group-hover:to-[#EC2656] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_0_10px_rgba(251,120,1,0.6)] transition-all duration-300">
+                    <Download size={12} className="group-hover:translate-y-0.5 transition-transform" />
+                  </div>
+                </div>
+              </a>
+
+              {/* REGISTER NOW BUTTON (Replaced Participation Form) */}
+              <Link
+                to="/register"
+                className="group relative block p-[1px] rounded-xl bg-gradient-to-r from-[#FBBF24] via-[#F59E0B] to-[#FB7801] hover:from-[#FB7801] hover:via-[#F59E0B] hover:to-[#FBBF24] shadow-[0_2px_12px_rgba(251,120,1,0.2)] hover:shadow-[0_4px_18px_rgba(251,120,1,0.5)] hover:-translate-y-0.5 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between rounded-[11px] bg-[#140b22]/95 hover:bg-[#1a0f2b] px-3.5 py-2 transition-colors">
+                  <div className="flex items-center gap-2.5">
+                    <Award size={14} className="text-[#FBBF24] drop-shadow-[0_0_8px_rgba(251,191,36,0.55)]" />
+                    <span className="font-bold text-xs sm:text-sm text-white group-hover:text-amber-300 transition-colors">REGISTER NOW</span>
+                  </div>
+                  <div className="flex items-center justify-center w-6 h-6 rounded-md bg-gradient-to-r from-[#FBBF24]/20 to-[#F59E0B]/20 border border-[#FBBF24]/30 text-[#FBBF24] group-hover:from-[#FBBF24] group-hover:to-[#F59E0B] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_0_10px_rgba(251,191,36,0.6)] transition-all duration-300">
+                    <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+
+              {/* Event Layout */}
+              <a
+                href={layoutPdf}
+                download="LAF3.0 LAYOUT PLAN.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block p-[1px] rounded-xl bg-gradient-to-r from-[#FB7801]/60 via-[#EC2656]/50 to-[#930777]/50 hover:from-[#FB7801] hover:via-[#EC2656] hover:to-[#D8066B] shadow-[0_2px_12px_rgba(251,120,1,0.12)] hover:shadow-[0_4px_18px_rgba(236,38,86,0.35)] hover:-translate-y-0.5 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between rounded-[11px] bg-[#140b22]/95 hover:bg-[#1a0f2b] px-3.5 py-2 transition-colors">
+                  <div className="flex items-center gap-2.5">
+                    <FileText size={14} className="text-[#FB7801] drop-shadow-[0_0_8px_rgba(251,120,1,0.55)]" />
+                    <span className="font-semibold text-xs sm:text-sm text-neutral-100 group-hover:text-white transition-colors">Event Layout</span>
+                  </div>
+                  <div className="flex items-center justify-center w-6 h-6 rounded-md bg-gradient-to-r from-[#FB7801]/20 to-[#EC2656]/20 border border-[#FB7801]/30 text-[#FB7801] group-hover:from-[#FB7801] group-hover:to-[#EC2656] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_0_10px_rgba(251,120,1,0.6)] transition-all duration-300">
+                    <Download size={12} className="group-hover:translate-y-0.5 transition-transform" />
+                  </div>
+                </div>
+              </a>
+
             </div>
           </div>
 
@@ -351,14 +388,14 @@ export default function Footer() {
         {/* Translucent Divider Above Bottom Bar */}
         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/15 to-transparent mt-4 mb-3" />
 
-        {/* ================= BOTTOM BAR WITH TRANSPARENT THEMED CCWS LOGO ================= */}
+        {/* ================= BOTTOM BAR ================= */}
         <div className="flex flex-col items-center justify-between gap-3 py-2 md:flex-row text-neutral-300 font-mono text-xs">
           {/* Left: Copyright */}
           <div>
             <span className="text-neutral-400">© {new Date().getFullYear()} LUCKNOW ARCHITECTURE FESTIVAL 3.0</span>
           </div>
 
-          {/* Center: Precision Crafted Credit with Transparent Gold-Themed CCWS Logo */}
+          {/* Center: Precision Crafted Credit */}
           <div className="flex flex-wrap items-center justify-center gap-2 text-neutral-300 font-mono">
             <span className="bg-gradient-to-r from-[#FB7801] via-[#F59E0B] to-[#FBBF24] bg-clip-text text-transparent font-bold text-xs font-mono">&lt;/&gt;</span>
             <span className="tracking-tight text-neutral-300">Precision Crafted with Digital Intelligence by</span>

@@ -196,7 +196,8 @@ const OpportunitiesSection = () => {
           {/* ================= MAIN FLEX LAYOUT (LEFT HEADING + RIGHT 10 SLANTED CARDS) ================= */}
           <div className="relative z-10 flex flex-col lg:flex-row items-stretch gap-8 lg:gap-7 xl:gap-8">
             {/* ================= LEFT COLUMN: HEADING ================= */}
-            <div className="w-full lg:w-[250px] xl:w-[275px] flex-shrink-0 flex flex-col justify-start pt-2">
+                       {/* ================= LEFT COLUMN: HEADING ================= */}
+            <div className="w-full lg:w-[250px] xl:w-[275px] flex-shrink-0 flex flex-col justify-center lg:pt-0 pt-2">
               {/* Header Titles matching theme */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -204,9 +205,9 @@ const OpportunitiesSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="font-serif text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-bold leading-[1.08] tracking-tight">
-                  <span className="text-[#0B1536] block">Bouquet of</span>
-                  <span className="text-[#E11D48] block mt-1">Opportunities</span>
+                <h2 className="font-serif text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-bold leading-[1.08] tracking-tight bg-transparent">
+                  <span className="text-[#0B1536] block bg-transparent">Bouquet of</span>
+                  <span className="text-[#E11D48] block mt-1 bg-transparent">Opportunities</span>
                 </h2>
 
                 {/* Gradient Pill Underline Bar */}
