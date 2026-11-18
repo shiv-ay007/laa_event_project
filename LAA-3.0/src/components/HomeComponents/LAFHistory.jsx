@@ -224,7 +224,7 @@ const LAFHistory = () => {
                   </div>
 
                   {/* Description Paragraph on Mobile */}
-                  <p className="text-neutral-600 text-xs sm:text-[14px] leading-relaxed sm:leading-[1.8] font-normal text-left">
+                  <p className="text-neutral-600 text-xs text-justify sm:text-[14px] leading-relaxed sm:leading-[1.8] font-normal">
                     {item.description}
                   </p>
                 </div>
@@ -260,7 +260,7 @@ const LAFHistory = () => {
                         </h3>
 
                         {/* FESTIVAL DESCRIPTION */}
-                        <p className="text-neutral-600 text-[14px] lg:text-[14.5px] leading-[1.85] font-normal text-left">
+                        <p className="text-neutral-600 text-[14px] lg:text-[14.5px] leading-[1.85] font-normal text-justify">
                           {item.description}
                         </p>
 
