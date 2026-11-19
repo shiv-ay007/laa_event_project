@@ -119,16 +119,10 @@ export default function SupportingOrganizationsSection() {
       id="supporting-organizations"
       className="relative overflow-hidden bg-[#FAF8F5] pt-16 sm:pt-20 lg:pt-24 pb-2 sm:pb-3 lg:pb-4 select-none font-sans border-t border-[#E6DFD3]"
     >
-      {/* Subtle grid — themed purple/orange tint */}
+      {/* Subtle architectural grid */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#930777_1px,transparent_1px),linear-gradient(to_bottom,#FB7801_1px,transparent_1px)] bg-[size:60px_60px]"
+        className="pointer-events-none absolute inset-0 opacity-[0.25] bg-[linear-gradient(to_right,rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.035)_1px,transparent_1px)] bg-[size:44px_44px]"
       />
-
-      {/* Ambient glow — theme colors */}
-      <div className="pointer-events-none absolute -top-40 -left-40 w-96 h-96 rounded-full blur-3xl opacity-[0.06]"
-        style={{ background: "radial-gradient(circle, #FB7801, #EC2656)" }} />
-      <div className="pointer-events-none absolute -bottom-40 -right-40 w-96 h-96 rounded-full blur-3xl opacity-[0.06]"
-        style={{ background: "radial-gradient(circle, #930777, #3C086E)" }} />
 
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
         
@@ -287,18 +281,17 @@ export default function SupportingOrganizationsSection() {
                 >
                   {/* Header Tag */}
                   <div className="w-full flex items-center justify-between mb-4">
-                    <span className="text-[9px] font-mono tracking-widest uppercase font-bold bg-gradient-to-r from-orange-50 to-purple-50 px-2.5 py-0.5 rounded-md border border-orange-100/80"
-                      style={{ color: "#EC2656" }}>
+                    <span className="text-[9px] font-mono tracking-widest uppercase font-bold bg-neutral-100 text-[#D8232A] px-2.5 py-0.5 rounded-md border border-neutral-200">
                       ✦ {item.badge}
                     </span>
-                    <span className="text-xs font-mono text-neutral-400 font-bold group-hover:text-[#EC2656] transition-colors">
+                    <span className="text-xs font-mono text-neutral-400 font-bold group-hover:text-[#D8232A] transition-colors">
                       {item.id}
                     </span>
                   </div>
 
                   {/* Circular Person Portrait Avatar */}
-                  <div className="relative w-28 h-28 rounded-full p-1 transition-all duration-300 shadow-sm mb-4 shrink-0 group-hover:shadow-[0_0_22px_rgba(236,38,86,0.25)]"
-                    style={{ background: "linear-gradient(135deg, #FB7801, #EC2656, #930777)" }}
+                  <div className="relative w-28 h-28 rounded-full p-1 transition-all duration-300 shadow-sm mb-4 shrink-0"
+                    style={{ background: "linear-gradient(135deg, #E6DFD3, #D4AF37 50%, transparent)" }}
                   >
                     <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center">
                       <img
@@ -312,11 +305,10 @@ export default function SupportingOrganizationsSection() {
 
                   {/* Name & Role */}
                   <div className="w-full flex-1 flex flex-col justify-center">
-                    <h3 className="font-serif text-base font-semibold text-neutral-900 transition-colors leading-tight group-hover:text-[#EC2656]">
+                    <h3 className="font-serif text-base font-semibold text-neutral-900 transition-colors leading-tight group-hover:text-[#D8232A]">
                       {item.person}
                     </h3>
-                    <p className="text-[11px] font-medium mt-1 leading-snug"
-                      style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                    <p className="text-[11px] font-medium mt-1 leading-snug text-neutral-600">
                       {item.role}
                     </p>
                     <p className="text-[9.5px] text-neutral-500 font-mono mt-1 uppercase tracking-wider truncate">
@@ -324,9 +316,8 @@ export default function SupportingOrganizationsSection() {
                     </p>
                   </div>
 
-                  {/* Bottom Accent Bar — theme gradient */}
-                  <div className="absolute bottom-0 left-0 h-[2px] w-0 transition-all duration-500 group-hover:w-full"
-                    style={{ background: "linear-gradient(90deg, #FB7801, #EC2656, #930777, #3C086E)" }} />
+                  {/* Bottom Accent Bar */}
+                  <div className="absolute bottom-0 left-0 h-[2px] w-0 transition-all duration-500 group-hover:w-full bg-[#D8232A]" />
                 </motion.div>
               ))}
             </div>
@@ -334,10 +325,10 @@ export default function SupportingOrganizationsSection() {
             {/* Right Arrow */}
             <button
               onClick={() => scroll(sliderRef2, 1)}
-              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white border border-[#E6DFD3] shadow-md flex items-center justify-center hover:border-[#EC2656]/40 hover:shadow-lg transition-all duration-200 group"
+              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white border border-[#E6DFD3] shadow-md flex items-center justify-center hover:border-[#D8232A]/40 hover:shadow-lg transition-all duration-200 group"
               aria-label="Scroll right"
             >
-              <ChevronRight className="w-4 h-4 text-[#EC2656] group-hover:scale-110 transition-transform" />
+              <ChevronRight className="w-4 h-4 text-[#D8232A] group-hover:scale-110 transition-transform" />
             </button>
           </div>
         </div>
@@ -345,11 +336,10 @@ export default function SupportingOrganizationsSection() {
         {/* Bottom Footnote Ribbon */}
         <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#E6DFD3]/40 pt-4 text-xs text-neutral-500">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-[#EC2656]" />
+            <Sparkles className="w-4 h-4 text-[#D8232A]" />
             <span>Building connections across architecture, design, and construction sectors.</span>
           </div>
-          <span className="font-mono text-[10px] tracking-widest uppercase font-bold"
-            style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+          <span className="font-mono text-[10px] tracking-widest uppercase font-bold text-[#D8232A]">
             LAF 3.0 • INSTITUTIONAL PARTNERSHIPS
           </span>
         </div>

@@ -66,55 +66,55 @@ const HighlightsSection = () => {
       icon: Megaphone,
       title: "BRAND REACH",
       text: "A platform for brands to reach their target audience.",
-      borderColor: "border-[#FED7AA]",
-      iconBg: "bg-[#FFEDD5]",
-      iconColor: "text-[#EA580C]",
-      barColor: "bg-[#EA580C]",
+      borderColor: "border-[#E7E2DA]",
+      iconBg: "bg-neutral-100",
+      iconColor: "text-[#D8232A]",
+      barColor: "bg-[#D8232A]",
     },
     {
       icon: UsersRound,
       title: "ENGAGEMENT ACTIVITIES",
       text: "Engagement activities designed around the target group.",
-      borderColor: "border-[#E9D5FF]",
-      iconBg: "bg-[#F3E8FF]",
-      iconColor: "text-[#8B5CF6]",
-      barColor: "bg-[#8B5CF6]",
+      borderColor: "border-[#E7E2DA]",
+      iconBg: "bg-neutral-100",
+      iconColor: "text-[#D8232A]",
+      barColor: "bg-[#D8232A]",
     },
     {
       icon: MonitorPlay,
       title: "MEDIA AMPLIFICATION",
       text: "Wide-ranging pre-promotional and media opportunities.",
-      borderColor: "border-[#BAE6FD]",
-      iconBg: "bg-[#E0F2FE]",
-      iconColor: "text-[#0284C7]",
-      barColor: "bg-[#0284C7]",
+      borderColor: "border-[#E7E2DA]",
+      iconBg: "bg-neutral-100",
+      iconColor: "text-[#D8232A]",
+      barColor: "bg-[#D8232A]",
     },
     {
       icon: Presentation,
       title: "SEMINARS & WORKSHOPS",
       text: "Architects, experts and professionals meet to exchange ideas.",
-      borderColor: "border-[#BBF7D0]",
-      iconBg: "bg-[#DCFCE7]",
-      iconColor: "text-[#10B981]",
-      barColor: "bg-[#10B981]",
+      borderColor: "border-[#E7E2DA]",
+      iconBg: "bg-neutral-100",
+      iconColor: "text-[#D8232A]",
+      barColor: "bg-[#D8232A]",
     },
     {
       icon: Coins,
       title: "FINANCING FACILITIES",
       text: "Opportunities for on-spot financing and financial interaction.",
-      borderColor: "border-[#FEF08A]",
-      iconBg: "bg-[#FEF9C3]",
-      iconColor: "text-[#EAB308]",
-      barColor: "bg-[#EAB308]",
+      borderColor: "border-[#E7E2DA]",
+      iconBg: "bg-neutral-100",
+      iconColor: "text-[#D8232A]",
+      barColor: "bg-[#D8232A]",
     },
     {
       icon: Palette,
       title: "ART & CULTURE",
       text: "Display of art, culture, heritage and creative expression.",
-      borderColor: "border-[#FBCFE8]",
-      iconBg: "bg-[#FCE7F3]",
-      iconColor: "text-[#EC4899]",
-      barColor: "bg-[#EC4899]",
+      borderColor: "border-[#E7E2DA]",
+      iconBg: "bg-neutral-100",
+      iconColor: "text-[#D8232A]",
+      barColor: "bg-[#D8232A]",
     },
   ];
 
@@ -122,127 +122,127 @@ const HighlightsSection = () => {
     {
       name: "ART",
       icon: Palette,
-      iconColor: "text-[#EA580C]",
-      iconBg: "bg-[#FFEDD5]",
-      borderColor: "border-[#FED7AA]",
-      cardBg: "bg-[#FFF7ED]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secArt,
     },
     {
       name: "ARCHITECTURE",
       icon: Building2,
-      iconColor: "text-[#8B5CF6]",
-      iconBg: "bg-[#F3E8FF]",
-      borderColor: "border-[#DDD6FE]",
-      cardBg: "bg-[#FAF5FF]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secArchitecture,
     },
     {
       name: "INTERIORS",
       icon: Armchair,
-      iconColor: "text-[#D97706]",
-      iconBg: "bg-[#FEF3C7]",
-      borderColor: "border-[#FDE68A]",
-      cardBg: "bg-[#FFFBEB]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secInteriors,
     },
     {
       name: "CONSTRUCTION",
       icon: HardHat,
-      iconColor: "text-[#2563EB]",
-      iconBg: "bg-[#DBEAFE]",
-      borderColor: "border-[#BFDBFE]",
-      cardBg: "bg-[#EFF6FF]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secConstruction,
     },
     {
       name: "BUILDING MATERIALS",
       icon: Boxes,
-      iconColor: "text-[#EA580C]",
-      iconBg: "bg-[#FFEDD5]",
-      borderColor: "border-[#FED7AA]",
-      cardBg: "bg-[#FFF7ED]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secMaterials,
     },
     {
       name: "GREEN TECH",
       icon: Leaf,
-      iconColor: "text-[#16A34A]",
-      iconBg: "bg-[#DCFCE7]",
-      borderColor: "border-[#BBF7D0]",
-      cardBg: "bg-[#F0FDF4]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secGreentech,
     },
     {
       name: "NEW TECHNOLOGIES",
       icon: Cpu,
-      iconColor: "text-[#9333EA]",
-      iconBg: "bg-[#F3E8FF]",
-      borderColor: "border-[#E9D5FF]",
-      cardBg: "bg-[#FAF5FF]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secTech,
     },
     {
       name: "BUILDING EQUIPMENTS",
       icon: Settings,
-      iconColor: "text-[#0284C7]",
-      iconBg: "bg-[#E0F2FE]",
-      borderColor: "border-[#BAE6FD]",
-      cardBg: "bg-[#F0F9FF]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secEquipments,
     },
     {
       name: "BUILDING TECHNIQUES",
       icon: Layers,
-      iconColor: "text-[#E11D48]",
-      iconBg: "bg-[#FFE4E6]",
-      borderColor: "border-[#FECDD3]",
-      cardBg: "bg-[#FFF1F2]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secTechniques,
     },
     {
       name: "SUSTAINABILITY",
       icon: Sprout,
-      iconColor: "text-[#059669]",
-      iconBg: "bg-[#D1FAE5]",
-      borderColor: "border-[#A7F3D0]",
-      cardBg: "bg-[#ECFDF5]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secSustainability,
     },
     {
       name: "SMART BUILDING",
       icon: HouseWifi,
-      iconColor: "text-[#D97706]",
-      iconBg: "bg-[#FEF9C3]",
-      borderColor: "border-[#FEF08A]",
-      cardBg: "bg-[#FEFCE8]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secSmartbuilding,
     },
     {
       name: "REAL ESTATE",
       icon: Building2,
-      iconColor: "text-[#2563EB]",
-      iconBg: "bg-[#DBEAFE]",
-      borderColor: "border-[#BFDBFE]",
-      cardBg: "bg-[#EFF6FF]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secRealestate,
     },
     {
       name: "ACADEMICS",
       icon: GraduationCap,
-      iconColor: "text-[#DB2777]",
-      iconBg: "bg-[#FCE7F3]",
-      borderColor: "border-[#FBCFE8]",
-      cardBg: "bg-[#FDF2F8]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secAcademics,
     },
     {
       name: "GOVERNMENT SCHEMES & DEPARTMENTS",
       icon: Landmark,
-      iconColor: "text-[#7C3AED]",
-      iconBg: "bg-[#EDE9FE]",
-      borderColor: "border-[#DDD6FE]",
-      cardBg: "bg-[#FAF5FF]/70",
+      iconColor: "text-[#D8232A]",
+      iconBg: "bg-neutral-100",
+      borderColor: "border-[#E7E2DA]",
+      cardBg: "bg-white",
       image: secGovernment,
       span: "sm:col-span-2 lg:col-span-2",
     },
@@ -253,65 +253,65 @@ const HighlightsSection = () => {
       id: "architects",
       title: "Architects meet/ seminars and workshops",
       icon: khArchitects,
-      borderColor: "border-[#DDD6FE]",
-      cornerBg: "bg-gradient-to-tl from-[#F3E8FF] via-transparent to-transparent",
-      dividerColor: "bg-[#8B5CF6]/50",
+      borderColor: "border-[#E7E2DA]",
+      cornerBg: "bg-transparent",
+      dividerColor: "bg-[#D8232A]",
     },
     {
       id: "marketers",
       title: "A platform for marketers to showcase their products and services.",
       icon: khMarketers,
-      borderColor: "border-[#FED7AA]",
-      cornerBg: "bg-gradient-to-tl from-[#FFEDD5] via-transparent to-transparent",
-      dividerColor: "bg-[#EA580C]/50",
+      borderColor: "border-[#E7E2DA]",
+      cornerBg: "bg-transparent",
+      dividerColor: "bg-[#D8232A]",
     },
     {
       id: "engagement",
       title: "Engagement activity with the target group/ audience in the form of lucky draws and much more.",
       icon: khEngagement,
-      borderColor: "border-[#E9D5FF]",
-      cornerBg: "bg-gradient-to-tl from-[#F3E8FF] via-transparent to-transparent",
-      dividerColor: "bg-[#9333EA]/50",
+      borderColor: "border-[#E7E2DA]",
+      cornerBg: "bg-transparent",
+      dividerColor: "bg-[#D8232A]",
     },
     {
       id: "brand",
       title: "A platform for brands to reach out to their target audience.",
       icon: khBrand,
-      borderColor: "border-[#FED7AA]",
-      cornerBg: "bg-gradient-to-tl from-[#FFEDD5] via-transparent to-transparent",
-      dividerColor: "bg-[#EA580C]/50",
+      borderColor: "border-[#E7E2DA]",
+      cornerBg: "bg-transparent",
+      dividerColor: "bg-[#D8232A]",
     },
     {
       id: "financing",
       title: "On spot loan and financing facility.",
       icon: khFinancing,
-      borderColor: "border-[#FECDD3]",
-      cornerBg: "bg-gradient-to-tl from-[#FFE4E6] via-transparent to-transparent",
-      dividerColor: "bg-[#E11D48]/50",
+      borderColor: "border-[#E7E2DA]",
+      cornerBg: "bg-transparent",
+      dividerColor: "bg-[#D8232A]",
     },
     {
       id: "experts",
       title: "Experts interface and workshops.",
       icon: khExperts,
-      borderColor: "border-[#FEF08A]",
-      cornerBg: "bg-gradient-to-tl from-[#FEF9C3] via-transparent to-transparent",
-      dividerColor: "bg-[#D97706]/50",
+      borderColor: "border-[#E7E2DA]",
+      cornerBg: "bg-transparent",
+      dividerColor: "bg-[#D8232A]",
     },
     {
       id: "art",
       title: "Display of art, culture, heritage and much more.",
       icon: khArt,
-      borderColor: "border-[#FBCFE8]",
-      cornerBg: "bg-gradient-to-tl from-[#FCE7F3] via-transparent to-transparent",
-      dividerColor: "bg-[#DB2777]/50",
+      borderColor: "border-[#E7E2DA]",
+      cornerBg: "bg-transparent",
+      dividerColor: "bg-[#D8232A]",
     },
     {
       id: "media",
       title: "Media amplification with wide arrays of pre-promotional tools.",
       icon: khMedia,
-      borderColor: "border-[#DDD6FE]",
-      cornerBg: "bg-gradient-to-tl from-[#EDE9FE] via-transparent to-transparent",
-      dividerColor: "bg-[#7C3AED]/50",
+      borderColor: "border-[#E7E2DA]",
+      cornerBg: "bg-transparent",
+      dividerColor: "bg-[#D8232A]",
     },
   ];
 
@@ -360,11 +360,11 @@ const HighlightsSection = () => {
               LEFT VISUAL PANEL (Feature Experience Card)
           ==================================================== */}
           <div className="relative group lg:col-span-4 flex flex-col">
-            {/* Decorative Top-Left Orange Corner Accent (matching Image 1) */}
-            <div className="absolute -top-2.5 -left-2.5 w-28 h-28 rounded-tl-[38px] bg-gradient-to-br from-[#EA580C] to-[#F97316] pointer-events-none -z-0" />
+            {/* Decorative Top-Left Red Corner Accent */}
+            <div className="absolute -top-2.5 -left-2.5 w-28 h-28 rounded-tl-[38px] bg-[#D8232A] pointer-events-none -z-0" />
 
-            {/* Main Dark Plum/Purple Card */}
-            <div className="relative z-10 rounded-[30px] sm:rounded-[34px] bg-[#38164B] overflow-hidden shadow-xl flex-1 flex flex-col justify-between border border-[#4C1D66]">
+            {/* Main Dark Architectural Card */}
+            <div className="relative z-10 rounded-[30px] sm:rounded-[34px] bg-[#18181B] overflow-hidden shadow-xl flex-1 flex flex-col justify-between border border-neutral-800">
               {/* Top Photo using highlight-img.png */}
               <div className="relative w-full h-[225px] sm:h-[240px] lg:h-[230px] xl:h-[245px] overflow-hidden">
                 <img
@@ -377,7 +377,7 @@ const HighlightsSection = () => {
                   className="absolute inset-0 pointer-events-none"
                   style={{
                     background:
-                      "linear-gradient(to bottom, transparent 0%, transparent 45%, rgba(56, 22, 75, 0.2) 75%, #38164B 100%)",
+                      "linear-gradient(to bottom, transparent 0%, transparent 45%, rgba(24, 24, 27, 0.4) 75%, #18181B 100%)",
                   }}
                 />
               </div>
@@ -385,7 +385,7 @@ const HighlightsSection = () => {
               {/* Content Block */}
               <div className="p-6 sm:p-7 pt-3.5 flex-1 flex flex-col justify-between">
                 <div>
-                  <span className="inline-block text-[11px] sm:text-xs font-sans font-bold tracking-[0.25em] text-[#C4B5FD] uppercase mb-2">
+                  <span className="inline-block text-[11px] sm:text-xs font-sans font-bold tracking-[0.25em] text-[#D8232A] uppercase mb-2">
                     THE EXPERIENCE
                   </span>
 
@@ -396,21 +396,21 @@ const HighlightsSection = () => {
                     </span>
                     <span className="font-serif text-white text-xl sm:text-2xl lg:text-[21px] xl:text-[25px] 2xl:text-[27px] font-normal mt-0.5 leading-snug">
                       International Flavour{" "}
-                      <span className="italic font-bold text-[#F59E0B]">
+                      <span className="italic font-bold text-amber-400">
                         Extravaganza
                       </span>
                     </span>
                   </h3>
 
-                  <p className="mt-3.5 sm:mt-4 text-neutral-200/95 text-xs sm:text-[13.5px] xl:text-[14px] leading-relaxed font-normal">
+                  <p className="mt-3.5 sm:mt-4 text-neutral-300 text-xs sm:text-[13.5px] xl:text-[14px] leading-relaxed font-normal">
                     The festival will also display an exciting program of exhibitions,
                     installations, symposia, lectures and workshops, celebrating architecture's
                     contribution to culture, sustainability and the economy.
                   </p>
                 </div>
 
-                {/* Golden bottom accent bar */}
-                <div className="w-14 h-1 rounded-full bg-[#EAB308] mt-5 sm:mt-6 mb-1" />
+                {/* Red/Gold bottom accent bar */}
+                <div className="w-14 h-1 rounded-full bg-[#D8232A] mt-5 sm:mt-6 mb-1" />
               </div>
             </div>
           </div>
@@ -428,21 +428,18 @@ const HighlightsSection = () => {
             >
               {/* Flanked Label */}
               <div className="flex items-center gap-3 mb-2.5">
-                <span className="w-8 sm:w-12 h-px bg-[#F97316]" />
+                <span className="w-8 sm:w-12 h-px bg-[#D8232A]" />
                 <span className="text-xs sm:text-[12.5px] font-sans font-bold tracking-[0.25em] uppercase text-[#171717]">
                   THE FESTIVAL EXPERIENCE
                 </span>
-                <span className="w-8 sm:w-12 h-px bg-[#F97316]" />
+                <span className="w-8 sm:w-12 h-px bg-[#D8232A]" />
               </div>
 
               {/* Heading */}
               <h3 className="font-serif text-3xl sm:text-4xl lg:text-[40px] text-[#171717] font-medium leading-[1.2]">
                 Ideas that connect{" "}
-                <span className="font-serif italic font-normal text-[#F26522]">
-                  people &amp;{" "}
-                </span>
-                <span className="font-serif italic font-normal text-[#C21458]">
-                  possibilities.
+                <span className="font-serif italic font-normal text-[#D8232A]">
+                  people &amp; possibilities.
                 </span>
               </h3>
 

@@ -101,9 +101,9 @@ const MemberCard = ({ member, index }) => {
   const formattedIndex = index < 10 ? `0${index}` : index;
 
   return (
-    <div className="group relative flex flex-col items-center justify-between p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl bg-white hover:bg-[#FDFBF7] border border-[#E6DFD3] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_35px_rgba(236,38,86,0.12)] transition-all duration-300 cursor-pointer text-center w-full h-full hover:-translate-y-1 overflow-hidden">
+    <div className="group relative flex flex-col items-center justify-between p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl bg-white hover:bg-[#FDFBF7] border border-[#E6DFD3] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.06)] transition-all duration-300 cursor-pointer text-center w-full h-full hover:-translate-y-1 overflow-hidden">
       {/* Avatar circular frame with theme gradient ring matching Supporting Leadership */}
-      <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full p-1 bg-gradient-to-b from-[#FB7801] via-[#EC2656] to-[#930777] transition-all duration-300 shadow-sm group-hover:shadow-[0_0_22px_rgba(236,38,86,0.25)] mb-3 sm:mb-4">
+      <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full p-1 bg-gradient-to-b from-[#E6DFD3] via-[#D4AF37]/50 to-[#E6DFD3] transition-all duration-300 shadow-sm group-hover:shadow-[0_0_22px_rgba(216,35,42,0.2)] mb-3 sm:mb-4">
         <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center">
           {member.image && !imgError ? (
             <img
@@ -127,14 +127,14 @@ const MemberCard = ({ member, index }) => {
         <span
           className="text-[9.5px] font-mono tracking-widest font-bold uppercase block truncate"
           style={{
-            background: "linear-gradient(90deg, #FB7801, #930777)",
+            background: "#D8232A",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
         >
           LAF 3.0 · #{formattedIndex}
         </span>
-        <h4 className="font-serif text-sm sm:text-base font-bold text-neutral-900 group-hover:text-[#EC2656] transition-colors mt-1 leading-snug line-clamp-2 min-h-[2.5rem] flex items-center justify-center">
+        <h4 className="font-serif text-sm sm:text-base font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors mt-1 leading-snug line-clamp-2 min-h-[2.5rem] flex items-center justify-center">
           {member.name}
         </h4>
         <p className="text-[11px] sm:text-xs text-neutral-500 font-medium mt-1 truncate">
@@ -146,7 +146,7 @@ const MemberCard = ({ member, index }) => {
       <div
         className="absolute bottom-0 left-0 h-[2px] w-0 transition-all duration-500 group-hover:w-full"
         style={{
-          background: "linear-gradient(90deg, #FB7801, #EC2656, #930777, #3C086E)",
+          background: "#D8232A",
         }}
       />
     </div>
@@ -199,7 +199,7 @@ const CommitteeSliderRow = ({ committee, index }) => {
           className="absolute top-0 left-0 right-0 h-[2.5px] rounded-t-3xl"
           style={{
             background:
-              "linear-gradient(90deg, #FB7801 0%, #EC2656 25%, #930777 75%, #3C086E 100%)",
+              "#D8232A",
           }}
         />
 
@@ -213,7 +213,7 @@ const CommitteeSliderRow = ({ committee, index }) => {
             <span
               className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
               style={{
-                background: "linear-gradient(90deg, #FB7801, #930777)",
+                background: "#D8232A",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -224,10 +224,10 @@ const CommitteeSliderRow = ({ committee, index }) => {
 
           {/* Heading + Icon */}
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-2xl bg-gradient-to-br from-orange-50 to-purple-50 border border-orange-100/80 flex items-center justify-center text-[#EC2656] shrink-0 shadow-2xs">
+            <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-2xl bg-gradient-to-br from-orange-50 to-purple-50 border border-orange-100/80 flex items-center justify-center text-[#D8232A] shrink-0 shadow-2xs">
               <IconComponent size={22} strokeWidth={1.5} />
             </div>
-            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 group-hover:text-[#EC2656] transition-colors">
+            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 group-hover:text-[#D8232A] transition-colors">
               {committee.title}
             </h3>
           </div>
@@ -242,7 +242,7 @@ const CommitteeSliderRow = ({ committee, index }) => {
 
         {/* MEMBER COUNT BADGE */}
         <div className="flex items-center gap-4 self-start md:self-auto shrink-0">
-          <span className="font-mono text-xs font-bold tracking-[0.25em] text-[#EC2656] uppercase bg-gradient-to-r from-orange-50 to-purple-50 px-4 py-2 rounded-full border border-orange-100 shadow-2xs">
+          <span className="font-mono text-xs font-bold tracking-[0.25em] text-[#D8232A] uppercase bg-gradient-to-r from-orange-50 to-purple-50 px-4 py-2 rounded-full border border-orange-100 shadow-2xs">
             MEMBERS ({allMembers.length.toString().padStart(2, "0")})
           </span>
         </div>
@@ -823,7 +823,7 @@ const AboutLAASection = () => {
               className="hidden lg:flex items-center gap-3 px-4 py-2.5 rounded-2xl border border-white/30 shadow-sm text-white"
               style={{
                 background:
-                  "linear-gradient(90deg, #FB7801 0%, #EC2656 40%, #930777 80%, #3C086E 100%)",
+                  "#D8232A",
               }}
             >
               <ShieldCheck className="w-5 h-5 text-amber-300" />
@@ -951,7 +951,7 @@ const AboutLAASection = () => {
                   <span
                     className="text-[11px] font-mono font-bold tracking-[0.25em] uppercase"
                     style={{
-                      background: "linear-gradient(90deg, #FB7801, #930777)",
+                      background: "#D8232A",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                     }}
@@ -964,7 +964,7 @@ const AboutLAASection = () => {
                   <span
                     className="italic font-serif font-normal"
                     style={{
-                      background: "linear-gradient(90deg, #FB7801, #EC2656, #930777)",
+                      background: "#D8232A",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                     }}
@@ -1005,7 +1005,7 @@ const AboutLAASection = () => {
                     selectedCategory === cat
                       ? {
                           background:
-                            "linear-gradient(90deg, #FB7801 0%, #EC2656 40%, #930777 80%, #3C086E 100%)",
+                            "#D8232A",
                         }
                       : undefined
                   }
@@ -1042,7 +1042,7 @@ const AboutLAASection = () => {
                 className="mt-4 px-5 py-2 rounded-full text-white text-xs font-medium transition-all shadow-sm cursor-pointer"
                 style={{
                   background:
-                    "linear-gradient(90deg, #FB7801, #EC2656, #930777)",
+                    "#D8232A",
                 }}
               >
                 Reset Search Filters

@@ -56,16 +56,12 @@ export default function BrandShowcase() {
         className="pointer-events-none absolute inset-0 opacity-[0.25]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(234,88,12,0.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(234,88,12,0.035) 1px, transparent 1px)
+            linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px)
           `,
           backgroundSize: "44px 44px",
         }}
       />
-
-      {/* Ambient background soft glows */}
-      <div className="pointer-events-none absolute -top-40 -left-40 w-96 h-96 bg-gradient-to-tr from-orange-400/10 via-pink-400/5 to-transparent rounded-full blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-40 -right-40 w-96 h-96 bg-gradient-to-bl from-purple-400/10 via-orange-400/5 to-transparent rounded-full blur-3xl" />
 
       {/* Main Content Container */}
       <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
@@ -98,10 +94,10 @@ export default function BrandShowcase() {
 
           {/* Row 1 Indicator: Slides Right to Left */}
           <div className="flex items-center justify-end gap-2 mb-2.5 px-4 sm:px-6">
-            <span className="text-[10px] sm:text-xs font-bold tracking-wider text-[#991B1B]/85 flex items-center gap-1.5 uppercase font-sans">
+            <span className="text-[10px] sm:text-xs font-bold tracking-wider text-[#D8232A] flex items-center gap-1.5 uppercase font-sans">
               <span className="text-sm leading-none">←</span> SLIDES RIGHT TO LEFT
             </span>
-            <div className="w-12 sm:w-20 h-[1px] bg-[#991B1B]/30" />
+            <div className="w-12 sm:w-20 h-[1px] bg-[#D8232A]/30" />
           </div>
 
           {/* ================= ROW 1: SLIDES RIGHT TO LEFT ================= */}
@@ -110,7 +106,7 @@ export default function BrandShowcase() {
               {topLoop.map((brand, idx) => (
                 <div
                   key={`top-${brand.id}-${idx}`}
-                  className="w-[110px] sm:w-[130px] md:w-[145px] h-[72px] sm:h-[82px] md:h-[90px] shrink-0 rounded-2xl bg-white border border-neutral-200/90 shadow-[0_3px_12px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-[#EA580C]/40 p-2 flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer group"
+                  className="w-[110px] sm:w-[130px] md:w-[145px] h-[72px] sm:h-[82px] md:h-[90px] shrink-0 rounded-2xl bg-white border border-neutral-200/90 shadow-[0_3px_12px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-[#D8232A]/50 p-2 flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer group"
                 >
                   <img
                     src={brand.img}
@@ -129,7 +125,7 @@ export default function BrandShowcase() {
               {bottomLoop.map((brand, idx) => (
                 <div
                   key={`bottom-${brand.id}-${idx}`}
-                  className="w-[110px] sm:w-[130px] md:w-[145px] h-[72px] sm:h-[82px] md:h-[90px] shrink-0 rounded-2xl bg-white border border-neutral-200/90 shadow-[0_3px_12px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-[#EA580C]/40 p-2 flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer group"
+                  className="w-[110px] sm:w-[130px] md:w-[145px] h-[72px] sm:h-[82px] md:h-[90px] shrink-0 rounded-2xl bg-white border border-neutral-200/90 shadow-[0_3px_12px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-[#D8232A]/50 p-2 flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer group"
                 >
                   <img
                     src={brand.img}
@@ -144,8 +140,8 @@ export default function BrandShowcase() {
 
           {/* Row 2 Indicator: Slides Left to Right */}
           <div className="flex items-center justify-start gap-2 mt-2.5 px-4 sm:px-6">
-            <div className="w-12 sm:w-20 h-[1px] bg-[#991B1B]/30" />
-            <span className="text-[10px] sm:text-xs font-bold tracking-wider text-[#991B1B]/85 flex items-center gap-1.5 uppercase font-sans">
+            <div className="w-12 sm:w-20 h-[1px] bg-[#D8232A]/30" />
+            <span className="text-[10px] sm:text-xs font-bold tracking-wider text-[#D8232A] flex items-center gap-1.5 uppercase font-sans">
               SLIDES LEFT TO RIGHT <span className="text-sm leading-none">→</span>
             </span>
           </div>

@@ -16,10 +16,10 @@ const editions = [
     id: "2022",
     version: "LAF 1.0 — 2022",
     year: "2022",
-    badgeBg: "bg-[#D96204]",
-    barBg: "bg-[#D96204]",
-    cardBorder: "border-[#F0A956]",
-    ringBorder: "border-[#E67E00]/40",
+    badgeBg: "bg-[#1C1917]",
+    barBg: "bg-[#1C1917]",
+    cardBorder: "border-[#E7E2DA]",
+    ringBorder: "border-[#E7E2DA]",
     logo: laf2022,
     photo: historyPhoto1,
     imagePosition: "right",
@@ -32,10 +32,10 @@ const editions = [
     id: "2025",
     version: "LAF 2.0 — 2025",
     year: "2025",
-    badgeBg: "bg-[#5B1A83]",
-    barBg: "bg-[#5B1A83]",
-    cardBorder: "border-[#8B5CF6]/50",
-    ringBorder: "border-[#6B1E99]/40",
+    badgeBg: "bg-[#1C1917]",
+    barBg: "bg-[#1C1917]",
+    cardBorder: "border-[#E7E2DA]",
+    ringBorder: "border-[#E7E2DA]",
     logo: laf2025,
     photo: historyPhoto2,
     imagePosition: "left",
@@ -48,10 +48,10 @@ const editions = [
     id: "2027",
     version: "LAF 3.0 — 2027",
     year: "2027",
-    badgeBg: "bg-[#C21458]",
-    barBg: "bg-[#C21458]",
-    cardBorder: "border-[#EC4899]/50",
-    ringBorder: "border-[#D81B60]/40",
+    badgeBg: "bg-[#D8232A]",
+    barBg: "bg-[#D8232A]",
+    cardBorder: "border-[#D8232A]/30",
+    ringBorder: "border-[#D8232A]/30",
     logo: laf2027,
     photo: historyPhoto3,
     imagePosition: "right",
@@ -74,60 +74,6 @@ const LAFHistory = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* TOP LEFT DECORATIVE RIBBON */}
-      <svg
-        className="absolute top-0 left-0 w-16 sm:w-28 md:w-44 h-16 sm:h-28 md:h-44 pointer-events-none z-0"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <defs>
-          <linearGradient
-            id="cornerTL"
-            x1="0%"
-            y1="100%"
-            x2="100%"
-            y2="0%"
-          >
-            <stop offset="0%" stopColor="#C21458" />
-            <stop offset="50%" stopColor="#E67E00" />
-            <stop offset="100%" stopColor="#FBBF24" />
-          </linearGradient>
-        </defs>
-
-        <polygon
-          points="0,0 100,0 0,100"
-          fill="url(#cornerTL)"
-        />
-      </svg>
-
-      {/* BOTTOM RIGHT DECORATIVE RIBBON */}
-      <svg
-        className="absolute bottom-0 right-0 w-16 sm:w-28 md:w-44 h-16 sm:h-28 md:h-44 pointer-events-none z-0"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <defs>
-          <linearGradient
-            id="cornerBR"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="100%"
-          >
-            <stop offset="0%" stopColor="#C21458" />
-            <stop offset="50%" stopColor="#E67E00" />
-            <stop offset="100%" stopColor="#FBBF24" />
-          </linearGradient>
-        </defs>
-
-        <polygon
-          points="100,0 100,100 0,100"
-          fill="url(#cornerBR)"
-        />
-      </svg>
-
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
 
         {/* SECTION HEADING (Red badge left-aligned matching About section) */}

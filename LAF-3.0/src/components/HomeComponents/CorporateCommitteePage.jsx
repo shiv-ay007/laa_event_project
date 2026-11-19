@@ -63,34 +63,21 @@ export function CorporateCommitteePage({ isEmbedded = true }) {
             backgroundSize: "52px 52px",
           }}
         />
-        <div
-          className="absolute top-0 left-0 right-0 h-[420px] opacity-[0.055] pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(135deg, #FB7801 0%, #EC2656 25%, #930777 60%, #3C086E 100%)",
-          }}
-        />
-        <div className="absolute left-[6%] top-0 bottom-0 w-px bg-gradient-to-b from-[#FB7801]/20 via-[#930777]/15 to-transparent" />
-        <div className="absolute right-[6%] top-0 bottom-0 w-px bg-gradient-to-b from-[#FB7801]/20 via-[#930777]/15 to-transparent" />
       </div>
 
-      {/* Main Content Area - Hero aur Back button hta diya gaya hai */}
+      {/* Main Content Area */}
       <div className={`relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 ${isEmbedded ? "pt-2 pb-10" : "pt-12 pb-24"}`}>
         
         {/* Corporate Committee Members Section */}
         <div>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-8 gap-4 rounded-3xl p-6 sm:p-8 border border-white/40 shadow-sm relative overflow-hidden"
-            style={{ background: "linear-gradient(135deg, #fff9f0 0%, #fdf4ff 60%, #f5f0ff 100%)" }}
-          >
-            <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl"
-              style={{ background: "linear-gradient(90deg, #FB7801 0%, #EC2656 25%, #930777 75%, #3C086E 100%)" }} />
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-8 gap-4 rounded-3xl p-6 sm:p-8 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
             <div className="flex flex-col items-start gap-1.5">
               <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
                 Corporate Committee
               </h2>
             </div>
-            <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full border border-white/40 shadow-sm self-start sm:self-auto text-white"
-              style={{ background: "linear-gradient(90deg, #FB7801, #EC2656, #930777)" }}>
+            <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full shadow-xs self-start sm:self-auto text-white bg-[#D8232A]">
               MEMBERS ({corporateCommitteeMembers.length})
             </span>
           </div>
@@ -103,12 +90,12 @@ export function CorporateCommitteePage({ isEmbedded = true }) {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.3) }}
-                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-[#fff9f0] hover:to-[#fdf4ff] border border-[#E6DFD3] hover:border-transparent shadow-2xs hover:shadow-xl transition-all duration-300 cursor-pointer text-center relative overflow-hidden"
+                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-neutral-50 border border-[#E8E2D8] hover:border-[#D8232A]/30 shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer text-center relative overflow-hidden"
               >
-                <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 transition-all duration-300 shadow-md mb-4"
+                <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 transition-all duration-300 shadow-sm mb-4"
                   style={{ background: "linear-gradient(135deg, #E6DFD3, #D4AF37 50%, transparent)" }}
                 >
-                  <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center group-hover:shadow-[0_0_18px_rgba(236,38,86,0.18)] transition-all duration-300">
+                  <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center transition-all duration-300">
                     {member.image === "#" ? (
                       <span className="text-2xl font-serif font-bold text-neutral-300 select-none">#</span>
                     ) : (

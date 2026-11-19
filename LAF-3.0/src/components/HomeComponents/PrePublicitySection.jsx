@@ -311,27 +311,27 @@ const EmailBlastIcon = () => (
 const leftColumnItems = [
   {
     icon: CalendarIcon,
-    bgColor: "bg-[#FFF5EB]", // Warm light orange
+    bgColor: "bg-neutral-100",
     text: "Pre-publicity will start 7–10 days prior to the event",
   },
   {
     icon: VanIcon,
-    bgColor: "bg-[#F5EEFD]", // Light purple
+    bgColor: "bg-neutral-100",
     text: "2 AV Vans will cover the entire potential market",
   },
   {
     icon: BillboardIcon,
-    bgColor: "bg-[#FFF0F4]", // Light rose/pink
+    bgColor: "bg-neutral-100",
     text: "Hoarding, Banners, Posters, etc. will be put across City & nearby",
   },
   {
     icon: LeafletIcon,
-    bgColor: "bg-[#FFF9EB]", // Light amber
+    bgColor: "bg-neutral-100",
     text: "Lucky draw leaflets will be distributed through Newspaper Ads, Inserts, Pre-promotion Vans, etc.",
   },
   {
     icon: RadioIcon,
-    bgColor: "bg-[#F5EEFD]", // Light purple
+    bgColor: "bg-neutral-100",
     text: "Radio jingles & Ads",
   },
 ];
@@ -339,34 +339,34 @@ const leftColumnItems = [
 const rightColumnItems = [
   {
     icon: NewspaperIcon,
-    bgColor: "bg-[#FFF5EB]", // Warm light orange
+    bgColor: "bg-neutral-100",
     text: "Newspaper Ads",
   },
   {
     icon: StoreMallIcon,
-    bgColor: "bg-[#F5EEFD]", // Light purple
+    bgColor: "bg-neutral-100",
     text: "Mall & Market activation",
   },
   {
     icon: OpenBookIcon,
-    bgColor: "bg-[#FFF0F4]", // Light rose/pink
+    bgColor: "bg-neutral-100",
     text: "Publicity through advertorials and editorials",
   },
   {
     icon: PressConferenceIcon,
-    bgColor: "bg-[#FFF9EB]", // Light amber
+    bgColor: "bg-neutral-100",
     text: "Press conference",
   },
   {
     icon: SocialMediaIcon,
-    bgColor: "bg-[#F5EEFD]", // Light purple
+    bgColor: "bg-neutral-100",
     text: "Social Media promotion via Facebook, Instagram, Twitter, LinkedIn etc.",
   },
 ];
 
 const centeredItem = {
   icon: EmailBlastIcon,
-  bgColor: "bg-[#FFF0F4]", // Light rose/pink
+  bgColor: "bg-neutral-100",
   text: "SMS/E-mail blasting and many more",
 };
 
@@ -395,10 +395,6 @@ const PrePublicitySection = () => {
             backgroundSize: "36px 36px",
           }}
         />
-
-        {/* Ambient warm and purple glows */}
-        <div className="absolute -left-32 top-16 w-[420px] h-[420px] rounded-full bg-gradient-to-br from-orange-200/20 to-amber-200/10 blur-3xl" />
-        <div className="absolute -right-32 bottom-16 w-[460px] h-[460px] rounded-full bg-gradient-to-tl from-purple-200/20 to-pink-200/10 blur-3xl" />
       </div>
 
       {/* Width exactly matches the sticky navbar (max-w-[1400px] px-5 sm:px-8 lg:px-12) */}
@@ -425,7 +421,7 @@ const PrePublicitySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="bg-white rounded-[24px] sm:rounded-[32px] border-[2px] sm:border-[2.5px] border-[#F97316] p-4 sm:p-6 lg:py-6 lg:px-8 shadow-[0_4px_30px_rgba(249,115,22,0.06)]"
+          className="bg-white rounded-[24px] sm:rounded-[32px] border border-[#E8E2D8] p-4 sm:p-6 lg:py-6 lg:px-8 shadow-xs"
         >
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* ================= LEFT COLUMN (5 ITEMS) ================= */}
@@ -438,23 +434,23 @@ const PrePublicitySection = () => {
                     key={index}
                     whileHover={{ y: -2, scale: 1.015 }}
                     transition={{ type: "spring", stiffness: 450, damping: 26 }}
-                    className={`group relative flex items-center gap-3 sm:gap-3.5 px-3 py-2 sm:py-2.5 rounded-2xl border border-transparent hover:border-[#F97316]/50 hover:bg-gradient-to-r hover:from-orange-50/90 hover:via-white hover:to-amber-50/40 hover:shadow-[0_8px_24px_rgba(249,115,22,0.12)] transition-all duration-300 cursor-pointer min-h-[58px] sm:min-h-[64px] border-b border-b-[#E5E7EB] ${
+                    className={`group relative flex items-center gap-3 sm:gap-3.5 px-3 py-2 sm:py-2.5 rounded-2xl border border-transparent hover:border-[#D8232A]/30 hover:bg-neutral-50 hover:shadow-sm transition-all duration-300 cursor-pointer min-h-[58px] sm:min-h-[64px] border-b border-b-[#E5E7EB] ${
                       isLast ? "md:border-b-0" : ""
                     }`}
                   >
                     {/* Left edge accent indicator bar on hover */}
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 group-hover:h-3/4 bg-gradient-to-b from-[#EA580C] to-[#D91A5B] rounded-r-full transition-all duration-300" />
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 group-hover:h-3/4 bg-[#D8232A] rounded-r-full transition-all duration-300" />
 
                     {/* Icon Square Container */}
                     <div
-                      className={`w-10 h-10 sm:w-11 sm:h-11 ${item.bgColor} rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-xs`}
+                      className={`w-10 h-10 sm:w-11 sm:h-11 ${item.bgColor} rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xs`}
                     >
                       <IconComponent />
                     </div>
 
                     {/* Item Description Text */}
                     <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-neutral-800 group-hover:text-[#EA580C] text-[13.5px] sm:text-[14px] xl:text-[14.5px] leading-snug tracking-normal transition-colors duration-200">
+                      <p className="font-semibold text-neutral-800 group-hover:text-[#D8232A] text-[13.5px] sm:text-[14px] xl:text-[14.5px] leading-snug tracking-normal transition-colors duration-200">
                         {item.text}
                       </p>
                     </div>
@@ -473,23 +469,23 @@ const PrePublicitySection = () => {
                     key={index}
                     whileHover={{ y: -2, scale: 1.015 }}
                     transition={{ type: "spring", stiffness: 450, damping: 26 }}
-                    className={`group relative flex items-center gap-3 sm:gap-3.5 px-3 py-2 sm:py-2.5 rounded-2xl border border-transparent hover:border-[#F97316]/50 hover:bg-gradient-to-r hover:from-orange-50/90 hover:via-white hover:to-amber-50/40 hover:shadow-[0_8px_24px_rgba(249,115,22,0.12)] transition-all duration-300 cursor-pointer min-h-[58px] sm:min-h-[64px] border-b border-b-[#E5E7EB] ${
+                    className={`group relative flex items-center gap-3 sm:gap-3.5 px-3 py-2 sm:py-2.5 rounded-2xl border border-transparent hover:border-[#D8232A]/30 hover:bg-neutral-50 hover:shadow-sm transition-all duration-300 cursor-pointer min-h-[58px] sm:min-h-[64px] border-b border-b-[#E5E7EB] ${
                       isLast ? "md:border-b-0" : ""
                     }`}
                   >
                     {/* Left edge accent indicator bar on hover */}
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 group-hover:h-3/4 bg-gradient-to-b from-[#EA580C] to-[#D91A5B] rounded-r-full transition-all duration-300" />
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 group-hover:h-3/4 bg-[#D8232A] rounded-r-full transition-all duration-300" />
 
                     {/* Icon Square Container */}
                     <div
-                      className={`w-10 h-10 sm:w-11 sm:h-11 ${item.bgColor} rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-xs`}
+                      className={`w-10 h-10 sm:w-11 sm:h-11 ${item.bgColor} rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xs`}
                     >
                       <IconComponent />
                     </div>
 
                     {/* Item Description Text */}
                     <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-neutral-800 group-hover:text-[#EA580C] text-[13.5px] sm:text-[14px] xl:text-[14.5px] leading-snug tracking-normal transition-colors duration-200">
+                      <p className="font-semibold text-neutral-800 group-hover:text-[#D8232A] text-[13.5px] sm:text-[14px] xl:text-[14.5px] leading-snug tracking-normal transition-colors duration-200">
                         {item.text}
                       </p>
                     </div>
@@ -503,20 +499,20 @@ const PrePublicitySection = () => {
               <motion.div
                 whileHover={{ y: -2.5, scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 450, damping: 26 }}
-                className="group relative w-full md:w-auto flex md:inline-flex items-center gap-3 sm:gap-3.5 px-3 md:px-8 py-2 sm:py-2.5 rounded-2xl border border-transparent hover:border-[#F97316]/50 hover:bg-gradient-to-r hover:from-orange-50/90 hover:via-white hover:to-amber-50/40 hover:shadow-[0_8px_24px_rgba(249,115,22,0.12)] transition-all duration-300 cursor-pointer min-h-[58px] sm:min-h-[64px]"
+                className="group relative w-full md:w-auto flex md:inline-flex items-center gap-3 sm:gap-3.5 px-3 md:px-8 py-2 sm:py-2.5 rounded-2xl border border-transparent hover:border-[#D8232A]/30 hover:bg-neutral-50 hover:shadow-sm transition-all duration-300 cursor-pointer min-h-[58px] sm:min-h-[64px]"
               >
                 {/* Left edge accent indicator bar on hover */}
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 group-hover:h-3/4 bg-gradient-to-b from-[#EA580C] to-[#D91A5B] rounded-r-full transition-all duration-300" />
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 group-hover:h-3/4 bg-[#D8232A] rounded-r-full transition-all duration-300" />
 
                 {/* Icon Container */}
                 <div
-                  className={`w-10 h-10 sm:w-11 sm:h-11 ${centeredItem.bgColor} rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-xs`}
+                  className={`w-10 h-10 sm:w-11 sm:h-11 ${centeredItem.bgColor} rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xs`}
                 >
                   <EmailBlastIcon />
                 </div>
 
                 {/* Text */}
-                <p className="font-semibold text-neutral-800 group-hover:text-[#EA580C] text-[13.5px] sm:text-[14px] xl:text-[14.5px] leading-snug tracking-normal transition-colors duration-200">
+                <p className="font-semibold text-neutral-800 group-hover:text-[#D8232A] text-[13.5px] sm:text-[14px] xl:text-[14.5px] leading-snug tracking-normal transition-colors duration-200">
                   {centeredItem.text}
                 </p>
               </motion.div>

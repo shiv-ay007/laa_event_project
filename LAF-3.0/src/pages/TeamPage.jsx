@@ -241,7 +241,7 @@ export default function TeamPage({ isEmbedded = false }) {
           className="absolute top-0 left-0 right-0 h-[420px] opacity-[0.055] pointer-events-none"
           style={{
             background:
-              "linear-gradient(135deg, #FB7801 0%, #EC2656 25%, #930777 60%, #3C086E 100%)",
+              "transparent",
           }}
         />
         <div className="absolute left-[6%] top-0 bottom-0 w-px bg-gradient-to-b from-[#FB7801]/20 via-[#930777]/15 to-transparent" />
@@ -256,30 +256,23 @@ export default function TeamPage({ isEmbedded = false }) {
             <Link
               to="/"
               className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white transition-colors rounded-full px-4 py-2 shadow-md border border-white/20"
-              style={{ background: "linear-gradient(90deg, #FB7801 0%, #EC2656 60%, #930777 100%)" }}
+              style={{ background: "#D8232A" }}
             >
               <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
               <span>Back to Home</span>
             </Link>
 
             <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-neutral-500 uppercase">
-              <Link to="/" className="hover:text-[#EC2656] transition-colors">LAF 3.0</Link>
-              <ChevronRight className="w-3 h-3 text-[#930777]" />
+              <Link to="/" className="hover:text-[#D8232A] transition-colors">LAF 3.0</Link>
+              <ChevronRight className="w-3 h-3 text-[#D8232A]" />
               <span>TEAM</span>
             </div>
           </div>
         )}
 
         {/* Hero Header */}
-        <div className="mb-14 grid lg:grid-cols-12 gap-8 items-end rounded-3xl p-8 sm:p-10 border border-white/40 shadow-md relative overflow-hidden"
-          style={{ background: "linear-gradient(135deg, #fff9f0 0%, #fdf4ff 50%, #f5f0ff 100%)" }}
-        >
-          <div className="absolute top-0 right-0 w-72 h-72 opacity-20 rounded-full blur-3xl pointer-events-none"
-            style={{ background: "radial-gradient(circle, #EC2656 0%, #930777 60%, transparent 100%)" }} />
-          <div className="absolute bottom-0 left-0 w-56 h-56 opacity-15 rounded-full blur-3xl pointer-events-none"
-            style={{ background: "radial-gradient(circle, #FB7801 0%, #EC2656 60%, transparent 100%)" }} />
-          <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl"
-            style={{ background: "linear-gradient(90deg, #FB7801 0%, #EC2656 25%, #D8066B 50%, #930777 75%, #3C086E 100%)" }} />
+        <div className="mb-14 grid lg:grid-cols-12 gap-8 items-end rounded-3xl p-8 sm:p-10 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
 
           <div className="lg:col-span-8 relative z-10">
             <div className="flex flex-col items-start gap-1.5 mb-2">
@@ -298,7 +291,7 @@ export default function TeamPage({ isEmbedded = false }) {
 
           <div className="lg:col-span-4 flex lg:justify-end items-center relative z-10">
             <div className="p-4 rounded-2xl text-white border border-white/20 shadow-md w-full sm:w-auto min-w-[200px]"
-              style={{ background: "linear-gradient(135deg, #FB7801 0%, #EC2656 40%, #930777 70%, #3C086E 100%)" }}>
+              style={{ background: "#18181B" }}>
               <div className="flex items-center justify-between gap-4">
                 <span className="text-[10px] font-mono tracking-widest text-amber-200 uppercase">TOTAL TEAM</span>
                 <ShieldCheck className="w-4 h-4 text-amber-300" />
@@ -314,13 +307,8 @@ export default function TeamPage({ isEmbedded = false }) {
         </div>
 
         {/* 1. Festival Convenors Section */}
-        <div className="mb-14 rounded-3xl p-8 sm:p-10 border border-white/40 shadow-md relative overflow-hidden"
-          style={{ background: "linear-gradient(135deg, #fff9f0 0%, #fdf4ff 60%, #f5f0ff 100%)" }}
-        >
-          <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl"
-            style={{ background: "linear-gradient(90deg, #FB7801 0%, #EC2656 25%, #930777 75%, #3C086E 100%)" }} />
-          <div className="absolute top-0 right-0 w-60 h-60 opacity-15 rounded-full blur-3xl pointer-events-none"
-            style={{ background: "radial-gradient(circle, #EC2656 0%, #930777 70%, transparent 100%)" }} />
+        <div className="mb-14 rounded-3xl p-8 sm:p-10 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#930777]/15 pb-6 mb-8 gap-4">
             <div>
@@ -328,7 +316,7 @@ export default function TeamPage({ isEmbedded = false }) {
                 <Sparkles className="w-4 h-4 text-orange-500" />
                 <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse" />
                 <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
-                  style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                   01 · FESTIVAL LEADERSHIP
                 </span>
               </div>
@@ -338,7 +326,7 @@ export default function TeamPage({ isEmbedded = false }) {
             </div>
             
             <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full border border-white/40 shadow-sm self-start sm:self-auto text-white"
-              style={{ background: "linear-gradient(90deg, #FB7801, #EC2656, #930777)" }}>
+              style={{ background: "#D8232A" }}>
               LEADERSHIP (04)
             </span>
           </div>
@@ -368,10 +356,10 @@ export default function TeamPage({ isEmbedded = false }) {
                   </div>
                 </div>
                 <span className="text-[9.5px] font-mono tracking-widest font-semibold uppercase"
-                  style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                   LAF 3.0 · {c.badge}
                 </span>
-                <h3 className="font-serif text-lg font-bold text-neutral-900 group-hover:text-[#EC2656] transition-colors mt-1">
+                <h3 className="font-serif text-lg font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors mt-1">
                   {c.name}
                 </h3>
                 <p className="text-xs text-neutral-500 mt-0.5 font-medium">{c.role}</p>
@@ -382,18 +370,13 @@ export default function TeamPage({ isEmbedded = false }) {
 
         {/* 2. Core Committee Members Section */}
         <div className="mb-14">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-8 gap-4 rounded-3xl p-6 sm:p-8 border border-white/40 shadow-sm relative overflow-hidden"
-            style={{ background: "linear-gradient(135deg, #fff9f0 0%, #fdf4ff 60%, #f5f0ff 100%)" }}
-          >
-            <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl"
-              style={{ background: "linear-gradient(90deg, #FB7801 0%, #EC2656 25%, #930777 75%, #3C086E 100%)" }} />
-            <div className="absolute bottom-0 left-0 right-0 h-px opacity-30"
-              style={{ background: "linear-gradient(90deg, #930777, transparent)" }} />
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-8 gap-4 rounded-3xl p-6 sm:p-8 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
             <div>
               <div className="flex items-center gap-2 mb-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse" />
                 <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
-                  style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                   02 · CORE COMMITTEE MEMBERS
                 </span>
               </div>
@@ -402,7 +385,7 @@ export default function TeamPage({ isEmbedded = false }) {
               </h2>
             </div>
             <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full border border-white/40 shadow-sm self-start sm:self-auto text-white"
-              style={{ background: "linear-gradient(90deg, #FB7801, #EC2656, #930777)" }}>
+              style={{ background: "#D8232A" }}>
               MEMBERS (07)
             </span>
           </div>
@@ -415,7 +398,7 @@ export default function TeamPage({ isEmbedded = false }) {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.3) }}
-                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-[#fff9f0] hover:to-[#fdf4ff] border border-[#E6DFD3] hover:border-transparent shadow-2xs hover:shadow-xl transition-all duration-300 cursor-pointer text-center relative overflow-hidden"
+                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-neutral-50 border border-[#E6DFD3] hover:border-transparent shadow-2xs hover:shadow-xl transition-all duration-300 cursor-pointer text-center relative overflow-hidden"
               >
                 <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 transition-all duration-300 shadow-md mb-4"
                   style={{ background: "linear-gradient(135deg, #E6DFD3, #D4AF37 50%, transparent)" }}
@@ -432,10 +415,10 @@ export default function TeamPage({ isEmbedded = false }) {
 
                 <div className="w-full">
                   <span className="text-[9.5px] font-mono tracking-widest font-bold uppercase block truncate"
-                    style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                    style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                     LAF 3.0 · #{index + 1 < 10 ? `0${index + 1}` : index + 1}
                   </span>
-                  <h3 className="font-serif text-base font-bold text-neutral-900 group-hover:text-[#EC2656] transition-colors mt-1 leading-snug">
+                  <h3 className="font-serif text-base font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors mt-1 leading-snug">
                     {member.name}
                   </h3>
                   <p className="text-xs text-neutral-500 font-medium mt-1">
@@ -449,17 +432,14 @@ export default function TeamPage({ isEmbedded = false }) {
 
         {/* 3. Curatorial Directors Section */}
         <div className="mb-14">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-8 gap-4 rounded-3xl p-6 sm:p-8 border border-white/40 shadow-sm relative overflow-hidden"
-            style={{ background: "linear-gradient(135deg, #fff9f0 0%, #fdf4ff 60%, #f5f0ff 100%)" }}
-          >
-            <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl"
-              style={{ background: "linear-gradient(90deg, #FB7801 0%, #EC2656 25%, #930777 75%, #3C086E 100%)" }} />
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-8 gap-4 rounded-3xl p-6 sm:p-8 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <Sparkles className="w-4 h-4 text-orange-500" />
                 <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse" />
                 <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
-                  style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                   03 · CURATORIAL DIRECTORS
                 </span>
               </div>
@@ -469,7 +449,7 @@ export default function TeamPage({ isEmbedded = false }) {
             </div>
             
              <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full border border-white/40 shadow-sm self-start sm:self-auto text-white"
-               style={{ background: "linear-gradient(90deg, #FB7801, #EC2656, #930777)" }}>
+               style={{ background: "#D8232A" }}>
                DIRECTORS (03)
             </span>
           </div>
@@ -497,10 +477,10 @@ export default function TeamPage({ isEmbedded = false }) {
                   </div>
                 </div>
                 <span className="text-[9.5px] font-mono tracking-widest font-semibold uppercase"
-                  style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                   LAF 3.0 · {d.badge}
                 </span>
-                <h3 className="font-serif text-lg font-bold text-neutral-900 group-hover:text-[#EC2656] transition-colors mt-1">
+                <h3 className="font-serif text-lg font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors mt-1">
                   {d.name}
                 </h3>
                 <p className="text-xs text-neutral-500 mt-0.5 font-medium">{d.role}</p>
@@ -511,16 +491,13 @@ export default function TeamPage({ isEmbedded = false }) {
 
         {/* 4. Student Volunteers / Coordinators Section (ab upar) */}
         <div className="mb-14">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-8 gap-4 rounded-3xl p-6 sm:p-8 border border-white/40 shadow-sm relative overflow-hidden"
-            style={{ background: "linear-gradient(135deg, #fff9f0 0%, #fdf4ff 60%, #f5f0ff 100%)" }}
-          >
-            <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl"
-              style={{ background: "linear-gradient(90deg, #FB7801 0%, #EC2656 25%, #930777 75%, #3C086E 100%)" }} />
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-8 gap-4 rounded-3xl p-6 sm:p-8 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
             <div>
               <div className="flex items-center gap-2 mb-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse" />
                 <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
-                  style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                   04 · VOLUNTEERS & COORDINATORS
                 </span>
               </div>
@@ -529,7 +506,7 @@ export default function TeamPage({ isEmbedded = false }) {
               </h2>
             </div>
             <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full border border-white/40 shadow-sm self-start sm:self-auto text-white"
-              style={{ background: "linear-gradient(90deg, #FB7801, #EC2656, #930777)" }}>
+              style={{ background: "#D8232A" }}>
               MEMBERS ({studentVolunteers.length})
             </span>
           </div>
@@ -542,7 +519,7 @@ export default function TeamPage({ isEmbedded = false }) {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.3) }}
-                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-[#fff9f0] hover:to-[#fdf4ff] border border-[#E6DFD3] hover:border-transparent shadow-2xs hover:shadow-xl transition-all duration-300 cursor-pointer text-center relative overflow-hidden"
+                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-neutral-50 border border-[#E6DFD3] hover:border-transparent shadow-2xs hover:shadow-xl transition-all duration-300 cursor-pointer text-center relative overflow-hidden"
               >
                 <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 transition-all duration-300 shadow-md mb-4"
                   style={{ background: "linear-gradient(135deg, #E6DFD3, #D4AF37 50%, transparent)" }}
@@ -559,10 +536,10 @@ export default function TeamPage({ isEmbedded = false }) {
 
                 <div className="w-full">
                   <span className="text-[9.5px] font-mono tracking-widest font-bold uppercase block truncate"
-                    style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                    style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                     LAF 3.0 · #{index + 1 < 10 ? `0${index + 1}` : index + 1}
                   </span>
-                  <h3 className="font-serif text-base font-bold text-neutral-900 group-hover:text-[#EC2656] transition-colors mt-1 leading-snug">
+                  <h3 className="font-serif text-base font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors mt-1 leading-snug">
                     {member.name}
                   </h3>
                   <p className="text-xs text-neutral-500 font-medium mt-1">
@@ -576,16 +553,13 @@ export default function TeamPage({ isEmbedded = false }) {
 
         {/* 5. Joint-Coordinators Section (ab neeche) */}
         <div>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-8 gap-4 rounded-3xl p-6 sm:p-8 border border-white/40 shadow-sm relative overflow-hidden"
-            style={{ background: "linear-gradient(135deg, #fff9f0 0%, #fdf4ff 60%, #f5f0ff 100%)" }}
-          >
-            <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl"
-              style={{ background: "linear-gradient(90deg, #FB7801 0%, #EC2656 25%, #930777 75%, #3C086E 100%)" }} />
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-8 gap-4 rounded-3xl p-6 sm:p-8 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
             <div>
               <div className="flex items-center gap-2 mb-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse" />
                 <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
-                  style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                   05 · JOINT-COORDINATORS
                 </span>
               </div>
@@ -594,7 +568,7 @@ export default function TeamPage({ isEmbedded = false }) {
               </h2>
             </div>
             <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full border border-white/40 shadow-sm self-start sm:self-auto text-white"
-              style={{ background: "linear-gradient(90deg, #FB7801, #EC2656, #930777)" }}>
+              style={{ background: "#D8232A" }}>
               MEMBERS ({advisorsMentorsMembers.length})
             </span>
           </div>
@@ -607,7 +581,7 @@ export default function TeamPage({ isEmbedded = false }) {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.3) }}
-                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-[#fff9f0] hover:to-[#fdf4ff] border border-[#E6DFD3] hover:border-transparent shadow-2xs hover:shadow-xl transition-all duration-300 cursor-pointer text-center relative overflow-hidden"
+                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-neutral-50 border border-[#E6DFD3] hover:border-transparent shadow-2xs hover:shadow-xl transition-all duration-300 cursor-pointer text-center relative overflow-hidden"
               >
                 <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 transition-all duration-300 shadow-md mb-4"
                   style={{ background: "linear-gradient(135deg, #E6DFD3, #D4AF37 50%, transparent)" }}
@@ -624,10 +598,10 @@ export default function TeamPage({ isEmbedded = false }) {
 
                 <div className="w-full">
                   <span className="text-[9.5px] font-mono tracking-widest font-bold uppercase block truncate"
-                    style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                    style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                     LAF 3.0 · #{index + 1 < 10 ? `0${index + 1}` : index + 1}
                   </span>
-                  <h3 className="font-serif text-base font-bold text-neutral-900 group-hover:text-[#EC2656] transition-colors mt-1 leading-snug">
+                  <h3 className="font-serif text-base font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors mt-1 leading-snug">
                     {member.name}
                   </h3>
                   <p className="text-xs text-neutral-500 font-medium mt-1">

@@ -29,24 +29,26 @@ import highlight3 from "../../assets/images/card3.png";
 import highlight4 from "../../assets/images/card4.png";
 
 // --- NEW ABOUT SECTION IMAGES ---
-// LAF Logo
 import lafLogo from "../../assets/images/logo.webp"; 
-// Right side monument illustration matching brochure (Image 2)
 import aboutRightImage from "../../assets/images/monument-clear.png"; 
 
 const AboutSection = () => {
+  // Unified architectural branding (Brand Red #D8232A)
+  const BRAND_ACCENT = "#D8232A"; 
+  const UNIFIED_COLOR = "#D8232A"; 
+
   const sectors = [
-    { id: "pilgrimage", number: "01", name: "PILGRIMAGE", img: pilgrimageImg, color: "#F97316", gradient: "linear-gradient(90deg, #F97316 0%, #EA580C 100%)" },
-    { id: "transportation", number: "02", name: "TRANSPORTATION", img: transportationImg, color: "#7C3AED", gradient: "linear-gradient(90deg, #7C3AED 0%, #5B1A83 100%)" },
-    { id: "economy", number: "03", name: "ECONOMY", img: economyImg, color: "#E11D48", gradient: "linear-gradient(90deg, #E11D48 0%, #BE123C 100%)" },
-    { id: "sports", number: "04", name: "SPORTS", img: sportsImg, color: "#2563EB", gradient: "linear-gradient(90deg, #2563EB 0%, #1D4ED8 100%)" },
-    { id: "tourism", number: "05", name: "TOURISM", img: tourismImg, color: "#E11D48", gradient: "linear-gradient(90deg, #E11D48 0%, #BE123C 100%)" },
-    { id: "cuisine", number: "06", name: "CUISINE", img: cuisineImg, color: "#F59E0B", gradient: "linear-gradient(90deg, #F59E0B 0%, #D97706 100%)" },
-    { id: "invest-up", number: "07", name: "INVEST UP", img: investUpImg, color: "#6D28D9", gradient: "linear-gradient(90deg, #6D28D9 0%, #4C1D95 100%)" },
-    { id: "odop", number: "08", name: "ONE DISTRICT ONE PRODUCT", img: odopImg, color: "#C026D3", gradient: "linear-gradient(90deg, #C026D3 0%, #A21CAF 100%)" },
-    { id: "craft", number: "09", name: "CRAFT", img: craftImg, color: "#0284C7", gradient: "linear-gradient(90deg, #0284C7 0%, #0369A1 100%)" },
-    { id: "education", number: "10", name: "EDUCATION", img: educationImg, color: "#7C3AED", gradient: "linear-gradient(90deg, #7C3AED 0%, #5B1A83 100%)" },
-    { id: "culture", number: "11", name: "CULTURE", img: cultureImg, color: "#F97316", gradient: "linear-gradient(90deg, #F97316 0%, #EA580C 100%)" },
+    { id: "pilgrimage", number: "01", name: "PILGRIMAGE", img: pilgrimageImg, color: UNIFIED_COLOR, gradient: BRAND_ACCENT },
+    { id: "transportation", number: "02", name: "TRANSPORTATION", img: transportationImg, color: UNIFIED_COLOR, gradient: BRAND_ACCENT },
+    { id: "economy", number: "03", name: "ECONOMY", img: economyImg, color: UNIFIED_COLOR, gradient: BRAND_ACCENT },
+    { id: "sports", number: "04", name: "SPORTS", img: sportsImg, color: UNIFIED_COLOR, gradient: BRAND_ACCENT },
+    { id: "tourism", number: "05", name: "TOURISM", img: tourismImg, color: UNIFIED_COLOR, gradient: BRAND_ACCENT },
+    { id: "cuisine", number: "06", name: "CUISINE", img: cuisineImg, color: UNIFIED_COLOR, gradient: BRAND_ACCENT },
+    { id: "invest-up", number: "07", name: "INVEST UP", img: investUpImg, color: UNIFIED_COLOR, gradient: BRAND_ACCENT },
+    { id: "odop", number: "08", name: "ONE DISTRICT ONE PRODUCT", img: odopImg, color: UNIFIED_COLOR, gradient: BRAND_ACCENT },
+    { id: "craft", number: "09", name: "CRAFT", img: craftImg, color: UNIFIED_COLOR, gradient: BRAND_ACCENT },
+    { id: "education", number: "10", name: "EDUCATION", img: educationImg, color: UNIFIED_COLOR, gradient: BRAND_ACCENT },
+    { id: "culture", number: "11", name: "CULTURE", img: cultureImg, color: UNIFIED_COLOR, gradient: BRAND_ACCENT },
   ];
 
   const highlights = [
@@ -64,25 +66,40 @@ const AboutSection = () => {
       transition={{ duration: 0.4 }}
       className="group relative flex flex-col items-center justify-center text-center flex-shrink-0"
     >
-      <div className="relative z-30 px-3.5 py-0.5 rounded-full text-white font-mono text-[11px] font-bold shadow-sm -mb-3 transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: sector.color }}>
+      {/* Number Pill */}
+      <div 
+        className="relative z-30 px-3.5 py-0.5 rounded-full text-white font-mono text-[11px] font-bold shadow-sm -mb-3 transition-transform duration-300 group-hover:scale-110" 
+        style={{ background: sector.gradient }}
+      >
         {sector.number}
       </div>
+      
+      {/* Circle with Arc */}
       <div className="relative z-10 flex items-center justify-center">
-        <div className="absolute -top-1.5 w-[108%] h-[68%] rounded-t-full border-t-[3.5px] border-l-[3.5px] border-r-[3.5px] pointer-events-none transition-transform duration-300 group-hover:scale-105" style={{ borderColor: sector.color }} />
+        {/* Arc border using solid color to prevent SVG gradient complexity */}
+        <div 
+          className="absolute -top-1.5 w-[108%] h-[68%] rounded-t-full border-t-[3.5px] border-l-[3.5px] border-r-[3.5px] pointer-events-none transition-transform duration-300 group-hover:scale-105" 
+          style={{ borderColor: sector.color }} 
+        />
         <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-white flex items-center justify-center p-3.5 sm:p-4 shadow-[0_8px_25px_rgba(0,0,0,0.06)] border border-neutral-100 transition-all duration-300 group-hover:shadow-[0_12px_30px_rgba(0,0,0,0.14)] group-hover:scale-105">
           <img src={sector.img} alt={sector.name} className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain transition-transform duration-300 group-hover:scale-110 select-none" loading="lazy" />
         </div>
       </div>
-      <div className="relative z-20 -mt-4 w-32 sm:w-36 lg:w-40 min-h-[34px] sm:min-h-[38px] py-1.5 px-2 rounded-xl text-center shadow-md flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:scale-105" style={{ background: sector.gradient || sector.color }}>
+
+      {/* Bottom Button */}
+      <div 
+        className="relative z-20 -mt-4 w-32 sm:w-36 lg:w-40 min-h-[34px] sm:min-h-[38px] py-1.5 px-2 rounded-xl text-center shadow-md flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:scale-105" 
+        style={{ background: sector.gradient }}
+      >
         <span className="block text-white text-[10px] sm:text-[11px] font-bold tracking-wider uppercase leading-snug select-none">{sector.name}</span>
       </div>
     </motion.div>
   );
 
   const renderArrow = () => (
-    <div className="flex items-center text-[#C27827] px-1 sm:px-2 lg:px-3 select-none">
-      <div className="w-6 sm:w-10 lg:w-14 border-t-2 border-dashed border-[#C27827]/70" />
-      <svg className="w-3.5 h-3.5 text-[#C27827] -ml-1 fill-current" viewBox="0 0 10 10">
+    <div className="flex items-center text-[#D8232A] px-1 sm:px-2 lg:px-3 select-none">
+      <div className="w-6 sm:w-10 lg:w-14 border-t-2 border-dashed border-[#D8232A]/50" />
+      <svg className="w-3.5 h-3.5 text-[#D8232A] -ml-1 fill-current" viewBox="0 0 10 10">
         <path d="M 1 2 L 7 5 L 1 8 z" />
       </svg>
     </div>
@@ -98,15 +115,10 @@ const AboutSection = () => {
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
         
-        {/* ========================================================= */}
-        {/* ABOUT UTTAR PRADESH SECTION (Red Heading + Right Image) */}
-        {/* ========================================================= */}
+        {/* ABOUT UTTAR PRADESH SECTION */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
           
-          {/* Left Side: Text Content */}
           <div className="lg:col-span-7 flex flex-col pt-4">
-            
-            {/* Red Headings (Exactly like Image 3) */}
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -121,7 +133,6 @@ const AboutSection = () => {
               </h2>
             </motion.div>
 
-            {/* Paragraphs (Justified alignment like Image 3) */}
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -129,19 +140,12 @@ const AboutSection = () => {
               transition={{ delay: 0.1 }}
               className="space-y-4 text-justify text-neutral-600 text-[15px] sm:text-base leading-[1.85]"
             >
-              <p>
-                The economic trend has consequently developed into a magnet for real estate. The state's lifestyle and amenities are improving because of these advancements. Being the state's capital, Lucknow has enormous potential. As a result of increases in per capita income, productivity, favourable market prices, and large credit flow in the city, demand for branded consumer goods and property has recently surged.
-              </p>
-              <p>
-                Being a hub of heritage as well as a fast emerging economy, it attracts an influx of people from all surrounding cities, districts and villages. Lucknow offers a distinctive business philosophy that combines the city's rich cultural heritage with contemporary business methods.
-              </p>
-              <p>
-                With the highest density of young population, UP is the richest state when we talk about the demographic resources.
-              </p>
+              <p>The economic trend has consequently developed into a magnet for real estate. The state's lifestyle and amenities are improving because of these advancements. Being the state's capital, Lucknow has enormous potential. As a result of increases in per capita income, productivity, favourable market prices, and large credit flow in the city, demand for branded consumer goods and property has recently surged.</p>
+              <p>Being a hub of heritage as well as a fast emerging economy, it attracts an influx of people from all surrounding cities, districts and villages. Lucknow offers a distinctive business philosophy that combines the city's rich cultural heritage with contemporary business methods.</p>
+              <p>With the highest density of young population, UP is the richest state when we talk about the demographic resources.</p>
             </motion.div>
           </div>
 
-          {/* Right Side: Big Image with LAF Logo Overlay */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -149,34 +153,17 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5 relative flex justify-center lg:justify-end mt-8 lg:mt-0"
           >
-            {/* Main Architecture Image */}
             <div className="relative w-full max-w-[500px]">
-              <img 
-                src={aboutRightImage} 
-                alt="Architecture Heritage" 
-                className="w-full h-auto object-contain relative z-10"
-              />
-              
-              {/* LAF Logo Overlay (Top Right) - Path Fixed to logo.webp */}
+              <img src={aboutRightImage} alt="Architecture Heritage" className="w-full h-auto object-contain relative z-10" />
               <div className="absolute -top-10 -right-4 sm:-top-12 sm:-right-8 z-20">
-                <img 
-                  src={lafLogo} 
-                  alt="LAF 3.0" 
-                  className="w-32 sm:w-40 h-auto object-contain"
-                />
+                <img src={lafLogo} alt="LAF 3.0" className="w-32 sm:w-40 h-auto object-contain" />
               </div>
-
-              {/* Optional: Red Circle Background element from image */}
               <div className="absolute top-1/4 -right-10 w-[120%] h-[80%] bg-[#E32636]/5 rounded-full blur-3xl -z-10" />
             </div>
           </motion.div>
         </div>
 
-        {/* ========================================================= */}
-        {/* YOUR EXISTING CODE (Highlights & Growth Sectors) CONTINUES */}
-        {/* ========================================================= */}
-        
-        {/* STAGGERED GRID WRAPPER (Highlights) */}
+        {/* HIGHLIGHTS */}
         <div className="relative mt-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative z-10">
             {highlights.map((item, index) => {

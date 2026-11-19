@@ -195,13 +195,12 @@ const Navbar = () => {
       {/* ================= 2. THIN STICKY NAVBAR ================= */}
       <nav
         className={`sticky top-0 w-full z-[100] select-none font-sans transition-all duration-300 ${
-          isScrolled ? 'pointer-events-none py-0.5 sm:py-1' : 'border-b border-white/10 shadow-md'
+          isScrolled ? 'pointer-events-none py-0.5 sm:py-1' : 'border-b border-neutral-800/80 shadow-md'
         }`}
         style={
           !isScrolled
             ? {
-                background:
-                  'linear-gradient(90deg, #FB7801 0%, #EC2656 20%, #D8066B 40%, #930777 65%, #4E0C7B 85%, #3C086E 100%)'
+                background: '#141416'
               }
             : undefined
         }
@@ -213,24 +212,18 @@ const Navbar = () => {
         >
           <div
             className={`transition-all duration-300 relative ${
-              isScrolled ? 'border border-white/20 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.25)]' : ''
+              isScrolled ? 'border border-neutral-700/60 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.35)]' : ''
             }`}
             style={
               isScrolled
                 ? {
-                    background:
-                      'linear-gradient(90deg, #FB7801 0%, #EC2656 20%, #D8066B 40%, #930777 65%, #4E0C7B 85%, #3C086E 100%)'
+                    background: '#141416'
                   }
                 : undefined
             }
           >
-            {/* Top Sheen */}
-            <div className={`h-[1px] w-full bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-80 ${isScrolled ? 'rounded-t-2xl' : ''}`} />
-
-            {/* Decorative Stripe */}
-            <div className={`absolute top-0 left-0 w-8 h-full pointer-events-none overflow-hidden z-0 ${isScrolled ? 'rounded-l-2xl' : ''}`}>
-              <div className="w-4 h-[160%] bg-gradient-to-b from-[#FDE047] via-[#F97316] to-[#DB2777] [transform:skewX(-26deg)] -ml-2 -mt-2 opacity-95 shadow-sm" />
-            </div>
+            {/* Top Minimal Brand Accent Line */}
+            <div className={`h-[1.5px] w-full bg-gradient-to-r from-transparent via-[#D8232A] to-transparent opacity-90 ${isScrolled ? 'rounded-t-2xl' : ''}`} />
 
             <div className={`transition-all duration-300 relative z-10 ${isScrolled ? 'px-3 sm:px-6 lg:px-8' : ''}`}>
               <div className="flex items-center justify-between transition-all duration-300 h-10 sm:h-11">
@@ -266,12 +259,12 @@ const Navbar = () => {
                             title="Home"
                             aria-label="Home"
                             className={`relative transition-all duration-200 p-1.5 rounded-full flex items-center justify-center cursor-pointer group ${
-                              isHomeActive ? 'text-[#FA7400] bg-white shadow-md' : 'text-white bg-white/15 hover:bg-white/25 shadow-xs'
+                              isHomeActive ? 'text-white bg-[#D8232A] shadow-sm' : 'text-white/85 bg-white/10 hover:bg-white/20 shadow-xs'
                             }`}
                           >
                             <Home className="w-3.5 h-3.5 transition-transform duration-200 group-hover:scale-110" />
                           </NavLink>
-                          <div className="w-[1px] h-3.5 bg-white/30 mx-1" />
+                          <div className="w-[1px] h-3.5 bg-white/20 mx-1" />
                         </React.Fragment>
                       );
                     }
@@ -297,7 +290,7 @@ const Navbar = () => {
                             }}
                             className={({ isActive }) =>
                               `relative text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.05em] transition-all duration-200 px-2.5 lg:px-3 py-1 rounded-full flex items-center gap-1 cursor-pointer ${
-                                isActive || isTeamActive ? 'text-[#55197D] bg-white shadow-sm' : 'text-white/95 hover:text-white hover:bg-white/15'
+                                isActive || isTeamActive ? 'text-white bg-[#D8232A] shadow-xs' : 'text-white/85 hover:text-white hover:bg-white/10'
                               }`
                             }
                           >
@@ -314,8 +307,9 @@ const Navbar = () => {
                               handleNavClick(e, item.href);
                             }}
                             className={`relative text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.05em] transition-all duration-200 px-2.5 lg:px-3 py-1 rounded-full flex items-center gap-1 cursor-pointer ${
-                              isHashActive || isTeamActive ? 'text-[#55197D] bg-white shadow-sm' : 'text-white/95 hover:text-white hover:bg-white/15'
-                            }`}
+                              isHashActive || isTeamActive ? 'text-white bg-[#D8232A] shadow-xs' : 'text-white/85 hover:text-white hover:bg-white/10'
+                            }`
+                            }
                           >
                             <span>{item.name}</span>
                             {item.dropdown && (
@@ -335,13 +329,13 @@ const Navbar = () => {
                                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                                 className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-72 z-[110]"
                               >
-                                <div className="bg-[#2D0A4E]/98 border border-white/20 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.4)] p-2 backdrop-blur-2xl overflow-hidden relative group/card">
-                                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
-                                  <div className="px-3 pt-2 pb-2 flex items-center justify-between text-[10px] font-mono tracking-[0.18em] uppercase text-amber-300 border-b border-white/10 mb-1.5">
+                                <div className="bg-[#18181B] border border-neutral-700/80 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.5)] p-2 backdrop-blur-2xl overflow-hidden relative group/card">
+                                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-[#D8232A]/60 to-transparent pointer-events-none" />
+                                  <div className="px-3 pt-2 pb-2 flex items-center justify-between text-[10px] font-mono tracking-[0.18em] uppercase text-neutral-300 border-b border-neutral-800 mb-1.5">
                                     <span className="flex items-center gap-1.5">
-                                      <span className="text-amber-400">✦</span> Team Directories
+                                      <span className="text-[#D8232A]">✦</span> Team Directories
                                     </span>
-                                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
+                                    <span className="h-1.5 w-1.5 rounded-full bg-[#D8232A] animate-pulse" />
                                   </div>
                                   <div className="space-y-1">
                                     {item.dropdown.map((subItem) => {
@@ -353,17 +347,17 @@ const Navbar = () => {
                                           onClick={() => setIsTeamOpen(false)}
                                           className={({ isActive }) =>
                                             `group/item flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 border ${
-                                              isActive ? 'bg-white/20 border-white/30 text-white font-semibold' : 'hover:bg-white/10 border-transparent hover:border-white/15 text-white/90'
+                                              isActive ? 'bg-[#D8232A] border-red-500/40 text-white font-semibold' : 'hover:bg-white/10 border-transparent hover:border-white/10 text-white/90'
                                             }`
                                           }
                                         >
-                                          <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-amber-300 group-hover/item:text-amber-200 group-hover/item:border-white/20 group-hover/item:bg-white/15 transition-all duration-300 shrink-0">
+                                          <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-white group-hover/item:text-white group-hover/item:border-white/20 group-hover/item:bg-white/15 transition-all duration-300 shrink-0">
                                             <IconComponent className="w-4 h-4" />
                                           </div>
                                           <div className="flex-1 min-w-0">
-                                            <div className="text-[12.5px] font-medium text-white group-hover/item:text-amber-200 transition-colors flex items-center justify-between">
+                                            <div className="text-[12.5px] font-medium text-white transition-colors flex items-center justify-between">
                                               <span>{subItem.name}</span>
-                                              <ChevronRight className="w-3.5 h-3.5 text-amber-300 opacity-0 -translate-x-1.5 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" />
+                                              <ChevronRight className="w-3.5 h-3.5 text-white/60 opacity-0 -translate-x-1.5 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" />
                                             </div>
                                             <div className="text-[10.5px] text-white/60 group-hover/item:text-white/80 transition-colors truncate">
                                               {subItem.desc}
@@ -385,14 +379,13 @@ const Navbar = () => {
 
                 {/* Registration Button (Desktop) */}
                 <div className="hidden md:flex items-center pl-2">
-                  <div className="w-[1px] h-3.5 bg-white/30 mr-2.5" />
+                  <div className="w-[1px] h-3.5 bg-white/20 mr-2.5" />
                   <Link
                     to="/register"
-                    className="group relative inline-flex items-center justify-center px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-neutral-950 bg-gradient-to-r from-[#FFB800] via-[#FFAE00] to-[#FF9E00] rounded-full shadow-[0_2px_15px_rgba(255,184,0,0.35)] hover:shadow-[0_4px_25px_rgba(255,184,0,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 border border-amber-200/50 overflow-hidden"
+                    className="group relative inline-flex items-center justify-center px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-white bg-[#D8232A] hover:bg-[#b91c1c] rounded-full shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-300 border border-red-400/40 overflow-hidden"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     <span className="relative flex items-center gap-1.5">
-                      <Sparkles className="w-3 h-3 fill-neutral-950 text-neutral-950" />
+                      <Sparkles className="w-3 h-3 fill-white text-white" />
                       <span>REGISTRATION</span>
                     </span>
                   </Link>
@@ -408,7 +401,7 @@ const Navbar = () => {
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="md:hidden bg-[#350A5A] border-t border-white/10 overflow-hidden rounded-b-2xl"
+                  className="md:hidden bg-[#18181B] border-t border-neutral-800 overflow-hidden rounded-b-2xl"
                 >
                   <div className="px-4 pt-3 pb-5 space-y-2 max-h-[75vh] overflow-y-auto">
                     <div className="p-2.5 rounded-xl bg-white/10 border border-white/15 text-xs text-white/90 flex items-center justify-between mb-2">
@@ -522,9 +515,9 @@ const Navbar = () => {
                       <Link
                         to="/register"
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="w-full flex items-center justify-center gap-2 py-2.5 text-xs uppercase font-bold tracking-wider text-neutral-950 bg-gradient-to-r from-[#FFB800] via-[#FFAE00] to-[#FF9E00] rounded-xl shadow-lg active:scale-[0.98] transition-transform"
+                        className="w-full flex items-center justify-center gap-2 py-2.5 text-xs uppercase font-bold tracking-wider text-white bg-[#D8232A] hover:bg-[#b91c1c] rounded-xl shadow-md active:scale-[0.98] transition-transform"
                       >
-                        <Sparkles className="w-4 h-4 fill-neutral-950 text-neutral-950" />
+                        <Sparkles className="w-4 h-4 fill-white text-white" />
                         <span>LAF Registration</span>
                       </Link>
                     </div>

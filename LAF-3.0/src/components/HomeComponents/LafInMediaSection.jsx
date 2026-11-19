@@ -292,23 +292,19 @@ export default function LafInMediaSection() {
   return (
     <section
       id="laf-in-media"
-      className="relative overflow-hidden bg-[#FAF8F5] pt-8 sm:pt-12 lg:pt-14 pb-10 sm:pb-14 lg:pb-16 select-none font-sans border-t border-[#FED7AA]/60"
+      className="relative overflow-hidden bg-[#FAF8F5] pt-8 sm:pt-12 lg:pt-14 pb-10 sm:pb-14 lg:pb-16 select-none font-sans border-t border-[#E8E2D8]"
     >
       {/* Signature Architectural Grid Background */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.25]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(234,88,12,0.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(234,88,12,0.035) 1px, transparent 1px)
+            linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px)
           `,
           backgroundSize: "44px 44px",
         }}
       />
-
-      {/* Ambient background glow accents */}
-      <div className="pointer-events-none absolute -top-40 -left-40 w-96 h-96 bg-gradient-to-tr from-orange-400/10 via-pink-400/5 to-transparent rounded-full blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-40 -right-40 w-96 h-96 bg-gradient-to-bl from-purple-400/10 via-orange-400/5 to-transparent rounded-full blur-3xl" />
 
       {/* Main Container Aligned to Navbar Width */}
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
@@ -343,17 +339,17 @@ export default function LafInMediaSection() {
           </div>
         </div>
 
-        {/* ================= SLIDER CONTROL TOOLBAR (WEBOMINDAPPS STYLE) ================= */}
+        {/* ================= SLIDER CONTROL TOOLBAR ================= */}
         <div className="mb-6 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2.5 text-xs font-mono font-bold tracking-wider text-neutral-600 bg-white/80 border border-neutral-300/80 px-3.5 py-1.5 rounded-full shadow-2xs">
-            <MoveHorizontal className="w-4 h-4 text-[#EA580C] animate-pulse" />
+            <MoveHorizontal className="w-4 h-4 text-[#D8232A] animate-pulse" />
             <span>SWIPE OR DRAG TO EXPLORE 10 EDITIONS</span>
           </div>
 
           <div className="flex items-center gap-3">
             {/* Active Counter Badge */}
             <div className="font-mono text-xs sm:text-sm font-bold tracking-widest text-neutral-700 bg-white border border-neutral-300 px-3 py-1.5 rounded-xl shadow-2xs">
-              <span className="text-[#EA580C]">{newsArticles[currentIndex].num}</span>
+              <span className="text-[#D8232A]">{newsArticles[currentIndex].num}</span>
               <span className="text-neutral-400 mx-1">/</span>
               <span>10</span>
             </div>
@@ -365,7 +361,7 @@ export default function LafInMediaSection() {
               className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all cursor-pointer shadow-2xs ${
                 currentIndex === 0
                   ? "border-neutral-200 text-neutral-300 cursor-not-allowed bg-white/50"
-                  : "border-neutral-300 text-neutral-800 bg-white hover:bg-[#EA580C] hover:text-white hover:border-[#EA580C] active:scale-95"
+                  : "border-neutral-300 text-neutral-800 bg-white hover:bg-[#D8232A] hover:text-white hover:border-[#D8232A] active:scale-95"
               }`}
               aria-label="Previous Slide"
             >
@@ -379,7 +375,7 @@ export default function LafInMediaSection() {
               className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all cursor-pointer shadow-2xs ${
                 currentIndex === newsArticles.length - 1
                   ? "border-neutral-200 text-neutral-300 cursor-not-allowed bg-white/50"
-                  : "border-neutral-300 text-neutral-800 bg-white hover:bg-[#EA580C] hover:text-white hover:border-[#EA580C] active:scale-95"
+                  : "border-neutral-300 text-neutral-800 bg-white hover:bg-[#D8232A] hover:text-white hover:border-[#D8232A] active:scale-95"
               }`}
               aria-label="Next Slide"
             >
@@ -405,7 +401,7 @@ export default function LafInMediaSection() {
                 key={article.id}
                 data-news-slide
                 onClick={() => !isDraggingRef.current && setSelectedIndex(index)}
-                className="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] h-[340px] sm:h-[400px] lg:h-[450px] shrink-0 snap-start rounded-3xl p-3 sm:p-5 bg-white border border-[#E6DFD3] shadow-[0_12px_40px_rgba(0,0,0,0.05)] hover:border-[#EA580C] hover:shadow-[0_16px_45px_rgba(234,88,12,0.15)] transition-all duration-300 relative overflow-hidden flex items-center justify-center cursor-pointer group"
+                className="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] h-[340px] sm:h-[400px] lg:h-[450px] shrink-0 snap-start rounded-3xl p-3 sm:p-5 bg-white border border-[#E7E2DA] shadow-[0_12px_40px_rgba(0,0,0,0.05)] hover:border-[#D8232A] hover:shadow-[0_16px_45px_rgba(216,35,42,0.12)] transition-all duration-300 relative overflow-hidden flex items-center justify-center cursor-pointer group"
               >
                 <div className="w-full h-full rounded-2xl overflow-hidden bg-white flex items-center justify-center p-2 sm:p-4">
                   <img
@@ -421,7 +417,7 @@ export default function LafInMediaSection() {
                   className="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center pointer-events-none"
                   style={{ backdropFilter: "blur(0.8px)", WebkitBackdropFilter: "blur(0.8px)" }}
                 >
-                  <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-white text-[#EA580C] shadow-xl flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300 border border-white/90">
+                  <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-white text-[#D8232A] shadow-xl flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300 border border-white/90">
                     <Eye className="w-5 h-5 stroke-[2.2]" />
                   </div>
                 </div>
@@ -438,7 +434,7 @@ export default function LafInMediaSection() {
               onClick={() => scrollToSlide(idx)}
               className={`h-2 transition-all duration-300 rounded-full cursor-pointer ${
                 currentIndex === idx
-                  ? "w-8 bg-[#EA580C]"
+                  ? "w-8 bg-[#D8232A]"
                   : "w-2 bg-neutral-300 hover:bg-neutral-400"
               }`}
               aria-label={`Go to slide ${idx + 1}`}
@@ -446,41 +442,42 @@ export default function LafInMediaSection() {
           ))}
         </div>
 
-        {/* ================= STATISTICS BANNER (KEPT AS REQUESTED FROM IMAGE 4) ================= */}
+        {/* ================= STATISTICS BANNER (MINIMAL ARCHITECTURAL PALETTE) ================= */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-12 sm:mt-16 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 bg-gradient-to-r from-[#C2B1D0] via-[#E8B5B3] via-50%-[#F9A669] to-[#F89D43] shadow-[0_8px_30px_rgba(234,88,12,0.12)] border border-white/40"
+          className="mt-12 sm:mt-16 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-[#E8E2D8] relative overflow-hidden"
         >
+          <div className="absolute top-0 left-0 right-0 h-1 bg-[#D8232A]" />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
             {/* Stat 1: 200+ influencers captured the event */}
             <div className="text-left">
-              <div className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E1B1B] tracking-tight leading-none">
+              <div className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#18181B] tracking-tight leading-none">
                 <AnimatedCounter end={200} suffix="+" />
               </div>
-              <div className="text-sm sm:text-base lg:text-lg font-medium text-[#1E1B1B] leading-snug mt-2.5 max-w-[220px]">
+              <div className="text-sm sm:text-base lg:text-lg font-medium text-neutral-600 leading-snug mt-2.5 max-w-[220px]">
                 influencers<br className="hidden sm:block" /> captured the event
               </div>
             </div>
 
             {/* Stat 2: 100+ Media House covered the event */}
             <div className="text-left">
-              <div className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E1B1B] tracking-tight leading-none">
+              <div className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#18181B] tracking-tight leading-none">
                 <AnimatedCounter end={100} suffix="+" />
               </div>
-              <div className="text-sm sm:text-base lg:text-lg font-medium text-[#1E1B1B] leading-snug mt-2.5 max-w-[220px]">
+              <div className="text-sm sm:text-base lg:text-lg font-medium text-neutral-600 leading-snug mt-2.5 max-w-[220px]">
                 Media House<br className="hidden sm:block" /> covered the event
               </div>
             </div>
 
             {/* Stat 3: 50+ radio spots daily for a month */}
             <div className="text-left">
-              <div className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E1B1B] tracking-tight leading-none">
+              <div className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#18181B] tracking-tight leading-none">
                 <AnimatedCounter end={50} suffix="+" />
               </div>
-              <div className="text-sm sm:text-base lg:text-lg font-medium text-[#1E1B1B] leading-snug mt-2.5 max-w-[240px]">
+              <div className="text-sm sm:text-base lg:text-lg font-medium text-neutral-600 leading-snug mt-2.5 max-w-[240px]">
                 radio spots<br className="hidden sm:block" /> daily for a month
               </div>
             </div>
@@ -508,7 +505,7 @@ export default function LafInMediaSection() {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedIndex(null)}
-                className="absolute -top-12 right-0 p-2.5 rounded-full bg-white hover:bg-[#EA580C] hover:text-white border border-[#E6DFD3] text-neutral-800 shadow-md transition-all focus:outline-none cursor-pointer"
+                className="absolute -top-12 right-0 p-2.5 rounded-full bg-white hover:bg-[#D8232A] hover:text-white border border-[#E6DFD3] text-neutral-800 shadow-md transition-all focus:outline-none cursor-pointer"
                 aria-label="Close Lightbox"
               >
                 <X className="w-5 h-5" />
@@ -519,7 +516,7 @@ export default function LafInMediaSection() {
                 onClick={() =>
                   setSelectedIndex((prev) => (prev > 0 ? prev - 1 : newsArticles.length - 1))
                 }
-                className="absolute left-2 sm:-left-14 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white hover:bg-[#EA580C] hover:text-white border border-[#E6DFD3] text-neutral-800 shadow-lg transition-all focus:outline-none z-10 cursor-pointer"
+                className="absolute left-2 sm:-left-14 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white hover:bg-[#D8232A] hover:text-white border border-[#E6DFD3] text-neutral-800 shadow-lg transition-all focus:outline-none z-10 cursor-pointer"
                 aria-label="Previous Clipping"
               >
                 <ChevronLeft className="w-6 h-6" />
@@ -530,7 +527,7 @@ export default function LafInMediaSection() {
                 onClick={() =>
                   setSelectedIndex((prev) => (prev < newsArticles.length - 1 ? prev + 1 : 0))
                 }
-                className="absolute right-2 sm:-right-14 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white hover:bg-[#EA580C] hover:text-white border border-[#E6DFD3] text-neutral-800 shadow-lg transition-all focus:outline-none z-10 cursor-pointer"
+                className="absolute right-2 sm:-right-14 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white hover:bg-[#D8232A] hover:text-white border border-[#E6DFD3] text-neutral-800 shadow-lg transition-all focus:outline-none z-10 cursor-pointer"
                 aria-label="Next Clipping"
               >
                 <ChevronRight className="w-6 h-6" />
@@ -547,7 +544,7 @@ export default function LafInMediaSection() {
 
               {/* Caption and Meta */}
               <div className="w-full mt-4 flex items-center justify-between text-neutral-700 text-xs font-mono px-2">
-                <span className="font-bold uppercase tracking-wider bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-[#E6DFD3] shadow-xs text-[#EA580C]">
+                <span className="font-bold uppercase tracking-wider bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-[#E6DFD3] shadow-xs text-[#D8232A]">
                   {newsArticles[selectedIndex].publication} • {newsArticles[selectedIndex].edition}
                 </span>
                 <span className="bg-white/90 backdrop-blur-md border border-[#E6DFD3] px-3.5 py-1.5 rounded-xl text-neutral-800 font-bold shadow-xs">

@@ -116,72 +116,72 @@ const opportunities = [
   {
     id: 1,
     icon: IconNetwork,
-    color: '#EA580C',
-    accentGrad: 'from-[#EA580C] to-[#F97316]',
+    color: '#D8232A',
+    accentGrad: 'from-[#D8232A] to-[#D8232A]',
     text: 'Connect to architects, institutional buyers, experts, interior designers and other professionals',
   },
   {
     id: 2,
     icon: IconCube,
-    color: '#7C2D92',
-    accentGrad: 'from-[#7C2D92] to-[#A855F7]',
+    color: '#D8232A',
+    accentGrad: 'from-[#D8232A] to-[#D8232A]',
     text: 'Showcase your competitive advantage in product design, features, and cost benefits',
   },
   {
     id: 3,
     icon: IconHandshake,
-    color: '#D91A5B',
-    accentGrad: 'from-[#D91A5B] to-[#F43F5E]',
+    color: '#D8232A',
+    accentGrad: 'from-[#D8232A] to-[#D8232A]',
     text: 'Connect with your end users directly to make them experience the touch',
   },
   {
     id: 4,
     icon: IconRocket,
-    color: '#F59E0B',
-    accentGrad: 'from-[#F59E0B] to-[#EA580C]',
+    color: '#D8232A',
+    accentGrad: 'from-[#D8232A] to-[#D8232A]',
     text: 'Opportunity to present your innovations and new range of products',
   },
   {
     id: 5,
     icon: IconDistributorsTree,
-    color: '#6B21A8',
-    accentGrad: 'from-[#6B21A8] to-[#9333EA]',
+    color: '#D8232A',
+    accentGrad: 'from-[#D8232A] to-[#D8232A]',
     text: 'Simultaneously reach out to potential agents, distributors and wholesalers',
   },
   // ROW 2
   {
     id: 6,
     icon: IconTrending,
-    color: '#E11D48',
-    accentGrad: 'from-[#E11D48] to-[#F43F5E]',
+    color: '#D8232A',
+    accentGrad: 'from-[#D8232A] to-[#D8232A]',
     text: 'Consolidate trade relationships and opportunity to book on-spot orders',
   },
   {
     id: 7,
     icon: IconDecisionMakers,
-    color: '#EA580C',
-    accentGrad: 'from-[#EA580C] to-[#F97316]',
+    color: '#D8232A',
+    accentGrad: 'from-[#D8232A] to-[#D8232A]',
     text: 'Meet key buying decision makers from different segments of prospective buyers',
   },
   {
     id: 8,
     icon: IconDatabase,
-    color: '#6366F1',
-    accentGrad: 'from-[#6366F1] to-[#818CF8]',
+    color: '#D8232A',
+    accentGrad: 'from-[#D8232A] to-[#D8232A]',
     text: 'Build a database of potential buyers',
   },
   {
     id: 9,
     icon: IconFeedback,
-    color: '#D91A5B',
-    accentGrad: 'from-[#D91A5B] to-[#EC4899]',
+    color: '#D8232A',
+    accentGrad: 'from-[#D8232A] to-[#D8232A]',
     text: 'Get instant feedback on products, prices and innovations',
   },
   {
     id: 10,
     icon: IconMarketKnowledge,
-    color: '#D97706',
-    accentGrad: 'from-[#D97706] to-[#F59E0B]',
+    color: '#D8232A',
+    accentGrad: 'from-[#D8232A] to-[#D8232A]',
     text: 'Gain first-hand knowledge of market segments, trends, consumer preferences and retailers needs',
   },
 ];
@@ -229,7 +229,7 @@ const OpportunitiesSection = () => {
                     className="group relative"
                   >
                     {/* The Slanted Card Box */}
-                    <div className="h-full rounded-2xl bg-white border border-[#FED7AA]/70 group-hover:border-[#F97316]/60 shadow-[0_4px_18px_rgba(234,88,12,0.05)] group-hover:shadow-[0_10px_26px_rgba(234,88,12,0.14)] group-hover:-translate-y-1.5 transition-all duration-300 p-4 sm:p-4.5 flex flex-col items-center justify-between text-center min-h-[175px] sm:min-h-[185px] xl:min-h-[195px] transform sm:-skew-x-[6deg]">
+                    <div className="h-full rounded-2xl bg-white border border-[#E8E2D8] group-hover:border-[#D8232A]/50 shadow-xs group-hover:shadow-md group-hover:-translate-y-1.5 transition-all duration-300 p-4 sm:p-4.5 flex flex-col items-center justify-between text-center min-h-[175px] sm:min-h-[185px] xl:min-h-[195px] transform sm:-skew-x-[6deg]">
                       {/* Un-skew Container for Inner Content (ensures text & icon stay 100% straight and crisp) */}
                       <div className="w-full flex-1 flex flex-col items-center justify-between transform sm:skew-x-[6deg]">
                         {/* Top Icon */}

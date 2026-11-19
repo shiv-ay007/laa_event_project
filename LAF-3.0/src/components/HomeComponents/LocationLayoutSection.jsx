@@ -10,24 +10,20 @@ const LocationLayoutSection = () => {
       className="relative overflow-hidden bg-[#FAF8F5] text-[#171717] pt-12 sm:pt-16 pb-14 sm:pb-18 border-t border-[#E8E2D8]"
     >
       {/* =====================================================
-          ARCHITECTURAL BACKGROUND (MATCHING AGENDA SECTION THEME)
+          ARCHITECTURAL BACKGROUND
       ====================================================== */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Subtle Blueprint Graph Grid matching Agenda Section */}
+        {/* Subtle Blueprint Graph Grid */}
         <div
-          className="absolute inset-0 opacity-[0.32]"
+          className="absolute inset-0 opacity-[0.25]"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(217, 119, 6, 0.08) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(217, 119, 6, 0.08) 1px, transparent 1px)
+              linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px)
             `,
             backgroundSize: "36px 36px",
           }}
         />
-
-        {/* Ambient Warm Atmosphere Glows */}
-        <div className="absolute -left-32 top-20 w-[420px] h-[420px] rounded-full bg-gradient-to-br from-orange-200/20 to-amber-200/10 blur-3xl pointer-events-none" />
-        <div className="absolute -right-32 bottom-20 w-[460px] h-[460px] rounded-full bg-gradient-to-tl from-purple-200/20 to-pink-200/10 blur-3xl pointer-events-none" />
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
@@ -62,8 +58,8 @@ const LocationLayoutSection = () => {
           {/* Top Label */}
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#EA580C]" />
-              <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#EA580C] font-mono">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#D8232A]" />
+              <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#D8232A] font-mono">
                 FESTIVAL MASTER PLAN
               </span>
             </div>
@@ -74,13 +70,13 @@ const LocationLayoutSection = () => {
           </div>
 
           {/* Image Frame Card */}
-          <div className="relative overflow-hidden border border-[#E8E2D8] bg-white p-3 sm:p-5 lg:p-6 rounded-[28px] shadow-[0_4px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_35px_rgba(234,88,12,0.07)] transition-all duration-300">
-            {/* Subtle Gradient Accent Marks on Corners */}
-            <span className="absolute left-0 top-0 h-6 w-1 bg-gradient-to-b from-[#EA580C] to-transparent rounded-tl-[28px]" />
-            <span className="absolute left-0 top-0 h-1 w-6 bg-gradient-to-r from-[#EA580C] to-transparent rounded-tl-[28px]" />
+          <div className="relative overflow-hidden border border-[#E8E2D8] bg-white p-3 sm:p-5 lg:p-6 rounded-[28px] shadow-[0_4px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_35px_rgba(216,35,42,0.1)] hover:border-[#D8232A]/50 transition-all duration-300">
+            {/* Subtle Minimal Accent Marks on Corners */}
+            <span className="absolute left-0 top-0 h-6 w-1 bg-[#D8232A] rounded-tl-[28px]" />
+            <span className="absolute left-0 top-0 h-1 w-6 bg-[#D8232A] rounded-tl-[28px]" />
 
-            <span className="absolute right-0 top-0 h-6 w-1 bg-gradient-to-b from-[#D91A5B] to-transparent rounded-tr-[28px]" />
-            <span className="absolute right-0 top-0 h-1 w-6 bg-gradient-to-l from-[#D91A5B] to-transparent rounded-tr-[28px]" />
+            <span className="absolute right-0 top-0 h-6 w-1 bg-[#D8232A] rounded-tr-[28px]" />
+            <span className="absolute right-0 top-0 h-1 w-6 bg-[#D8232A] rounded-tr-[28px]" />
 
             {/* Master Plan Container — Full Unclipped Map */}
             <div className="group relative overflow-hidden bg-white rounded-2xl w-full flex items-center justify-center border border-[#F0EBE1] p-2 sm:p-4">
@@ -94,7 +90,7 @@ const LocationLayoutSection = () => {
         </motion.div>
 
         {/* =====================================================
-            DOWNLOAD BUTTONS (MATCHING AGENDA SECTION THEME)
+            DOWNLOAD BUTTONS (MINIMAL ARCHITECTURAL THEME)
         ====================================================== */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -127,18 +123,18 @@ const LocationLayoutSection = () => {
               key={btn.title}
               href={btn.href}
               download={btn.isDownload}
-              className="group flex items-center justify-between bg-white border border-[#E8E2D8] hover:border-[#EA580C] px-6 py-4 text-[#171717] transition-all duration-300 hover:shadow-lg rounded-2xl relative overflow-hidden"
+              className="group flex items-center justify-between bg-white border border-[#E8E2D8] hover:border-[#D8232A] px-6 py-4 text-[#171717] transition-all duration-300 hover:shadow-lg rounded-2xl relative overflow-hidden"
             >
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#EA580C] to-[#D91A5B] group-hover:w-2 transition-all duration-300" />
+              <div className="absolute top-0 left-0 w-1.5 h-full bg-[#D8232A] group-hover:w-2 transition-all duration-300" />
               <div>
-                <span className="block text-[9px] font-bold tracking-[0.25em] text-[#EA580C] uppercase font-mono">
+                <span className="block text-[9px] font-bold tracking-[0.25em] text-[#D8232A] uppercase font-mono">
                   {btn.tag}
                 </span>
-                <span className="mt-1 block text-xs sm:text-sm font-semibold tracking-wide text-neutral-800 group-hover:text-[#EA580C] transition-colors">
+                <span className="mt-1 block text-xs sm:text-sm font-semibold tracking-wide text-neutral-800 group-hover:text-[#D8232A] transition-colors">
                   {btn.title}
                 </span>
               </div>
-              <div className="w-9 h-9 rounded-xl bg-orange-50 border border-orange-200 group-hover:border-[#EA580C] group-hover:bg-[#EA580C] group-hover:text-white flex items-center justify-center transition-all duration-300 text-[#EA580C] ml-3 shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-neutral-100 border border-neutral-200 group-hover:border-[#D8232A] group-hover:bg-[#D8232A] group-hover:text-white flex items-center justify-center transition-all duration-300 text-[#D8232A] ml-3 shrink-0">
                 <Download size={16} />
               </div>
             </a>
