@@ -33,7 +33,7 @@ export const corporateCommitteeMembers = [
   { id: "corp-6", name: "Mr. Sandeep Singhal", role: "Corporate Committee Member", image: corp6Img },
 ];
 
-export function CorporateCommitteePage({ isEmbedded = false }) {
+export function CorporateCommitteePage({ isEmbedded = true }) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export function CorporateCommitteePage({ isEmbedded = false }) {
       }
     >
       {/* Background Architectural Watermark & Lines */}
-      <div className={`${isEmbedded ? "absolute" : "fixed"} inset-0 pointer-events-none z-0 overflow-hidden`}>
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.18]"
           style={{

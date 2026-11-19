@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import AboutHero from "../components/about/AboutHero";
+import AboutContent from "../components/about/AboutContent";
 
 const About = () => {
   useEffect(() => {
@@ -8,8 +9,8 @@ const About = () => {
 
   return (
     <div className="w-full bg-[#FAF7F2] text-[#171717] font-sans selection:bg-[#D4AF37]/30 relative">
-      {/* Background Architectural Watermark Grid matching the rest of the website */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {/* Background Architectural Watermark Grid */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.22]"
           style={{
@@ -26,6 +27,7 @@ const About = () => {
 
       <div className="relative z-10 overflow-hidden">
         <AboutHero />
+        <AboutContent />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import HeroSection from '../components/HomeComponents/HeroSection';
-import AboutSection from '../components/HomeComponents/AboutSection';
+import AboutSection from '../components/HomeComponents/AboutSection'; 
 import HighlightsSection from '../components/HomeComponents/HighlightsSection';
 import AgendaSection from '../components/HomeComponents/AgendaSection';
 import PrePublicitySection from '../components/HomeComponents/PrePublicitySection';
@@ -29,7 +29,7 @@ const Home = () => {
       <VisitorsProfileSection/>
       <OpportunitiesSection/>
       <TeamPage isEmbedded={true} />
-      <CorporateCommitteePage/>
+      <CorporateCommitteePage isEmbedded={true} />
       <SupportingOrganizationsSection/>
       <LastEventGlanceSection/>
       <AboutLAASection/>

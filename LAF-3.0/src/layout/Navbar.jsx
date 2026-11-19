@@ -121,7 +121,7 @@ const Navbar = () => {
     <>
       {/* ================= 1. TOP BRANDING HEADER ================= */}
       <header className="w-full select-none font-sans">
-        <div className="bg-architect-grid bg-[#FAF7F2] relative border-b border-[#D4AF37]/20 py-2 md:py-2.5 shadow-sm overflow-hidden">
+        <div className="bg-architect-grid bg-[#FAF7F2] relative border-b border-[#D4AF37]/20 py-1.5 md:py-2 shadow-xs overflow-hidden">
           {/* Architectural Background */}
           <div className="absolute inset-0 pointer-events-none opacity-[0.035] flex items-center justify-between px-10">
             <svg className="w-64 h-64 text-[#9A7B38]" viewBox="0 0 100 100" fill="currentColor">
@@ -135,17 +135,16 @@ const Navbar = () => {
           </div>
 
           <div className="w-full max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-12 relative z-10 flex flex-row items-center justify-between gap-2 sm:gap-4">
-            {/* LAA Logo */}
+            {/* LAA Logo - Background removed, only logo icon */}
             <div className="flex items-center justify-center flex-1 min-w-0">
               <Link
                 to="/"
-                className="group relative bg-white/90 hover:bg-white rounded-lg md:rounded-xl px-1.5 py-1 sm:px-4 sm:py-2 border border-[#E6DFD3] hover:border-[#D4AF37]/50 shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-md transition-all duration-300 flex items-center justify-center w-full"
+                className="group flex items-center justify-center transition-transform duration-300 hover:scale-105"
               >
-                <div className="absolute top-0.5 left-1 sm:top-1 sm:left-2 text-[6px] sm:text-[8px] text-[#D4AF37]/60 font-mono">✦ LAA</div>
                 <img
                   src={laaLogo}
                   alt="Lucknow Architects Association"
-                  className="h-7 sm:h-11 md:h-12 lg:h-14 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="h-7 sm:h-10 md:h-11 lg:h-12 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </Link>
             </div>
@@ -157,17 +156,17 @@ const Navbar = () => {
               <div className="w-[1px] h-5 bg-gradient-to-b from-transparent via-[#D4AF37]/40 to-transparent" />
             </div>
 
-            {/* Main LAF Logo */}
-            <div className="flex items-center justify-center flex-1 min-w-0">
+            {/* Main LAF Logo - Highlighted */}
+            <div className="flex items-center justify-center flex-[1.2] min-w-0">
               <Link
                 to="/"
-                className="group relative bg-white/90 hover:bg-white rounded-lg md:rounded-xl px-1.5 py-1 sm:px-4 sm:py-2 border border-[#E6DFD3] hover:border-[#D4AF37]/50 shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-md transition-all duration-300 flex items-center justify-center w-full"
+                className="group relative bg-white hover:bg-white rounded-xl md:rounded-2xl px-3 py-1.5 sm:px-6 sm:py-2 border-2 border-[#D4AF37]/60 hover:border-[#D4AF37] shadow-[0_4px_20px_rgba(212,175,55,0.22)] hover:shadow-[0_6px_25px_rgba(212,175,55,0.32)] transition-all duration-300 flex items-center justify-center max-w-[340px] w-full transform hover:scale-[1.02]"
               >
-                <div className="absolute top-0.5 left-1 sm:top-1 sm:left-2 text-[6px] sm:text-[8px] text-[#D4AF37]/60 font-mono">✦ LAF</div>
+                <div className="absolute top-0.5 left-2 sm:top-1 sm:left-3 text-[7px] sm:text-[8px] text-[#D4AF37] font-bold font-mono tracking-wider">✦ LAF 3.0</div>
                 <img
                   src={LAFLogo}
                   alt="Lucknow Architecture Festival 3.0"
-                  className="h-7 sm:h-11 md:h-12 lg:h-14 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="h-8 sm:h-11 md:h-13 lg:h-15 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
                 />
               </Link>
             </div>
@@ -179,20 +178,14 @@ const Navbar = () => {
               <div className="w-[1px] h-5 bg-gradient-to-b from-transparent via-[#D4AF37]/40 to-transparent" />
             </div>
 
-            {/* Task Logo */}
+            {/* Task Logo - Background removed, only logo icon */}
             <div className="flex items-center justify-center flex-1 min-w-0">
-              <div className="group relative bg-white/90 hover:bg-white rounded-lg md:rounded-xl px-1.5 py-1 sm:px-4 sm:py-2 border border-[#E6DFD3] hover:border-[#D4AF37]/50 shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-md transition-all duration-300 flex items-center justify-center w-full">
-                <div className="hidden xl:flex flex-col text-right border-r border-neutral-200 pr-3 py-0.5">
-                  <span className="text-[10px] uppercase tracking-wider font-bold text-neutral-800">Task Marketing</span>
-                  <span className="text-[9px] tracking-widest text-[#B38F38] font-medium uppercase">Solutions</span>
-                  <span className="text-[8px] text-neutral-400 mt-0.5">Event Partner</span>
-                </div>
+              <div className="group flex items-center justify-center transition-transform duration-300 hover:scale-105">
                 <img
                   src={taskLogo}
                   alt="Task Marketing Solutions"
-                  className="h-6 sm:h-10 md:h-11 lg:h-13 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="h-6 sm:h-9 md:h-10 lg:h-11 w-auto max-w-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute top-0.5 right-1 sm:top-1 sm:right-2 text-[6px] sm:text-[8px] text-[#D4AF37]/60 font-mono">TMS ✦</div>
               </div>
             </div>
           </div>
@@ -202,7 +195,7 @@ const Navbar = () => {
       {/* ================= 2. THIN STICKY NAVBAR ================= */}
       <nav
         className={`sticky top-0 w-full z-[100] select-none font-sans transition-all duration-300 ${
-          isScrolled ? 'pointer-events-none py-1 sm:py-1.5' : 'border-b border-white/10 shadow-md'
+          isScrolled ? 'pointer-events-none py-0.5 sm:py-1' : 'border-b border-white/10 shadow-md'
         }`}
         style={
           !isScrolled
@@ -240,7 +233,7 @@ const Navbar = () => {
             </div>
 
             <div className={`transition-all duration-300 relative z-10 ${isScrolled ? 'px-3 sm:px-6 lg:px-8' : ''}`}>
-              <div className="flex items-center justify-between transition-all duration-300 h-12 sm:h-[52px]">
+              <div className="flex items-center justify-between transition-all duration-300 h-10 sm:h-11">
                 
                 {/* Mobile Brand */}
                 <div className="md:hidden flex items-center gap-2">
@@ -254,14 +247,14 @@ const Navbar = () => {
                 <button
                   type="button"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="md:hidden p-2 rounded-xl text-white bg-white/10 border border-white/20 hover:bg-white/20 focus:outline-none transition-all"
+                  className="md:hidden p-1.5 rounded-xl text-white bg-white/10 border border-white/20 hover:bg-white/20 focus:outline-none transition-all"
                   aria-label="Toggle Navigation"
                 >
-                  {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                  {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
                 </button>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center justify-center flex-1 gap-1 lg:gap-3">
+                <div className="hidden md:flex items-center justify-center flex-1 gap-1 lg:gap-2">
                   {navLinks.map((item) => {
                     if (item.isHome) {
                       const isHomeActive = location.pathname === '/' && !location.hash;
@@ -272,13 +265,13 @@ const Navbar = () => {
                             onClick={(e) => handleNavClick(e, '/')}
                             title="Home"
                             aria-label="Home"
-                            className={`relative transition-all duration-200 p-2 rounded-full flex items-center justify-center cursor-pointer group ${
+                            className={`relative transition-all duration-200 p-1.5 rounded-full flex items-center justify-center cursor-pointer group ${
                               isHomeActive ? 'text-[#FA7400] bg-white shadow-md' : 'text-white bg-white/15 hover:bg-white/25 shadow-xs'
                             }`}
                           >
-                            <Home className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" />
+                            <Home className="w-3.5 h-3.5 transition-transform duration-200 group-hover:scale-110" />
                           </NavLink>
-                          <div className="w-[1px] h-4 bg-white/30 mx-1" />
+                          <div className="w-[1px] h-3.5 bg-white/30 mx-1" />
                         </React.Fragment>
                       );
                     }
@@ -291,7 +284,7 @@ const Navbar = () => {
                       <div
                         key={item.name}
                         ref={item.dropdown ? teamMenuRef : null}
-                        className="relative group py-2 flex items-center"
+                        className="relative group py-1 flex items-center"
                         onMouseEnter={() => { if (item.dropdown) setIsTeamOpen(true); }}
                         onMouseLeave={() => { if (item.dropdown) setIsTeamOpen(false); }}
                       >
@@ -303,14 +296,14 @@ const Navbar = () => {
                               if (item.dropdown) setIsTeamOpen(false);
                             }}
                             className={({ isActive }) =>
-                              `relative text-[12px] lg:text-[13px] font-bold uppercase tracking-[0.06em] transition-all duration-200 px-3.5 py-1.5 rounded-full flex items-center gap-1.5 cursor-pointer ${
+                              `relative text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.05em] transition-all duration-200 px-2.5 lg:px-3 py-1 rounded-full flex items-center gap-1 cursor-pointer ${
                                 isActive || isTeamActive ? 'text-[#55197D] bg-white shadow-sm' : 'text-white/95 hover:text-white hover:bg-white/15'
                               }`
                             }
                           >
                             <span>{item.name}</span>
                             {item.dropdown && (
-                              <ChevronDown className={`w-3.5 h-3.5 opacity-80 group-hover:opacity-100 transition-transform duration-300 ${isTeamOpen ? 'rotate-180' : ''}`} />
+                              <ChevronDown className={`w-3 h-3 opacity-80 group-hover:opacity-100 transition-transform duration-300 ${isTeamOpen ? 'rotate-180' : ''}`} />
                             )}
                           </NavLink>
                         ) : (
@@ -320,13 +313,13 @@ const Navbar = () => {
                               if (item.dropdown) setIsTeamOpen((prev) => !prev);
                               handleNavClick(e, item.href);
                             }}
-                            className={`relative text-[12px] lg:text-[13px] font-bold uppercase tracking-[0.06em] transition-all duration-200 px-3.5 py-1.5 rounded-full flex items-center gap-1.5 cursor-pointer ${
+                            className={`relative text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.05em] transition-all duration-200 px-2.5 lg:px-3 py-1 rounded-full flex items-center gap-1 cursor-pointer ${
                               isHashActive || isTeamActive ? 'text-[#55197D] bg-white shadow-sm' : 'text-white/95 hover:text-white hover:bg-white/15'
                             }`}
                           >
                             <span>{item.name}</span>
                             {item.dropdown && (
-                              <ChevronDown className={`w-3.5 h-3.5 opacity-80 group-hover:opacity-100 transition-transform duration-300 ${isTeamOpen ? 'rotate-180' : ''}`} />
+                              <ChevronDown className={`w-3 h-3 opacity-80 group-hover:opacity-100 transition-transform duration-300 ${isTeamOpen ? 'rotate-180' : ''}`} />
                             )}
                           </a>
                         )}
@@ -392,14 +385,14 @@ const Navbar = () => {
 
                 {/* Registration Button (Desktop) */}
                 <div className="hidden md:flex items-center pl-2">
-                  <div className="w-[1px] h-4 bg-white/30 mr-3" />
+                  <div className="w-[1px] h-3.5 bg-white/30 mr-2.5" />
                   <Link
                     to="/register"
-                    className="group relative inline-flex items-center justify-center px-5 py-1.5 text-xs font-bold uppercase tracking-wider text-neutral-950 bg-gradient-to-r from-[#FFB800] via-[#FFAE00] to-[#FF9E00] rounded-full shadow-[0_2px_15px_rgba(255,184,0,0.35)] hover:shadow-[0_4px_25px_rgba(255,184,0,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 border border-amber-200/50 overflow-hidden"
+                    className="group relative inline-flex items-center justify-center px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-neutral-950 bg-gradient-to-r from-[#FFB800] via-[#FFAE00] to-[#FF9E00] rounded-full shadow-[0_2px_15px_rgba(255,184,0,0.35)] hover:shadow-[0_4px_25px_rgba(255,184,0,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 border border-amber-200/50 overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                    <span className="relative flex items-center gap-2">
-                      <Sparkles className="w-3.5 h-3.5 fill-neutral-950 text-neutral-950" />
+                    <span className="relative flex items-center gap-1.5">
+                      <Sparkles className="w-3 h-3 fill-neutral-950 text-neutral-950" />
                       <span>REGISTRATION</span>
                     </span>
                   </Link>
