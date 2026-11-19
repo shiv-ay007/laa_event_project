@@ -112,11 +112,11 @@ const GetInTouchSection = () => {
             className="lg:col-span-7 flex flex-col items-start gap-1.5"
           >
             <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-              Get In
+              Get In  Touch
             </h2>
-            <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            {/* <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
               Touch
-            </h2>
+            </h2> */}
           </motion.div>
 
           <motion.div

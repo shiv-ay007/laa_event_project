@@ -249,11 +249,11 @@ export default function LastEventGlanceSection() {
             className="flex flex-col items-start gap-1.5"
           >
             <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-              Last Event
+              Last Event At a Glance
             </h2>
-            <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            {/* <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
               At a Glance
-            </h2>
+            </h2> */}
           </motion.div>
         </div>
 

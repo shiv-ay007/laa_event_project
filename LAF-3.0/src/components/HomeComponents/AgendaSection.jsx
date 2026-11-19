@@ -64,7 +64,7 @@ const AgendaSection = () => {
   return (
     <section
       id="agenda"
-      className="relative overflow-hidden bg-[#FAF8F5] text-[#171717] pt-12 sm:pt-16 pb-6 sm:pb-8"
+      className="relative overflow-hidden bg-[#FAF8F5] text-[#171717] pt-5 sm:pt-7 pb-6 sm:pb-8"
     >
       {/* ARCHITECTURAL BLUEPRINT GRID BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none">
@@ -92,11 +92,11 @@ const AgendaSection = () => {
             className="flex flex-col items-start gap-1.5"
           >
             <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-              Festival Agenda
+              Festival Agenda LAF 3.0
             </h2>
-            <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            {/* <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
               LAF 3.0
-            </h2>
+            </h2> */}
           </motion.div>
 
           <motion.div

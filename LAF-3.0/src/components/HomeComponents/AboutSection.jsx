@@ -30,7 +30,7 @@ import highlight4 from "../../assets/images/card4.png";
 
 // --- NEW ABOUT SECTION IMAGES ---
 import lafLogo from "../../assets/images/logo.webp"; 
-import aboutRightImage from "../../assets/images/monument-clear.png"; 
+import aboutRightImage from "../../assets/images/download (1).png"; 
 
 const AboutSection = () => {
   // Unified architectural branding (Brand Red #D8232A)
@@ -126,10 +126,7 @@ const AboutSection = () => {
               className="mb-8 flex flex-col items-start gap-1.5"
             >
               <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-                About
-              </h2>
-              <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-                Uttar Pradesh
+                About Uttar Pradesh
               </h2>
             </motion.div>
 
@@ -196,20 +193,21 @@ const AboutSection = () => {
         <section className="relative mt-24 lg:mt-32">
           <div className="relative z-10 max-w-[1400px] mx-auto">
             
+            {/* 🚀 FIX: Changed items-start to items-center and added text-center */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col items-start gap-1.5 mb-12 sm:mb-14 lg:mb-16"
+              className="flex flex-col items-center text-center gap-1.5 mb-12 sm:mb-14 lg:mb-16"
             >
               <h3 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-                Growth Sectors
+                Growth Sectors Dimensions of UP
               </h3>
-              <h3 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+              {/* <h3 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
                 Dimensions of UP
-              </h3>
-              <p className="max-w-2xl mt-3 text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
+              </h3> */}
+              <p className="max-w-2xl mt-3 text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal text-center">
                 From heritage and pilgrimage to transportation, tourism and emerging economic corridors — Uttar Pradesh is shaping a new architectural and urban future.
               </p>
             </motion.div>

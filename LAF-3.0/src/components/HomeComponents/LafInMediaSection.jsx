@@ -63,7 +63,7 @@ function AnimatedCounter({ end, duration = 2000, suffix = "+" }) {
   );
 }
 
-// 10 News Articles Data with Webomindapps style pastel background themes
+// 10 News Articles Data 
 const newsArticles = [
   {
     id: 1,
@@ -74,7 +74,7 @@ const newsArticles = [
     headline: "ऑटोमेशन प्लान से अब घर बन रहे स्मार्ट",
     tag: "Smart Architecture & 5G",
     quote: "हाई स्पीड फाइबर इंटरनेट और 5G तकनीक के आने के बाद घरों के निर्माण के समय ही स्मार्ट डिजाइन का बढ़ने लगा उपयोग। इकाना स्टेडियम में आयोजित कार्यक्रम में देश के प्रमुख वास्तुविदों ने आधुनिक शहर निर्माण पर साझा किए विचार।",
-    bgColor: "#FFF1F4", // Soft Blush Pink
+    bgColor: "#FFF1F4",
     accentColor: "#E11D48",
   },
   {
@@ -86,7 +86,7 @@ const newsArticles = [
     headline: "LAF 2.0 Official Press Conference & Media Launch",
     tag: "National Media Meet",
     quote: "Lucknow Architects Association leadership and conveners addressing accredited national print, electronic, and digital press delegates at the grand curtain-raiser of Lucknow Architecture Festival 2.0.",
-    bgColor: "#F0F7FF", // Soft Sky Blue
+    bgColor: "#F0F7FF",
     accentColor: "#2563EB",
   },
   {
@@ -98,7 +98,7 @@ const newsArticles = [
     headline: "सपनों का महल बनाने पर वास्तुविदों का मंथन",
     tag: "Conclave & Urban Design",
     quote: "लखनऊ आर्किटेक्ट एसोसिएशन की ओर से आयोजित तीन दिवसीय फेस्टिवल 'आर्किभाव-2022' का भव्य समापन। देश भर के अग्रणी वास्तुकारों ने सतत विकास, ग्रीन बिल्डिंग व आधुनिक वास्तुकला पर की विस्तृत परिचर्चा।",
-    bgColor: "#FFFAF0", // Soft Warm Cream
+    bgColor: "#FFFAF0",
     accentColor: "#D97706",
   },
   {
@@ -110,7 +110,7 @@ const newsArticles = [
     headline: "रसोई में होगा सेंसर, हाथ घुमाते खुलेंगी रैक",
     tag: "Materials & Smart Innovation",
     quote: "सूक्ष्म, लघु एवं मध्यम उद्यम व खादी ग्रामोद्योग मंत्री राकेश सचान ने दूसरे दिन कार्यक्रमों का शुभारंभ किया। स्मार्ट होम सिस्टम, सेंसर्स और मॉड्यूलर किचन की नई तकनीकों ने दर्शकों को आकर्षित किया।",
-    bgColor: "#F2FDFB", // Soft Mint Ice
+    bgColor: "#F2FDFB",
     accentColor: "#059669",
   },
   {
@@ -122,7 +122,7 @@ const newsArticles = [
     headline: "रोजगार दिलाने में आर्किटेक्ट्स की भूमिका अहम",
     tag: "Youth & Employment",
     quote: "भवन निर्माण क्षेत्र से जुड़े पेशेवरों और युवा आर्किटेक्ट्स के लिए रोजगार के नए अवसर। एमएसएमई के जरिए युवाओं को रोजगार तथा निर्माण क्षेत्र की गुणवत्ता में सुधार पर विशेष सत्र।",
-    bgColor: "#FAF3FD", // Soft Lilac
+    bgColor: "#FAF3FD",
     accentColor: "#9333EA",
   },
   {
@@ -134,7 +134,7 @@ const newsArticles = [
     headline: "इकाना स्टेडियम में आयोजित आर्किभाव में उमड़ी भीड़",
     tag: "Public Gathering",
     quote: "इकाना स्टेडियम में चल रहे आर्किटेक्चर एवं डिजाइन महोत्सव में दूसरे दिन भी उमड़ी दर्शकों की भारी भीड़। देश भर से आए छात्रों, डिजाइनर्स व आम जनता ने आधुनिक एग्जिबिशन स्टॉल्स का अवलोकन किया।",
-    bgColor: "#FFF5EC", // Soft Peach
+    bgColor: "#FFF5EC",
     accentColor: "#EA580C",
   },
   {
@@ -146,7 +146,7 @@ const newsArticles = [
     headline: "वास्तुकला महोत्सव का आयोजन: विशेष ग्राउंड रिपोर्ट",
     tag: "TV & Digital Broadcast",
     quote: "उत्तर प्रदेश आवास एवं विकास परिषद और राष्ट्रीय व राज्य मीडिया चैनलों पर तीन दिवसीय वास्तुकला महोत्सव का सजीव प्रसारण व विशेष विश्लेषण बुलेटिन।",
-    bgColor: "#FDF0F5", // Soft Rose
+    bgColor: "#FDF0F5",
     accentColor: "#DB2777",
   },
   {
@@ -158,7 +158,7 @@ const newsArticles = [
     headline: "आर्किभाव एलएएफ 2022 का तीन दिवसीय सम्मेलन संपन्न",
     tag: "Grand Conclave",
     quote: "'आर्किटेक्चर एक भाव है' — देश भर से जुटे विख्यात वास्तुविदों ने आधुनिक भवन निर्माण, स्मार्ट सिटी डिजाइन और सतत विकास से जुड़ी संभावनाओं पर निष्कर्ष साझा किए।",
-    bgColor: "#F0FDF4", // Soft Honeydew
+    bgColor: "#F0FDF4",
     accentColor: "#16A34A",
   },
   {
@@ -170,7 +170,7 @@ const newsArticles = [
     headline: "सीपेज से घर की सुंदरता न होगी कम • नई तकनीक",
     tag: "Smart City & Materials",
     quote: "आधुनिक तकनीकों से होगा स्थायी समाधान; नए निर्माण तकनीकों, वॉटरप्रूफिंग, और हरित भवनों पर विशेष चर्चा के साथ छोटे शहरों में आर्किटेक्चरल प्रभाव का विस्तार।",
-    bgColor: "#FFF9E6", // Soft Warm Amber
+    bgColor: "#FFF9E6",
     accentColor: "#CA8A04",
   },
   {
@@ -182,7 +182,7 @@ const newsArticles = [
     headline: "आर्किटेक्ट को गैर प्रशिक्षणार्थियों से करनी पड़ रही प्रतिस्पर्धा",
     tag: "Professional Standards",
     quote: "शहर के सुनियोजित विकास और सुरक्षा मानकों के लिए योग्य व पंजीकृत आर्किटेक्ट्स का होना अनिवार्य। लखनऊ में आर्किटेक्ट एसोसिएशन के महाधिवेशन की संपूर्ण विस्तृत समीक्षा।",
-    bgColor: "#F5F0FF", // Soft Iris
+    bgColor: "#F5F0FF",
     accentColor: "#7C3AED",
   },
 ];
@@ -235,7 +235,7 @@ export default function LafInMediaSection() {
     setCurrentIndex(closestIndex);
   };
 
-  // Scroll to slide by index (contained strictly within sliderRef, never scrolling window)
+  // Scroll to slide by index
   const scrollToSlide = (index) => {
     if (!sliderRef.current) return;
     const container = sliderRef.current;
@@ -311,7 +311,7 @@ export default function LafInMediaSection() {
         
         {/* ================= SECTION HEADLINE ================= */}
         <div className="mb-8 sm:mb-10">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-neutral-900/15">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-neutral-900/15">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -320,21 +320,19 @@ export default function LafInMediaSection() {
               className="max-w-2xl flex flex-col items-start gap-1.5"
             >
               <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-                LAF In
-              </h2>
-              <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-                Media
+                LAF In Media
               </h2>
             </motion.div>
 
+            {/* Right Text - 2 Lines & Height Matched */}
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-serif italic text-sm sm:text-base md:text-lg text-neutral-600 max-w-md lg:text-right leading-relaxed"
+              className="font-serif italic text-sm sm:text-base md:text-[17px] text-neutral-600 max-w-lg lg:text-right leading-relaxed lg:mt-2"
             >
-              “Capturing the conversations, innovation, and architectural discourse of Lucknow Architecture Festival across leading national dailies and broadcast networks.”
+              "Capturing the conversations, innovation, and architectural discourse of Lucknow Architecture Festival across leading national dailies and broadcast networks."
             </motion.p>
           </div>
         </div>
@@ -384,7 +382,7 @@ export default function LafInMediaSection() {
           </div>
         </div>
 
-        {/* ================= WEBOMINDAPPS STYLE HORIZONTAL SWIPE SHOWCASE ================= */}
+        {/* ================= HORIZONTAL SWIPE SHOWCASE ================= */}
         <div
           ref={sliderRef}
           onScroll={handleScroll}
@@ -392,7 +390,7 @@ export default function LafInMediaSection() {
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
-          className="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-3 pb-6 select-none no-scrollbar cursor-grab active:cursor-grabbing"
+          className="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-3 pb-6 select-none no-scrollbar cursor-grab active:cursor-grabbing items-stretch"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {newsArticles.map((article, index) => {
@@ -401,14 +399,16 @@ export default function LafInMediaSection() {
                 key={article.id}
                 data-news-slide
                 onClick={() => !isDraggingRef.current && setSelectedIndex(index)}
-                className="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] h-[340px] sm:h-[400px] lg:h-[450px] shrink-0 snap-start rounded-3xl p-3 sm:p-5 bg-white border border-[#E7E2DA] shadow-[0_12px_40px_rgba(0,0,0,0.05)] hover:border-[#D8232A] hover:shadow-[0_16px_45px_rgba(216,35,42,0.12)] transition-all duration-300 relative overflow-hidden flex items-center justify-center cursor-pointer group"
+                // 🚀 FIX: Removed fixed height (h-[340px] etc.), changed to h-auto.
+                className="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] h-auto shrink-0 snap-start rounded-3xl p-2 sm:p-3 bg-white border border-[#E7E2DA] shadow-[0_12px_40px_rgba(0,0,0,0.05)] hover:border-[#D8232A] hover:shadow-[0_16px_45px_rgba(216,35,42,0.12)] transition-all duration-300 relative overflow-hidden flex cursor-pointer group"
               >
-                <div className="w-full h-full rounded-2xl overflow-hidden bg-white flex items-center justify-center p-2 sm:p-4">
+                {/* Inner container reduced padding to fit image nicely */}
+                <div className="w-full rounded-2xl overflow-hidden bg-white flex items-center justify-center">
                   <img
                     src={article.img}
                     alt="LAF In Media News Clipping"
                     loading="lazy"
-                    className="max-w-full max-h-full object-contain rounded-xl transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="w-full h-auto object-contain rounded-xl transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                 </div>
 
@@ -442,7 +442,7 @@ export default function LafInMediaSection() {
           ))}
         </div>
 
-        {/* ================= STATISTICS BANNER (MINIMAL ARCHITECTURAL PALETTE) ================= */}
+        {/* ================= STATISTICS BANNER ================= */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -452,7 +452,7 @@ export default function LafInMediaSection() {
         >
           <div className="absolute top-0 left-0 right-0 h-1 bg-[#D8232A]" />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-            {/* Stat 1: 200+ influencers captured the event */}
+            {/* Stat 1 */}
             <div className="text-left">
               <div className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#18181B] tracking-tight leading-none">
                 <AnimatedCounter end={200} suffix="+" />
@@ -462,7 +462,7 @@ export default function LafInMediaSection() {
               </div>
             </div>
 
-            {/* Stat 2: 100+ Media House covered the event */}
+            {/* Stat 2 */}
             <div className="text-left">
               <div className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#18181B] tracking-tight leading-none">
                 <AnimatedCounter end={100} suffix="+" />
@@ -472,7 +472,7 @@ export default function LafInMediaSection() {
               </div>
             </div>
 
-            {/* Stat 3: 50+ radio spots daily for a month */}
+            {/* Stat 3 */}
             <div className="text-left">
               <div className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#18181B] tracking-tight leading-none">
                 <AnimatedCounter end={50} suffix="+" />
@@ -486,7 +486,7 @@ export default function LafInMediaSection() {
 
       </div>
 
-      {/* ================= LIGHTBOX PREVIEW MODAL (BLURRED BACKGROUND - NOT BLACK) ================= */}
+      {/* ================= LIGHTBOX PREVIEW MODAL ================= */}
       <AnimatePresence>
         {selectedIndex !== null && (
           <motion.div
@@ -533,7 +533,7 @@ export default function LafInMediaSection() {
                 <ChevronRight className="w-6 h-6" />
               </button>
 
-              {/* Image Container with Scroll for Long Articles */}
+              {/* Image Container */}
               <div className="w-full max-h-[78vh] flex items-center justify-center overflow-auto rounded-3xl bg-white/95 backdrop-blur-md p-3 sm:p-6 border border-white/60 shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
                 <img
                   src={newsArticles[selectedIndex].img}

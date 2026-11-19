@@ -11,105 +11,98 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-import con1Img from "../assets/images/conveners-1.webp";
-import con2Img from "../assets/images/conveners-2.webp";
-import con3Img from "../assets/images/conveners-3.webp";
-import con4Img from "../assets/images/convenor.png";
+import conAshok from "../assets/LAF/CONVENORS/Ar. Ashok Kumar.png";
+import conRajat from "../assets/LAF/CONVENORS/Ar. Rajat Kant Mittal.png";
+import conRanjan from "../assets/LAF/CONVENORS/Ar. Ranjan Shukla.png";
+import conAnupam from "../assets/LAF/CONVENORS/Ar. Anupam Mittal.png";
 
-import dir1Img from "../assets/images/director1.png";
-import dir2Img from "../assets/images/director2.png";
-import dir3Img from "../assets/images/director3.png";
+import dirPrashant from "../assets/LAF/CURATORIAL DIRECTORS/Ar. PRASHANT PAL SINGH.png";
+import dirDevesh from "../assets/LAF/CURATORIAL DIRECTORS/Ar. Devesh Mani Tripathi.png";
+import dirNeeraj from "../assets/LAF/CURATORIAL DIRECTORS/Ar. Neeraj Kushwaha.png";
 
-import cc1Img from "../assets/images/cc-1.webp";
-import cc2Img from "../assets/images/cc-2.webp";
-import cc3Img from "../assets/images/cc-3.webp";
-import cc4Img from "../assets/images/cc-4.webp";
-import cc5Img from "../assets/images/cc-5.webp";
-import cc6Img from "../assets/images/cc-6.webp";
-import cc7Img from "../assets/images/curator.png";
+import curJagbir from "../assets/LAF/CURATORS/Ar. Jagbir Singh.png";
+import curSabina from "../assets/LAF/CURATORS/Ar. Sabina Singh.png";
+import curJitendra from "../assets/LAF/CURATORS/Ar. Jitendra Kr. Tripathi.png";
+import curVipul from "../assets/LAF/CURATORS/Ar. Vipul Varshney1.png";
+import curAninda from "../assets/LAF/CURATORS/Ar.Aninda Sircar.png";
+import curSanjay from "../assets/LAF/CURATORS/Ar.Sanjay Mathur.png";
+import curArvind from "../assets/LAF/CURATORS/Ar. Arvind Yadav.png";
 
-import jc1Img from "../assets/images/am1-1.webp";
-import jc2Img from "../assets/images/am1-2.webp";
-import jc3Img from "../assets/images/am2-1.webp";
-import jc4Img from "../assets/images/am2-2.webp";
-import jc5Img from "../assets/images/am3-1.webp";
-import jc6Img from "../assets/images/am3-2.webp";
-import jc7Img from "../assets/images/am4-1.webp";
-import jc8Img from "../assets/images/am4-2.webp";
-import jc9Img from "../assets/images/am5-1.webp";
-import jc10Img from "../assets/images/am5-2.webp";
-import jc11Img from "../assets/images/am6-1.webp";
-import jc12Img from "../assets/images/am6-2.webp";
-import jc13Img from "../assets/images/am7-1.webp";
-import jc14Img from "../assets/images/am7-2.webp";
-import jc15Img from "../assets/images/am8-1.webp";
-import jc16Img from "../assets/images/am9-1.webp";
-import jc17Img from "../assets/images/am9-2.webp";
-import jc18Img from "../assets/images/am10-1.webp";
-import jc19Img from "../assets/images/am10-2.webp";
-import jc20Img from "../assets/images/am11-1.webp";
-import jc21Img from "../assets/images/am11-2.webp";
-import jc22Img from "../assets/images/am12-1.webp";
-import jc23Img from "../assets/images/am12-2.webp";
-import jc24Img from "../assets/images/am13-1.webp";
-import jc25Img from "../assets/images/am13-2.webp";
-import jc26Img from "../assets/images/am14-2.webp";
-import jc27Img from "../assets/images/am16-2.webp";
-import jc28Img from "../assets/images/am17-1.webp";
-import jc29Img from "../assets/images/am17-2.webp";
+import jcFaraz from "../assets/LAF/JOINT COORDINATOR/Ar. Faraz Usmani.png";
+import jcAlok from "../assets/LAF/JOINT COORDINATOR/Ar. Alok Kumar.png";
+import jcVishal from "../assets/LAF/JOINT COORDINATOR/Ar. Vishal Jain.png";
+import jcLayak from "../assets/LAF/JOINT COORDINATOR/Ar.Layak Singh.png";
+import jcPragya from "../assets/LAF/JOINT COORDINATOR/Ar Pragya Singh.png";
+import jcChhaya from "../assets/LAF/JOINT COORDINATOR/Ar. Chhaya Shukla.png";
+import jcPaarul from "../assets/LAF/JOINT COORDINATOR/Ar Paarul Saxena.png";
+import jcRajit from "../assets/LAF/JOINT COORDINATOR/Ar. Rajit Agrawal.png";
+import jcGaurav from "../assets/LAF/JOINT COORDINATOR/GAURAV GUPTA.png";
+import jcAshutoshS from "../assets/LAF/JOINT COORDINATOR/Ar. Ashutosh Sahu.png";
+import jcDevyani from "../assets/LAF/JOINT COORDINATOR/Ar. Devyani Dayal.png";
+import jcShipra from "../assets/LAF/JOINT COORDINATOR/SHIPRA SINGH.png";
+import jcRohit from "../assets/LAF/JOINT COORDINATOR/Ar. Rohit Gupta.png";
+import jcPankaj from "../assets/LAF/JOINT COORDINATOR/Ar. Pankaj Mishra.png";
+import jcAshutoshG from "../assets/LAF/JOINT COORDINATOR/Ar. Ashutosh Gupta.png";
+import jcDeepti from "../assets/LAF/JOINT COORDINATOR/Ar. Deepti Pandey.png";
+import jcSwati from "../assets/LAF/JOINT COORDINATOR/Ar. Swati Bhatia.png";
+import jcYati from "../assets/LAF/JOINT COORDINATOR/Ar. Yati Kumar Mishra.png";
+import jcNishant from "../assets/LAF/JOINT COORDINATOR/Ar. Nishant Upadhyay.png";
+import jcKabir from "../assets/LAF/JOINT COORDINATOR/Kabir Kumar.png";
+import jcKartikey from "../assets/LAF/JOINT COORDINATOR/Kartikey Verma.png";
+import jcRP from "../assets/LAF/JOINT COORDINATOR/RP. Gangwar.png";
 
-import sv1Img from "../assets/images/co-1.png";
-import sv2Img from "../assets/images/co-2.png";
-import sv3Img from "../assets/images/co-3.png";
-import sv4Img from "../assets/images/co-4.png";
-import sv5Img from "../assets/images/co-5.png";
-import sv6Img from "../assets/images/co-6.png";
-import sv7Img from "../assets/images/co-7.png";
-import sv8Img from "../assets/images/co-8.png";
-import sv9Img from "../assets/images/co-9.png";
-import sv10Img from "../assets/images/co-10.png";
-import sv11Img from "../assets/images/co-11.png";
-import sv12Img from "../assets/images/co-12.png";
-import sv13Img from "../assets/images/co-13.png";
-import sv14Img from "../assets/images/co-14.png";
-import sv15Img from "../assets/images/co-15.png";
-import sv16Img from "../assets/images/co-16.png";
-import sv17Img from "../assets/images/co-17.png";
-import sv18Img from "../assets/images/co-18.png";
-import sv19Img from "../assets/images/co-19.png";
-import sv20Img from "../assets/images/co-20.png";
-import sv21Img from "../assets/images/co-21.png";
-import sv22Img from "../assets/images/co-22.png";
-import sv23Img from "../assets/images/co-23.png";
-import sv24Img from "../assets/images/co-24.png";
+import coPuneet from "../assets/LAF/COORDINATORS/Ar. Puneet Srivastava.png";
+import coAshish from "../assets/LAF/COORDINATORS/Ar. Ashish Gupta.png";
+import coDPSingh from "../assets/LAF/COORDINATORS/Ar. D.P. Singh.png";
+import coAnita from "../assets/LAF/COORDINATORS/Ar. Anita Srivastava.png";
+import coRitu from "../assets/LAF/COORDINATORS/Ar. Ritu Gulati.png";
+import coShubhra from "../assets/LAF/COORDINATORS/Ar. Shubhra Mittal.png";
+import coAwadhesh from "../assets/LAF/COORDINATORS/Ar. Awadhesh Verma.png";
+import coAnuj from "../assets/LAF/COORDINATORS/Ar. Anuj Tandon.png";
+import coSandeep from "../assets/LAF/COORDINATORS/Ar. Sandeep Nagi.jpeg";
+import coShubhendra from "../assets/LAF/COORDINATORS/Ar. Shubhendra Bajpal.png";
+import coDeeptri from "../assets/LAF/COORDINATORS/Ar. Deeptri Jayant.png";
+import coAvanish from "../assets/LAF/COORDINATORS/Ar. Avanish Gangwar.png";
+import coBrijesh from "../assets/LAF/COORDINATORS/Ar. Brijesh Kumar.png";
+import coHitesh from "../assets/LAF/COORDINATORS/Ar. Hitesh Kumar.png";
+import coNamit from "../assets/LAF/COORDINATORS/Ar. Namit Tandon.png";
+import coVandana from "../assets/LAF/COORDINATORS/Ar. Vandana Patel.png";
+import coPrashant from "../assets/LAF/COORDINATORS/Ar. Prashant K.Singh.png";
+import coAmit from "../assets/LAF/COORDINATORS/Ar. Amit Singh.png";
+import coRohit from "../assets/LAF/COORDINATORS/Ar. Rohit Parmar.png";
+import coShikhar from "../assets/LAF/COORDINATORS/Ar. Shikhar Singh.png";
+import coShriyak from "../assets/LAF/COORDINATORS/Ar. SHRIYAK SINGH.png";
+import coAkash from "../assets/LAF/COORDINATORS/Ar. Akash Hemnani.png";
+import coRajarshi from "../assets/LAF/COORDINATORS/Ar. Rajarshi.png";
+import coAlok from "../assets/LAF/COORDINATORS/Ar. Alok Maurya.png";
 
 export const convenorLeadershipMembers = [
   {
     id: "con-4",
-    name: "Ar.Ashok Kumar",
+    name: "Ar. Ashok Kumar",
     role: "Festival Convenor",
-    image: con4Img,
+    image: conAshok,
     badge: "CONVENOR 04",
   },
   {
     id: "con-1",
-    name: "Ar.Rajat Kant Mittal",
+    name: "Ar. Rajat Kant Mittal",
     role: "Festival Convenor",
-    image: con1Img,
+    image: conRajat,
     badge: "CONVENOR 01",
   },
   {
     id: "con-2",
-    name: "Ar.Ranjan Shukla",
+    name: "Ar. Ranjan Shukla",
     role: "Festival Convenor",
-    image: con2Img,
+    image: conRanjan,
     badge: "CONVENOR 02",
   },
   {
     id: "con-3",
-    name: "Ar.Anupam Mittal",
+    name: "Ar. Anupam Mittal",
     role: "Festival Convenor",
-    image: con3Img,
+    image: conAnupam,
     badge: "CONVENOR 03",
   },
 ];
@@ -119,92 +112,88 @@ export const curatorialDirectors = [
     id: "dir-1",
     name: "Ar. Prashant Pal Singh",
     role: "Curatorial Director",
-    image: dir1Img,
+    image: dirPrashant,
     badge: "DIRECTOR 01",
   },
   {
     id: "dir-2",
     name: "Ar. Devesh Mani Tripathi",
     role: "Curatorial Director",
-    image: dir2Img,
+    image: dirDevesh,
     badge: "DIRECTOR 02",
   },
   {
     id: "dir-3",
     name: "Ar. Neeraj Kushwaha",
     role: "Curatorial Director",
-    image: dir3Img,
+    image: dirNeeraj,
     badge: "DIRECTOR 03",
   },
 ];
 
 export const coreCommitteeMembers = [
-  { id: "cc-1", name: "Ar.Jagbir Singh", role: "Lead Curator", image: cc1Img },
-  { id: "cc-2", name: "Ar.Sabina Singh", role: "Lead Curator", image: cc2Img },
-  { id: "cc-3", name: "Ar.Jitendra Kr.Tripathi", role: "Lead Curator", image: cc3Img },
-  { id: "cc-4", name: "Ar.Vipul Vashneya", role: "Core Committee Member", image: cc4Img },
-  { id: "cc-5", name: "Ar.Aninda Sircar", role: "Core Committee Member", image: cc5Img },
-  { id: "cc-6", name: "Ar.Sanjay Mathur", role: "Core Committee Member", image: cc6Img },
-  { id: "cc-7", name: "Ar. Arvind Yadav", role: "Core Committee Member", image: cc7Img },
+  { id: "cc-1", name: "Ar. Jagbir Singh", role: "Lead Curator", image: curJagbir },
+  { id: "cc-2", name: "Ar. Sabina Singh", role: "Lead Curator", image: curSabina },
+  { id: "cc-3", name: "Ar. Jitendra Kr. Tripathi", role: "Lead Curator", image: curJitendra },
+  { id: "cc-4", name: "Ar. Vipul Varshney", role: "Core Committee Member", image: curVipul },
+  { id: "cc-5", name: "Ar. Aninda Sircar", role: "Core Committee Member", image: curAninda },
+  { id: "cc-7", name: "Ar. Arvind Yadav", role: "Core Committee Member", image: curArvind },
+  { id: "cc-6", name: "Ar. Sanjay Mathur", role: "Core Committee Member", image: curSanjay },
 ];
 
 export const advisorsMentorsMembers = [
-  { id: "jc-1", name: "Dr. Arun Kanpur", role: "Senior Advisory Member", image: jc1Img },
-  { id: "jc-2", name: "Ar. Ashish Gupta", role: "Senior Advisory Member", image: jc2Img },
-  { id: "jc-3", name: "Ar. Faraz Usmani", role: "Senior Advisory Member", image: jc3Img },
-  { id: "jc-4", name: "Ar. Vishal Mathur", role: "Senior Advisory Member", image: jc4Img },
-  { id: "jc-5", name: "Ar. Alok Kumar", role: "Senior Advisory Member", image: jc5Img },
-  { id: "jc-6", name: "Ar. Rajarshi", role: "Senior Advisory Member", image: jc6Img },
-  { id: "jc-7", name: "Ar. Aviral Agrawal", role: "Senior Advisory Member", image: jc7Img },
-  { id: "jc-8", name: "Ar. Vishal Jain", role: "Senior Advisory Member", image: jc8Img },
-  { id: "jc-9", name: "Ar. Sandeep Negi", role: "Senior Advisory Member", image: jc9Img },
-  { id: "jc-10", name: "Ar.Layak Singh", role: "Senior Advisory Member", image: jc10Img },
-  { id: "jc-11", name: "Ar Pragya Singh", role: "Senior Advisory Member", image: jc11Img },
-  { id: "jc-12", name: "Ar. Chhaya Shukla", role: "Senior Advisory Member", image: jc12Img },
-  { id: "jc-13", name: "Ar Paarul Saxena ", role: "Senior Advisory Member", image: jc13Img },
-  { id: "jc-14", name: "Ar. Rajit Agrawal", role: "Senior Advisory Member", image: jc14Img },
-  { id: "jc-15", name: "Ar. Devyani Dayal", role: "Senior Advisory Member", image: jc15Img },
-  { id: "jc-16", name: "Ar. Shikhar Singh ", role: "Senior Advisory Member", image: jc16Img },
-  { id: "jc-17", name: "Ar. Sweksha Yadav", role: "Senior Advisory Member", image: jc17Img },
-  { id: "jc-18", name: "Ar. Gopal Tripathi", role: "Senior Advisory Member", image: jc18Img },
-  { id: "jc-19", name: "Ar. Rohit Gupta", role: "Senior Advisory Member", image: jc19Img },
-  { id: "jc-20", name: "Ar. Umesh Gupta", role: "Senior Advisory Member", image: jc20Img },
-  { id: "jc-21", name: "Ar. Pankaj Mishra", role: "Senior Advisory Member", image: jc21Img },
-  { id: "jc-22", name: "Ar. Karan Dev ", role: "Senior Advisory Member", image: jc22Img },
-  { id: "jc-23", name: "Ar. Ashutosh Gupta", role: "Senior Advisory Member", image: jc23Img },
-  { id: "jc-24", name: "Ar. Deepti Pandey", role: "Senior Advisory Member", image: jc24Img },
-  { id: "jc-25", name: "Ar. Swati Bhatia", role: "Senior Advisory Member", image: jc25Img },
-  { id: "jc-26", name: "Ar. Yati Kumar Mishra", role: "Senior Advisory Member", image: jc26Img },
-  { id: "jc-27", name: "Ar. Nishant Upadhyay", role: "Senior Advisory Member", image: jc27Img },
-  { id: "jc-28", name: "Ar. Anjaneya Sharma", role: "Senior Advisory Member", image: jc28Img },
-  { id: "jc-29", name: "Ar. Chandra Bhushan Chaudhary", role: "Senior Advisory Member", image: jc29Img }
+  // Row 1
+  { id: "jc-17", name: "Ar. Swati Bhatia", role: "Joint Coordinator", image: jcSwati },
+  { id: "jc-16", name: "Ar. Deepti Pandey", role: "Joint Coordinator", image: jcDeepti },
+  { id: "jc-1", name: "Ar. Faraz Usmani", role: "Joint Coordinator", image: jcFaraz },
+  { id: "jc-22", name: "Ar. R.P Gangwar", role: "Joint Coordinator", image: jcRP },
+  { id: "jc-10", name: "Ar. Ashutosh Sahu", role: "Joint Coordinator", image: jcAshutoshS },
+  { id: "jc-8", name: "Ar. Rajit Agarwal", role: "Joint Coordinator", image: jcRajit },
+  { id: "jc-3", name: "Ar. Vishal Jain", role: "Joint Coordinator", image: jcVishal },
+  { id: "jc-4", name: "Ar. Layak Singh", role: "Joint Coordinator", image: jcLayak },
+  { id: "jc-14", name: "Ar. Pankaj Mishra", role: "Joint Coordinator", image: jcPankaj },
+  { id: "jc-9", name: "Ar. Gaurav Gupta", role: "Joint Coordinator", image: jcGaurav },
+  { id: "jc-21", name: "Ar. Kartikey Verma", role: "Joint Coordinator", image: jcKartikey },
+
+  // Row 2
+  { id: "jc-13", name: "Ar. Rohit Gupta", role: "Joint Coordinator", image: jcRohit },
+  { id: "jc-2", name: "Ar. Alok Kumar", role: "Joint Coordinator", image: jcAlok },
+  { id: "jc-5", name: "Ar. Pragya Singh", role: "Joint Coordinator", image: jcPragya },
+  { id: "jc-7", name: "Ar. Paarul Saxena", role: "Joint Coordinator", image: jcPaarul },
+  { id: "jc-11", name: "Ar. Devyani Dayal", role: "Joint Coordinator", image: jcDevyani },
+  { id: "jc-12", name: "Ar. Shipra Singh", role: "Joint Coordinator", image: jcShipra },
+  { id: "jc-6", name: "Ar. Chhaya Shukla", role: "Joint Coordinator", image: jcChhaya },
+  { id: "jc-20", name: "Ar. Kabir Kumar", role: "Joint Coordinator", image: jcKabir },
+  { id: "jc-19", name: "Ar. Nishant Upadhyay", role: "Joint Coordinator", image: jcNishant },
+  { id: "jc-15", name: "Ar. Ashutosh Gupta", role: "Joint Coordinator", image: jcAshutoshG },
+  { id: "jc-18", name: "Ar. Yati K. Mishra", role: "Joint Coordinator", image: jcYati },
 ];
 
 export const studentVolunteers = [
-  { id: "sv-1", name: "Ar. Puneet Srivastava", role: "Event Coordinator", image: sv1Img },
-  { id: "sv-2", name: "Ar. Ashish Gupta", role: "Event Coordinator", image: sv2Img },
-  { id: "sv-3", name: "Ar. D.P. Singh", role: "Event Coordinator", image: sv3Img },
-  { id: "sv-4", name: "Ar. Anita Srivastava", role: "Event Coordinator", image: sv4Img },
-  { id: "sv-5", name: "Ar. Ritu Gulati", role: "Event Coordinator", image: sv5Img },
-  { id: "sv-6", name: "Ar. Shubhra Mittal", role: "Event Coordinator", image: sv6Img },
-  { id: "sv-7", name: "Ar. Awadhesh Verma", role: "Event Coordinator", image: sv7Img },
-  { id: "sv-8", name: "Ar. Anuj Tandon", role: "Event Coordinator", image: sv8Img },
-  { id: "sv-9", name: "Ar. Sandeep Nagi", role: "Event Coordinator", image: sv9Img },
-  { id: "sv-10", name: "Ar. Shubhendra Bajpal ", role: "Event Coordinator", image: sv10Img },
-  { id: "sv-11", name: "Ar. Deeptri Jayant", role: "Event Coordinator", image: sv11Img },
-  { id: "sv-12", name: "Ar. Avanish Gangwar", role: "Event Coordinator", image: sv12Img },
-  { id: "sv-13", name: "Ar. Brijesh Kumar", role: "Event Coordinator", image: sv13Img },
-  { id: "sv-14", name: "Ar. Hitesh Kumar", role: "Event Coordinator", image: sv14Img },
-  { id: "sv-15", name: "Ar. Namit Tandon", role: "Event Coordinator", image: sv15Img },
-  { id: "sv-16", name: "Ar. Vandana Patel", role: "Event Coordinator", image: sv16Img },
-  { id: "sv-17", name: "Ar. Prashant K.Singh", role: "Event Coordinator", image: sv17Img },
-  { id: "sv-18", name: "Ar. Amit Singh", role: "Event Coordinator", image: sv18Img },
-  { id: "sv-19", name: "Ar. Rohit Parmar", role: "Event Coordinator", image: sv19Img },
-  { id: "sv-20", name: "Ar. Shikhar Singh", role: "Event Coordinator", image: sv20Img },
-  { id: "sv-21", name: "Ar. Shriyak Singh", role: "Event Coordinator", image: sv21Img },
-  { id: "sv-22", name: "Ar. Akash Hemnani", role: "Event Coordinator", image: sv22Img },
-  { id: "sv-23", name: "Ar. Rajarshi", role: "Event Coordinator", image: sv23Img },
-  { id: "sv-24", name: "Ar. Alok Maurya", role: "Event Coordinator", image: sv24Img },
+  { id: "sv-1", name: "Ar. Puneet Srivastava", role: "Event Coordinator", image: coPuneet },
+  { id: "sv-2", name: "Ar. Ashish Gupta", role: "Event Coordinator", image: coAshish },
+  { id: "sv-3", name: "Ar. D. P. Singh", role: "Event Coordinator", image: coDPSingh },
+  { id: "sv-4", name: "Ar. Anita Srivastava", role: "Event Coordinator", image: coAnita },
+  { id: "sv-5", name: "Ar. Ritu Gulati", role: "Event Coordinator", image: coRitu },
+  { id: "sv-6", name: "Ar. Shubhra Mittal", role: "Event Coordinator", image: coShubhra },
+  { id: "sv-7", name: "Ar. Awadhesh Verma", role: "Event Coordinator", image: coAwadhesh },
+  { id: "sv-8", name: "Ar. Anuj Tandon", role: "Event Coordinator", image: coAnuj },
+  { id: "sv-9", name: "Ar. Sandeep Negi", role: "Event Coordinator", image: coSandeep },
+  { id: "sv-10", name: "Ar. Shubhendra Bajpai", role: "Event Coordinator", image: coShubhendra },
+  { id: "sv-11", name: "Ar. Deepti Jayant", role: "Event Coordinator", image: coDeeptri },
+  { id: "sv-12", name: "Ar. Avanish Gangwar", role: "Event Coordinator", image: coAvanish },
+  { id: "sv-13", name: "Ar. Brijesh Kumar", role: "Event Coordinator", image: coBrijesh },
+  { id: "sv-14", name: "Ar. Hitesh Kumar", role: "Event Coordinator", image: coHitesh },
+  { id: "sv-15", name: "Ar. Namit Tandon", role: "Event Coordinator", image: coNamit },
+  { id: "sv-16", name: "Ar. Vandana Patel", role: "Event Coordinator", image: coVandana },
+  { id: "sv-17", name: "Ar. Prashant K. Singh", role: "Event Coordinator", image: coPrashant },
+  { id: "sv-18", name: "Ar. Amit Singh", role: "Event Coordinator", image: coAmit },
+  { id: "sv-19", name: "Ar. Rohit Parmar", role: "Event Coordinator", image: coRohit },
+  { id: "sv-20", name: "Ar. Shikhar Singh", role: "Event Coordinator", image: coShikhar },
+  { id: "sv-21", name: "Ar. Shriyak Singh", role: "Event Coordinator", image: coShriyak },
+  { id: "sv-22", name: "Ar. Akash Hemnani", role: "Event Coordinator", image: coAkash },
+  { id: "sv-23", name: "Ar. Rajarshi", role: "Event Coordinator", image: coRajarshi },
+  { id: "sv-24", name: "Ar. Alok Maurya", role: "Event Coordinator", image: coAlok },
 ];
 
 export default function TeamPage({ isEmbedded = false }) {
@@ -270,160 +259,84 @@ export default function TeamPage({ isEmbedded = false }) {
           </div>
         )}
 
-        {/* Hero Header */}
-        <div className="mb-14 grid lg:grid-cols-12 gap-8 items-end rounded-3xl p-8 sm:p-10 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
-
-          <div className="lg:col-span-8 relative z-10">
-            <div className="flex flex-col items-start gap-1.5 mb-2">
-              <h1 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-                Festival Team
-              </h1>
-              <span className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-[36px] font-bold tracking-tight inline-block leading-tight">
-                The Minds Behind LAF 3.0
-              </span>
-            </div>
-
-            <p className="mt-4 text-base sm:text-lg leading-relaxed text-neutral-600 max-w-2xl">
-              Meet the visionaries, convenors, and dedicated team members making the Lucknow Architecture Festival 3.0 possible.
-            </p>
-          </div>
-
-          <div className="lg:col-span-4 flex lg:justify-end items-center relative z-10">
-            <div className="p-4 rounded-2xl text-white border border-white/20 shadow-md w-full sm:w-auto min-w-[200px]"
-              style={{ background: "#18181B" }}>
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-[10px] font-mono tracking-widest text-amber-200 uppercase">TOTAL TEAM</span>
-                <ShieldCheck className="w-4 h-4 text-amber-300" />
-              </div>
-              <div className="font-serif text-3xl font-medium text-amber-300 mt-1">
-                {(convenorLeadershipMembers.length + curatorialDirectors.length + coreCommitteeMembers.length + advisorsMentorsMembers.length + studentVolunteers.length).toString().padStart(2, "0")}
-              </div>
-              <div className="text-[10px] text-white/70 tracking-wider uppercase mt-0.5">
-                ORGANIZING LEADERSHIP & EXECUTION
-              </div>
-            </div>
+        {/* Main Event Title Banner (Navbar Equal Width) */}
+        <div className="w-full mb-12 pt-2">
+          <div className="w-full bg-[#D8232A] text-white py-3.5 sm:py-4 px-4 sm:px-8 rounded-2xl shadow-sm text-center flex flex-col items-center justify-center gap-1">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-bold tracking-tight leading-snug">
+              EVENT Convenors, Curators, Curatorial Directors,
+            </h1>
+            <span className="text-lg sm:text-xl md:text-2xl lg:text-[28px] font-bold tracking-tight leading-snug">
+              Coordinators & Joint Coordinators
+            </span>
           </div>
         </div>
 
-        {/* 1. Festival Convenors Section */}
-        <div className="mb-14 rounded-3xl p-8 sm:p-10 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
+        {/* 1. Convenors Section */}
+        <div className="mb-16">
+          <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-[#1E3A8A] text-center mb-8 sm:mb-10 tracking-tight">
+            Convenors
+          </h2>
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#930777]/15 pb-6 mb-8 gap-4">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <Sparkles className="w-4 h-4 text-orange-500" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse" />
-                <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
-                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                  01 · FESTIVAL LEADERSHIP
-                </span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#171717]">
-                Festival Convenors
-              </h2>
-            </div>
-            
-            <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full border border-white/40 shadow-sm self-start sm:self-auto text-white"
-              style={{ background: "#D8232A" }}>
-              LEADERSHIP (04)
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto justify-items-center">
             {convenorLeadershipMembers.map((c, index) => (
               <motion.div
                 key={c.id}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group flex flex-col items-center p-7 rounded-2xl bg-white border border-[#E6DFD3] hover:border-transparent shadow-2xs hover:shadow-xl transition-all duration-300 text-center relative overflow-hidden"
+                className="group flex flex-col items-center text-center w-full max-w-[160px]"
               >
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{ background: "linear-gradient(135deg, #FB780115, #EC265615, #93077715)", border: "1.5px solid transparent",
-                    backgroundClip: "padding-box" }} />
-                <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 transition-all duration-300 shadow-md mb-5"
-                  style={{ background: "linear-gradient(135deg, #E6DFD3, #D4AF37 50%, transparent)" }}
-                >
-                  <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(236,38,86,0.2)] transition-all duration-300">
-                    <img
-                      src={c.image}
-                      alt={c.name}
-                      className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
+                {/* Red Curved Arch Frame (Same Size As Curators) */}
+                <div className="relative w-32 h-44 sm:w-36 sm:h-48 md:w-40 md:h-52 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                  <img
+                    src={c.image}
+                    alt={c.name}
+                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
-                <span className="text-[9.5px] font-mono tracking-widest font-semibold uppercase"
-                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                  LAF 3.0 · {c.badge}
-                </span>
-                <h3 className="font-serif text-lg font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors mt-1">
-                  {c.name}
-                </h3>
-                <p className="text-xs text-neutral-500 mt-0.5 font-medium">{c.role}</p>
+
+                {/* Name Only */}
+                <div className="mt-3.5 w-full flex flex-col items-center">
+                  <h3 className="font-sans font-bold text-xs sm:text-sm md:text-base text-neutral-800 group-hover:text-[#D8232A] transition-colors leading-snug">
+                    {c.name}
+                  </h3>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* 2. Core Committee Members Section */}
-        <div className="mb-14">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-8 gap-4 rounded-3xl p-6 sm:p-8 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
-            <div>
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse" />
-                <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
-                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                  02 · CORE COMMITTEE MEMBERS
-                </span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#171717]">
-                Organizing Curators 
-              </h2>
-            </div>
-            <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full border border-white/40 shadow-sm self-start sm:self-auto text-white"
-              style={{ background: "#D8232A" }}>
-              MEMBERS (07)
-            </span>
-          </div>
+        {/* 2. Curators Section */}
+        <div className="mb-16">
+          <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-[#1E3A8A] text-center mb-8 sm:mb-10 tracking-tight">
+            Curators
+          </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 sm:gap-6 max-w-7xl mx-auto justify-items-center">
             {coreCommitteeMembers.map((member, index) => (
               <motion.div
                 key={member.id}
-                initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.3) }}
-                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-neutral-50 border border-[#E6DFD3] hover:border-transparent shadow-2xs hover:shadow-xl transition-all duration-300 cursor-pointer text-center relative overflow-hidden"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="group flex flex-col items-center text-center w-full max-w-[160px]"
               >
-                <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 transition-all duration-300 shadow-md mb-4"
-                  style={{ background: "linear-gradient(135deg, #E6DFD3, #D4AF37 50%, transparent)" }}
-                >
-                  <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center group-hover:shadow-[0_0_18px_rgba(236,38,86,0.18)] transition-all duration-300">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
+                {/* Red Curved Arch Frame */}
+                <div className="relative w-32 h-44 sm:w-36 sm:h-48 md:w-40 md:h-52 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
 
-                <div className="w-full">
-                  <span className="text-[9.5px] font-mono tracking-widest font-bold uppercase block truncate"
-                    style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                    LAF 3.0 · #{index + 1 < 10 ? `0${index + 1}` : index + 1}
-                  </span>
-                  <h3 className="font-serif text-base font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors mt-1 leading-snug">
+                {/* Name Only */}
+                <div className="mt-3.5 w-full flex flex-col items-center">
+                  <h3 className="font-sans font-bold text-xs sm:text-sm md:text-base text-neutral-800 group-hover:text-[#D8232A] transition-colors leading-snug">
                     {member.name}
                   </h3>
-                  <p className="text-xs text-neutral-500 font-medium mt-1">
-                    {member.role}
-                  </p>
                 </div>
               </motion.div>
             ))}
@@ -431,189 +344,115 @@ export default function TeamPage({ isEmbedded = false }) {
         </div>
 
         {/* 3. Curatorial Directors Section */}
-        <div className="mb-14">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-8 gap-4 rounded-3xl p-6 sm:p-8 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <Sparkles className="w-4 h-4 text-orange-500" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse" />
-                <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
-                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                  03 · CURATORIAL DIRECTORS
-                </span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#171717]">
-                 Curatorial Directors
-              </h2>
-            </div>
-            
-             <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full border border-white/40 shadow-sm self-start sm:self-auto text-white"
-               style={{ background: "#D8232A" }}>
-               DIRECTORS (03)
-            </span>
-          </div>
+        <div className="mb-16">
+          <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-[#1E3A8A] text-center mb-8 sm:mb-10 tracking-tight">
+            Curatorial Directors
+          </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto justify-items-center">
             {curatorialDirectors.map((d, index) => (
               <motion.div
                 key={d.id}
                 initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group flex flex-col items-center p-7 rounded-2xl bg-white border border-[#E6DFD3] hover:border-transparent shadow-2xs hover:shadow-xl transition-all duration-300 text-center relative overflow-hidden"
+                className="group flex flex-col items-center text-center w-full max-w-[160px]"
               >
-                <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 transition-all duration-300 shadow-md mb-5"
-                  style={{ background: "linear-gradient(135deg, #E6DFD3, #D4AF37 50%, transparent)" }}
-                >
-                  <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(236,38,86,0.2)] transition-all duration-300">
-                    <img
-                      src={d.image}
-                      alt={d.name}
-                      className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
+                {/* Red Curved Arch Frame (Same Size As Curators) */}
+                <div className="relative w-32 h-44 sm:w-36 sm:h-48 md:w-40 md:h-52 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                  <img
+                    src={d.image}
+                    alt={d.name}
+                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
-                <span className="text-[9.5px] font-mono tracking-widest font-semibold uppercase"
-                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                  LAF 3.0 · {d.badge}
-                </span>
-                <h3 className="font-serif text-lg font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors mt-1">
-                  {d.name}
-                </h3>
-                <p className="text-xs text-neutral-500 mt-0.5 font-medium">{d.role}</p>
+
+                {/* Name Only */}
+                <div className="mt-3.5 w-full flex flex-col items-center">
+                  <h3 className="font-sans font-bold text-xs sm:text-sm md:text-base text-neutral-800 group-hover:text-[#D8232A] transition-colors leading-snug">
+                    {d.name}
+                  </h3>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* 4. Student Volunteers / Coordinators Section (ab upar) */}
-        <div className="mb-14">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-8 gap-4 rounded-3xl p-6 sm:p-8 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
-            <div>
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse" />
-                <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
-                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                  04 · VOLUNTEERS & COORDINATORS
-                </span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#171717]">
-                Coordinators
-              </h2>
-            </div>
-            <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full border border-white/40 shadow-sm self-start sm:self-auto text-white"
-              style={{ background: "#D8232A" }}>
-              MEMBERS ({studentVolunteers.length})
-            </span>
-          </div>
+        {/* 4. Coordinators Section */}
+        <div className="mb-16">
+          <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-[#1E3A8A] text-center mb-8 sm:mb-10 tracking-tight">
+            Coordinators
+          </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 sm:gap-5 max-w-7xl mx-auto justify-items-center">
             {studentVolunteers.map((member, index) => (
               <motion.div
                 key={member.id}
-                initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.3) }}
-                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-neutral-50 border border-[#E6DFD3] hover:border-transparent shadow-2xs hover:shadow-xl transition-all duration-300 cursor-pointer text-center relative overflow-hidden"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.4) }}
+                className="group flex flex-col items-center text-center w-full max-w-[150px]"
               >
-                <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 transition-all duration-300 shadow-md mb-4"
-                  style={{ background: "linear-gradient(135deg, #E6DFD3, #D4AF37 50%, transparent)" }}
-                >
-                  <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center group-hover:shadow-[0_0_18px_rgba(236,38,86,0.18)] transition-all duration-300">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
+                {/* Red Curved Arch Frame */}
+                <div className="relative w-28 h-40 sm:w-32 sm:h-44 md:w-36 md:h-48 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
 
-                <div className="w-full">
-                  <span className="text-[9.5px] font-mono tracking-widest font-bold uppercase block truncate"
-                    style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                    LAF 3.0 · #{index + 1 < 10 ? `0${index + 1}` : index + 1}
-                  </span>
-                  <h3 className="font-serif text-base font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors mt-1 leading-snug">
+                {/* Name Only */}
+                <div className="mt-3 w-full flex flex-col items-center">
+                  <h3 className="font-sans font-bold text-xs sm:text-[13px] text-neutral-800 group-hover:text-[#D8232A] transition-colors leading-snug">
                     {member.name}
                   </h3>
-                  <p className="text-xs text-neutral-500 font-medium mt-1">
-                    {member.role}
-                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* 5. Joint-Coordinators Section (ab neeche) */}
-        <div>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-8 gap-4 rounded-3xl p-6 sm:p-8 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
-            <div>
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse" />
-                <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
-                  style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                  05 · JOINT-COORDINATORS
-                </span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#171717]">
-                Joint-Coordinators
-              </h2>
-            </div>
-            <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full border border-white/40 shadow-sm self-start sm:self-auto text-white"
-              style={{ background: "#D8232A" }}>
-              MEMBERS ({advisorsMentorsMembers.length})
-            </span>
-          </div>
+        {/* 5. Joint Coordinators Section */}
+        <div className="mb-16">
+          <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-[#1E3A8A] text-center mb-8 sm:mb-10 tracking-tight">
+            Joint Coordinators
+          </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 sm:gap-5 max-w-7xl mx-auto justify-items-center">
             {advisorsMentorsMembers.map((member, index) => (
               <motion.div
                 key={member.id}
-                initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.3) }}
-                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-neutral-50 border border-[#E6DFD3] hover:border-transparent shadow-2xs hover:shadow-xl transition-all duration-300 cursor-pointer text-center relative overflow-hidden"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.4) }}
+                className={`group flex flex-col items-center text-center w-full max-w-[150px] ${
+                  index === 16 ? "lg:col-start-2" : ""
+                }`}
               >
-                <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 transition-all duration-300 shadow-md mb-4"
-                  style={{ background: "linear-gradient(135deg, #E6DFD3, #D4AF37 50%, transparent)" }}
-                >
-                  <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center group-hover:shadow-[0_0_18px_rgba(236,38,86,0.18)] transition-all duration-300">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
+                {/* Red Curved Arch Frame (Same Size As Coordinators) */}
+                <div className="relative w-28 h-40 sm:w-32 sm:h-44 md:w-36 md:h-48 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
 
-                <div className="w-full">
-                  <span className="text-[9.5px] font-mono tracking-widest font-bold uppercase block truncate"
-                    style={{ background: "#D8232A", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                    LAF 3.0 · #{index + 1 < 10 ? `0${index + 1}` : index + 1}
-                  </span>
-                  <h3 className="font-serif text-base font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors mt-1 leading-snug">
+                {/* Name Only */}
+                <div className="mt-3 w-full flex flex-col items-center">
+                  <h3 className="font-sans font-bold text-xs sm:text-[13px] text-neutral-800 group-hover:text-[#D8232A] transition-colors leading-snug">
                     {member.name}
                   </h3>
-                  <p className="text-xs text-neutral-500 font-medium mt-1">
-                    {member.role}
-                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
-      <coreCommitteeMembers/>
     </div>
     
   );

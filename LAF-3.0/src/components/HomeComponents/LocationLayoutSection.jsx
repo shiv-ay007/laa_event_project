@@ -38,11 +38,11 @@ const LocationLayoutSection = () => {
           className="flex flex-col items-start gap-1.5 mb-8 sm:mb-10"
         >
           <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-            Location
+            Location  & Layout
           </h2>
-          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+          {/* <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
             & Layout
-          </h2>
+          </h2> */}
         </motion.div>
 
         {/* =====================================================

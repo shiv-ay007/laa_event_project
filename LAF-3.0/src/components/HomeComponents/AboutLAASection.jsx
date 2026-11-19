@@ -94,7 +94,7 @@ const getMemberInitials = (name) => {
   return (words[0][0] + words[1][0]).toUpperCase();
 };
 
-// Member Card Component matching Core Committee styling
+// Member Card Component
 const MemberCard = ({ member, index }) => {
   const [imgError, setImgError] = useState(false);
   const initials = getMemberInitials(member.name);
@@ -102,7 +102,6 @@ const MemberCard = ({ member, index }) => {
 
   return (
     <div className="group relative flex flex-col items-center justify-between p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl bg-white hover:bg-[#FDFBF7] border border-[#E6DFD3] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.06)] transition-all duration-300 cursor-pointer text-center w-full h-full hover:-translate-y-1 overflow-hidden">
-      {/* Avatar circular frame with theme gradient ring matching Supporting Leadership */}
       <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full p-1 bg-gradient-to-b from-[#E6DFD3] via-[#D4AF37]/50 to-[#E6DFD3] transition-all duration-300 shadow-sm group-hover:shadow-[0_0_22px_rgba(216,35,42,0.2)] mb-3 sm:mb-4">
         <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center">
           {member.image && !imgError ? (
@@ -142,7 +141,6 @@ const MemberCard = ({ member, index }) => {
         </p>
       </div>
 
-      {/* Bottom Shimmer Line */}
       <div
         className="absolute bottom-0 left-0 h-[2px] w-0 transition-all duration-500 group-hover:w-full"
         style={{
@@ -153,11 +151,10 @@ const MemberCard = ({ member, index }) => {
   );
 };
 
-// Committee Slider Row Component (Heading Card + Responsive Grid)
+// Committee Slider Row Component
 const CommitteeSliderRow = ({ committee, index }) => {
   const IconComponent = committee.icon || GraduationCap;
 
-  // Normalize conveners & members into unified list of member objects
   const allMembers = React.useMemo(() => {
     const convenersList = (committee.conveners || []).map((c) => ({
       name: c.name,
@@ -192,22 +189,16 @@ const CommitteeSliderRow = ({ committee, index }) => {
       transition={{ duration: 0.4, delay: index * 0.04 }}
       className="mb-14"
     >
-      {/* ================= COMMITTEE HEADING CARD ================= */}
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6DFD3] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6 relative overflow-hidden">
-        {/* Theme Top Accent Bar */}
         <div
           className="absolute top-0 left-0 right-0 h-[2.5px] rounded-t-3xl"
           style={{
-            background:
-              "#D8232A",
+            background: "#D8232A",
           }}
         />
-
-        {/* Subtle Ambient Glow */}
         <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-orange-400/5 to-purple-400/5 rounded-full blur-3xl pointer-events-none" />
 
         <div>
-          {/* Top Category Tag */}
           <div className="flex items-center gap-2 mb-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse shrink-0" />
             <span
@@ -222,7 +213,6 @@ const CommitteeSliderRow = ({ committee, index }) => {
             </span>
           </div>
 
-          {/* Heading + Icon */}
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-2xl bg-gradient-to-br from-orange-50 to-purple-50 border border-orange-100/80 flex items-center justify-center text-[#D8232A] shrink-0 shadow-2xs">
               <IconComponent size={22} strokeWidth={1.5} />
@@ -232,7 +222,6 @@ const CommitteeSliderRow = ({ committee, index }) => {
             </h3>
           </div>
 
-          {/* Subtitle */}
           {committee.subtitle && (
             <p className="mt-2 text-xs sm:text-sm font-mono tracking-wider text-neutral-500 uppercase">
               {committee.subtitle}
@@ -240,7 +229,6 @@ const CommitteeSliderRow = ({ committee, index }) => {
           )}
         </div>
 
-        {/* MEMBER COUNT BADGE */}
         <div className="flex items-center gap-4 self-start md:self-auto shrink-0">
           <span className="font-mono text-xs font-bold tracking-[0.25em] text-[#D8232A] uppercase bg-gradient-to-r from-orange-50 to-purple-50 px-4 py-2 rounded-full border border-orange-100 shadow-2xs">
             MEMBERS ({allMembers.length.toString().padStart(2, "0")})
@@ -248,7 +236,6 @@ const CommitteeSliderRow = ({ committee, index }) => {
         </div>
       </div>
 
-      {/* ================= COMMITTEE MEMBERS RESPONSIVE GRID ================= */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5">
         {allMembers.map((member, idx) => (
           <MemberCard key={member.name + idx} member={member} index={idx + 1} />
@@ -295,35 +282,6 @@ const patronsData = [
     role: "Patron",
     badge: "PATRON",
     image: patron4Img,
-  },
-];
-
-const leadershipWings = [
-  {
-    title: "MENTOR",
-    desc: "Guiding vision & architectural legacy",
-    icon: Sparkles,
-  },
-  {
-    title: "PATRONS",
-    desc: "Distinguished leadership & advisory panel",
-    icon: ShieldCheck,
-  },
-  {
-    title: "OFFICE BEARERS",
-    desc: 
-    "Executive management & operations",
-    icon: UserCheck,
-  },
-  {
-    title: "EXECUTIVE COMMITTEE",
-    desc: "Strategic execution & committee governance",
-    icon: UsersRound,
-  },
-  {
-    title: "INTELLECT COUNCIL",
-    desc: "Academic & professional think tank",
-    icon: GraduationCap,
   },
 ];
 
@@ -462,7 +420,7 @@ const committeesData = [
   },
   {
     id: "09",
-    title: "Editorial, Publication & Graphics",
+    title: "Governments Interaction & Professional Practice Committee",
     category: "Operations & Media",
     icon: PenLine,
     subtitle: "Journal Publications · Design Standards",
@@ -569,11 +527,8 @@ const AboutLAASection = () => {
       id="about-laa"
       className="relative overflow-hidden bg-[#FAF8F5] text-[#171717] pt-14 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 font-sans"
     >
-      {/* =====================================================
-          ARCHITECTURAL BACKGROUND (MATCHES ALL HOMEPAGE SECTIONS)
-      ====================================================== */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Signature Architectural Grid */}
         <div
           className="absolute inset-0 opacity-[0.28]"
           style={{
@@ -584,21 +539,18 @@ const AboutLAASection = () => {
             backgroundSize: "44px 44px",
           }}
         />
-
-        {/* Large Decorative Architectural Circles */}
         <div className="absolute -left-40 top-40 w-[500px] h-[500px] rounded-full border border-[#F97316]/10" />
         <div className="absolute -left-20 top-60 w-[350px] h-[350px] rounded-full border border-[#F97316]/10" />
         <div className="absolute -right-40 bottom-20 w-[550px] h-[550px] rounded-full border border-[#F97316]/10" />
         <div className="absolute right-[10%] top-[24%] h-[320px] w-[320px] rounded-full border border-[#F97316]/10" />
-
-        {/* Architectural corner accents */}
         <div className="absolute left-[8%] top-[15%] h-24 w-24 border-l border-t border-[#EA580C]/15" />
         <div className="absolute bottom-[10%] right-[8%] h-24 w-24 border-b border-r border-[#EA580C]/15" />
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
-                {/* =====================================================
-            ABOUT LAA HERO PRESENTATION CARD (Exact Match to User Mockup Image 1)
+                
+        {/* =====================================================
+            ABOUT LAA HERO PRESENTATION CARD
         ====================================================== */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -608,26 +560,20 @@ const AboutLAASection = () => {
           className="relative bg-white rounded-[32px] sm:rounded-[38px] border border-[#FED7AA]/80 shadow-[0_8px_36px_rgba(234,88,12,0.06)] p-6 sm:p-10 lg:p-12 overflow-hidden"
         >
 
-          {/* ================= MAIN CONTENT (TWO COLUMNS) ================= */}
+          {/* MAIN CONTENT */}
           <div className="relative z-10 flex flex-col lg:flex-row items-stretch gap-8 lg:gap-10 xl:gap-12">
-            {/* ================= LEFT COLUMN: ABOUT LAA & HERITAGE IMAGE ================= */}
+            {/* LEFT COLUMN */}
             <div className="w-full lg:w-[46%] xl:w-[44%] flex flex-col items-center lg:items-start text-center lg:text-left justify-between pt-2">
               <div className="w-full flex flex-col items-start gap-1.5 mb-2">
-                {/* Main Heading: About LAA (Red badges matching theme) */}
                 <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-                  About
+                  About  LAA
                 </h2>
-                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-                  LAA
-                </h2>
-
-                {/* Subtitle: LUCKNOW ARCHITECTS ASSOCIATION */}
                 <p className="mt-2 text-xs sm:text-[12.5px] font-mono font-bold uppercase tracking-[0.28em] text-neutral-800">
                   LUCKNOW ARCHITECTS ASSOCIATION
                 </p>
               </div>
 
-              {/* Famous Lucknow Heritage Image */}
+              {/* Image */}
               <div className="w-full mt-6 sm:mt-7 rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_8px_25px_rgba(0,0,0,0.08)] border border-[#FED7AA] group relative h-48 sm:h-56 lg:h-52 xl:h-56">
                 <img
                   src={lucknowImg}
@@ -646,10 +592,9 @@ const AboutLAASection = () => {
               </div>
             </div>
 
-            {/* ================= VERTICAL DIVIDER LINE (Matching Mockup Image 1) ================= */}
             <div className="hidden lg:block w-[1.5px] bg-[#F97316] self-stretch my-2 shrink-0" />
 
-            {/* ================= RIGHT COLUMN: NARRATIVE & QUOTE CARD ================= */}
+            {/* RIGHT COLUMN */}
             <div className="flex-1 flex flex-col justify-between pt-1">
               <div className="space-y-4">
                 <p className="text-[14px] sm:text-[15.5px] leading-relaxed text-neutral-800 font-normal">
@@ -668,7 +613,6 @@ const AboutLAASection = () => {
                   and community awards.
                 </p>
 
-                {/* Soft Peach/Orange Quote Card */}
                 <div className="bg-[#FFF8F4] border border-[#FDBA74]/50 rounded-2xl p-4 sm:p-4.5 flex items-center gap-4 mt-5 shadow-2xs">
                   <div className="shrink-0 text-[#EA580C]">
                     <UsersRound size={28} strokeWidth={2.2} />
@@ -684,57 +628,58 @@ const AboutLAASection = () => {
           </div>
 
           {/* ================= 3 STATS HORIZONTAL STRIP ================= */}
+          {/* 🚀 FIX: Changed text colors to Red (#D8232A) */}
           <div className="mt-8 sm:mt-12 pt-6 sm:pt-10 border-t border-[#FED7AA]/60 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-4 items-center w-full">
-            {/* STAT 1: ESTABLISHED 1960s */}
+            {/* STAT 1 */}
             <div className="flex items-center justify-center md:justify-start gap-4 sm:gap-5 md:pl-4 lg:pl-8">
               <div className="w-14 h-14 rounded-2xl bg-white border border-orange-200/90 shadow-sm flex items-center justify-center shrink-0">
-                <CalendarDays className="w-7 h-7 text-[#EA580C]" strokeWidth={2} />
+                <CalendarDays className="w-7 h-7 text-[#D8232A]" strokeWidth={2} />
               </div>
               <div className="w-[165px] sm:w-[185px] md:w-auto text-left">
-                <span className="block font-mono text-xs uppercase tracking-[0.2em] text-neutral-700 font-bold">
+                <span className="block font-mono text-xs uppercase tracking-[0.2em] text-[#D8232A] font-bold">
                   ESTABLISHED
                 </span>
-                <span className="block font-serif text-3xl sm:text-4xl font-bold text-[#0B1536] leading-tight mt-0.5">
+                <span className="block font-serif text-3xl sm:text-4xl font-bold text-[#D8232A] leading-tight mt-0.5">
                   1960s
                 </span>
-                <div className="w-14 h-[3.5px] rounded-full bg-[#EA580C] mt-1.5" />
+                <div className="w-14 h-[3.5px] rounded-full bg-[#D8232A] mt-1.5" />
               </div>
             </div>
 
-            {/* STAT 2: COMMITTEES 13 Wings */}
+            {/* STAT 2 */}
             <div className="flex items-center justify-center md:justify-start gap-4 sm:gap-5 md:border-l md:border-neutral-200/80 md:pl-8">
               <div className="w-14 h-14 rounded-2xl bg-white border border-orange-200/90 shadow-sm flex items-center justify-center shrink-0">
-                <UsersRound className="w-7 h-7 text-[#EA580C]" strokeWidth={2} />
+                <UsersRound className="w-7 h-7 text-[#D8232A]" strokeWidth={2} />
               </div>
               <div className="w-[165px] sm:w-[185px] md:w-auto text-left">
-                <span className="block font-mono text-xs uppercase tracking-[0.2em] text-neutral-700 font-bold">
+                <span className="block font-mono text-xs uppercase tracking-[0.2em] text-[#D8232A] font-bold">
                   COMMITTEES
                 </span>
-                <span className="block font-serif text-3xl sm:text-4xl font-bold text-[#D91A5B] leading-tight mt-0.5">
+                <span className="block font-serif text-3xl sm:text-4xl font-bold text-[#D8232A] leading-tight mt-0.5">
                   13 Wings
                 </span>
-                <div className="w-14 h-[3.5px] rounded-full bg-[#EA580C] mt-1.5" />
+                <div className="w-14 h-[3.5px] rounded-full bg-[#D8232A] mt-1.5" />
               </div>
             </div>
 
-            {/* STAT 3: PILLARS 5 Leadership */}
+            {/* STAT 3 */}
             <div className="flex items-center justify-center md:justify-start gap-4 sm:gap-5 md:border-l md:border-neutral-200/80 md:pl-8">
               <div className="w-14 h-14 rounded-2xl bg-white border border-purple-200/90 shadow-sm flex items-center justify-center shrink-0">
-                <Landmark className="w-7 h-7 text-[#7C2D92]" strokeWidth={2} />
+                <Landmark className="w-7 h-7 text-[#D8232A]" strokeWidth={2} />
               </div>
               <div className="w-[165px] sm:w-[185px] md:w-auto text-left">
-                <span className="block font-mono text-xs uppercase tracking-[0.2em] text-neutral-700 font-bold">
+                <span className="block font-mono text-xs uppercase tracking-[0.2em] text-[#D8232A] font-bold">
                   PILLARS
                 </span>
-                <span className="block font-serif text-3xl sm:text-4xl font-bold text-[#7C2D92] leading-tight mt-0.5">
+                <span className="block font-serif text-3xl sm:text-4xl font-bold text-[#D8232A] leading-tight mt-0.5">
                   5 Leadership
                 </span>
-                <div className="w-14 h-[3.5px] rounded-full bg-[#EA580C] mt-1.5" />
+                <div className="w-14 h-[3.5px] rounded-full bg-[#D8232A] mt-1.5" />
               </div>
             </div>
           </div>
 
-          {/* ================= BOTTOM TAG STRIP ================= */}
+          {/* BOTTOM TAG STRIP */}
           <div className="mt-8 sm:mt-12 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 select-none px-4">
             <span className="hidden sm:block w-12 sm:w-20 h-px bg-orange-300" />
             <span className="text-[11px] sm:text-[12.5px] font-mono font-bold tracking-[0.14em] sm:tracking-[0.28em] text-neutral-800 uppercase">
@@ -752,51 +697,7 @@ const AboutLAASection = () => {
           </div>
         </motion.div>
 
-        {/* =====================================================
-            5 CORE LEADERSHIP PILLARS STRIP
-        ====================================================== */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-16 py-8 border-y border-[#FED7AA]/60 bg-gradient-to-r from-orange-50/30 via-white to-amber-50/20 rounded-2xl px-4 sm:px-6"
-        >
-          <div className="mb-6 flex items-center justify-between px-2">
-            <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#EA580C]">
-              ORGANIZATIONAL WINGS &amp; PILLARS
-            </span>
-            <span className="text-xs text-neutral-500 font-mono hidden sm:inline">
-              STRUCTURE OF LUCKNOW ARCHITECTS ASSOCIATION
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {leadershipWings.map((wing, idx) => {
-              const IconComp = wing.icon;
-              return (
-                <div
-                  key={wing.title}
-                  className="group relative p-5 rounded-2xl bg-white hover:bg-gradient-to-b hover:from-white hover:to-orange-50/30 border border-[#FED7AA]/70 hover:border-[#F97316] shadow-[0_2px_12px_rgba(249,115,22,0.04)] hover:shadow-[0_8px_24px_rgba(249,115,22,0.12)] hover:-translate-y-1.5 transition-all duration-300"
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-mono text-xs text-[#EA580C] font-bold">
-                      0{idx + 1}
-                    </span>
-                    <IconComp size={19} className="text-[#EA580C] group-hover:scale-110 group-hover:text-[#D91A5B] transition-all" />
-                  </div>
-                  <h4 className="font-serif text-sm font-bold tracking-wide text-[#0B1536] group-hover:text-[#EA580C] transition-colors">
-                    {wing.title}
-                  </h4>
-                  <p className="mt-1 text-[11.5px] leading-snug text-neutral-500">
-                    {wing.desc}
-                  </p>
-                  <div className="mt-3 h-[2px] w-0 group-hover:w-8 bg-gradient-to-r from-[#EA580C] to-[#D91A5B] transition-all duration-300" />
-                </div>
-              );
-            })}
-          </div>
-        </motion.div>
+        {/* 🚀 FIX: REMOVED "ORGANIZATIONAL WINGS & PILLARS" SECTION ENTIRELY */}
 
         {/* =====================================================
             MENTOR & PATRONS SHOWCASE
@@ -807,10 +708,7 @@ const AboutLAASection = () => {
             <div className="max-w-2xl">
               <div className="flex flex-col items-start gap-1.5 mb-2">
                 <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
-                  Mentor &amp;
-                </h2>
-                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
-                  Patrons
+                  Mentor &amp;  Patrons
                 </h2>
               </div>
 
@@ -839,7 +737,7 @@ const AboutLAASection = () => {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-12 items-stretch">
-            {/* FEATURED UNIQUE MENTOR CARD (LEFT) */}
+            {/* FEATURED UNIQUE MENTOR CARD */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -847,10 +745,8 @@ const AboutLAASection = () => {
               transition={{ duration: 0.7 }}
               className="lg:col-span-4 bg-gradient-to-b from-[#FFFDF9] via-white to-[#FAF6EE] p-6 sm:p-7 rounded-3xl border border-[#E6DFD3] hover:border-[#D4AF37]/70 shadow-sm flex flex-col justify-between text-center relative overflow-hidden group hover:shadow-xl transition-all duration-500"
             >
-              {/* Gold Top Light Sweep */}
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl pointer-events-none" />
 
-              {/* Unique Gold Mentor Badge */}
               <div className="absolute top-4 right-4 bg-gradient-to-r from-[#FB7801] via-[#EC2656] to-[#930777] text-white text-[9.5px] font-bold uppercase font-mono tracking-widest px-3 py-1 rounded-full shadow-xs flex items-center gap-1">
                 <Sparkles size={11} />
                 <span>{mentorData.badge}</span>
@@ -861,7 +757,6 @@ const AboutLAASection = () => {
                   ✦ {mentorData.tag}
                 </p>
 
-                {/* Avatar with double orbit ring - bigger image */}
                 <div className="relative mx-auto h-44 w-44 sm:h-48 sm:w-48 my-2">
                   <div className="absolute -inset-2 rounded-full border border-[#D4AF37]/50 group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute -inset-4 rounded-full border border-[#D4AF37]/25 pointer-events-none" />
@@ -889,7 +784,7 @@ const AboutLAASection = () => {
               </div>
             </motion.div>
 
-            {/* PATRONS GRID (RIGHT) - SAME LINE & FULL HEIGHT MATCHING MENTOR CARD */}
+            {/* PATRONS GRID */}
             <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5 items-stretch">
               {patronsData.map((person, index) => (
                 <motion.div
@@ -900,13 +795,11 @@ const AboutLAASection = () => {
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   className="group relative flex flex-col justify-between p-5 sm:p-6 rounded-3xl bg-white hover:bg-[#FDFBF7] border border-[#E6DFD3] hover:border-[#D4AF37]/70 shadow-sm hover:shadow-xl transition-all duration-300 text-center w-full h-full"
                 >
-                  {/* Patron Badge */}
                   <div className="absolute top-4 right-4 text-[8.5px] font-bold uppercase font-mono tracking-widest px-2.5 py-1 rounded-full bg-amber-50/80 text-[#B77A27] border border-amber-200/60 font-bold">
                     {person.badge}
                   </div>
 
                   <div className="w-full flex flex-col items-center pt-3">
-                    {/* Image Circular Ring */}
                     <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-b from-[#E6DFD3] via-[#D4AF37]/50 to-transparent group-hover:from-[#B77A27] group-hover:to-amber-300 transition-all duration-300 shadow-sm group-hover:shadow-[0_0_18px_rgba(183,122,39,0.2)] mb-4">
                       <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center">
                         <img
@@ -936,10 +829,9 @@ const AboutLAASection = () => {
         </div>
 
         {/* =====================================================
-            LAA COMMITTEES SHOWCASE (REDESIGNED WITH STANDALONE CIRCULAR CONVENER HEADSHOTS)
+            LAA COMMITTEES SHOWCASE
         ====================================================== */}
         <div id="committees" className="mt-24">
-          {/* HEADER & FILTER BAR */}
           <div className="mb-12">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between border-b border-[#E6DFD3] pb-6 gap-6">
               <div>
@@ -974,7 +866,6 @@ const AboutLAASection = () => {
                 </h3>
               </div>
 
-              {/* SEARCH BAR */}
               <div className="relative w-full lg:w-72">
                 <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
                 <input
@@ -987,7 +878,6 @@ const AboutLAASection = () => {
               </div>
             </div>
 
-            {/* CATEGORY TABS */}
             <div className="flex items-center gap-2 overflow-x-auto pt-6 pb-2 no-scrollbar">
               {categories.map((cat) => (
                 <button
@@ -1016,7 +906,6 @@ const AboutLAASection = () => {
             </div>
           </div>
 
-          {/* COMMITTEES LIST - EACH COMMITTEE HAS A HEADING CARD & INDEPENDENT HORIZONTAL SLIDER */}
           <div>
             <AnimatePresence mode="popLayout">
               {filteredCommittees.map((item, index) => (
@@ -1051,9 +940,7 @@ const AboutLAASection = () => {
           )}
         </div>
 
-        {/* =====================================================
-            CLOSING STATEMENT BANNER
-        ====================================================== */}
+        {/* CLOSING STATEMENT BANNER */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

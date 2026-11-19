@@ -31,8 +31,8 @@ const Home = () => {
       <TeamPage isEmbedded={true} />
       <CorporateCommitteePage isEmbedded={true} />
       <SupportingOrganizationsSection/>
-      <LastEventGlanceSection/>
       <AboutLAASection/>
+      <LastEventGlanceSection/>
       <LafInMediaSection/>
       <BrandShowcase/>
       <LocationLayoutSection/>

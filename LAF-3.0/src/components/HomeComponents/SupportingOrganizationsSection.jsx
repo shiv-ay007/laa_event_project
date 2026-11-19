@@ -1,82 +1,105 @@
-import React, { useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Compass, Users, Award, ShieldCheck, ChevronLeft, ChevronRight } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
-// Organization Logos (Part 1)
+// Organization Logos
 import iudiLogo from "../../assets/images/suplogo2.png";
+import ipaLogo from "../../assets/images/suplogo4.png";
 import iiaLogo from "../../assets/images/suplogo1.png";
 import iiidLogo from "../../assets/images/suplogo3.png";
-import ipaLogo from "../../assets/images/suplogo4.png";
+import yacaLogo from "../../assets/images/suplogo7.png";
 import fsaiLogo from "../../assets/images/suplogo5.png";
 import itpiLogo from "../../assets/images/suplogo6.png";
-import yacaLogo from "../../assets/images/suplogo7.png";
 
-// Organization Key Persons (Part 2)
-import iudiPerson from "../../assets/images/conveners-1.webp";
-import iiaPerson from "../../assets/images/sp-2.webp";
-import iiidPerson from "../../assets/images/sup3.png";
-import ipaPerson from "../../assets/images/sp-4.webp";
-import fsaiPerson from "../../assets/images/sp-5.webp";
-import itpiPerson from "../../assets/images/sup2.png";
-import yacaPerson from "../../assets/images/sup4.png";
+// LAF Logo
+import lafLogo from "../../assets/images/logo-transparent.png";
 
+// Supporting Leadership Persons (from src/assets/LAF/SUPPORTING ORGANIZATIONS/)
+import iudiPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Rajat Kant Mittal.png";
+import ipaPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Devesh Mani Tripathi.png";
+import iiaPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Sandeep Saraswat.png";
+import iiidPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Aviral Agrawal.png";
+import yacaPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Vishal Mathur (Yaka).png";
+import fsaiPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/dilip dutt.jpeg";
+import itpiPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Tpr. Anup Kumar Srivastava.png";
 
 const organizations = [
   {
     id: "01",
+    badge: "IUDI",
+    title: "INSTITUTE OF URBAN DESIGNERS INDIA",
     logo: iudiLogo,
     personImg: iudiPerson,
-    person: "Ar. Rajat Kant Mittal",
-    role: "Chairperson, IUDI Lucknow Centre",
-    badge: "IUDI",
+    person: "Ar. Rajatkant",
+    fullName: "Ar. Rajat Kant Mittal",
+    role: "Chairperson",
+    
   },
   {
     id: "02",
-    logo: iiaLogo,
-    personImg: iiaPerson,
-    person: "Ar. Sandeep Saraswat",
-    role: "Chairman, IIA ALL UP Chapter",
-    badge: "IIA",
-  },
-  {
-    id: "03",
-    logo: iiidLogo,
-    personImg: iiidPerson,
-    person: "Ar. Aviral Agrawal",
-    role: "Chairman, IIID Lucknow Chapter",
-    badge: "IIID",
-  },
-  {
-    id: "04",
+    badge: "IPA",
+    title: "INDIAN PLUMBING ASSOCIATION",
     logo: ipaLogo,
     personImg: ipaPerson,
     person: "Ar. Devesh Mani Tripathi",
-    role: "Chairman, IPA Lucknow Chapter",
-    badge: "IPA",
+    fullName: "Ar. Devesh Mani Tripathi",
+    role: "General Secretary",
+    
+  },
+  {
+    id: "03",
+    badge: "IIA",
+    title: "THE INDIAN INSTITUTE OF ARCHITECTS",
+    logo: iiaLogo,
+    personImg: iiaPerson,
+    person: "Ar. Sandeep Saraswat",
+    fullName: "Ar. Sandeep Saraswat",
+    role: "Chairman",
+    
+  },
+  {
+    id: "04",
+    badge: "IIID",
+    title: "INDIAN INSTITUTE OF INTERIOR DESIGNERS",
+    logo: iiidLogo,
+    personImg: iiidPerson,
+    person: "Ar. Aviral Agrawal",
+    fullName: "Ar. Aviral Agrawal",
+    role: "Chairman",
+    
   },
   {
     id: "05",
-    logo: fsaiLogo,
-    personImg: fsaiPerson,
-    person: "Mr. Puneet Jaiswal",
-    role: "Joint Secretary, FSAI Lucknow Chapter",
-    badge: "FSAI",
-  },
-  {
-    id: "06",
-    logo: itpiLogo,
-    personImg: itpiPerson,
-    person: "Tpr. Anoop Kumar Srivastava",
-    role: "President -ITPI Lucknow Chapter ",
-    badge: "ITPI",
-  },
-  {
-    id: "07",
+    badge: "YACA",
+    title: "YOUNG ARCHITECTS CLUB ASSOCIATION",
     logo: yacaLogo,
     personImg: yacaPerson,
     person: "Ar. Vishal Mathur",
-    role: "President -YACA",
-    badge: "YACA",
+    fullName: "Ar. Vishal Mathur",
+    role: "President",
+    
+  },
+  {
+    id: "06",
+    badge: "FSAI",
+    title: "FIRE & SECURITY ASSOCIATION OF INDIA",
+    logo: fsaiLogo,
+    personImg: fsaiPerson,
+    person: "Lalit Dutt",
+    fullName: "Lalit Dutt",
+    role: "Fire & Security Association of India",
+    
+  },
+  {
+    id: "07",
+    badge: "ITPI",
+    title: "INSTITUTE OF TOWN PLANNERS, INDIA",
+    logo: itpiLogo,
+    personImg: itpiPerson,
+    person: "Tpr. Anup Kumar Srivastava",
+    fullName: "Tpr. Anup Kumar Srivastava",
+    role: "President",
+    
   },
 ];
 
@@ -92,259 +115,147 @@ const containerVariants = {
 const cardVariants = {
   hidden: {
     opacity: 0,
-    y: 25,
+    y: 18,
   },
   show: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.4,
       ease: [0.16, 1, 0.3, 1],
     },
   },
 };
 
 export default function SupportingOrganizationsSection() {
-  const sliderRef = useRef(null);
-  const sliderRef2 = useRef(null);
-
-  const scroll = (ref, dir) => {
-    if (ref.current) {
-      const cardW = ref.current.firstChild?.offsetWidth ?? 240;
-      ref.current.scrollBy({ left: dir * (cardW + 20), behavior: "smooth" });
-    }
-  };
   return (
     <section
       id="supporting-organizations"
-      className="relative overflow-hidden bg-[#FAF8F5] pt-16 sm:pt-20 lg:pt-24 pb-2 sm:pb-3 lg:pb-4 select-none font-sans border-t border-[#E6DFD3]"
+      className="relative overflow-hidden bg-[#FAF8F5] pt-12 sm:pt-16 lg:pt-20 pb-10 sm:pb-12 select-none font-sans border-t border-[#E6DFD3]"
     >
-      {/* Subtle architectural grid */}
+      {/* Subtle architectural grid background */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.25] bg-[linear-gradient(to_right,rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.035)_1px,transparent_1px)] bg-[size:44px_44px]"
       />
 
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
-        
         {/* =====================================================
-            PART 1: SUPPORTING ORGANIZATIONS (LOGOS ONLY)
+            HEADER: SUPPORTING ORGANIZATIONS & LAF 3.0 LOGO
         ====================================================== */}
-        <div className="mb-16 sm:mb-20">
-          <div className="mb-10 sm:mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="max-w-2xl">
-              <div className="flex flex-col items-start gap-1.5 mb-2">
-                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
-                  Supporting
-                </h2>
-                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
-                  Organizations
-                </h2>
-              </div>
-
-              <p className="mt-4 text-sm sm:text-base text-neutral-600 leading-relaxed max-w-xl">
-                The Lucknow Architecture Festival has collaborated with premier professional institutions working across urban planning, architecture, design, and engineering.
-              </p>
+        <div className="mb-8 sm:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-5 pb-5 border-b border-[#E6DFD3]/60">
+          <div className="max-w-2xl">
+            <div className="flex flex-col items-start gap-1.5 mb-1.5">
+              <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
+                Supporting Organizations
+              </h2>
             </div>
 
-            <div className="hidden lg:flex items-center gap-3 px-4 py-2.5 rounded-2xl border border-white/30 shadow-sm text-white"
-              style={{ background: "linear-gradient(90deg, #FB7801 0%, #EC2656 40%, #930777 80%, #3C086E 100%)" }}>
-              <Compass className="w-5 h-5 text-amber-300" />
-              <div className="text-left">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-white">Key Partners</div>
-                <div className="text-[10px] font-mono text-white/70">7 Institutional Logos</div>
-              </div>
-            </div>
+            <p className="mt-3 text-sm sm:text-base text-neutral-600 leading-relaxed max-w-xl">
+              The Lucknow Architecture Festival has collaborated with various organisations working in close tandem.
+            </p>
           </div>
 
-          {/* PART 1 LOGOS — Horizontal Slider */}
-          <div className="relative">
-            {/* Left Arrow */}
-            <button
-              onClick={() => scroll(sliderRef, -1)}
-              className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white border border-[#E6DFD3] shadow-md flex items-center justify-center hover:border-[#EC2656]/40 hover:shadow-lg transition-all duration-200 group"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft className="w-4 h-4 text-[#EC2656] group-hover:scale-110 transition-transform" />
-            </button>
-
-            {/* Scrollable track */}
-            <div
-              ref={sliderRef}
-              className="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-2"
-              style={{ scrollbarWidth: "none" }}
-            >
-              {organizations.map((item) => (
-                <motion.div
-                  key={`logo-${item.id}`}
-                  variants={cardVariants}
-                  className="group relative bg-white rounded-2xl border border-[#E6DFD3] hover:border-transparent shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_35px_rgba(236,38,86,0.12)] transition-all duration-300 p-6 flex flex-col justify-between items-center text-center overflow-hidden shrink-0 w-[220px] min-h-[230px]"
-                >
-                  {/* Header Tag */}
-                  <div className="w-full flex items-center justify-between mb-4">
-                    <span className="text-[9px] font-mono tracking-widest uppercase font-bold bg-gradient-to-r from-orange-50 to-purple-50 px-2.5 py-0.5 rounded-md border border-orange-100/80"
-                      style={{ color: "#EC2656" }}>
-                      ✦ {item.badge}
-                    </span>
-                    <span className="text-xs font-mono text-neutral-400 group-hover:text-[#EC2656] font-bold transition-colors">
-                      {item.id}
-                    </span>
-                  </div>
-
-                  {/* Logo Display */}
-                  <div className="flex-1 flex items-center justify-center p-3 my-2 w-full">
-                    <img
-                      src={item.logo}
-                      alt={item.title}
-                      className="max-h-[110px] sm:max-h-[120px] w-auto max-w-full object-contain group-hover:scale-[1.06] transition-transform duration-300"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-xs font-semibold text-neutral-800 group-hover:text-[#EC2656] transition-colors leading-snug mt-2 line-clamp-2">
-                    {item.title}
-                  </h3>
-
-                  {/* Bottom Shimmer Line — theme gradient */}
-                  <div className="absolute bottom-0 left-0 h-[2px] w-0 transition-all duration-500 group-hover:w-full"
-                    style={{ background: "linear-gradient(90deg, #FB7801, #EC2656, #930777, #3C086E)" }} />
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Right Arrow */}
-            <button
-              onClick={() => scroll(sliderRef, 1)}
-              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white border border-[#E6DFD3] shadow-md flex items-center justify-center hover:border-[#EC2656]/40 hover:shadow-lg transition-all duration-200 group"
-              aria-label="Scroll right"
-            >
-              <ChevronRight className="w-4 h-4 text-[#EC2656] group-hover:scale-110 transition-transform" />
-            </button>
+          {/* Right Header: LAF 3.0 Branding */}
+          <div className="flex items-center gap-4">
+            <img
+              src={lafLogo}
+              alt="Lucknow Architecture Festival LAF 3.0"
+              className="h-11 sm:h-13 md:h-14 w-auto object-contain drop-shadow-sm"
+            />
           </div>
         </div>
 
-        {/* Decorative Divider — themed */}
-        
+        {/* =====================================================
+            COMBINED ITEMS GRID (7 ITEMS - THIN RED BOXES)
+        ====================================================== */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-40px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6"
+        >
+          {organizations.map((item, index) => {
+            const isLast = index === organizations.length - 1;
+            return (
+              <div
+                key={item.id}
+                className={
+                  isLast
+                    ? "md:col-span-2 md:w-full md:max-w-[420px] md:mx-auto lg:col-span-1 lg:col-start-2 lg:max-w-none"
+                    : ""
+                }
+              >
+                <OrgCard item={item} />
+              </div>
+            );
+          })}
+        </motion.div>
 
         {/* =====================================================
-            PART 2: SUPPORTING KEY PERSONS / LEADERSHIP (PERSONS ONLY)
+            BOTTOM FOOTNOTE RIBBON
         ====================================================== */}
-        <div>
-          <div className="mb-10 sm:mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="max-w-2xl">
-              <div className="flex flex-col items-start gap-1.5 mb-2">
-                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
-                  Supporting
-                </h2>
-                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
-                  Leadership
-                </h2>
-              </div>
-
-              <p className="mt-4 text-sm sm:text-base text-neutral-600 leading-relaxed max-w-xl">
-                Distinguished chairpersons, presidents, and secretaries representing our partner organizations in exact order of collaboration.
-              </p>
-            </div>
-
-            <div className="hidden lg:flex items-center gap-3 px-4 py-2.5 rounded-2xl border border-white/30 shadow-sm text-white"
-              style={{ background: "linear-gradient(90deg, #FB7801 0%, #EC2656 40%, #930777 80%, #3C086E 100%)" }}>
-              <ShieldCheck className="w-5 h-5 text-amber-300" />
-              <div className="text-left">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-white">Key Persons</div>
-                <div className="text-[10px] font-mono text-white/70">7 Representatives</div>
-              </div>
-            </div>
-          </div>
-
-          {/* PART 2 PERSONS — Horizontal Slider */}
-          <div className="relative">
-            {/* Left Arrow */}
-            <button
-              onClick={() => scroll(sliderRef2, -1)}
-              className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white border border-[#E6DFD3] shadow-md flex items-center justify-center hover:border-[#EC2656]/40 hover:shadow-lg transition-all duration-200 group"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft className="w-4 h-4 text-[#EC2656] group-hover:scale-110 transition-transform" />
-            </button>
-
-            {/* Scrollable track */}
-            <div
-              ref={sliderRef2}
-              className="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-2"
-              style={{ scrollbarWidth: "none" }}
-            >
-              {organizations.map((item) => (
-                <motion.div
-                  key={`person-${item.id}`}
-                  variants={cardVariants}
-                  className="group relative bg-white rounded-2xl border border-[#E6DFD3] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_35px_rgba(236,38,86,0.12)] transition-all duration-300 p-6 flex flex-col items-center text-center overflow-hidden shrink-0 w-[200px] min-h-[260px] hover:border-transparent"
-                >
-                  {/* Header Tag */}
-                  <div className="w-full flex items-center justify-between mb-4">
-                    <span className="text-[9px] font-mono tracking-widest uppercase font-bold bg-neutral-100 text-[#D8232A] px-2.5 py-0.5 rounded-md border border-neutral-200">
-                      ✦ {item.badge}
-                    </span>
-                    <span className="text-xs font-mono text-neutral-400 font-bold group-hover:text-[#D8232A] transition-colors">
-                      {item.id}
-                    </span>
-                  </div>
-
-                  {/* Circular Person Portrait Avatar */}
-                  <div className="relative w-28 h-28 rounded-full p-1 transition-all duration-300 shadow-sm mb-4 shrink-0"
-                    style={{ background: "linear-gradient(135deg, #E6DFD3, #D4AF37 50%, transparent)" }}
-                  >
-                    <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center">
-                      <img
-                        src={item.personImg}
-                        alt={item.person}
-                        className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Name & Role */}
-                  <div className="w-full flex-1 flex flex-col justify-center">
-                    <h3 className="font-serif text-base font-semibold text-neutral-900 transition-colors leading-tight group-hover:text-[#D8232A]">
-                      {item.person}
-                    </h3>
-                    <p className="text-[11px] font-medium mt-1 leading-snug text-neutral-600">
-                      {item.role}
-                    </p>
-                    <p className="text-[9.5px] text-neutral-500 font-mono mt-1 uppercase tracking-wider truncate">
-                      {item.title}
-                    </p>
-                  </div>
-
-                  {/* Bottom Accent Bar */}
-                  <div className="absolute bottom-0 left-0 h-[2px] w-0 transition-all duration-500 group-hover:w-full bg-[#D8232A]" />
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Right Arrow */}
-            <button
-              onClick={() => scroll(sliderRef2, 1)}
-              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white border border-[#E6DFD3] shadow-md flex items-center justify-center hover:border-[#D8232A]/40 hover:shadow-lg transition-all duration-200 group"
-              aria-label="Scroll right"
-            >
-              <ChevronRight className="w-4 h-4 text-[#D8232A] group-hover:scale-110 transition-transform" />
-            </button>
-          </div>
-        </div>
-
-        {/* Bottom Footnote Ribbon */}
-        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#E6DFD3]/40 pt-4 text-xs text-neutral-500">
+        <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#E6DFD3] pt-5 text-xs text-neutral-500">
           <div className="flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-[#D8232A]" />
-            <span>Building connections across architecture, design, and construction sectors.</span>
+            <span>Building connections across architecture, urban planning, design, and construction sectors.</span>
           </div>
           <span className="font-mono text-[10px] tracking-widest uppercase font-bold text-[#D8232A]">
-            LAF 3.0 • INSTITUTIONAL PARTNERSHIPS
+            LAF 3.0 • INSTITUTIONAL ALLIANCES
           </span>
         </div>
-
       </div>
     </section>
+  );
+}
+
+// Individual Supporting Organization (Thin Red Box, Red Curved Arch Portrait)
+function OrgCard({ item }) {
+  return (
+    <motion.div
+      variants={cardVariants}
+      className="group relative flex flex-col justify-center rounded-2xl border border-[#D8232A] bg-white p-4 sm:p-5 shadow-xs hover:shadow-[0_8px_24px_rgba(216,35,42,0.12)] transition-all duration-300 h-full"
+    >
+      {/* Main Body: Clean Logo (Left) + Red Curved Arch Portrait (Right) */}
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 items-center w-full my-auto">
+        {/* Left: Clean Logo */}
+        <div className="flex items-center justify-center p-1 sm:p-2 h-26 sm:h-32">
+          <img
+            src={item.logo}
+            alt={item.badge}
+            className="max-h-[75px] sm:max-h-[90px] w-auto max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+
+        {/* Right: Red Curved Arch Portrait + Representative Details */}
+        <div className="flex flex-col items-center text-center">
+          {/* Red Curved Arch Frame (Matching Corporate Committee 2nd Image Exactly) */}
+          <div className="relative w-28 h-40 sm:w-32 sm:h-44 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300 shrink-0">
+            <img
+              src={item.personImg}
+              alt={item.person}
+              className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+
+          {/* Representative Details */}
+          <div className="mt-2.5 w-full">
+            <h4 className="font-sans text-xs sm:text-[13px] font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors leading-tight">
+              {item.person}
+            </h4>
+            <p className="text-[9.5px] sm:text-[10px] font-semibold text-[#D8232A] leading-tight uppercase tracking-wider mt-1">
+              {item.role}
+            </p>
+            {item.chapter && (
+              <p className="text-[8.5px] sm:text-[9px] text-neutral-500 leading-tight mt-0.5">
+                {item.chapter}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 }

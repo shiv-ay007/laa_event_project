@@ -9,26 +9,18 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-// TODO: Replace '#' with actual image imports
-// import corp1Img from "../assets/images/corp-1.png";
-// import corp2Img from "../assets/images/corp-2.png";
-// import corp3Img from "../assets/images/corp-3.png";
-// import corp4Img from "../assets/images/corp-4.png";
-// import corp5Img from "../assets/images/corp-5.png";
-// import corp6Img from "../assets/images/corp-6.png";
-
-const corp1Img = "#";
-const corp2Img = "#";
-const corp3Img = "#";
-const corp4Img = "#";
-const corp5Img = "#";
-const corp6Img = "#";
+import corp1Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Anurag Agarwal.png";
+import corp2Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Kamaljeet Singh.png";
+import corp3Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Karunesh Verma.png";
+import corp4Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Rajiv Agarwal.png";
+import corp5Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Manuj Sharma.png";
+import corp6Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Sandeep Singhal.png";
 
 export const corporateCommitteeMembers = [
-  { id: "corp-1", name: "Mr. Anurag Aggarwal", role: "Corporate Committee Member", image: corp1Img },
+  { id: "corp-1", name: "Mr. Anurag Agarwal", role: "Corporate Committee Member", image: corp1Img },
   { id: "corp-2", name: "Mr. Kamaljeet Singh", role: "Corporate Committee Member", image: corp2Img },
   { id: "corp-3", name: "Mr. Karunesh Verma", role: "Corporate Committee Member", image: corp3Img },
-  { id: "corp-4", name: "Mr. Rajeev Agrawal", role: "Corporate Committee Member", image: corp4Img },
+  { id: "corp-4", name: "Mr. Rajiv Agarwal", role: "Corporate Committee Member", image: corp4Img },
   { id: "corp-5", name: "Mr. Manuj Sharma", role: "Corporate Committee Member", image: corp5Img },
   { id: "corp-6", name: "Mr. Sandeep Singhal", role: "Corporate Committee Member", image: corp6Img },
 ];
@@ -69,57 +61,40 @@ export function CorporateCommitteePage({ isEmbedded = true }) {
       <div className={`relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 ${isEmbedded ? "pt-2 pb-10" : "pt-12 pb-24"}`}>
         
         {/* Corporate Committee Members Section */}
-        <div>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-8 gap-4 rounded-3xl p-6 sm:p-8 bg-white border border-[#E8E2D8] shadow-xs relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D8232A]" />
-            <div className="flex flex-col items-start gap-1.5">
-              <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
-                Corporate Committee
-              </h2>
-            </div>
-            <span className="font-mono text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full shadow-xs self-start sm:self-auto text-white bg-[#D8232A]">
-              MEMBERS ({corporateCommitteeMembers.length})
+        <div className="mb-14">
+          <div className="flex flex-col items-start gap-1 mb-8">
+            <span className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl font-bold tracking-tight inline-block leading-tight">
+              LAF 3.0
             </span>
+            <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
+              Corporate Committee
+            </h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 max-w-5xl justify-items-start">
             {corporateCommitteeMembers.map((member, index) => (
               <motion.div
                 key={member.id}
-                initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.3) }}
-                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-neutral-50 border border-[#E8E2D8] hover:border-[#D8232A]/30 shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer text-center relative overflow-hidden"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: index * 0.08 }}
+                className="group flex flex-col items-center text-center w-full max-w-[150px]"
               >
-                <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 transition-all duration-300 shadow-sm mb-4"
-                  style={{ background: "linear-gradient(135deg, #E6DFD3, #D4AF37 50%, transparent)" }}
-                >
-                  <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center transition-all duration-300">
-                    {member.image === "#" ? (
-                      <span className="text-2xl font-serif font-bold text-neutral-300 select-none">#</span>
-                    ) : (
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    )}
-                  </div>
+                {/* Red Curved Arch Frame */}
+                <div className="relative w-28 h-40 sm:w-32 sm:h-44 md:w-36 md:h-48 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
 
-                <div className="w-full">
-                  <span className="text-[9.5px] font-mono tracking-widest font-bold uppercase block truncate"
-                    style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                    LAF 3.0 · #{index + 1 < 10 ? `0${index + 1}` : index + 1}
-                  </span>
-                  <h3 className="font-serif text-base font-bold text-neutral-900 group-hover:text-[#EC2656] transition-colors mt-1 leading-snug">
+                {/* Name Only */}
+                <div className="mt-3 w-full flex flex-col items-center">
+                  <h3 className="font-sans font-bold text-xs sm:text-sm text-neutral-800 group-hover:text-[#D8232A] transition-colors leading-snug">
                     {member.name}
                   </h3>
-                  <p className="text-xs text-neutral-500 font-medium mt-1">
-                    {member.role}
-                  </p>
                 </div>
               </motion.div>
             ))}

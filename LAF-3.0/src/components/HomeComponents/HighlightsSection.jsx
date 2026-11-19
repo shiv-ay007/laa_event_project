@@ -326,9 +326,9 @@ const HighlightsSection = () => {
         pt-12
         sm:pt-16
         lg:pt-20
-        pb-8
-        sm:pb-12
-        lg:pb-16
+        pb-1
+        sm:pb-2
+        lg:pb-3
       "
     >
       <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
@@ -344,11 +344,11 @@ const HighlightsSection = () => {
           className="mb-8 sm:mb-12 flex flex-col items-start gap-1.5"
         >
           <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-            LAF 3.0
+            LAF 3.0 Highlights
           </h2>
-          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+          {/* <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
             Highlights
-          </h2>
+          </h2> */}
         </motion.div>
 
         {/* =====================================================
@@ -515,27 +515,27 @@ const HighlightsSection = () => {
         }}
       >
         <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
-            {/* Header matching Image 1 */}
+            {/* Header matching Image 1 in Theme Red */}
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-12">
               <div>
                 <h3 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-[#171717] font-normal tracking-tight leading-tight">
                   Built around the{" "}
-                  <span className="font-serif italic font-bold bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] bg-clip-text text-transparent">
+                  <span className="font-serif italic font-bold text-[#D8232A]">
                     future of design.
                   </span>
                 </h3>
 
-                {/* Gradient Pill Underline Bar matching Image 1 */}
-                <div className="w-28 sm:w-36 h-[5px] rounded-full bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] mt-3 sm:mt-3.5" />
+                {/* Theme Red Underline Bar */}
+                <div className="w-28 sm:w-36 h-[5px] rounded-full bg-[#D8232A] mt-3 sm:mt-3.5" />
               </div>
 
-              {/* Right Counter matching Image 1 */}
+              {/* Right Counter in Theme Red */}
               <div className="flex items-center gap-3.5 sm:gap-4 self-start sm:self-auto">
-                {/* Thin vertical orange accent line */}
-                <div className="w-[1.5px] h-10 bg-[#F97316] opacity-80" />
+                {/* Thin vertical red accent line */}
+                <div className="w-[2px] h-10 bg-[#D8232A] opacity-80" />
 
                 <div className="flex flex-col items-center">
-                  <span className="font-serif italic font-bold text-4xl sm:text-5xl lg:text-[52px] bg-gradient-to-r from-[#EA580C] via-[#E11D48] to-[#9333EA] bg-clip-text text-transparent leading-none">
+                  <span className="font-serif italic font-bold text-4xl sm:text-5xl lg:text-[52px] text-[#D8232A] leading-none">
                     14
                   </span>
                   <span className="font-sans font-bold text-[10px] sm:text-[11.5px] tracking-[0.25em] text-[#111827] uppercase mt-1">
@@ -689,18 +689,18 @@ const HighlightsSection = () => {
             ))}
           </div>
 
-          {/* Bottom Gradient Skyline Illustration & Line matching Image 2 */}
-          <div className="mt-10 sm:mt-12 w-full flex flex-col items-center pointer-events-none select-none">
+          {/* Bottom Skyline Illustration & Line (Width matches Navbar/Container) */}
+          <div className="mt-1 sm:mt-2 w-full flex flex-col items-center pointer-events-none select-none">
             <div className="w-full relative">
               <img
                 src={khSkyline}
                 alt="Lucknow Architecture Skyline"
-                className="w-full h-auto object-contain opacity-95 -mt-8 sm:-mt-12 lg:-mt-16" 
+                className="w-full h-auto object-contain opacity-95 -mt-6 sm:-mt-10 lg:-mt-14" 
               />
             </div>
             
-            {/* Orange/Amber Horizontal Line placed at the bottom of the image */}
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#EA580C] to-transparent -mt-1 relative z-20" />
+            {/* Red Horizontal Line placed at the bottom of the image */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#D8232A] to-transparent -mt-1 relative z-20" />
           </div>
         </motion.div>
 
