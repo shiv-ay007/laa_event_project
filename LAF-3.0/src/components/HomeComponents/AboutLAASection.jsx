@@ -27,11 +27,27 @@ import {
 // IMAGES IMPORTS
 // ==========================================
 import lucknowImg from "../../assets/images/lucknow-img.webp";
-import mentorImage from "../../assets/images/m-1.webp";
-import con4Img from "../../assets/images/convenor.png";
-import patron2Img from "../../assets/images/patrons2.png";
-import patron3Img from "../../assets/images/patrons3.png";
-import patron4Img from "../../assets/images/patrons4.png";
+// Mentor & Patrons from src/assets/LAF/
+import mentorImage from "../../assets/LAF/Mentor/Ar. D.C. Thapar.png";
+import con4Img from "../../assets/LAF/Patron/Ar. Ashok Kumar.png";
+import patron2Img from "../../assets/LAF/Patron/Ar. Ajai Behl.png";
+import patron3Img from "../../assets/LAF/Patron/Dr. Vandana Sehgal.png";
+import patron4Img from "../../assets/LAF/Patron/Ar. Sanjay Sinha.png";
+
+// LAA Committee images from src/assets/LAF/
+import acadSuparna from "../../assets/LAF/Academic Committee/Ar. Suparna Sircar.png";
+import acadRitu from "../../assets/LAF/Academic Committee/Ar. Ritu Gulati.png";
+import eduDPSingh from "../../assets/LAF/Edu Formation Committee/Ar. D.P. Singh.png";
+import eduDeepti from "../../assets/LAF/Edu Formation Committee/Ar. Deepti Pandey.png";
+import sportsShubhendra from "../../assets/LAF/Sports Committee/Ar. Shubhendra Bajpal.png";
+import sportsSandeep from "../../assets/LAF/Sports Committee/Ar. Sandeep Negi.jpeg";
+import hospVaibhav from "../../assets/LAF/Hospitality & Welfare Committee/Ar. VAIBHAV GOEL.png";
+import hospAviral from "../../assets/LAF/Hospitality & Welfare Committee/Ar. Aviral Agrawal.png";
+import cultShubhra from "../../assets/LAF/Cultural & Exhibition Committee/Ar. Shubhra Mittal.png";
+import cultRohit from "../../assets/LAF/Cultural & Exhibition Committee/Ar. Rohit Parmar.png";
+
+// LAF Logo
+import lafLogo from "../../assets/images/logo-transparent.png";
 
 import con1Img from "../../assets/images/co-3.png";
 import con2Img from "../../assets/images/conveners-2.webp";
@@ -498,6 +514,89 @@ const committeesData = [
   },
 ];
 
+const laaCommitteesDisplay = [
+  {
+    id: "acad",
+    title: "Academic Committee",
+    leads: [
+      {
+        name: "Ar. Suparna Sircar",
+        image: acadSuparna,
+        members: ["Ar. Vivek Karmakar", "Ar. Gaurav Singh", "Ar. Juwairia Qamruddin"],
+      },
+      {
+        name: "Dr. Ritu Gulati",
+        image: acadRitu,
+        members: ["Ar. Mohit Kumar Agarwal", "Ar. Shalini Diwaker"],
+      },
+    ],
+  },
+  {
+    id: "edu",
+    title: "Edu-Formation Committee",
+    leads: [
+      {
+        name: "Ar. D. P. Singh",
+        image: eduDPSingh,
+        members: ["Ar. Amit Raj", "Ar. Vaibhav Kulshrestha", "Ar. Kabir Kumar"],
+      },
+      {
+        name: "Ar. Deepti Pandey Rana",
+        image: eduDeepti,
+        members: ["Ar. Deepti Sagar", "Ar. Prashant Tiwari"],
+      },
+    ],
+  },
+  {
+    id: "sports",
+    title: "Sports Committee",
+    leads: [
+      {
+        name: "Ar. Shubhendra Bajpayee",
+        image: sportsShubhendra,
+        members: ["Ar. Vinay Vishwkarma", "Ar. Pallav Pratiyogi"],
+      },
+      {
+        name: "Ar. Sandeep Negi",
+        image: sportsSandeep,
+        members: ["Ar. Soharab Khan", "Ar. Chandan Bhardwaj"],
+      },
+    ],
+  },
+  {
+    id: "hosp",
+    title: "Hospitality & Welfare Committee",
+    leads: [
+      {
+        name: "Ar. Vaibhav Goel",
+        image: hospVaibhav,
+        members: ["Ar. Kalankar Raj Gupta", "Ar. Pankaj Singh"],
+      },
+      {
+        name: "Ar. Aviral Agarwal",
+        image: hospAviral,
+        members: ["Ar. Salman Nasir", "Ar. Ravi Verma"],
+      },
+    ],
+  },
+  {
+    id: "cult",
+    title: "Cultural & Exhibition Committee",
+    leads: [
+      {
+        name: "Ar. Shubhra Mittal",
+        image: cultShubhra,
+        members: ["Ar. Namit Tondon", "Ar. Rohit Agarwal"],
+      },
+      {
+        name: "Ar. Rohit Parmar",
+        image: cultRohit,
+        members: ["Ar. Nishant Upadhyay", "Dr. Anjaneya Sharma"],
+      },
+    ],
+  },
+];
+
 const categories = ["All", "Education & Culture", "Operations & Media", "Practice & Governance", "Community & Welfare"];
 
 const AboutLAASection = () => {
@@ -700,244 +799,162 @@ const AboutLAASection = () => {
         {/* 🚀 FIX: REMOVED "ORGANIZATIONAL WINGS & PILLARS" SECTION ENTIRELY */}
 
         {/* =====================================================
-            MENTOR & PATRONS SHOWCASE
+            MENTOR & PATRONS SHOWCASE (RED CURVED ARCH DESIGN)
         ====================================================== */}
-        <div className="mt-20">
-          {/* SECTION SUBHEADER */}
-          <div className="mb-10 sm:mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#E6DFD3] pb-6">
-            <div className="max-w-2xl">
-              <div className="flex flex-col items-start gap-1.5 mb-2">
-                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
-                  Mentor &amp;  Patrons
-                </h2>
-              </div>
+        <div className="mt-14 sm:mt-16 mb-8">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-12 sm:gap-14 lg:gap-24 xl:gap-28 max-w-7xl mx-auto">
+            {/* 1. MENTOR SECTION */}
+            <div className="flex flex-col items-center shrink-0">
+              <h3 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-[#1E3A8A] text-center mb-6 sm:mb-8 tracking-tight">
+                Mentor
+              </h3>
 
-              <p className="mt-4 text-sm sm:text-base text-neutral-600 leading-relaxed max-w-xl">
-                Honoring the esteemed mentors and founding patrons driving the mission of Lucknow Architects Association.
-              </p>
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className="group flex flex-col items-center text-center w-full max-w-[160px]"
+              >
+                {/* Red Curved Arch Frame (Equal Box) */}
+                <div className="relative w-28 h-40 sm:w-32 sm:h-44 md:w-36 md:h-48 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                  <img
+                    src={mentorData.image}
+                    alt={mentorData.name}
+                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Name Only */}
+                <div className="mt-3.5 w-full flex flex-col items-center">
+                  <h4 className="font-sans font-bold text-xs sm:text-sm md:text-base text-neutral-800 group-hover:text-[#D8232A] transition-colors leading-snug">
+                    {mentorData.name}
+                  </h4>
+                </div>
+              </motion.div>
             </div>
 
-            <div
-              className="hidden lg:flex items-center gap-3 px-4 py-2.5 rounded-2xl border border-white/30 shadow-sm text-white"
-              style={{
-                background:
-                  "#D8232A",
-              }}
-            >
-              <ShieldCheck className="w-5 h-5 text-amber-300" />
-              <div className="text-left">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-white">
-                  LAA Leadership
-                </div>
-                <div className="text-[10px] font-mono text-white/70">
-                  1 Mentor · 4 Patrons
-                </div>
-              </div>
-            </div>
-          </div>
+            {/* 2. PATRONS SECTION */}
+            <div className="flex flex-col items-center">
+              <h3 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-[#1E3A8A] text-center mb-6 sm:mb-8 tracking-tight">
+                Patrons
+              </h3>
 
-          <div className="grid gap-8 lg:grid-cols-12 items-stretch">
-            {/* FEATURED UNIQUE MENTOR CARD */}
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="lg:col-span-4 bg-gradient-to-b from-[#FFFDF9] via-white to-[#FAF6EE] p-6 sm:p-7 rounded-3xl border border-[#E6DFD3] hover:border-[#D4AF37]/70 shadow-sm flex flex-col justify-between text-center relative overflow-hidden group hover:shadow-xl transition-all duration-500"
-            >
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl pointer-events-none" />
-
-              <div className="absolute top-4 right-4 bg-gradient-to-r from-[#FB7801] via-[#EC2656] to-[#930777] text-white text-[9.5px] font-bold uppercase font-mono tracking-widest px-3 py-1 rounded-full shadow-xs flex items-center gap-1">
-                <Sparkles size={11} />
-                <span>{mentorData.badge}</span>
-              </div>
-
-              <div>
-                <p className="text-[10px] uppercase tracking-[0.25em] text-[#B77A27] font-bold font-mono mb-3 text-left">
-                  ✦ {mentorData.tag}
-                </p>
-
-                <div className="relative mx-auto h-44 w-44 sm:h-48 sm:w-48 my-2">
-                  <div className="absolute -inset-2 rounded-full border border-[#D4AF37]/50 group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute -inset-4 rounded-full border border-[#D4AF37]/25 pointer-events-none" />
-                  <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-white shadow-lg bg-white flex items-center justify-center">
-                    <img
-                      src={mentorData.image}
-                      alt={mentorData.name}
-                      className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
-
-                <h4 className="mt-3 font-serif text-2xl font-bold text-neutral-900 group-hover:text-[#B77A27] transition-colors">
-                  {mentorData.name}
-                </h4>
-                <p className="mt-0.5 text-xs font-mono tracking-[0.25em] text-[#B77A27] uppercase font-bold">
-                  {mentorData.role}
-                </p>
-              </div>
-
-              <div className="mt-5 pt-4 border-t border-[#E6DFD3] text-center">
-                <p className="font-serif italic text-xs sm:text-sm text-neutral-600 leading-relaxed">
-                  "{mentorData.quote}"
-                </p>
-              </div>
-            </motion.div>
-
-            {/* PATRONS GRID */}
-            <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5 items-stretch">
-              {patronsData.map((person, index) => (
-                <motion.div
-                  key={person.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  className="group relative flex flex-col justify-between p-5 sm:p-6 rounded-3xl bg-white hover:bg-[#FDFBF7] border border-[#E6DFD3] hover:border-[#D4AF37]/70 shadow-sm hover:shadow-xl transition-all duration-300 text-center w-full h-full"
-                >
-                  <div className="absolute top-4 right-4 text-[8.5px] font-bold uppercase font-mono tracking-widest px-2.5 py-1 rounded-full bg-amber-50/80 text-[#B77A27] border border-amber-200/60 font-bold">
-                    {person.badge}
-                  </div>
-
-                  <div className="w-full flex flex-col items-center pt-3">
-                    <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-b from-[#E6DFD3] via-[#D4AF37]/50 to-transparent group-hover:from-[#B77A27] group-hover:to-amber-300 transition-all duration-300 shadow-sm group-hover:shadow-[0_0_18px_rgba(183,122,39,0.2)] mb-4">
-                      <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center">
-                        <img
-                          src={person.image}
-                          alt={person.name}
-                          className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
-                          loading="lazy"
-                        />
-                      </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 justify-items-center">
+                {patronsData.map((person, index) => (
+                  <motion.div
+                    key={person.name}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.35, delay: index * 0.08 }}
+                    className="group flex flex-col items-center text-center w-full max-w-[160px]"
+                  >
+                    {/* Red Curved Arch Frame (Equal Box) */}
+                    <div className="relative w-28 h-40 sm:w-32 sm:h-44 md:w-36 md:h-48 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                      <img
+                        src={person.image}
+                        alt={person.name}
+                        className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
                     </div>
 
-                    <h5 className="font-serif text-base sm:text-lg font-bold text-neutral-900 group-hover:text-[#B77A27] transition-colors leading-snug">
-                      {person.name}
-                    </h5>
-                    <p className="mt-1 text-xs font-mono tracking-widest text-[#B77A27] font-semibold uppercase">
-                      {person.role}
-                    </p>
-                  </div>
-
-                  <div className="mt-4 pt-3 border-t border-[#E6DFD3]/60 w-full flex justify-center">
-                    <div className="h-0.5 w-6 bg-gradient-to-r from-[#D4AF37] to-[#FB7801] group-hover:w-12 transition-all duration-300 rounded-full" />
-                  </div>
-                </motion.div>
-              ))}
+                    {/* Name Only */}
+                    <div className="mt-3.5 w-full flex flex-col items-center">
+                      <h4 className="font-sans font-bold text-xs sm:text-sm md:text-base text-neutral-800 group-hover:text-[#D8232A] transition-colors leading-snug">
+                        {person.name}
+                      </h4>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         {/* =====================================================
-            LAA COMMITTEES SHOWCASE
+            LAA COMMITTEES FOR LAF 3.0 SHOWCASE
         ====================================================== */}
-        <div id="committees" className="mt-24">
-          <div className="mb-12">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between border-b border-[#E6DFD3] pb-6 gap-6">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#EC2656]"></span>
-                  </span>
-                  <span
-                    className="text-[11px] font-mono font-bold tracking-[0.25em] uppercase"
-                    style={{
-                      background: "#D8232A",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    LAA WORKING STRUCTURE
-                  </span>
+        <div id="committees" className="mt-20 sm:mt-24">
+          {/* HEADER: THEMED RED BADGE + LAF 3.0 LOGO */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 border-b border-[#E6DFD3] mb-12 sm:mb-14">
+            <div>
+              <div className="inline-block bg-[#D8232A] text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl shadow-xs">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight leading-tight">
+                  LAA Committee
+                </h2>
+                <div className="text-xs sm:text-sm font-bold text-white/90 tracking-wide mt-0.5">
+                  for LAF 3.0
                 </div>
-                <h3 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-neutral-900">
-                  LAA{" "}
-                  <span
-                    className="italic font-serif font-normal"
-                    style={{
-                      background: "#D8232A",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    Committees
-                  </span>
-                </h3>
-              </div>
-
-              <div className="relative w-full lg:w-72">
-                <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
-                <input
-                  type="text"
-                  placeholder="Search committee or member..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-full bg-white border border-[#E6DFD3] text-xs focus:outline-hidden focus:border-[#EC2656]/60 focus:ring-1 focus:ring-[#EC2656]/30 transition-all placeholder:text-neutral-400 shadow-2xs"
-                />
               </div>
             </div>
 
-            <div className="flex items-center gap-2 overflow-x-auto pt-6 pb-2 no-scrollbar">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`
-                    px-4 py-2 rounded-full text-xs whitespace-nowrap transition-all duration-300 cursor-pointer
-                    ${
-                      selectedCategory === cat
-                        ? "text-white shadow-sm font-semibold"
-                        : "bg-white hover:bg-[#FDFBF7] text-neutral-700 border border-[#E6DFD3] hover:border-[#EC2656]/40 font-medium"
-                    }
-                  `}
-                  style={
-                    selectedCategory === cat
-                      ? {
-                          background:
-                            "#D8232A",
-                        }
-                      : undefined
-                  }
-                >
-                  {cat}
-                </button>
-              ))}
+            {/* Right: LAF Logo */}
+            <div className="hidden sm:flex items-center">
+              <img
+                src={lafLogo}
+                alt="Lucknow Architecture Festival LAF 3.0"
+                className="h-11 sm:h-13 md:h-14 w-auto object-contain drop-shadow-sm"
+              />
             </div>
           </div>
 
-          <div>
-            <AnimatePresence mode="popLayout">
-              {filteredCommittees.map((item, index) => (
-                <CommitteeSliderRow
-                  key={item.id + item.title}
-                  committee={item}
-                  index={index}
-                />
-              ))}
-            </AnimatePresence>
-          </div>
-
-          {filteredCommittees.length === 0 && (
-            <div className="text-center py-16 bg-white/50 rounded-2xl border border-[#E6DFD3]">
-              <p className="text-neutral-500 font-serif text-lg">
-                No committee or member found matching "{searchQuery}"
-              </p>
-              <button
-                onClick={() => {
-                  setSearchQuery("");
-                  setSelectedCategory("All");
-                }}
-                className="mt-4 px-5 py-2 rounded-full text-white text-xs font-medium transition-all shadow-sm cursor-pointer"
-                style={{
-                  background:
-                    "#D8232A",
-                }}
+          {/* 3 COLUMNS PER ROW GRID (DESIGNED ONLY FOR FOLDERS PRESENT) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
+            {laaCommitteesDisplay.map((committee, idx) => (
+              <motion.div
+                key={committee.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className="flex flex-col items-center text-center"
               >
-                Reset Search Filters
-              </button>
-            </div>
-          )}
+                {/* Committee Title */}
+                <h3 className="font-sans font-bold text-lg sm:text-xl text-[#1E3A8A] text-center mb-6 min-h-[3rem] flex items-center justify-center">
+                  {committee.title}
+                </h3>
+
+                {/* 2 Leads in Red Curved Arch Boxes side-by-side */}
+                <div className="grid grid-cols-2 gap-4 sm:gap-5 w-full max-w-sm justify-items-center">
+                  {committee.leads.map((lead) => (
+                    <div key={lead.name} className="group flex flex-col items-center w-full">
+                      {/* Red Curved Arch Frame (Matching Upper Sections) */}
+                      <div className="relative w-24 h-34 sm:w-28 sm:h-40 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_20px_rgba(216,35,42,0.18)] transition-all duration-300">
+                        <img
+                          src={lead.image}
+                          alt={lead.name}
+                          className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                      </div>
+
+                      {/* Lead Name */}
+                      <h4 className="mt-3 font-sans font-bold text-xs sm:text-[13px] text-neutral-800 group-hover:text-[#D8232A] transition-colors leading-tight text-center">
+                        {lead.name}
+                      </h4>
+
+                      {/* Members List Under Lead */}
+                      {lead.members && lead.members.length > 0 && (
+                        <div className="mt-2 flex flex-col items-center gap-0.5 w-full">
+                          {lead.members.map((m) => (
+                            <p
+                              key={m}
+                              className="text-[11px] sm:text-xs text-neutral-600 leading-snug text-center"
+                            >
+                              {m}
+                            </p>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* CLOSING STATEMENT BANNER */}
