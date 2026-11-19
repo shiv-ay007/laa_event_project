@@ -130,31 +130,14 @@ const LAFHistory = () => {
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
 
-        {/* SECTION HEADING */}
-        <div className="text-center mb-8 sm:mb-14">
-
-          <div className="flex items-center justify-center gap-2.5 sm:gap-3 mb-2 sm:mb-2.5">
-            <span className="w-8 sm:w-16 h-px bg-[#D4AF37]/60" />
-
-            <span className="text-[#C27827] font-sans font-bold text-[11px] sm:text-[13px] tracking-[0.2em] sm:tracking-[0.25em] uppercase">
-              THE JOURNEY OF LAF
-            </span>
-
-            <span className="w-8 sm:w-16 h-px bg-[#D4AF37]/60" />
-          </div>
-
-          <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl text-[#171717] font-normal leading-[1.2] tracking-tight">
-            History of Lucknow{" "}
-            <span className="italic font-serif text-[#F26522]">
-              Architecture
-            </span>{" "}
-            <span className="italic font-serif text-[#5B1A83]">
-              Festival
-            </span>
+        {/* SECTION HEADING (Red badge left-aligned matching About section) */}
+        <div className="mb-8 sm:mb-14 flex flex-col items-start gap-1.5">
+          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            History of LAF
           </h2>
-
-          <div className="w-20 sm:w-32 h-[3px] sm:h-[3.5px] rounded-full bg-gradient-to-r from-[#F26522] to-[#5B1A83] mx-auto mt-3 sm:mt-3.5" />
-
+          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            Lucknow Architecture Festival
+          </h2>
         </div>
 
         {/* THREE HISTORY CARDS */}

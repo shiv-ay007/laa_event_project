@@ -198,20 +198,20 @@ const OpportunitiesSection = () => {
             {/* ================= LEFT COLUMN: HEADING ================= */}
                        {/* ================= LEFT COLUMN: HEADING ================= */}
             <div className="w-full lg:w-[250px] xl:w-[275px] flex-shrink-0 flex flex-col justify-center lg:pt-0 pt-2">
-              {/* Header Titles matching theme */}
+              {/* Header Titles matching red badge theme */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
+                className="flex flex-col items-start gap-1.5 mb-2"
               >
-                <h2 className="font-serif text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-bold leading-[1.08] tracking-tight bg-transparent">
-                  <span className="text-[#0B1536] block bg-transparent">Bouquet of</span>
-                  <span className="text-[#E11D48] block mt-1 bg-transparent">Opportunities</span>
+                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl lg:text-[34px] font-bold tracking-tight inline-block leading-tight">
+                  Bouquet of
                 </h2>
-
-                {/* Gradient Pill Underline Bar */}
-                <div className="w-24 sm:w-28 h-[5px] rounded-full bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] mt-3.5" />
+                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl lg:text-[34px] font-bold tracking-tight inline-block leading-tight">
+                  Opportunities
+                </h2>
               </motion.div>
             </div>
 

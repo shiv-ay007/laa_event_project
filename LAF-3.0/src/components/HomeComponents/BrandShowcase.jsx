@@ -72,32 +72,22 @@ export default function BrandShowcase() {
         {/* ================= SECTION HEADING & SUBTITLE ================= */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="text-center max-w-4xl mx-auto mb-6 sm:mb-8"
+          className="flex flex-col items-start gap-1.5 mb-8"
         >
-          {/* Top Industry Partners Tag */}
-          <div className="inline-flex items-center justify-center gap-2 mb-2 sm:mb-3 text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#EA580C]">
-            <span className="text-[#EA580C]/60 font-mono">|</span>
-            <span>INDUSTRY PARTNERS • LAF 3.0</span>
-            <span className="text-[#EA580C]/60 font-mono">|</span>
-          </div>
-
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0B1536] leading-tight">
-            Brands that shape{" "}
-            <span className="font-serif italic font-bold bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] bg-clip-text text-transparent">
-              the future.
-            </span>
+          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            Industry Partners
+          </h2>
+          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            Brands That Shape The Future
           </h2>
 
-          <p className="mt-2.5 sm:mt-3 text-sm sm:text-base md:text-lg text-neutral-600 font-sans max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-2.5 text-sm sm:text-base md:text-lg text-neutral-600 font-sans max-w-2xl leading-relaxed">
             A collective of leading brands supporting architecture, design,
             construction and the built environment.
           </p>
-
-          {/* Accent Rounded Bar */}
-          <div className="w-16 h-1 rounded-full bg-[#EA580C] mx-auto mt-4" />
         </motion.div>
 
         {/* ================= DUAL MARQUEE SHOWCASE WITH SEPARATED CENTER CARD ================= */}

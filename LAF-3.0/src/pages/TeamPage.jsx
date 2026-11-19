@@ -282,17 +282,14 @@ export default function TeamPage({ isEmbedded = false }) {
             style={{ background: "linear-gradient(90deg, #FB7801 0%, #EC2656 25%, #D8066B 50%, #930777 75%, #3C086E 100%)" }} />
 
           <div className="lg:col-span-8 relative z-10">
-            <div className="flex items-center gap-3 mb-3">
-              <span className="h-2 w-2 rounded-full bg-orange-500 animate-pulse" />
-              <span className="text-[10px] font-mono tracking-[0.3em] font-semibold uppercase"
-                style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                FESTIVAL TEAM & LEADERSHIP
+            <div className="flex flex-col items-start gap-1.5 mb-2">
+              <h1 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+                Festival Team
+              </h1>
+              <span className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-[36px] font-bold tracking-tight inline-block leading-tight">
+                The Minds Behind LAF 3.0
               </span>
             </div>
-
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#171717]">
-              The Minds Behind LAF 3.0
-            </h1>
 
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-neutral-600 max-w-2xl">
               Meet the visionaries, convenors, and dedicated team members making the Lucknow Architecture Festival 3.0 possible.

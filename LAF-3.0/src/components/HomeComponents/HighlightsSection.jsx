@@ -334,23 +334,21 @@ const HighlightsSection = () => {
       <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
 
         {/* =====================================================
-            SECTION HEADER (Matching Image 1)
+            SECTION HEADER (Red badge left-aligned matching About section)
         ====================================================== */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-10 sm:mb-12 lg:mb-14"
+          className="mb-8 sm:mb-12 flex flex-col items-start gap-1.5"
         >
-
-          {/* Gradient Serif Title: LAF 3.0 HIGHLIGHTS */}
-          <h2 className="inline-block font-serif font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.15] pb-2 sm:pb-3 pr-2 bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] bg-clip-text text-transparent">
-            LAF <span className="font-sans font-normal">3.0</span> HIGHLIGHTS
+          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            LAF 3.0
           </h2>
-
-          {/* Gradient Pill Underline Bar */}
-          <div className="w-28 sm:w-36 h-[5px] rounded-full bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] mt-1 sm:mt-1.5" />
+          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            Highlights
+          </h2>
         </motion.div>
 
         {/* =====================================================
@@ -624,19 +622,13 @@ const HighlightsSection = () => {
           className="mt-10 lg:mt-14"
         >
           {/* Header matching Image 2 */}
-          <div className="mb-8 sm:mb-10">
-            <h3 className="font-serif text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-[#171717] leading-none">
-              Key{" "}
-               <span className="font-serif italic font-bold bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] bg-clip-text text-transparent">
-                    Highlights.
-              </span>
+          <div className="mb-8 sm:mb-10 flex flex-col items-start gap-1.5">
+            <h3 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+              Key Highlights
             </h3>
 
-            {/* Gradient underline pill matching Image 2 */}
-            <div className="w-14 sm:w-16 h-1 rounded-full bg-gradient-to-r from-[#EA580C] to-[#EAB308] mt-3 mb-3.5" />
-
             {/* Subtitle */}
-            <p className="max-w-xl text-neutral-600 text-xs sm:text-[13.5px] leading-relaxed font-normal">
+            <p className="max-w-xl text-neutral-600 text-xs sm:text-[13.5px] leading-relaxed font-normal mt-2">
               A curated experience connecting brands, professionals, experts,
               culture and the wider built–environment ecosystem.
             </p>

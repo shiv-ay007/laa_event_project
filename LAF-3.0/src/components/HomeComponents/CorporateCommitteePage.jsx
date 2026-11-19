@@ -84,16 +84,8 @@ export function CorporateCommitteePage({ isEmbedded = true }) {
           >
             <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl"
               style={{ background: "linear-gradient(90deg, #FB7801 0%, #EC2656 25%, #930777 75%, #3C086E 100%)" }} />
-            <div>
-              <div className="flex items-center gap-2 mb-1.5">
-                <Building2 className="w-4 h-4 text-orange-500" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse" />
-                <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
-                  style={{ background: "linear-gradient(90deg, #FB7801, #930777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                  01 · CORPORATE COMMITTEE MEMBERS
-                </span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#171717]">
+            <div className="flex flex-col items-start gap-1.5">
+              <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
                 Corporate Committee
               </h2>
             </div>

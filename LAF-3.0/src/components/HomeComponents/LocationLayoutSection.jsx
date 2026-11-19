@@ -32,26 +32,21 @@ const LocationLayoutSection = () => {
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
         {/* =====================================================
-            CENTERED SECTION HEADING (MATCHING AGENDA THEME)
+            LEFT-ALIGNED SECTION HEADING (RED BADGE THEME)
         ====================================================== */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-10 sm:mb-12"
+          className="flex flex-col items-start gap-1.5 mb-8 sm:mb-10"
         >
-         
-
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight text-[#171717]">
-            Location{" "}
-            <span className="font-serif italic font-bold bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] bg-clip-text text-transparent">
-              &amp; Layout.
-            </span>
+          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            Location
           </h2>
-
-          {/* Centered Gradient Pill Underline Bar matching Agenda Section */}
-          <div className="w-28 sm:w-36 h-[5px] rounded-full bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] mt-3.5 mx-auto" />
+          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            & Layout
+          </h2>
         </motion.div>
 
         {/* =====================================================

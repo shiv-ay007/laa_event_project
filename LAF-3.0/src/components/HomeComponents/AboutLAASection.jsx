@@ -612,18 +612,17 @@ const AboutLAASection = () => {
           <div className="relative z-10 flex flex-col lg:flex-row items-stretch gap-8 lg:gap-10 xl:gap-12">
             {/* ================= LEFT COLUMN: ABOUT LAA & HERITAGE IMAGE ================= */}
             <div className="w-full lg:w-[46%] xl:w-[44%] flex flex-col items-center lg:items-start text-center lg:text-left justify-between pt-2">
-              <div className="w-full flex flex-col items-center lg:items-start">
-                {/* Main Heading: About LAA */}
-                <h2 className="font-serif text-5xl sm:text-6xl lg:text-[68px] font-bold tracking-tight leading-none">
-                  <span className="text-[#0B1536]">About </span>
-                  <span className="text-[#D91A5B]">LAA</span>
+              <div className="w-full flex flex-col items-start gap-1.5 mb-2">
+                {/* Main Heading: About LAA (Red badges matching theme) */}
+                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+                  About
+                </h2>
+                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+                  LAA
                 </h2>
 
-                {/* Gradient Pill Underline Bar */}
-                <div className="w-40 sm:w-48 h-[5.5px] rounded-full bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] mt-4" />
-
                 {/* Subtitle: LUCKNOW ARCHITECTS ASSOCIATION */}
-                <p className="mt-3.5 text-xs sm:text-[12.5px] font-mono font-bold uppercase tracking-[0.28em] text-neutral-800">
+                <p className="mt-2 text-xs sm:text-[12.5px] font-mono font-bold uppercase tracking-[0.28em] text-neutral-800">
                   LUCKNOW ARCHITECTS ASSOCIATION
                 </p>
               </div>
@@ -806,36 +805,14 @@ const AboutLAASection = () => {
           {/* SECTION SUBHEADER */}
           <div className="mb-10 sm:mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#E6DFD3] pb-6">
             <div className="max-w-2xl">
-              <div className="mb-3.5 flex items-center gap-2.5">
-                <span className="flex h-2 w-2 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#EC2656]"></span>
-                </span>
-                <span
-                  className="text-[11px] font-mono font-bold uppercase tracking-[0.25em]"
-                  style={{
-                    background: "linear-gradient(90deg, #FB7801, #930777)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  GUIDING LIGHTS &amp; LEADERSHIP
-                </span>
-              </div>
-
-              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-neutral-900 leading-[1.1]">
-                Mentor &amp;{" "}
-                <span
-                  className="italic font-serif font-normal"
-                  style={{
-                    background: "linear-gradient(90deg, #FB7801, #EC2656, #930777)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
+              <div className="flex flex-col items-start gap-1.5 mb-2">
+                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
+                  Mentor &amp;
+                </h2>
+                <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight inline-block leading-tight">
                   Patrons
-                </span>
-              </h2>
+                </h2>
+              </div>
 
               <p className="mt-4 text-sm sm:text-base text-neutral-600 leading-relaxed max-w-xl">
                 Honoring the esteemed mentors and founding patrons driving the mission of Lucknow Architects Association.

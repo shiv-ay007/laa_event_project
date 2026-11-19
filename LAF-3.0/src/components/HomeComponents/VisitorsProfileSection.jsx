@@ -426,15 +426,14 @@ const VisitorsProfileSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-8 sm:mb-12"
+          className="mb-8 sm:mb-12 flex flex-col items-start gap-1.5"
         >
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[46px] font-bold tracking-tight leading-tight">
-            <span className="text-[#0B1536]">Visitor's </span>
-            <span className="text-[#E11D48]">Profile</span>
+          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            Visitor's
           </h2>
-
-          {/* Gradient Pill Underline Bar */}
-          <div className="w-28 sm:w-36 h-[5px] rounded-full bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] mt-3 sm:mt-3.5" />
+          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+            Profile
+          </h2>
         </motion.div>
 
         {/* MAIN OUTLINE CARD CONTAINER (Matching Navbar Width) */}

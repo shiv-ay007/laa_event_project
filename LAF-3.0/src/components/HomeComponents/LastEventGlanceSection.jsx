@@ -243,23 +243,22 @@ export default function LastEventGlanceSection() {
 
       {/* ================= PART 1: HEADER & IMAGE GALLERY GRID (MATCHING NAVBAR WIDTH) ================= */}
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
-        {/* ================= CENTERED HEADING ================= */}
-        <div className="mb-8 sm:mb-12 text-center flex flex-col items-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
+        {/* ================= LEFT-ALIGNED RED BADGE HEADING ================= */}
+        <div className="mb-8 sm:mb-12 flex flex-col items-start gap-1.5">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#0B1536] leading-[1.1]"
+            className="flex flex-col items-start gap-1.5"
           >
-            Last Event{" "}
-            <span className="font-serif italic font-bold bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] bg-clip-text text-transparent">
-              at a Glance.
-            </span>
-          </motion.h2>
-
-          {/* Signature Centered Gradient Underline */}
-          <div className="w-28 sm:w-40 h-[5px] rounded-full bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] mt-4" />
+            <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+              Last Event
+            </h2>
+            <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+              At a Glance
+            </h2>
+          </motion.div>
         </div>
 
         {/* ================= SIMPLE IMAGE GALLERY GRID ================= */}

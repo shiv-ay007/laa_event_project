@@ -210,22 +210,20 @@ const AboutSection = () => {
           <div className="relative z-10 max-w-[1400px] mx-auto">
             
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="text-center mb-12 sm:mb-14 lg:mb-16"
+              className="flex flex-col items-start gap-1.5 mb-12 sm:mb-14 lg:mb-16"
             >
-              <div className="flex items-center justify-center gap-3 mb-3">
-                <span className="w-10 sm:w-16 h-px bg-[#D4AF37]/60" />
-                <span className="text-[#171717] font-sans font-bold text-xs sm:text-[13px] tracking-[0.25em] uppercase">GROWTH SECTORS</span>
-                <span className="w-10 sm:w-16 h-px bg-[#D4AF37]/60" />
-              </div>
-              <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal sm:font-medium leading-tight text-[#171717] tracking-tight">
-                The many dimensions of <span className="italic font-serif text-[#F26522]">Uttar</span> <span className="italic font-serif text-[#5B1A83]">Pradesh.</span>
+              <h3 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+                Growth Sectors
               </h3>
-              <p className="max-w-2xl mx-auto mt-4 text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
-                From heritage and pilgrimage to transportation, tourism and emerging economic corridors —<br className="hidden sm:inline" /> Uttar Pradesh is shaping a new architectural and urban future.
+              <h3 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+                Dimensions of UP
+              </h3>
+              <p className="max-w-2xl mt-3 text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
+                From heritage and pilgrimage to transportation, tourism and emerging economic corridors — Uttar Pradesh is shaping a new architectural and urban future.
               </p>
             </motion.div>
 

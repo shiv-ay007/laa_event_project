@@ -86,24 +86,21 @@ const AgendaSection = () => {
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
         
-        {/* SECTION HEADER MATCHING FOCUS SECTORS THEME */}
+        {/* SECTION HEADER MATCHING RED BADGE THEME */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="flex flex-col items-start gap-1.5"
           >
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[46px] text-[#171717] font-semibold tracking-tight leading-tight">
-              Agenda:{" "}
-              <span className="bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] bg-clip-text text-transparent">
-                <span className="font-serif italic font-bold">LAF</span>{" "}
-                <span className="font-sans not-italic font-black tracking-tight">3.0</span>
-              </span>
+            <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+              Festival Agenda
             </h2>
-
-            {/* Gradient Pill Underline Bar */}
-            <div className="w-28 sm:w-36 h-[5px] rounded-full bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] mt-3 sm:mt-3.5" />
+            <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+              LAF 3.0
+            </h2>
           </motion.div>
 
           {/* Right Logo matching Image 3 */}
