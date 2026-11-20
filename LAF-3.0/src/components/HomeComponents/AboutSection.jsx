@@ -29,7 +29,7 @@ import highlight3 from "../../assets/images/card3.png";
 import highlight4 from "../../assets/images/card4.png";
 
 // --- NEW ABOUT SECTION IMAGES ---
-import aboutRightImage from "../../assets/images/download (1).png"; 
+import aboutRightImage from "../../assets/images/IMG_3533.PNG"; 
 
 const AboutSection = () => {
   // Unified architectural branding (Brand Red #D8232A)
@@ -115,9 +115,10 @@ const AboutSection = () => {
       <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
         
         {/* ABOUT UTTAR PRADESH SECTION */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-20">
           
-          <div className="lg:col-span-7 flex flex-col pt-0">
+          {/* 🚀 CHANGED: col-span-7 to col-span-6 to give more space to image */}
+          <div className="lg:col-span-6 flex flex-col pt-0">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -142,15 +143,17 @@ const AboutSection = () => {
             </motion.div>
           </div>
 
+          {/* 🚀 CHANGED: col-span-5 to col-span-6 to give more space to image */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 relative flex justify-center lg:justify-end mt-8 lg:mt-0"
+            className="lg:col-span-6 relative flex justify-center lg:justify-end mt-8 lg:mt-0"
           >
-            <div className="relative w-full max-w-[500px]">
-              <img src={aboutRightImage} alt="Architecture Heritage" className="w-full h-auto object-contain relative z-10" />
+            {/* 🚀 CHANGED: max-w-[500px] to max-w-[600px] to make image bigger */}
+            <div className="relative w-full max-w-[600px]">
+              <img src={aboutRightImage} alt="Architecture Heritage" className="w-full h-auto object-contain relative z-10 drop-shadow-xl" />
               <div className="absolute top-1/4 -right-10 w-[120%] h-[80%] bg-[#E32636]/5 rounded-full blur-3xl -z-10" />
             </div>
           </motion.div>
