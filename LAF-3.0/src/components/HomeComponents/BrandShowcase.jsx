@@ -53,24 +53,24 @@ export default function BrandShowcase() {
           </div>
         </motion.div>
 
-        {/* ================= BRAND LOGOS (NO BOX, DIRECT & CLEAR, LARGER SIZE) ================= */}
+        {/* ================= BRAND LOGOS (TRANSPARENT PNG, EXTRA LARGE & CLEAR) ================= */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 xl:grid-cols-11 gap-x-4 sm:gap-x-6 md:gap-x-7 gap-y-5 sm:gap-y-6 md:gap-y-7 items-center justify-items-center"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-6 sm:gap-x-8 md:gap-x-10 gap-y-7 sm:gap-y-9 md:gap-y-10 items-center justify-items-center"
         >
           {allBrands.map((brand) => (
             <div
               key={brand.id}
-              className="w-full h-14 sm:h-16 md:h-18 lg:h-20 flex items-center justify-center p-1 transition-transform duration-300 hover:scale-115 cursor-pointer group"
+              className="w-full h-20 sm:h-24 md:h-28 lg:h-30 flex items-center justify-center p-1 sm:p-2 transition-transform duration-300 hover:scale-110 cursor-pointer group"
             >
               <img
                 src={brand.img}
-                alt="Brand Partner"
+                alt={brand.name || "Brand Partner"}
                 loading="lazy"
-                className="max-h-full max-w-full w-auto h-auto object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105"
+                className="max-h-full max-w-full w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.06)]"
               />
             </div>
           ))}
