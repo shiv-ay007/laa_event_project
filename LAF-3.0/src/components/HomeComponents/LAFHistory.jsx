@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Sparkles, ArrowRight } from "lucide-react";
 
-import laf2022 from "../../assets/images/history123.jpeg";
-import laf2025 from "../../assets/images/history2.png";
+import laf2022 from "../../assets/images/laf1_logo.webp";
+import laf2025 from "../../assets/images/laf2_logo.webp";
 import laf2027 from "../../assets/images/logo.webp"; // LAF 3.0 Logo
 
 import bgHist from "../../assets/images/bg-hist.png";

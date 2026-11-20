@@ -105,7 +105,7 @@ const AboutSection = () => {
   );
 
   return (
-    <section id="about" className="relative overflow-hidden bg-[#F7F4EE] text-[#181818] py-16 lg:py-24">
+    <section id="about" className="relative overflow-hidden bg-[#F7F4EE] text-[#181818] pt-4 sm:pt-6 lg:pt-8 pb-16 lg:pb-24">
       
       {/* BACKGROUND GRID */}
       <div className="absolute inset-0 pointer-events-none">
@@ -117,12 +117,12 @@ const AboutSection = () => {
         {/* ABOUT UTTAR PRADESH SECTION */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
           
-          <div className="lg:col-span-7 flex flex-col pt-4">
+          <div className="lg:col-span-7 flex flex-col pt-0">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="mb-8 flex flex-col items-start gap-1.5"
+              className="mb-5 sm:mb-6 flex flex-col items-start gap-1.5"
             >
               <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
                 About Uttar Pradesh
