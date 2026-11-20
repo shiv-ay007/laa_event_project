@@ -1,13 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Sparkles, ArrowRight, Clock } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 
 import laf2022 from "../../assets/images/history123.jpeg";
 import laf2025 from "../../assets/images/history2.png";
 import laf2027 from "../../assets/images/logo.webp"; // LAF 3.0 Logo
-
-import historyPhoto1 from "../../assets/images/Group Photo.png";
-import historyPhoto2 from "../../assets/images/history_photo_2.webp";
 
 import bgHist from "../../assets/images/bg-hist.png";
 
@@ -21,7 +18,6 @@ const editions = [
     cardBorder: "border-[#E7E2DA]",
     ringBorder: "border-[#E7E2DA]",
     logo: laf2022,
-    photo: historyPhoto1,
     imagePosition: "right",
     title: "Avirbhav – Lucknow Architecture Festival 2022",
     description:
@@ -37,7 +33,6 @@ const editions = [
     cardBorder: "border-[#E7E2DA]",
     ringBorder: "border-[#E7E2DA]",
     logo: laf2025,
-    photo: historyPhoto2,
     imagePosition: "left",
     title: "Lucknow Architecture Festival 2.0",
     description:
@@ -53,7 +48,6 @@ const editions = [
     cardBorder: "border-[#D8232A]/40",
     ringBorder: "border-[#D8232A]/40",
     logo: laf2027, 
-    photo: null, 
     imagePosition: "right",
     title: "The Next Chapter – Lucknow Architecture Festival 3.0",
     description:
@@ -136,28 +130,11 @@ const LAFHistory = () => {
                         </h3>
                       </div>
                     </div>
-
-                    {/* Mobile Logo (Only for 2022 & 2025) */}
-                    {!isUpcoming && (
-                      <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 flex items-center justify-center">
-                        <div className={`absolute inset-0 rounded-full border ${item.ringBorder}`} />
-                        <div className="relative w-[88%] h-[88%] rounded-full bg-white border border-neutral-200/70 flex items-center justify-center p-1.5 sm:p-2 overflow-hidden shadow-xs">
-                          <img src={item.logo} alt={`${item.version} Logo`} loading="lazy" className="w-full h-full object-contain select-none" />
-                        </div>
-                      </div>
-                    )}
                   </div>
 
-                  {/* Mobile Visual Container */}
-                  <div className="w-full rounded-xl sm:rounded-2xl overflow-hidden border border-neutral-200/70 shadow-2xs relative bg-neutral-900 flex items-center justify-center min-h-[220px]">
-                    {!isUpcoming ? (
-                      <img src={item.photo} alt={item.title} loading="lazy" className="w-full h-auto object-cover select-none" />
-                    ) : (
-                      /* Premium Logo Display for Upcoming Card (Mobile) - Centered & Bigger */
-                      <div className="w-full h-full absolute inset-0 flex items-center justify-center p-6 bg-gradient-to-br from-red-50 via-white to-red-50/50">
-                        <img src={item.logo} alt="LAF 3.0 Logo" className="w-[90%] max-h-[200px] object-contain drop-shadow-xl" />
-                      </div>
-                    )}
+                  {/* Mobile Visual Container - Big Centered Logo */}
+                  <div className={`w-full rounded-xl sm:rounded-2xl overflow-hidden border ${isUpcoming ? "border-red-200 bg-gradient-to-br from-red-50 via-white to-red-50/50" : "border-neutral-200 bg-gradient-to-br from-neutral-50 via-white to-neutral-50/50"} shadow-xs relative flex items-center justify-center min-h-[220px] p-6`}>
+                    <img src={item.logo} alt={item.title} className="w-[85%] max-h-[190px] object-contain drop-shadow-md" />
                   </div>
 
                   {/* Mobile Description */}
@@ -179,10 +156,10 @@ const LAFHistory = () => {
                           <span>• Urban Dialogue</span>
                         </div>
                       </div>
-                      <a href="#registration" className="mt-3 w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#D8232A] text-white text-xs font-bold uppercase tracking-wider shadow-sm">
+                      <Link to="/register" className="mt-3 w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#D8232A] text-white text-xs font-bold uppercase tracking-wider shadow-sm">
                         <span>Register Early Interest</span>
                         <ArrowRight className="w-3.5 h-3.5" />
-                      </a>
+                      </Link>
                     </div>
                   )}
 
@@ -195,7 +172,7 @@ const LAFHistory = () => {
 
                   {/* TEXT SECTION */}
                   <div className={`w-full min-w-0 ${imageOnLeft ? "order-2" : "order-1"}`}>
-                    <div className="flex items-stretch gap-4">
+                    <div className="flex items-stretch gap-4 h-full">
                       <div className={`w-[5px] rounded-full ${item.barBg} flex-shrink-0`} />
                       <div className="min-w-0 flex-1 flex flex-col justify-between">
                         <div>
@@ -251,71 +228,43 @@ const LAFHistory = () => {
                               </div>
                             </div>
 
-                            {/* <div className="flex flex-wrap items-center gap-3 pt-1">
-                              <a href="#registration" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#D8232A] hover:bg-[#B81D23] text-white text-xs sm:text-sm font-bold tracking-wider uppercase shadow-sm hover:shadow-md transition-all group/btn">
+                            <div className="flex flex-wrap items-center gap-3 pt-1">
+                              <Link 
+                                to="/register" 
+                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#D8232A] hover:bg-[#B81D23] text-white text-xs sm:text-sm font-bold tracking-wider uppercase shadow-sm hover:shadow-md transition-all group/btn"
+                              >
                                 <span>Register Early Interest</span>
                                 <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
-                              </a>
+                              </Link>
+                              
                               <span className="text-xs text-neutral-500 font-medium">
                                 Dates, schedule & venue details will be announced soon
                               </span>
-                            </div> */}
-
-                            <div className="flex flex-wrap items-center gap-3 pt-1">
-  {/* 🚀 Yaha <a> ki jagah <Link> use kiya hai */}
-  <Link 
-    to="/register" 
-    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#D8232A] hover:bg-[#B81D23] text-white text-xs sm:text-sm font-bold tracking-wider uppercase shadow-sm hover:shadow-md transition-all group/btn"
-  >
-    <span>Register Early Interest</span>
-    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
-  </Link>
-  
-  <span className="text-xs text-neutral-500 font-medium">
-    Dates, schedule & venue details will be announced soon
-  </span>
-</div>
+                            </div>
                           </div>
                         )}
                       </div>
                     </div>
                   </div>
 
-                  {/* IMAGE / VISUAL SECTION */}
+                  {/* IMAGE / VISUAL SECTION - Big Centered Logo for ALL cards */}
                   <div className={`relative w-full min-w-0 self-stretch ${imageOnLeft ? "order-1" : "order-2"}`}>
-                    
-                    {/* 🚀 UPDATED: For upcoming card, small circle logo is REMOVED, and big logo is CENTERED & ENLARGED */}
-                    {!isUpcoming ? (
-                      /* Cards 1 & 2: Logo on top + Photo below */
-                      <div className="absolute inset-0 flex flex-col items-center gap-3 lg:gap-4">
-                        <div className="relative h-[32%] max-h-[190px] aspect-square flex-shrink-0 flex items-center justify-center">
-                          <div className={`absolute inset-0 rounded-full border ${item.ringBorder}`} />
-                          <div className="relative w-[88%] h-[88%] rounded-full bg-white border border-neutral-200/70 flex items-center justify-center p-2 lg:p-3 overflow-hidden">
-                            <img src={item.logo} alt={`${item.version} Logo`} loading="lazy" className="w-full h-full object-contain select-none transition-transform duration-500 hover:scale-105" />
-                          </div>
-                        </div>
-                        <div className="w-full flex-1 min-h-0 rounded-2xl overflow-hidden border border-neutral-200/70 shadow-2xs group">
-                          <img src={item.photo} alt={item.title} loading="lazy" className="w-full h-full object-cover object-center select-none transition-transform duration-500 group-hover:scale-[1.02]" />
-                        </div>
-                      </div>
-                    ) : (
-                      /* Card 3: Only Big Logo, Centered and Enlarged */
-                      <div className="w-full h-full min-h-[380px] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#D8232A]/25 shadow-md relative group bg-white flex items-center justify-center p-6 sm:p-10">
-                        
-                        {/* Premium subtle background pattern */}
-                        <div className="absolute inset-0 pointer-events-none opacity-[0.04]" 
-                             style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D8232A 1px, transparent 0)`, backgroundSize: '24px 24px' }} />
-                        <div className="absolute inset-0 bg-gradient-to-br from-red-50/40 via-transparent to-red-50/40 pointer-events-none" />
+                    <div className={`w-full h-full min-h-[380px] rounded-2xl sm:rounded-3xl overflow-hidden border ${isUpcoming ? "border-[#D8232A]/25 shadow-md bg-white" : "border-neutral-200/80 shadow-md bg-white"} relative group flex items-center justify-center p-6 sm:p-10`}>
+                      
+                      {/* Premium subtle background pattern */}
+                      <div 
+                        className="absolute inset-0 pointer-events-none opacity-[0.04]" 
+                        style={{ backgroundImage: `radial-gradient(circle at 2px 2px, ${isUpcoming ? "#D8232A" : "#1C1917"} 1px, transparent 0)`, backgroundSize: '24px 24px' }} 
+                      />
+                      <div className={`absolute inset-0 ${isUpcoming ? "bg-gradient-to-br from-red-50/40 via-transparent to-red-50/40" : "bg-gradient-to-br from-neutral-50/60 via-transparent to-neutral-50/60"} pointer-events-none`} />
 
-                        {/* Big Centered Logo */}
-                        <img 
-                          src={item.logo} 
-                          alt="LAF 3.0" 
-                          className="w-[95%] max-h-[350px] object-contain relative z-10 drop-shadow-xl transition-transform duration-700 group-hover:scale-105" 
-                        />
-                      </div>
-                    )}
-
+                      {/* Big Centered Logo */}
+                      <img 
+                        src={item.logo} 
+                        alt={item.title} 
+                        className="w-[95%] max-h-[340px] object-contain relative z-10 drop-shadow-xl transition-transform duration-700 group-hover:scale-105" 
+                      />
+                    </div>
                   </div>
 
                 </div>

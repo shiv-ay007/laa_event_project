@@ -29,7 +29,6 @@ import highlight3 from "../../assets/images/card3.png";
 import highlight4 from "../../assets/images/card4.png";
 
 // --- NEW ABOUT SECTION IMAGES ---
-import lafLogo from "../../assets/images/logo.webp"; 
 import aboutRightImage from "../../assets/images/download (1).png"; 
 
 const AboutSection = () => {
@@ -152,9 +151,6 @@ const AboutSection = () => {
           >
             <div className="relative w-full max-w-[500px]">
               <img src={aboutRightImage} alt="Architecture Heritage" className="w-full h-auto object-contain relative z-10" />
-              <div className="absolute -top-10 -right-4 sm:-top-12 sm:-right-8 z-20">
-                <img src={lafLogo} alt="LAF 3.0" className="w-32 sm:w-40 h-auto object-contain" />
-              </div>
               <div className="absolute top-1/4 -right-10 w-[120%] h-[80%] bg-[#E32636]/5 rounded-full blur-3xl -z-10" />
             </div>
           </motion.div>
@@ -193,7 +189,6 @@ const AboutSection = () => {
         <section className="relative mt-24 lg:mt-32">
           <div className="relative z-10 max-w-[1400px] mx-auto">
             
-            {/* 🚀 FIX: Changed items-start to items-center and added text-center */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -204,9 +199,6 @@ const AboutSection = () => {
               <h3 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
                 Growth Sectors Dimensions of UP
               </h3>
-              {/* <h3 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-                Dimensions of UP
-              </h3> */}
               <p className="max-w-2xl mt-3 text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal text-center">
                 From heritage and pilgrimage to transportation, tourism and emerging economic corridors — Uttar Pradesh is shaping a new architectural and urban future.
               </p>
