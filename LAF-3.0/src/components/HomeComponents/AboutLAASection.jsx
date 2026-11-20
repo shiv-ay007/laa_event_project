@@ -46,6 +46,21 @@ import hospAviral from "../../assets/LAF/Hospitality & Welfare Committee/Ar. Avi
 import cultShubhra from "../../assets/LAF/Cultural & Exhibition Committee/Ar. Shubhra Mittal.png";
 import cultRohit from "../../assets/LAF/Cultural & Exhibition Committee/Ar. Rohit Parmar.png";
 
+import eventAvinash from "../../assets/LAF/Event Management Committee/Ar. AVINASH GHAI.png";
+import eventPragya from "../../assets/LAF/Event Management Committee/Ar. Pragya Singh.png";
+import memberVandana from "../../assets/LAF/Membership & Directory Committee/Ar. Vandana Srivastav.png";
+import memberPrabhawati from "../../assets/LAF/Membership & Directory Committee/Ar. Prabhawati Suri.png";
+import mediaRepunjay from "../../assets/LAF/Media & Protocol Committee/Ar. Repunjay Patel.png";
+import mediaPrashant from "../../assets/LAF/Media & Protocol Committee/Ar. Prashant Singh.png";
+import govtAsheesh from "../../assets/LAF/Governments Interaction & Professional Practice/Ar. Asheesh Srivastava.png";
+import govtAnupam from "../../assets/LAF/Governments Interaction & Professional Practice/Ar. Anupam Mittal.png";
+import legalAninda from "../../assets/LAF/Legal Committee/Ar.Aninda Sircar.png";
+import legalNeeraj from "../../assets/LAF/Legal Committee/Ar. Neeraj Kushwaha.png";
+import spouseAnita from "../../assets/LAF/Spouses Committee/Ar. Anita Srivastava.png";
+import spouseSmita from "../../assets/LAF/Spouses Committee/Ar. Smita Nigam.png";
+import lsrRajneesh from "../../assets/LAF/LSR Committee (LAA Social Responsibility)/Ar. Rajneesh Agarwal.png";
+import lsrAnshu from "../../assets/LAF/LSR Committee (LAA Social Responsibility)/ANSHU SINGH.png";
+
 // LAF Logo
 import lafLogo from "../../assets/images/logo-transparent.png";
 
@@ -595,6 +610,118 @@ const laaCommitteesDisplay = [
       },
     ],
   },
+  {
+    id: "event",
+    title: "Event Management Committee",
+    leads: [
+      {
+        name: "Ar. Avinash Ghai",
+        image: eventAvinash,
+        members: ["Ar. Shipra Singh", "Ar. Shishir Srivastava", "Ar. Ashutosh Gupta"],
+      },
+      {
+        name: "Ar. Pragya Singh",
+        image: eventPragya,
+        members: ["Ar. Krishna Mohan Prajapati", "Ar. Abhishek Baidya"],
+      },
+    ],
+  },
+  {
+    id: "member",
+    title: "Membership & Directory Committee",
+    leads: [
+      {
+        name: "Ar. Vandana Srivastva",
+        image: memberVandana,
+        members: ["Ar. Awadhesh Verma", "Ar. Alok Kumar"],
+      },
+      {
+        name: "Ar. Prabhawati Suri",
+        image: memberPrabhawati,
+        members: ["Ar. Imran Khan", "Ar. Vishal Mathur"],
+      },
+    ],
+  },
+  {
+    id: "media",
+    title: "Media & Protocol Committee",
+    leads: [
+      {
+        name: "Ar. Repunjay Patel",
+        image: mediaRepunjay,
+        members: ["Ar. Prafull Gupta", "Ar. Rohit Verma", "Ar. Vandana Patel"],
+      },
+      {
+        name: "Ar. Prashant Singh",
+        image: mediaPrashant,
+        members: ["Ar. Priyanka Rastogi", "Ar. Shrish Pratap Singh"],
+      },
+    ],
+  },
+  {
+    id: "govt",
+    title: "Governments Interaction & Professional Practice Committee",
+    leads: [
+      {
+        name: "Ar. Asheesh Srivastava",
+        image: govtAsheesh,
+        members: [],
+      },
+      {
+        name: "Ar. Anupam Mittal",
+        image: govtAnupam,
+        members: [],
+      },
+    ],
+  },
+  {
+    id: "legal",
+    title: "Legal Committee",
+    leads: [
+      {
+        name: "Ar. Aninda Sircar",
+        image: legalAninda,
+        members: ["Ar. Sanjeev Kumar Singh", "Ar. Ashish Gupta", "Ar. Alok Srivastava"],
+      },
+      {
+        name: "Ar. Neeraj Kushwaha",
+        image: legalNeeraj,
+        members: ["Ar. Arvind Gupta", "Ar. Nitin Singh"],
+      },
+    ],
+  },
+  {
+    id: "spouse",
+    title: "Spouses Committee",
+    leads: [
+      {
+        name: "Ar. Anita Srivastava",
+        image: spouseAnita,
+        members: ["Ar. Vivek Agarwal", "Ar. Umesh Gupta", "Ar. Narayan Pandey"],
+      },
+      {
+        name: "Ar. Smita Nigam",
+        image: spouseSmita,
+        members: ["Ar. Faraj Ahmad Usmani", "Ar. Gaurav Gupta"],
+      },
+    ],
+  },
+  {
+    id: "lsr",
+    title: "LSR Committee ( LAA Social Responsibility)",
+    leads: [
+      {
+        name: "Ar. Rajneesh Agarwal",
+        image: lsrRajneesh,
+        members: ["Ar. Shikhar Singh", "Ar. Akhilesh Pal"],
+      },
+      {
+        name: "Ar. Anshu Singh",
+        image: lsrAnshu,
+        members: ["Ar. Roli Singh", "Ar. Utkarsh Shukla"],
+      },
+    ],
+  },
 ];
 
 const categories = ["All", "Education & Culture", "Operations & Media", "Practice & Governance", "Community & Welfare"];
@@ -957,23 +1084,23 @@ const AboutLAASection = () => {
           </div>
         </div>
 
-        {/* CLOSING STATEMENT BANNER */}
+        {/* CLOSING STATEMENT BANNER (THEMED RED) */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-10 sm:mt-12 border-y border-[#D9D0C2] py-6 sm:py-8"
+          className="mt-12 sm:mt-16 border-y border-[#E6DFD3] py-8 sm:py-10"
         >
           <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
             <div>
-              <span className="text-[9.5px] font-bold tracking-[0.3em] uppercase text-[#B77A27]">
+              <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-[0.25em] uppercase text-[#D8232A]">
                 THE LAA VISION
               </span>
 
               <h3 className="mt-3 max-w-3xl font-serif text-2xl sm:text-3xl lg:text-4xl leading-tight text-[#171717]">
                 Building a stronger architectural community through{" "}
-                <span className="font-serif italic text-[#B77A27]">
+                <span className="font-serif italic font-bold text-[#D8232A]">
                   ideas, collaboration and shared purpose.
                 </span>
               </h3>
@@ -981,19 +1108,18 @@ const AboutLAASection = () => {
 
             <a
               href="#committees"
-              className="group flex items-center justify-between bg-[#151515] border border-[#B77A27]/30 hover:border-[#B77A27] px-6 py-5 text-white transition-all duration-300 hover:bg-[#1c1c1f] shadow-sm hover:shadow-xl rounded-xl relative overflow-hidden min-w-[260px]"
+              className="group flex items-center justify-between bg-[#D8232A] hover:bg-[#BF1E24] border border-[#D8232A] px-6 py-4.5 text-white transition-all duration-300 shadow-md hover:shadow-[0_10px_28px_rgba(216,35,42,0.35)] rounded-2xl relative overflow-hidden min-w-[260px]"
             >
-              <div className="absolute top-0 left-0 w-1 h-full bg-[#B77A27] group-hover:w-1.5 transition-all duration-300" />
               <div>
-                <span className="block text-[9px] font-bold tracking-[0.25em] text-[#B77A27] uppercase">
+                <span className="block text-[9.5px] font-mono font-bold tracking-[0.25em] text-white/80 uppercase">
                   STRUCTURE
                 </span>
-                <span className="mt-1 block text-xs sm:text-sm font-semibold tracking-wide text-neutral-200 group-hover:text-white transition-colors">
+                <span className="mt-0.5 block text-xs sm:text-sm font-bold tracking-wide text-white">
                   EXPLORE ALL COMMITTEES
                 </span>
               </div>
-              <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#B77A27]/50 group-hover:bg-[#B77A27] group-hover:text-black flex items-center justify-center transition-all duration-300 text-[#B77A27] ml-4">
-                <ArrowUpRight size={16} />
+              <div className="w-9 h-9 rounded-xl bg-white/20 border border-white/30 group-hover:bg-white group-hover:text-[#D8232A] flex items-center justify-center transition-all duration-300 text-white ml-4">
+                <ArrowUpRight size={18} />
               </div>
             </a>
           </div>

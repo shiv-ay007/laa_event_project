@@ -4,8 +4,7 @@ import {
   X, 
   ChevronLeft, 
   ChevronRight, 
-  Eye,
-  MoveHorizontal
+  Eye
 } from "lucide-react";
 
 // Import all 10 news clipping images
@@ -309,41 +308,25 @@ export default function LafInMediaSection() {
       {/* Main Container Aligned to Navbar Width */}
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
         
-        {/* ================= SECTION HEADLINE ================= */}
+        {/* ================= SECTION HEADLINE (LEFT ALIGNED) ================= */}
         <div className="mb-8 sm:mb-10">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-neutral-900/15">
+          <div className="flex pb-6 border-b border-neutral-900/15">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="max-w-2xl flex flex-col items-start gap-1.5"
             >
               <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
                 LAF In Media
               </h2>
             </motion.div>
-
-            {/* Right Text - 2 Lines & Height Matched */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-serif italic text-sm sm:text-base md:text-[17px] text-neutral-600 max-w-lg lg:text-right leading-relaxed lg:mt-2"
-            >
-              "Capturing the conversations, innovation, and architectural discourse of Lucknow Architecture Festival across leading national dailies and broadcast networks."
-            </motion.p>
           </div>
         </div>
 
         {/* ================= SLIDER CONTROL TOOLBAR ================= */}
-        <div className="mb-6 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5 text-xs font-mono font-bold tracking-wider text-neutral-600 bg-white/80 border border-neutral-300/80 px-3.5 py-1.5 rounded-full shadow-2xs">
-            <MoveHorizontal className="w-4 h-4 text-[#D8232A] animate-pulse" />
-            <span>SWIPE OR DRAG TO EXPLORE 10 EDITIONS</span>
-          </div>
-
+        <div className="mb-6 flex items-center justify-end gap-4">
+          {/* Right Side Controls (Counter & Buttons) */}
           <div className="flex items-center gap-3">
             {/* Active Counter Badge */}
             <div className="font-mono text-xs sm:text-sm font-bold tracking-widest text-neutral-700 bg-white border border-neutral-300 px-3 py-1.5 rounded-xl shadow-2xs">
@@ -399,7 +382,6 @@ export default function LafInMediaSection() {
                 key={article.id}
                 data-news-slide
                 onClick={() => !isDraggingRef.current && setSelectedIndex(index)}
-                // 🚀 FIX: Removed fixed height (h-[340px] etc.), changed to h-auto.
                 className="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] h-auto shrink-0 snap-start rounded-3xl p-2 sm:p-3 bg-white border border-[#E7E2DA] shadow-[0_12px_40px_rgba(0,0,0,0.05)] hover:border-[#D8232A] hover:shadow-[0_16px_45px_rgba(216,35,42,0.12)] transition-all duration-300 relative overflow-hidden flex cursor-pointer group"
               >
                 {/* Inner container reduced padding to fit image nicely */}
