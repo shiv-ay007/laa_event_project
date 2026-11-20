@@ -131,7 +131,7 @@ export default function SupportingOrganizationsSection() {
   return (
     <section
       id="supporting-organizations"
-      className="relative overflow-hidden bg-[#FAF8F5] pt-12 sm:pt-16 lg:pt-20 pb-10 sm:pb-12 select-none font-sans border-t border-[#E6DFD3]"
+      className="relative overflow-hidden bg-[#FAF8F5] pt-4 sm:pt-6 lg:pt-8 pb-10 sm:pb-12 select-none font-sans border-t border-[#E6DFD3]"
     >
       {/* Subtle architectural grid background */}
       <div
@@ -219,23 +219,23 @@ function OrgCard({ item }) {
       {/* Main Body: Clean Logo (Left) + Red Curved Arch Portrait (Right) */}
       <div className="grid grid-cols-2 gap-3 sm:gap-4 items-center w-full my-auto">
         {/* Left: Clean Logo */}
-        <div className="flex items-center justify-center p-1 sm:p-2 h-26 sm:h-32">
+        <div className="flex items-center justify-center p-1 sm:p-2 h-24 sm:h-28">
           <img
             src={item.logo}
             alt={item.badge}
-            className="max-h-[75px] sm:max-h-[90px] w-auto max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+            className="max-h-[70px] sm:max-h-[82px] w-auto max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
             loading="lazy"
           />
         </div>
 
         {/* Right: Red Curved Arch Portrait + Representative Details */}
         <div className="flex flex-col items-center text-center">
-          {/* Red Curved Arch Frame (Matching Corporate Committee 2nd Image Exactly) */}
-          <div className="relative w-28 h-40 sm:w-32 sm:h-44 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300 shrink-0">
+          {/* Red Curved Arch Frame (Matching Curators Height & Proportion) */}
+          <div className="relative w-28 h-32 sm:w-32 sm:h-36 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300 shrink-0">
             <img
               src={item.personImg}
               alt={item.person}
-              className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-[88%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
           </div>

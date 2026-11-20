@@ -13,7 +13,7 @@ import news2Img from "../../assets/images/news2.png";
 import news3Img from "../../assets/images/news3.png";
 import news4Img from "../../assets/images/news4.png";
 import news5Img from "../../assets/images/news5.png";
-import news6Img from "../../assets/images/news6.png";
+import news6Img from "../../assets/images/neww.jpeg";
 import news7Img from "../../assets/images/news7.png";
 import news8Img from "../../assets/images/news8.png";
 import news9Img from "../../assets/images/news9.png";
@@ -291,7 +291,8 @@ export default function LafInMediaSection() {
   return (
     <section
       id="laf-in-media"
-      className="relative overflow-hidden bg-[#FAF8F5] pt-8 sm:pt-12 lg:pt-14 pb-10 sm:pb-14 lg:pb-16 select-none font-sans border-t border-[#E8E2D8]"
+      // 🚀 Reduced top padding to remove gap since heading is removed
+      className="relative overflow-hidden bg-[#FAF8F5] pt-4 sm:pt-6 lg:pt-8 pb-10 sm:pb-14 lg:pb-16 select-none font-sans border-t border-[#E8E2D8]"
     >
       {/* Signature Architectural Grid Background */}
       <div
@@ -308,26 +309,23 @@ export default function LafInMediaSection() {
       {/* Main Container Aligned to Navbar Width */}
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
         
-        {/* ================= SECTION HEADLINE (LEFT ALIGNED) ================= */}
-        <div className="mb-8 sm:mb-10">
-          <div className="flex pb-6 border-b border-neutral-900/15">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-                LAF In Media
-              </h2>
-            </motion.div>
-          </div>
-        </div>
+        {/* ================= SLIDER CONTROL TOOLBAR (Heading + Controls) ================= */}
+        <div className="mb-6 flex items-center justify-between gap-4 border-b border-neutral-900/15 pb-4">
+          
+          {/* 🚀 Heading moved to Left Side */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
+              LAF In Media
+            </h2>
+          </motion.div>
 
-        {/* ================= SLIDER CONTROL TOOLBAR ================= */}
-        <div className="mb-6 flex items-center justify-end gap-4">
           {/* Right Side Controls (Counter & Buttons) */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 mt-2 sm:mt-0">
             {/* Active Counter Badge */}
             <div className="font-mono text-xs sm:text-sm font-bold tracking-widest text-neutral-700 bg-white border border-neutral-300 px-3 py-1.5 rounded-xl shadow-2xs">
               <span className="text-[#D8232A]">{newsArticles[currentIndex].num}</span>

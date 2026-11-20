@@ -29,7 +29,7 @@ import highlight3 from "../../assets/images/card3.png";
 import highlight4 from "../../assets/images/card4.png";
 
 // --- NEW ABOUT SECTION IMAGES ---
-import aboutRightImage from "../../assets/images/IMG_3533.PNG"; 
+import aboutRightImage from "../../assets/images/Vibrant Indian Heritage Street Collage.png"; 
 
 const AboutSection = () => {
   // Unified architectural branding (Brand Red #D8232A)

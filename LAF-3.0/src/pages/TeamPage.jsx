@@ -210,7 +210,7 @@ export default function TeamPage({ isEmbedded = false }) {
       id={isEmbedded ? "festival-team" : undefined}
       className={
         isEmbedded
-          ? "relative py-12 sm:py-16 bg-[#FAF8F5] text-[#171717] font-sans selection:bg-[#D4AF37]/30 border-t border-[#E8E2D8]"
+          ? "relative pt-8 sm:pt-12 pb-4 sm:pb-6 bg-[#FAF8F5] text-[#171717] font-sans selection:bg-[#D4AF37]/30 border-t border-[#E8E2D8]"
           : "min-h-screen bg-[#FAF7F2] text-[#171717] font-sans selection:bg-[#D4AF37]/30"
       }
     >
@@ -237,7 +237,7 @@ export default function TeamPage({ isEmbedded = false }) {
         <div className="absolute right-[6%] top-0 bottom-0 w-px bg-gradient-to-b from-[#FB7801]/20 via-[#930777]/15 to-transparent" />
       </div>
 
-      <div className={`relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 ${isEmbedded ? "pt-2 pb-10" : "pt-8 pb-24"}`}>
+      <div className={`relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 ${isEmbedded ? "pt-2 pb-0" : "pt-8 pb-24"}`}>
         
         {/* Top Breadcrumbs & Back button */}
         {!isEmbedded && (
@@ -275,21 +275,21 @@ export default function TeamPage({ isEmbedded = false }) {
             Convenors
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto justify-items-center">
+          <div className="flex flex-wrap items-start justify-center gap-3 sm:gap-3.5 md:gap-4 max-w-4xl mx-auto">
             {convenorLeadershipMembers.map((c, index) => (
               <motion.div
                 key={c.id}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group flex flex-col items-center text-center w-full max-w-[160px]"
+                className="group flex flex-col items-center text-center w-28 sm:w-32 md:w-36"
               >
-                {/* Red Curved Arch Frame (Reduced Top Spacing) */}
-                <div className="relative w-28 h-36 sm:w-32 sm:h-42 md:w-36 md:h-46 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                {/* Red Curved Arch Frame (Reduced Height) */}
+                <div className="relative w-28 h-32 sm:w-32 sm:h-36 md:w-36 md:h-40 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
                   <img
                     src={c.image}
                     alt={c.name}
-                    className="w-full h-[90%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[84%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
@@ -311,21 +311,21 @@ export default function TeamPage({ isEmbedded = false }) {
             Curators
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 sm:gap-6 max-w-7xl mx-auto justify-items-center">
+          <div className="flex flex-wrap items-start justify-center gap-3 sm:gap-3.5 md:gap-4 max-w-6xl mx-auto">
             {coreCommitteeMembers.map((member, index) => (
               <motion.div
                 key={member.id}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="group flex flex-col items-center text-center w-full max-w-[160px]"
+                className="group flex flex-col items-center text-center w-28 sm:w-32 md:w-36"
               >
-                {/* Red Curved Arch Frame (Reduced Top Spacing) */}
-                <div className="relative w-28 h-36 sm:w-32 sm:h-42 md:w-36 md:h-46 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                {/* Red Curved Arch Frame (Reduced Height) */}
+                <div className="relative w-28 h-32 sm:w-32 sm:h-36 md:w-36 md:h-40 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-[90%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[84%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
@@ -347,21 +347,21 @@ export default function TeamPage({ isEmbedded = false }) {
             Curatorial Directors
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto justify-items-center">
+          <div className="flex flex-wrap items-start justify-center gap-3 sm:gap-3.5 md:gap-4 max-w-3xl mx-auto">
             {curatorialDirectors.map((d, index) => (
               <motion.div
                 key={d.id}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group flex flex-col items-center text-center w-full max-w-[160px]"
+                className="group flex flex-col items-center text-center w-28 sm:w-32 md:w-36"
               >
-                {/* Red Curved Arch Frame (Reduced Top Spacing) */}
-                <div className="relative w-28 h-36 sm:w-32 sm:h-42 md:w-36 md:h-46 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                {/* Red Curved Arch Frame (Reduced Height) */}
+                <div className="relative w-28 h-32 sm:w-32 sm:h-36 md:w-36 md:h-40 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
                   <img
                     src={d.image}
                     alt={d.name}
-                    className="w-full h-[90%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[84%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
@@ -383,21 +383,21 @@ export default function TeamPage({ isEmbedded = false }) {
             Coordinators
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 sm:gap-5 max-w-7xl mx-auto justify-items-center">
+          <div className="flex flex-wrap items-start justify-center gap-3 sm:gap-3.5 md:gap-4 max-w-7xl mx-auto">
             {studentVolunteers.map((member, index) => (
               <motion.div
                 key={member.id}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.4) }}
-                className="group flex flex-col items-center text-center w-full max-w-[150px]"
+                className="group flex flex-col items-center text-center w-28 sm:w-32 md:w-36"
               >
-                {/* Red Curved Arch Frame (Reduced Top Spacing) */}
-                <div className="relative w-28 h-36 sm:w-32 sm:h-42 md:w-36 md:h-46 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                {/* Red Curved Arch Frame (Reduced Height) */}
+                <div className="relative w-28 h-32 sm:w-32 sm:h-36 md:w-36 md:h-40 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-[90%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[84%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
@@ -414,28 +414,26 @@ export default function TeamPage({ isEmbedded = false }) {
         </div>
 
         {/* 5. Joint Coordinators Section */}
-        <div className="mb-16">
+        <div className="mb-6 sm:mb-8">
           <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-[#1E3A8A] text-center mb-8 sm:mb-10 tracking-tight">
             Joint Coordinators
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 sm:gap-5 max-w-7xl mx-auto justify-items-center">
+          <div className="flex flex-wrap items-start justify-center gap-3 sm:gap-3.5 md:gap-4 max-w-7xl mx-auto">
             {advisorsMentorsMembers.map((member, index) => (
               <motion.div
                 key={member.id}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.4) }}
-                className={`group flex flex-col items-center text-center w-full max-w-[150px] ${
-                  index === 16 ? "lg:col-start-2" : ""
-                }`}
+                className="group flex flex-col items-center text-center w-28 sm:w-32 md:w-36"
               >
-                {/* Red Curved Arch Frame (Reduced Top Spacing) */}
-                <div className="relative w-28 h-36 sm:w-32 sm:h-42 md:w-36 md:h-46 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                {/* Red Curved Arch Frame (Reduced Height) */}
+                <div className="relative w-28 h-32 sm:w-32 sm:h-36 md:w-36 md:h-40 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-[90%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[84%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>

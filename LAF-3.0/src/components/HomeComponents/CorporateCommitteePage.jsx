@@ -39,7 +39,7 @@ export function CorporateCommitteePage({ isEmbedded = true }) {
       id={isEmbedded ? "corporate-committee" : undefined}
       className={
         isEmbedded
-          ? "relative py-12 sm:py-16 bg-[#FAF8F5] text-[#171717] font-sans selection:bg-[#D4AF37]/30 border-t border-[#E8E2D8]"
+          ? "relative pt-2 sm:pt-4 pb-6 sm:pb-8 bg-[#FAF8F5] text-[#171717] font-sans selection:bg-[#D4AF37]/30"
           : "min-h-screen bg-[#FAF7F2] text-[#171717] font-sans selection:bg-[#D4AF37]/30"
       }
     >
@@ -58,10 +58,10 @@ export function CorporateCommitteePage({ isEmbedded = true }) {
       </div>
 
       {/* Main Content Area */}
-      <div className={`relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 ${isEmbedded ? "pt-2 pb-10" : "pt-12 pb-24"}`}>
+      <div className={`relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 ${isEmbedded ? "pt-0 pb-4" : "pt-12 pb-24"}`}>
         
         {/* Corporate Committee Members Section */}
-        <div className="mb-14">
+        <div className="mb-4 sm:mb-6">
           <div className="flex flex-col items-start gap-1 mb-8">
             <span className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl font-bold tracking-tight inline-block leading-tight">
               LAF 3.0
@@ -71,21 +71,21 @@ export function CorporateCommitteePage({ isEmbedded = true }) {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 max-w-5xl justify-items-start">
+          <div className="flex flex-wrap items-start justify-start gap-3 sm:gap-3.5 md:gap-4 max-w-7xl">
             {corporateCommitteeMembers.map((member, index) => (
               <motion.div
                 key={member.id}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: index * 0.08 }}
-                className="group flex flex-col items-center text-center w-full max-w-[150px]"
+                className="group flex flex-col items-center text-center w-28 sm:w-32 md:w-36"
               >
                 {/* Red Curved Arch Frame */}
-                <div className="relative w-28 h-40 sm:w-32 sm:h-44 md:w-36 md:h-48 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                <div className="relative w-28 h-32 sm:w-32 sm:h-36 md:w-36 md:h-40 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[84%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
