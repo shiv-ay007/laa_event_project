@@ -259,16 +259,14 @@ export default function TeamPage({ isEmbedded = false }) {
           </div>
         )}
 
-        {/* Main Event Title Banner (Navbar Equal Width) */}
-        <div className="w-full mb-12 pt-2">
-          <div className="w-full bg-[#D8232A] text-white py-3.5 sm:py-4 px-4 sm:px-8 rounded-2xl shadow-sm text-center flex flex-col items-center justify-center gap-1">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-bold tracking-tight leading-snug">
-              EVENT Convenors, Curators, Curatorial Directors,
-            </h1>
-            <span className="text-lg sm:text-xl md:text-2xl lg:text-[28px] font-bold tracking-tight leading-snug">
-              Coordinators & Joint Coordinators
-            </span>
-          </div>
+        {/* Main Event Title Banner - Themed Red Badges (Matching Image 2) */}
+        <div className="flex flex-col items-start gap-1 sm:gap-1.5 mb-10 sm:mb-12">
+          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-[32px] font-bold tracking-tight inline-block leading-tight">
+            EVENT Convenors, Curators, Curatorial Directors,
+          </h2>
+          <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-[32px] font-bold tracking-tight inline-block leading-tight">
+            Coordinators & Joint Coordinators
+          </h2>
         </div>
 
         {/* 1. Convenors Section */}
@@ -286,12 +284,12 @@ export default function TeamPage({ isEmbedded = false }) {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="group flex flex-col items-center text-center w-full max-w-[160px]"
               >
-                {/* Red Curved Arch Frame (Same Size As Curators) */}
-                <div className="relative w-32 h-44 sm:w-36 sm:h-48 md:w-40 md:h-52 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                {/* Red Curved Arch Frame (Reduced Top Spacing) */}
+                <div className="relative w-28 h-36 sm:w-32 sm:h-42 md:w-36 md:h-46 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
                   <img
                     src={c.image}
                     alt={c.name}
-                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[90%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
@@ -322,12 +320,12 @@ export default function TeamPage({ isEmbedded = false }) {
                 transition={{ duration: 0.4, delay: index * 0.08 }}
                 className="group flex flex-col items-center text-center w-full max-w-[160px]"
               >
-                {/* Red Curved Arch Frame */}
-                <div className="relative w-32 h-44 sm:w-36 sm:h-48 md:w-40 md:h-52 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                {/* Red Curved Arch Frame (Reduced Top Spacing) */}
+                <div className="relative w-28 h-36 sm:w-32 sm:h-42 md:w-36 md:h-46 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[90%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
@@ -358,12 +356,12 @@ export default function TeamPage({ isEmbedded = false }) {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="group flex flex-col items-center text-center w-full max-w-[160px]"
               >
-                {/* Red Curved Arch Frame (Same Size As Curators) */}
-                <div className="relative w-32 h-44 sm:w-36 sm:h-48 md:w-40 md:h-52 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                {/* Red Curved Arch Frame (Reduced Top Spacing) */}
+                <div className="relative w-28 h-36 sm:w-32 sm:h-42 md:w-36 md:h-46 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
                   <img
                     src={d.image}
                     alt={d.name}
-                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[90%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
@@ -394,12 +392,12 @@ export default function TeamPage({ isEmbedded = false }) {
                 transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.4) }}
                 className="group flex flex-col items-center text-center w-full max-w-[150px]"
               >
-                {/* Red Curved Arch Frame */}
-                <div className="relative w-28 h-40 sm:w-32 sm:h-44 md:w-36 md:h-48 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                {/* Red Curved Arch Frame (Reduced Top Spacing) */}
+                <div className="relative w-28 h-36 sm:w-32 sm:h-42 md:w-36 md:h-46 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[90%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
@@ -432,12 +430,12 @@ export default function TeamPage({ isEmbedded = false }) {
                   index === 16 ? "lg:col-start-2" : ""
                 }`}
               >
-                {/* Red Curved Arch Frame (Same Size As Coordinators) */}
-                <div className="relative w-28 h-40 sm:w-32 sm:h-44 md:w-36 md:h-48 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
+                {/* Red Curved Arch Frame (Reduced Top Spacing) */}
+                <div className="relative w-28 h-36 sm:w-32 sm:h-42 md:w-36 md:h-46 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[90%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>

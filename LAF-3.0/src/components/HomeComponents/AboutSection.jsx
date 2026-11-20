@@ -171,12 +171,15 @@ const AboutSection = () => {
                   className={`group relative flex flex-col items-center text-center transition-transform duration-500 ${isEven ? "lg:translate-y-14" : "lg:translate-y-0"}`}
                 >
                   <div className="flex items-center justify-center mb-5 relative w-full">
-                    <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[1.5px] bg-[#B77A27]/30 z-0" />
-                    <div className="relative z-10 bg-[#FAF7F2] border-2 border-[#B77A27] text-[#B77A27] font-mono text-xs font-bold px-4 py-1 rounded-full shadow-xs group-hover:bg-[#B77A27] group-hover:text-white transition-all duration-300">
+                    {/* Line Color changed to Red */}
+                    <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[1.5px] bg-[#D8232A]/20 z-0" />
+                    {/* Number Badge changed to Red */}
+                    <div className="relative z-10 bg-[#FAF7F2] border-2 border-[#D8232A] text-[#D8232A] font-mono text-xs font-bold px-4 py-1 rounded-full shadow-xs group-hover:bg-[#D8232A] group-hover:text-white transition-all duration-300">
                       [{item.number}]
                     </div>
                   </div>
-                  <div className="w-full aspect-[1920/819] relative rounded-2xl overflow-hidden border border-[#D4AF37]/30 shadow-md group-hover:border-[#B77A27] group-hover:shadow-2xl transition-all duration-500 group-hover:scale-[1.03] bg-white">
+                  {/* Image Border changed to Red */}
+                  <div className="w-full aspect-[1920/819] relative rounded-2xl overflow-hidden border border-[#D8232A]/30 shadow-md group-hover:border-[#D8232A] group-hover:shadow-2xl transition-all duration-500 group-hover:scale-[1.03] bg-white">
                     <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                   </div>
                 </motion.div>

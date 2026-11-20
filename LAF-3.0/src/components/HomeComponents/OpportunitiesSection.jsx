@@ -188,7 +188,7 @@ const opportunities = [
 
 const OpportunitiesSection = () => {
   return (
-    <section className="relative w-full bg-[#FAF8F5] py-12 sm:py-16 overflow-hidden font-sans">
+    <section className="relative w-full bg-[#FAF8F5] pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden font-sans">
       {/* Outer constraint matching Navbar Width */}
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
         {/* ================= THE MAIN FRAMED CONTAINER (Border Removed as Requested) ================= */}
