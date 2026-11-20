@@ -72,121 +72,23 @@ import event14 from "../../assets/images/LAFevent14.webp";
 import event15 from "../../assets/images/LAFevent15.webp";
 import event16 from "../../assets/images/LAFevent16.webp";
 
-
-
 const eventImages = [
-  {
-    id: "01",
-    src: event01,
-    title: "Art Contest Winners • Junior Category",
-    category: "art",
-    categoryLabel: "Art Contest",
-  },
-  {
-    id: "02",
-    src: event02,
-    title: "Art Contest Winners • Senior Category",
-    category: "art",
-    categoryLabel: "Art Contest",
-  },
-  {
-    id: "03",
-    src: event03,
-    title: "Icon Pavilion & Trade Booth",
-    category: "exhibitions",
-    categoryLabel: "Exhibitions",
-  },
-  {
-    id: "04",
-    src: event04,
-    title: "Indoor Architecture & Product Expo",
-    category: "exhibitions",
-    categoryLabel: "Exhibitions",
-  },
-  {
-    id: "05",
-    src: event05,
-    title: "Main Exhibition Walkway & Stalls",
-    category: "exhibitions",
-    categoryLabel: "Exhibitions",
-  },
-  {
-    id: "06",
-    src: event06,
-    title: "Hitachi Smart Climate Pavilion",
-    category: "exhibitions",
-    categoryLabel: "Exhibitions",
-  },
-  {
-    id: "07",
-    src: event07,
-    title: "Outdoor Sustainable Pavilion & Lawn",
-    category: "exhibitions",
-    categoryLabel: "Exhibitions",
-  },
-  {
-    id: "08",
-    src: event08,
-    title: "Kubico Architectural Display",
-    category: "exhibitions",
-    categoryLabel: "Exhibitions",
-  },
-  {
-    id: "09",
-    src: event09,
-    title: "Charak Steel & Structure Installation",
-    category: "exhibitions",
-    categoryLabel: "Exhibitions",
-  },
-  {
-    id: "10",
-    src: event10,
-    title: "KEI Principal Sponsor Stage Ceremony",
-    category: "conclave",
-    categoryLabel: "Conclave & Stage",
-  },
-  {
-    id: "11",
-    src: event11,
-    title: "I Love Lucknow Heritage Installation",
-    category: "exhibitions",
-    categoryLabel: "Exhibitions",
-  },
-  {
-    id: "12",
-    src: event12,
-    title: "Keynote Symposium & Speaker Stage",
-    category: "conclave",
-    categoryLabel: "Conclave & Stage",
-  },
-  {
-    id: "13",
-    src: event13,
-    title: "Exhibition Entry Arch & Welcome Lounge",
-    category: "exhibitions",
-    categoryLabel: "Exhibitions",
-  },
-  {
-    id: "14",
-    src: event14,
-    title: "Interior Designers Product Showcase",
-    category: "exhibitions",
-    categoryLabel: "Exhibitions",
-  },
-  {
-    id: "15",
-    src: event15,
-    title: "Architectural Delegates & Audience",
-    category: "conclave",
-    categoryLabel: "Conclave & Stage",
-  },
-  {
-    id: "16",
-    src: event16,
-    title: "Grand Conclave Auditorium & Gathering",
-    category: "conclave",
-    categoryLabel: "Conclave & Stage",
-  },
+  { id: "01", src: event01, title: "Art Contest Winners • Junior Category", category: "art", categoryLabel: "Art Contest" },
+  { id: "02", src: event02, title: "Art Contest Winners • Senior Category", category: "art", categoryLabel: "Art Contest" },
+  { id: "03", src: event03, title: "Icon Pavilion & Trade Booth", category: "exhibitions", categoryLabel: "Exhibitions" },
+  { id: "04", src: event04, title: "Indoor Architecture & Product Expo", category: "exhibitions", categoryLabel: "Exhibitions" },
+  { id: "05", src: event05, title: "Main Exhibition Walkway & Stalls", category: "exhibitions", categoryLabel: "Exhibitions" },
+  { id: "06", src: event06, title: "Hitachi Smart Climate Pavilion", category: "exhibitions", categoryLabel: "Exhibitions" },
+  { id: "07", src: event07, title: "Outdoor Sustainable Pavilion & Lawn", category: "exhibitions", categoryLabel: "Exhibitions" },
+  { id: "08", src: event08, title: "Kubico Architectural Display", category: "exhibitions", categoryLabel: "Exhibitions" },
+  { id: "09", src: event09, title: "Charak Steel & Structure Installation", category: "exhibitions", categoryLabel: "Exhibitions" },
+  { id: "10", src: event10, title: "KEI Principal Sponsor Stage Ceremony", category: "conclave", categoryLabel: "Conclave & Stage" },
+  { id: "11", src: event11, title: "I Love Lucknow Heritage Installation", category: "exhibitions", categoryLabel: "Exhibitions" },
+  { id: "12", src: event12, title: "Keynote Symposium & Speaker Stage", category: "conclave", categoryLabel: "Conclave & Stage" },
+  { id: "13", src: event13, title: "Exhibition Entry Arch & Welcome Lounge", category: "exhibitions", categoryLabel: "Exhibitions" },
+  { id: "14", src: event14, title: "Interior Designers Product Showcase", category: "exhibitions", categoryLabel: "Exhibitions" },
+  { id: "15", src: event15, title: "Architectural Delegates & Audience", category: "conclave", categoryLabel: "Conclave & Stage" },
+  { id: "16", src: event16, title: "Grand Conclave Auditorium & Gathering", category: "conclave", categoryLabel: "Conclave & Stage" },
 ];
 
 const categories = [
@@ -237,7 +139,7 @@ export default function LastEventGlanceSection() {
         }}
       />
 
-      {/* ================= PART 1: HEADER & IMAGE GALLERY GRID (MATCHING NAVBAR WIDTH) ================= */}
+      {/* ================= PART 1: HEADER & IMAGE GALLERY GRID ================= */}
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
         {/* ================= LEFT-ALIGNED RED BADGE HEADING ================= */}
         <div className="mb-8 sm:mb-12 flex flex-col items-start gap-1.5">
@@ -251,9 +153,6 @@ export default function LastEventGlanceSection() {
             <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
               Last Event At a Glance
             </h2>
-            {/* <h2 className="bg-[#D8232A] text-white px-3.5 py-1 text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight inline-block leading-tight">
-              At a Glance
-            </h2> */}
           </motion.div>
         </div>
 
@@ -301,9 +200,10 @@ export default function LastEventGlanceSection() {
         </motion.div>
       </div>
 
-      {/* ================= PART 3: DOWNLOADS, STATS & FOOTNOTE (MATCHING NAVBAR WIDTH) ================= */}
+      {/* ================= PART 3: DOWNLOADS, STATS & FOOTNOTE ================= */}
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12 mt-10 sm:mt-14">
-        {/* ================= ELEGANT DOWNLOAD DOCUMENTS RIBBON (THEMED) ================= */}
+        
+        {/* 🚀 UPDATED: ELEGANT DOWNLOAD DOCUMENTS RIBBON (RED, BLACK, RED THEME) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
           {[
             {
@@ -311,57 +211,82 @@ export default function LastEventGlanceSection() {
               subtitle: "Conclave Guide & Official Schedule",
               file: "#brochure",
               badge: "PDF • 4.2 MB",
+              theme: "red",
             },
             {
               title: "DOWNLOAD PARTICIPATION FORM",
               subtitle: "Delegate & Exhibitor Entry Form",
               file: "#participation",
               badge: "PDF • 1.8 MB",
+              theme: "black",
             },
             {
               title: "DOWNLOAD LAYOUT",
               subtitle: "Exhibition Floorplan & Stalls Map",
               file: "#layout",
               badge: "PDF • 3.5 MB",
+              theme: "red",
             },
-          ].map((item) => (
-            <a
-              key={item.title}
-              href={item.file}
-              className="group relative flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-[#18181B] border border-neutral-800 hover:border-[#D8232A] shadow-[0_4px_20px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_25px_rgba(216,35,42,0.2)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
-            >
-              {/* Minimal Red Shimmer Sweep Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D8232A]/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
+          ].map((item) => {
+            const isRed = item.theme === "red";
+            
+            return (
+              <a
+                key={item.title}
+                href={item.file}
+                className={`group relative flex items-center justify-between p-4 sm:p-5 rounded-2xl border shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden ${
+                  isRed 
+                    ? "bg-[#D8232A] border-[#D8232A] hover:bg-[#BF1E24]" 
+                    : "bg-[#18181B] border-neutral-800 hover:border-[#D8232A]"
+                }`}
+              >
+                {/* Shimmer Effect */}
+                <div className={`absolute inset-0 bg-gradient-to-r from-transparent to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none ${
+                  isRed ? "via-white/20" : "via-[#D8232A]/15"
+                }`} />
 
-              <div className="flex items-center gap-3.5 min-w-0 z-10">
-                <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#D8232A] group-hover:bg-[#D8232A] group-hover:text-white group-hover:border-transparent transition-all duration-300 shrink-0 shadow-xs">
-                  <Download className="w-4.5 h-4.5 group-hover:translate-y-0.5 transition-transform" />
+                <div className="flex items-center gap-3.5 min-w-0 z-10">
+                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
+                    isRed
+                      ? "bg-white/20 border-white/30 text-white group-hover:bg-white group-hover:text-[#D8232A]"
+                      : "bg-white/5 border-white/10 text-[#D8232A] group-hover:bg-[#D8232A] group-hover:text-white group-hover:border-transparent"
+                  } border`}>
+                    <Download className="w-4.5 h-4.5 group-hover:translate-y-0.5 transition-transform" />
+                  </div>
+
+                  <div className="text-left truncate">
+                    <div className={`text-[11.5px] sm:text-[12.5px] font-bold uppercase tracking-wider transition-colors truncate ${
+                      isRed ? "text-white group-hover:text-white" : "text-white group-hover:text-[#D8232A]"
+                    }`}>
+                      {item.title}
+                    </div>
+                    <div className={`text-[10.5px] truncate mt-0.5 ${
+                      isRed ? "text-red-100" : "text-neutral-400"
+                    }`}>
+                      {item.subtitle}
+                    </div>
+                  </div>
                 </div>
 
-                <div className="text-left truncate">
-                  <div className="text-[11.5px] sm:text-[12.5px] font-bold uppercase tracking-wider text-white group-hover:text-[#D8232A] transition-colors truncate">
-                    {item.title}
-                  </div>
-                  <div className="text-[10.5px] text-neutral-400 truncate mt-0.5">
-                    {item.subtitle}
-                  </div>
+                <div className="z-10 ml-2 shrink-0">
+                  <span className={`text-[9.5px] font-mono font-bold tracking-widest px-2.5 py-1 rounded-md border transition-all ${
+                    isRed
+                      ? "text-white bg-white/10 border-white/20 group-hover:bg-white group-hover:text-[#D8232A] group-hover:border-white"
+                      : "text-neutral-300 bg-white/5 border-neutral-700 group-hover:border-[#D8232A] group-hover:text-white"
+                  }`}>
+                    {item.badge}
+                  </span>
                 </div>
-              </div>
-
-              <div className="z-10 ml-2 shrink-0">
-                <span className="text-[9.5px] font-mono font-bold tracking-widest text-neutral-300 bg-white/5 px-2.5 py-1 rounded-md border border-neutral-700 group-hover:border-[#D8232A] group-hover:text-white transition-all">
-                  {item.badge}
-                </span>
-              </div>
-            </a>
-          ))}
+              </a>
+            );
+          })}
         </div>
 
-        {/* ================= STATISTICS RIBBON (MINIMAL ARCHITECTURAL PALETTE) ================= */}
+        {/* ================= STATISTICS RIBBON ================= */}
         <div className="mt-8 sm:mt-10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-[#E8E2D8] relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 bg-[#D8232A]" />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-            {/* Stat 1: 200+ */}
+            {/* Stat 1 */}
             <div className="text-left">
               <div className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#18181B] tracking-tight leading-none">
                 <AnimatedCounter end={200} suffix="+" formatValue={(v) => v} />
@@ -371,7 +296,7 @@ export default function LastEventGlanceSection() {
               </div>
             </div>
 
-            {/* Stat 2: 2000+ */}
+            {/* Stat 2 */}
             <div className="text-left">
               <div className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#18181B] tracking-tight leading-none">
                 <AnimatedCounter end={2000} suffix="+" formatValue={(v) => v} />
@@ -381,7 +306,7 @@ export default function LastEventGlanceSection() {
               </div>
             </div>
 
-            {/* Stat 3: 3,00,000+ */}
+            {/* Stat 3 */}
             <div className="text-left">
               <div className="font-sans font-bold text-3xl sm:text-4xl lg:text-5xl text-[#18181B] tracking-tight leading-none">
                 <AnimatedCounter
@@ -398,7 +323,7 @@ export default function LastEventGlanceSection() {
         </div>
       </div>
 
-      {/* ================= LIGHTBOX PREVIEW MODAL (THEMED) ================= */}
+      {/* ================= LIGHTBOX PREVIEW MODAL ================= */}
       <AnimatePresence>
         {selectedIndex !== null && (
           <motion.div
@@ -409,12 +334,10 @@ export default function LastEventGlanceSection() {
             className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-8 select-none"
             onClick={() => setSelectedIndex(null)}
           >
-            {/* Modal Box */}
             <div
               className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
               <button
                 onClick={() => setSelectedIndex(null)}
                 className="absolute -top-12 right-0 p-2.5 rounded-full bg-white/10 hover:bg-[#D8232A] border border-white/20 text-white transition-all focus:outline-none cursor-pointer"
@@ -423,29 +346,22 @@ export default function LastEventGlanceSection() {
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Prev Button */}
               <button
-                onClick={() =>
-                  setSelectedIndex((prev) => (prev > 0 ? prev - 1 : filteredImages.length - 1))
-                }
+                onClick={() => setSelectedIndex((prev) => (prev > 0 ? prev - 1 : filteredImages.length - 1))}
                 className="absolute left-2 sm:-left-12 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-[#D8232A] border border-white/20 text-white transition-all focus:outline-none z-10 cursor-pointer"
                 aria-label="Previous Image"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
 
-              {/* Next Button */}
               <button
-                onClick={() =>
-                  setSelectedIndex((prev) => (prev < filteredImages.length - 1 ? prev + 1 : 0))
-                }
+                onClick={() => setSelectedIndex((prev) => (prev < filteredImages.length - 1 ? prev + 1 : 0))}
                 className="absolute right-2 sm:-right-12 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-[#D8232A] border border-white/20 text-white transition-all focus:outline-none z-10 cursor-pointer"
                 aria-label="Next Image"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
 
-              {/* High-Res Image Display */}
               <motion.div
                 key={filteredImages[selectedIndex].src}
                 initial={{ scale: 0.95, opacity: 0 }}
@@ -461,7 +377,6 @@ export default function LastEventGlanceSection() {
                 />
               </motion.div>
 
-              {/* Bottom Details Bar */}
               <div className="mt-4 flex items-center justify-between w-full max-w-3xl px-4 py-3 rounded-2xl bg-[#18181B]/95 border border-white/10 text-white text-xs">
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-white font-bold text-[10px] tracking-widest uppercase bg-[#D8232A] px-2.5 py-1 rounded-md shadow-xs">
