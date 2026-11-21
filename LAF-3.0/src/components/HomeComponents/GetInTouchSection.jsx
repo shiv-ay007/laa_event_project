@@ -76,7 +76,7 @@ const GetInTouchSection = () => {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-[#FAF8F5] text-[#171717] pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-24 lg:pb-32 font-sans border-t border-[#E8E2D8]"
+      className="relative overflow-hidden bg-[#FAF8F5] text-[#171717] pt-8 sm:pt-10 lg:pt-12 pb-10 sm:pb-14 lg:pb-16 font-sans border-t border-[#E8E2D8]"
     >
       {/* =====================================================
           ARCHITECTURAL BACKGROUND (MATCHES ALL HOMEPAGE SECTIONS)
@@ -99,11 +99,11 @@ const GetInTouchSection = () => {
         <div className="absolute right-[5%] bottom-[5%] h-16 w-16 border-r border-b border-[#D8232A]/20" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-12">
         {/* =====================================================
             SECTION TITLE & SUBHEADING
         ====================================================== */}
-        <div className="mb-12 sm:mb-14 grid lg:grid-cols-12 gap-6 lg:gap-8 items-end">
+        <div className="mb-6 sm:mb-8 grid lg:grid-cols-12 gap-6 lg:gap-8 items-end">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}

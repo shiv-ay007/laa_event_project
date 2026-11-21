@@ -131,14 +131,14 @@ export default function SupportingOrganizationsSection() {
   return (
     <section
       id="supporting-organizations"
-      className="relative overflow-hidden bg-[#FAF8F5] pt-4 sm:pt-6 lg:pt-8 pb-10 sm:pb-12 select-none font-sans border-t border-[#E6DFD3]"
+      className="relative overflow-hidden bg-[#FAF8F5] pt-4 sm:pt-6 lg:pt-8 pb-3 sm:pb-4 select-none font-sans border-t border-[#E6DFD3]"
     >
       {/* Subtle architectural grid background */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.25] bg-[linear-gradient(to_right,rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.035)_1px,transparent_1px)] bg-[size:44px_44px]"
       />
 
-      <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+      <div className="relative mx-auto max-w-[1400px] px-3 sm:px-8 lg:px-12">
         {/* =====================================================
             HEADER: SUPPORTING ORGANIZATIONS & LAF 3.0 LOGO
         ====================================================== */}
@@ -195,7 +195,7 @@ export default function SupportingOrganizationsSection() {
         {/* =====================================================
             BOTTOM FOOTNOTE RIBBON
         ====================================================== */}
-        <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#E6DFD3] pt-5 text-xs text-neutral-500">
+        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#E6DFD3] pt-4 text-xs text-neutral-500">
           <div className="flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-[#D8232A]" />
             <span>Building connections across architecture, urban planning, design, and construction sectors.</span>

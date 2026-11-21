@@ -751,7 +751,7 @@ const AboutLAASection = () => {
   return (
     <section
       id="about-laa"
-      className="relative overflow-hidden bg-[#FAF8F5] text-[#171717] pt-14 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 font-sans"
+      className="relative overflow-hidden bg-[#FAF8F5] text-[#171717] pt-4 sm:pt-6 lg:pt-8 pb-12 sm:pb-16 font-sans"
     >
       {/* BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none">
@@ -773,7 +773,7 @@ const AboutLAASection = () => {
         <div className="absolute bottom-[10%] right-[8%] h-24 w-24 border-b border-r border-[#EA580C]/15" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-12">
                 
         {/* =====================================================
             ABOUT LAA HERO PRESENTATION CARD

@@ -3,6 +3,10 @@ import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import layoutImage from "../../assets/images/LAFmap.png";
 
+// PDFs
+import brochurePdf from "../../assets/lafpdf/lafbroucher.pdf";
+import layoutPdf from "../../assets/lafpdf/layout.pdf";
+
 // Participating Chapters Logos
 import pc1 from "../../assets/images/pc1.webp"; // Agra Architects Association
 import pc2 from "../../assets/images/pc2.webp"; // Meerut Architects Association
@@ -43,7 +47,7 @@ const LocationLayoutSection = () => {
   return (
     <section
       id="location-layout"
-      className="relative overflow-hidden bg-[#FAF8F5] text-[#171717] pt-12 sm:pt-16 pb-14 sm:pb-18 border-t border-[#E8E2D8]"
+      className="relative overflow-hidden bg-[#FAF8F5] text-[#171717] pt-12 sm:pt-16 pb-6 sm:pb-8 border-t border-[#E8E2D8]"
     >
       {/* =====================================================
           ARCHITECTURAL BACKGROUND
@@ -62,7 +66,7 @@ const LocationLayoutSection = () => {
         />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-12">
         {/* =====================================================
             LEFT-ALIGNED SECTION HEADING (RED BADGE THEME)
         ====================================================== */}
@@ -126,68 +130,120 @@ const LocationLayoutSection = () => {
         </motion.div>
 
         {/* =====================================================
-            DOWNLOAD BUTTONS (MINIMAL ARCHITECTURAL THEME)
+            DOWNLOAD BUTTONS (RED, BLACK, RED THEME)
         ====================================================== */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-10 sm:mt-12 grid gap-4 sm:grid-cols-3"
+          className="mt-10 sm:mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6"
         >
           {[
             {
-              tag: "MASTER PLAN",
               title: "DOWNLOAD LAYOUT PLAN",
-              href: "/layout.pdf",
-              isDownload: true,
+              subtitle: "Exhibition Floorplan & Stalls Map",
+              file: layoutPdf,
+              download: "LAF3.0 LAYOUT PLAN.pdf",
+              badge: "PDF • 3.5 MB",
+              theme: "red",
             },
             {
-              tag: "OFFICIAL BROCHURE",
               title: "DOWNLOAD EVENT BROCHURE",
-              href: "#",
-              isDownload: false,
+              subtitle: "Conclave Guide & Official Schedule",
+              file: brochurePdf,
+              download: "LAF3.0 Brochure_FINAL.pdf",
+              badge: "PDF • 4.2 MB",
+              theme: "black",
             },
             {
-              tag: "PARTICIPATION",
               title: "DOWNLOAD PARTICIPATION FORM",
-              href: "#",
-              isDownload: false,
+              subtitle: "Delegate & Exhibitor Entry Form",
+              file: "#participation",
+              badge: "PDF • 1.8 MB",
+              theme: "red",
             },
-          ].map((btn) => (
-            <a
-              key={btn.title}
-              href={btn.href}
-              download={btn.isDownload}
-              className="group flex items-center justify-between bg-white border border-[#E8E2D8] hover:border-[#D8232A] px-6 py-4 text-[#171717] transition-all duration-300 hover:shadow-lg rounded-2xl relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-[#D8232A] group-hover:w-2 transition-all duration-300" />
-              <div>
-                <span className="block text-[9px] font-bold tracking-[0.25em] text-[#D8232A] uppercase font-mono">
-                  {btn.tag}
-                </span>
-                <span className="mt-1 block text-xs sm:text-sm font-semibold tracking-wide text-neutral-800 group-hover:text-[#D8232A] transition-colors">
-                  {btn.title}
-                </span>
-              </div>
-              <div className="w-9 h-9 rounded-xl bg-neutral-100 border border-neutral-200 group-hover:border-[#D8232A] group-hover:bg-[#D8232A] group-hover:text-white flex items-center justify-center transition-all duration-300 text-[#D8232A] ml-3 shrink-0">
-                <Download size={16} />
-              </div>
-            </a>
-          ))}
+          ].map((item) => {
+            const isRed = item.theme === "red";
+
+            return (
+              <a
+                key={item.title}
+                href={item.file}
+                download={item.download}
+                target={item.file?.startsWith("#") ? undefined : "_blank"}
+                rel={item.file?.startsWith("#") ? undefined : "noopener noreferrer"}
+                className={`group relative flex items-center justify-between p-4 sm:p-5 rounded-2xl border shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden ${
+                  isRed
+                    ? "bg-[#D8232A] border-[#D8232A] hover:bg-[#BF1E24]"
+                    : "bg-[#18181B] border-neutral-800 hover:border-[#D8232A]"
+                }`}
+              >
+                {/* Shimmer Effect */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r from-transparent to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none ${
+                    isRed ? "via-white/20" : "via-[#D8232A]/15"
+                  }`}
+                />
+
+                <div className="flex items-center gap-3.5 min-w-0 z-10">
+                  <div
+                    className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 border ${
+                      isRed
+                        ? "bg-white/20 border-white/30 text-white group-hover:bg-white group-hover:text-[#D8232A]"
+                        : "bg-white/5 border-white/10 text-[#D8232A] group-hover:bg-[#D8232A] group-hover:text-white group-hover:border-transparent"
+                    }`}
+                  >
+                    <Download className="w-4.5 h-4.5 group-hover:translate-y-0.5 transition-transform" />
+                  </div>
+
+                  <div className="text-left truncate">
+                    <div
+                      className={`text-[11.5px] sm:text-[12.5px] font-bold uppercase tracking-wider transition-colors truncate ${
+                        isRed
+                          ? "text-white group-hover:text-white"
+                          : "text-white group-hover:text-[#D8232A]"
+                      }`}
+                    >
+                      {item.title}
+                    </div>
+                    <div
+                      className={`text-[10.5px] truncate mt-0.5 ${
+                        isRed ? "text-red-100" : "text-neutral-400"
+                      }`}
+                    >
+                      {item.subtitle}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="z-10 ml-2 shrink-0">
+                  <span
+                    className={`text-[9.5px] font-mono font-bold tracking-widest px-2.5 py-1 rounded-md border transition-all ${
+                      isRed
+                        ? "text-white bg-white/10 border-white/20 group-hover:bg-white group-hover:text-[#D8232A] group-hover:border-white"
+                        : "text-neutral-300 bg-white/5 border-neutral-700 group-hover:border-[#D8232A] group-hover:text-white"
+                    }`}
+                  >
+                    {item.badge}
+                  </span>
+                </div>
+              </a>
+            );
+          })}
         </motion.div>
 
         {/* =====================================================
             PARTICIPATING CHAPTERS
         ====================================================== */}
-        <div className="mt-14 sm:mt-18 pt-10 sm:pt-14 border-t border-[#E8E2D8]">
+        <div className="mt-10 sm:mt-12 pt-8 sm:pt-10 border-t border-[#E8E2D8]">
           {/* Section Heading */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-8 sm:mb-10"
+            className="mb-5 sm:mb-6"
           >
             <h3 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-[34px] font-bold tracking-tight inline-block leading-tight">
               Participating Chapters
@@ -221,14 +277,14 @@ const LocationLayoutSection = () => {
         {/* =====================================================
             KNOWLEDGE PARTNERS
         ====================================================== */}
-        <div className="mt-12 sm:mt-16 pt-10 sm:pt-14 border-t border-[#E8E2D8]">
+        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-[#E8E2D8]">
           {/* Section Heading */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-8 sm:mb-10"
+            className="mb-5 sm:mb-6"
           >
             <h3 className="bg-[#D8232A] text-white px-3.5 py-1 text-2xl sm:text-3xl md:text-[34px] font-bold tracking-tight inline-block leading-tight">
               Knowledge Partners

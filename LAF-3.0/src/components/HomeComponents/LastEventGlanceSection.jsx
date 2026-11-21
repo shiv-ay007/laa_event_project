@@ -55,8 +55,8 @@ function AnimatedCounter({ end, duration = 2000, suffix = "+", formatValue }) {
 }
 
 // Event gallery images
-import event01 from "../../assets/images/LAFevent1.webp";
-import event02 from "../../assets/images/LAFevent2.webp";
+import event01 from "../../assets/images/LAFevent15.webp";
+import event02 from "../../assets/images/LAFevent14.webp";
 import event03 from "../../assets/images/LAFEvent3.webp";
 import event04 from "../../assets/images/LAFevent4.webp";
 import event05 from "../../assets/images/lAFevent5.webp";
@@ -68,8 +68,8 @@ import event10 from "../../assets/images/LAFevent10.webp";
 import event11 from "../../assets/images/LAFevent11.webp";
 import event12 from "../../assets/images/LAFevent12.webp";
 import event13 from "../../assets/images/LAFevent13.webp";
-import event14 from "../../assets/images/LAFevent14.webp";
-import event15 from "../../assets/images/LAFevent15.webp";
+import event14 from "../../assets/images/LAFevent2.webp";
+import event15 from "../../assets/images/LAFevent1.webp";
 import event16 from "../../assets/images/LAFevent16.webp";
 
 const eventImages = [
