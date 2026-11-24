@@ -28,49 +28,49 @@ import {
 // ==========================================
 import lucknowImg from "../../assets/images/lucknow-img.webp";
 // Mentor & Patrons from src/assets/LAF/
-import mentorImage from "../../assets/LAF/Mentor/Ar. D.C. Thapar.png";
-import con4Img from "../../assets/LAF/Patron/Ar. Ashok Kumar.png";
-import patron2Img from "../../assets/LAF/Patron/Ar. Ajai Behl.png";
-import patron3Img from "../../assets/LAF/Patron/Dr. Vandana Sehgal.png";
-import patron4Img from "../../assets/LAF/Patron/Ar. Sanjay Sinha.png";
+import mentorImage from "../../assets/LAF/Mentor/Ar. D.C. Thapar.webp";
+import con4Img from "../../assets/LAF/Patron/Ar. Ashok Kumar.webp";
+import patron2Img from "../../assets/LAF/Patron/Ar. Ajai Behl.webp";
+import patron3Img from "../../assets/LAF/Patron/Dr. Vandana Sehgal.webp";
+import patron4Img from "../../assets/LAF/Patron/Ar. Sanjay Sinha.webp";
 
 // LAA Committee images from src/assets/LAF/
-import acadSuparna from "../../assets/LAF/Academic Committee/Ar. Suparna Sircar.png";
-import acadRitu from "../../assets/LAF/Academic Committee/Ar. Ritu Gulati.png";
-import eduDPSingh from "../../assets/LAF/Edu Formation Committee/Ar. D.P. Singh.png";
-import eduDeepti from "../../assets/LAF/Edu Formation Committee/Ar. Deepti Pandey.png";
-import sportsShubhendra from "../../assets/LAF/Sports Committee/Ar. Shubhendra Bajpal.png";
-import sportsSandeep from "../../assets/LAF/Sports Committee/Ar. Sandeep Negi.jpeg";
-import hospVaibhav from "../../assets/LAF/Hospitality & Welfare Committee/Ar. VAIBHAV GOEL.png";
+import acadSuparna from "../../assets/LAF/Academic Committee/Ar. Suparna Sircar.webp";
+import acadRitu from "../../assets/LAF/Academic Committee/Ar. Ritu Gulati.webp";
+import eduDPSingh from "../../assets/LAF/Edu Formation Committee/Ar. D.P. Singh.webp";
+import eduDeepti from "../../assets/LAF/Edu Formation Committee/Ar. Deepti Pandey.webp";
+import sportsShubhendra from "../../assets/LAF/Sports Committee/Ar. Shubhendra Bajpal.webp";
+import sportsSandeep from "../../assets/LAF/Sports Committee/Ar. Sandeep Negi.webp";
+import hospVaibhav from "../../assets/LAF/Hospitality & Welfare Committee/Ar. VAIBHAV GOEL.webp";
 import hospAviral from "../../assets/LAF/Hospitality & Welfare Committee/av-2.webp";
-import cultShubhra from "../../assets/LAF/Cultural & Exhibition Committee/Ar. Shubhra Mittal.png";
-import cultRohit from "../../assets/LAF/Cultural & Exhibition Committee/Ar. Rohit Parmar.png";
+import cultShubhra from "../../assets/LAF/Cultural & Exhibition Committee/Ar. Shubhra Mittal.webp";
+import cultRohit from "../../assets/LAF/Cultural & Exhibition Committee/Ar. Rohit Parmar.webp";
 
-import eventAvinash from "../../assets/LAF/Event Management Committee/Ar. AVINASH GHAI.png";
-import eventPragya from "../../assets/LAF/Event Management Committee/Ar. Pragya Singh.png";
-import memberVandana from "../../assets/LAF/Membership & Directory Committee/Ar. Vandana Srivastav.png";
-import memberPrabhawati from "../../assets/LAF/Membership & Directory Committee/Ar. Prabhawati Suri.png";
-import mediaRepunjay from "../../assets/LAF/Media & Protocol Committee/Ar. Repunjay Patel.png";
-import mediaPrashant from "../../assets/LAF/Media & Protocol Committee/Ar. Prashant Singh.png";
-import govtAsheesh from "../../assets/LAF/Governments Interaction & Professional Practice/Ar. Asheesh Srivastava.png";
-import govtAnupam from "../../assets/LAF/Governments Interaction & Professional Practice/Ar. Anupam Mittal.png";
-import legalAninda from "../../assets/LAF/Legal Committee/Ar.Aninda Sircar.png";
-import legalNeeraj from "../../assets/LAF/Legal Committee/Ar. Neeraj Kushwaha.png";
-import spouseAnita from "../../assets/LAF/Spouses Committee/Ar. Anita Srivastava.png";
-import spouseSmita from "../../assets/LAF/Spouses Committee/Ar. Smita Nigam.png";
-import lsrRajneesh from "../../assets/LAF/LSR Committee (LAA Social Responsibility)/Ar. Rajneesh Agarwal.png";
-import lsrAnshu from "../../assets/LAF/LSR Committee (LAA Social Responsibility)/ANSHU SINGH.png";
+import eventAvinash from "../../assets/LAF/Event Management Committee/Ar. AVINASH GHAI.webp";
+import eventPragya from "../../assets/LAF/Event Management Committee/Ar. Pragya Singh.webp";
+import memberVandana from "../../assets/LAF/Membership & Directory Committee/Ar. Vandana Srivastav.webp";
+import memberPrabhawati from "../../assets/LAF/Membership & Directory Committee/Ar. Prabhawati Suri.webp";
+import mediaRepunjay from "../../assets/LAF/Media & Protocol Committee/Ar. Repunjay Patel.webp";
+import mediaPrashant from "../../assets/LAF/Media & Protocol Committee/Ar. Prashant Singh.webp";
+import govtAsheesh from "../../assets/LAF/Governments Interaction & Professional Practice/Ar. Asheesh Srivastava.webp";
+import govtAnupam from "../../assets/LAF/Governments Interaction & Professional Practice/Ar. Anupam Mittal.webp";
+import legalAninda from "../../assets/LAF/Legal Committee/Ar.Aninda Sircar.webp";
+import legalNeeraj from "../../assets/LAF/Legal Committee/Ar. Neeraj Kushwaha.webp";
+import spouseAnita from "../../assets/LAF/Spouses Committee/Ar. Anita Srivastava.webp";
+import spouseSmita from "../../assets/LAF/Spouses Committee/Ar. Smita Nigam.webp";
+import lsrRajneesh from "../../assets/LAF/LSR Committee (LAA Social Responsibility)/Ar. Rajneesh Agarwal.webp";
+import lsrAnshu from "../../assets/LAF/LSR Committee (LAA Social Responsibility)/ANSHU SINGH.webp";
 
 // LAF Logo
-import lafLogo from "../../assets/images/logo-transparent.png";
+import lafLogo from "../../assets/images/logo-transparent.webp";
 
-import con1Img from "../../assets/images/co-3.png";
+import con1Img from "../../assets/images/co-3.webp";
 import con2Img from "../../assets/images/conveners-2.webp";
 import con3Img from "../../assets/images/conveners-3.webp";
 
 import cc1Img from "../../assets/images/cc-1.webp";
 import cc2Img from "../../assets/images/cc-2.webp";
-import cc3Img from "../../assets/images/co-10.png";
+import cc3Img from "../../assets/images/co-10.webp";
 import cc4Img from "../../assets/images/cc-4.webp";
 import cc5Img from "../../assets/images/cc-5.webp";
 import cc6Img from "../../assets/images/cc-6.webp";
@@ -83,7 +83,7 @@ import jc5Img from "../../assets/images/am3-1.webp";
 import jc6Img from "../../assets/images/am3-2.webp";
 import jc7Img from "../../assets/images/am4-1.webp";
 import jc8Img from "../../assets/images/am4-2.webp";
-import jc9Img from "../../assets/images/co-9.png";
+import jc9Img from "../../assets/images/co-9.webp";
 import jc10Img from "../../assets/images/am5-2.webp";
 import jc11Img from "../../assets/images/am6-1.webp";
 import jc12Img from "../../assets/images/committee1.webp";

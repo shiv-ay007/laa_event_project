@@ -76,17 +76,17 @@ import eventFront11 from "../../assets/images/LAFevent15.webp"; // Architectural
 import eventFront12 from "../../assets/images/LAFevent16.webp"; // Aerial View of LAF Build Expo Pavilions
 
 // Back images (11 from LAF-3-event folder + 1 authentic event photo = 12 back images)
-import eventBack01 from "../../assets/images/Events/LAF-3-event/laf1.JPG";
-import eventBack02 from "../../assets/images/Events/LAF-3-event/laf2.JPG";
-import eventBack03 from "../../assets/images/Events/LAF-3-event/laf3.JPG";
-import eventBack04 from "../../assets/images/Events/LAF-3-event/laf4.JPG";
-import eventBack05 from "../../assets/images/Events/LAF-3-event/laf5.JPG";
-import eventBack06 from "../../assets/images/Events/LAF-3-event/laf6.JPG";
-import eventBack07 from "../../assets/images/Events/LAF-3-event/laf7.JPG";
-import eventBack08 from "../../assets/images/Events/LAF-3-event/laf8.JPG";
-import eventBack09 from "../../assets/images/Events/LAF-3-event/laf9.JPG";
-import eventBack10 from "../../assets/images/Events/LAF-3-event/laf10.JPG";
-import eventBack11 from "../../assets/images/Events/LAF-3-event/laf11.JPG";
+import eventBack01 from "../../assets/images/Events/LAF-3-event/laf1.webp";
+import eventBack02 from "../../assets/images/Events/LAF-3-event/laf2.webp";
+import eventBack03 from "../../assets/images/Events/LAF-3-event/laf3.webp";
+import eventBack04 from "../../assets/images/Events/LAF-3-event/laf4.webp";
+import eventBack05 from "../../assets/images/Events/LAF-3-event/laf5.webp";
+import eventBack06 from "../../assets/images/Events/LAF-3-event/laf6.webp";
+import eventBack07 from "../../assets/images/Events/LAF-3-event/laf7.webp";
+import eventBack08 from "../../assets/images/Events/LAF-3-event/laf8.webp";
+import eventBack09 from "../../assets/images/Events/LAF-3-event/laf9.webp";
+import eventBack10 from "../../assets/images/Events/LAF-3-event/laf10.webp";
+import eventBack11 from "../../assets/images/Events/LAF-3-event/laf11.webp";
 import eventBack12 from "../../assets/images/LAFevent13.webp"; // Exhibition Entry Arch & Welcome Lounge
 
 /* =========================================================

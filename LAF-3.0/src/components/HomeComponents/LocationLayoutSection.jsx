@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
-import layoutImage from "../../assets/images/LAFmap.png";
+import layoutImage from "../../assets/images/LAFmap.webp";
 
 // PDFs
 import brochurePdf from "../../assets/lafpdf/lafbroucher.pdf";
