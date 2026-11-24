@@ -10,50 +10,50 @@ import {
 } from "lucide-react";
 
 // Corporate Committee Images
-import corp1Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Anurag Agarwal.png";
-import corp2Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Kamaljeet Singh.png";
-import corp3Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Karunesh Verma.png";
-import corp4Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Rajiv Agarwal.png";
-import corp5Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Manuj Sharma.png";
-import corp6Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Sandeep Singhal.png";
+import corp1Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Anurag Agarwal.webp";
+import corp2Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Kamaljeet Singh.webp";
+import corp3Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Karunesh Verma.webp";
+import corp4Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Rajiv Agarwal.webp";
+import corp5Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Manuj Sharma.webp";
+import corp6Img from "../../assets/LAF/CORPORATE COMMITTEE/Mr. Sandeep Singhal.webp";
 
 // Office Bearers Images
-import obPrashant from "../../assets/LAF/Office Bearers/Ar. PRASHANT PAL SINGH.png";
-import obRepunjay from "../../assets/LAF/Office Bearers/Ar. Repunjay Patel.png";
-import obAvinash from "../../assets/LAF/Office Bearers/Ar. AVINASH GHAI.png";
-import obAshutosh from "../../assets/LAF/Office Bearers/Ar. ASHUTOSH VERMA.png";
-import obPushpendra from "../../assets/LAF/Office Bearers/Ar. Pushpendra Kumar.png";
-import obRahul from "../../assets/LAF/Office Bearers/Ar. Rahul Jadon.png";
-import obNaveen from "../../assets/LAF/Office Bearers/Ar. NAVEEN SINGH.png";
+import obPrashant from "../../assets/LAF/Office Bearers/Ar. PRASHANT PAL SINGH.webp";
+import obRepunjay from "../../assets/LAF/Office Bearers/Ar. Repunjay Patel.webp";
+import obAvinash from "../../assets/LAF/Office Bearers/Ar. AVINASH GHAI.webp";
+import obAshutosh from "../../assets/LAF/Office Bearers/Ar. ASHUTOSH VERMA.webp";
+import obPushpendra from "../../assets/LAF/Office Bearers/Ar. Pushpendra Kumar.webp";
+import obRahul from "../../assets/LAF/Office Bearers/Ar. Rahul Jadon.webp";
+import obNaveen from "../../assets/LAF/Office Bearers/Ar. NAVEEN SINGH.webp";
 
 // Executive Committee Images
-import ecGopal from "../../assets/LAF/Executive Comittee/Ar. GOPAL TRIPATHI.png";
-import ecAnshu from "../../assets/LAF/Executive Comittee/Ar. ANSHU SINGH.png";
-import ecUmesh from "../../assets/LAF/Executive Comittee/Ar. UMESH KUMAR GUPTA.png";
-import ecAlok from "../../assets/LAF/Executive Comittee/Ar. ALOK KUMAR VERMA.png";
-import ecVaibhav from "../../assets/LAF/Executive Comittee/Ar. VAIBHAV GOEL.png";
-import ecHimanshu from "../../assets/LAF/Executive Comittee/Ar. Himanshu Diwakar.png";
-import ecRoli from "../../assets/LAF/Executive Comittee/Ar. ROLI SINGH.png";
-import ecAnjaneya from "../../assets/LAF/Executive Comittee/Ar. ANJANEYA SHARMA.png";
-import ecNitin from "../../assets/LAF/Executive Comittee/Ar. NITIN SAXENA.png";
-import ecPrashant from "../../assets/LAF/Executive Comittee/Ar. PRASHANT TIWARI.png";
-import ecShalini from "../../assets/LAF/Executive Comittee/Ar. Shalini Diwaker.png";
-import ecMohd from "../../assets/LAF/Executive Comittee/Ar. MOHD. SOHRAB KHAN.png";
-import ecJuwairiya from "../../assets/LAF/Executive Comittee/Ar. Juwairiya Qamruddin.png";
-import ecKrishna from "../../assets/LAF/Executive Comittee/Ar. KRISHNA MOHAN PRAJAPATI.png";
-import ecAkhilesh from "../../assets/LAF/Executive Comittee/Ar. AKHILESH PAL.png";
+import ecGopal from "../../assets/LAF/Executive Comittee/Ar. GOPAL TRIPATHI.webp";
+import ecAnshu from "../../assets/LAF/Executive Comittee/Ar. ANSHU SINGH.webp";
+import ecUmesh from "../../assets/LAF/Executive Comittee/Ar. UMESH KUMAR GUPTA.webp";
+import ecAlok from "../../assets/LAF/Executive Comittee/Ar. ALOK KUMAR VERMA.webp";
+import ecVaibhav from "../../assets/LAF/Executive Comittee/Ar. VAIBHAV GOEL.webp";
+import ecHimanshu from "../../assets/LAF/Executive Comittee/Ar. Himanshu Diwakar.webp";
+import ecRoli from "../../assets/LAF/Executive Comittee/Ar. ROLI SINGH.webp";
+import ecAnjaneya from "../../assets/LAF/Executive Comittee/Ar. ANJANEYA SHARMA.webp";
+import ecNitin from "../../assets/LAF/Executive Comittee/Ar. NITIN SAXENA.webp";
+import ecPrashant from "../../assets/LAF/Executive Comittee/Ar. PRASHANT TIWARI.webp";
+import ecShalini from "../../assets/LAF/Executive Comittee/Ar. Shalini Diwaker.webp";
+import ecMohd from "../../assets/LAF/Executive Comittee/Ar. MOHD. SOHRAB KHAN.webp";
+import ecJuwairiya from "../../assets/LAF/Executive Comittee/Ar. Juwairiya Qamruddin.webp";
+import ecKrishna from "../../assets/LAF/Executive Comittee/Ar. KRISHNA MOHAN PRAJAPATI.webp";
+import ecAkhilesh from "../../assets/LAF/Executive Comittee/Ar. AKHILESH PAL.webp";
 
 // Intellect Council Images
-import icRanjan from "../../assets/LAF/Intellect Council/Ar. Ranjan Shukla.png";
-import icRajiv from "../../assets/LAF/Intellect Council/Ar. Rajiv Kacker.png";
-import icAsthana from "../../assets/LAF/Intellect Council/Ar. K.K.Asthana.png";
-import icKeshav from "../../assets/LAF/Intellect Council/Ar. Keshav Kumar.png";
-import icJagbir from "../../assets/LAF/Intellect Council/Ar. Jagbir Singh.png";
-import icSabahat from "../../assets/LAF/Intellect Council/Ar. MD. Sabahat.png";
-import icSabina from "../../assets/LAF/Intellect Council/Ar. Sabina Singh.png";
-import icSanjay from "../../assets/LAF/Intellect Council/Ar.Sanjay Mathur.png";
-import icRajat from "../../assets/LAF/Intellect Council/Ar. Rajat Kant Mittal.png";
-import icVipul from "../../assets/LAF/Intellect Council/Ar. Vipul Varshney.png";
+import icRanjan from "../../assets/LAF/Intellect Council/Ar. Ranjan Shukla.webp";
+import icRajiv from "../../assets/LAF/Intellect Council/Ar. Rajiv Kacker.webp";
+import icAsthana from "../../assets/LAF/Intellect Council/Ar. K.K.Asthana.webp";
+import icKeshav from "../../assets/LAF/Intellect Council/Ar. Keshav Kumar.webp";
+import icJagbir from "../../assets/LAF/Intellect Council/Ar. Jagbir Singh.webp";
+import icSabahat from "../../assets/LAF/Intellect Council/Ar. MD. Sabahat.webp";
+import icSabina from "../../assets/LAF/Intellect Council/Ar. Sabina Singh.webp";
+import icSanjay from "../../assets/LAF/Intellect Council/Ar.Sanjay Mathur.webp";
+import icRajat from "../../assets/LAF/Intellect Council/Ar. Rajat Kant Mittal.webp";
+import icVipul from "../../assets/LAF/Intellect Council/Ar. Vipul Varshney.webp";
 
 export const corporateCommitteeMembers = [
   { id: "corp-1", name: "Mr. Anurag Agarwal", role: "Corporate Committee Member", image: corp1Img },

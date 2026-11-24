@@ -3,25 +3,25 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
 // Organization Logos
-import iudiLogo from "../../assets/images/suplogo2.png";
-import ipaLogo from "../../assets/images/suplogo4.png";
-import iiaLogo from "../../assets/images/suplogo1.png";
-import iiidLogo from "../../assets/images/suplogo3.png";
-import yacaLogo from "../../assets/images/suplogo7.png";
-import fsaiLogo from "../../assets/images/suplogo5.png";
-import itpiLogo from "../../assets/images/suplogo6.png";
+import iudiLogo from "../../assets/images/suplogo2.webp";
+import ipaLogo from "../../assets/images/suplogo4.webp";
+import iiaLogo from "../../assets/images/suplogo1.webp";
+import iiidLogo from "../../assets/images/suplogo3.webp";
+import yacaLogo from "../../assets/images/suplogo7.webp";
+import fsaiLogo from "../../assets/images/suplogo5.webp";
+import itpiLogo from "../../assets/images/suplogo6.webp";
 
 // LAF Logo
-import lafLogo from "../../assets/images/logo-transparent.png";
+import lafLogo from "../../assets/images/logo-transparent.webp";
 
 // Supporting Leadership Persons (from src/assets/LAF/SUPPORTING ORGANIZATIONS/)
-import iudiPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Rajat Kant Mittal.png";
-import ipaPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Devesh Mani Tripathi.png";
-import iiaPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Sandeep Saraswat.png";
-import iiidPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Aviral Agrawal.png";
-import yacaPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Vishal Mathur (Yaka).png";
-import fsaiPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/dilip dutt.jpeg";
-import itpiPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Tpr. Anup Kumar Srivastava.png";
+import iudiPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Rajat Kant Mittal.webp";
+import ipaPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Devesh Mani Tripathi.webp";
+import iiaPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Sandeep Saraswat.webp";
+import iiidPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Aviral Agrawal.webp";
+import yacaPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Ar. Vishal Mathur (Yaka).webp";
+import fsaiPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/dilip dutt.webp";
+import itpiPerson from "../../assets/LAF/SUPPORTING ORGANIZATIONS/Tpr. Anup Kumar Srivastava.webp";
 
 const organizations = [
   {

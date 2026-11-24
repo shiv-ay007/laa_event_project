@@ -1,31 +1,31 @@
 import React from "react";
 import { motion } from "framer-motion";
-import highlightImg from "../../assets/images/highlight-img.png";
-import bgHist from "../../assets/images/bg-hist.png";
+import highlightImg from "../../assets/images/highlight-img.webp";
+import bgHist from "../../assets/images/bg-hist.webp";
 
-import secArt from "../../assets/images/sectors/sec-art.png";
-import secArchitecture from "../../assets/images/sectors/sec-architecture.png";
-import secInteriors from "../../assets/images/sectors/sec-interiors.png";
-import secConstruction from "../../assets/images/sectors/sec-construction.png";
-import secMaterials from "../../assets/images/sectors/sec-materials.png";
-import secGreentech from "../../assets/images/sectors/sec-greentech.png";
-import secTech from "../../assets/images/sectors/sec-tech.png";
-import secEquipments from "../../assets/images/sectors/sec-equipments.png";
-import secTechniques from "../../assets/images/sectors/sec-techniques.png";
-import secSustainability from "../../assets/images/sectors/sec-sustainability.png";
-import secSmartbuilding from "../../assets/images/sectors/sec-smartbuilding.png";
-import secRealestate from "../../assets/images/sectors/sec-realestate.png";
-import secAcademics from "../../assets/images/sectors/sec-academics.png";
-import secGovernment from "../../assets/images/sectors/sec-government.png";
-import khArchitects from "../../assets/images/key_highlights/kh-architects.png";
-import khMarketers from "../../assets/images/key_highlights/kh-marketers.png";
-import khEngagement from "../../assets/images/key_highlights/kh-engagement.png";
-import khBrand from "../../assets/images/key_highlights/kh-brand.png";
-import khFinancing from "../../assets/images/key_highlights/kh-financing.png";
-import khExperts from "../../assets/images/key_highlights/kh-experts.png";
-import khArt from "../../assets/images/key_highlights/kh-art.png";
-import khMedia from "../../assets/images/key_highlights/kh-media.png";
-import khSkyline from "../../assets/images/key_highlights/image.png";
+import secArt from "../../assets/images/sectors/sec-art.webp";
+import secArchitecture from "../../assets/images/sectors/sec-architecture.webp";
+import secInteriors from "../../assets/images/sectors/sec-interiors.webp";
+import secConstruction from "../../assets/images/sectors/sec-construction.webp";
+import secMaterials from "../../assets/images/sectors/sec-materials.webp";
+import secGreentech from "../../assets/images/sectors/sec-greentech.webp";
+import secTech from "../../assets/images/sectors/sec-tech.webp";
+import secEquipments from "../../assets/images/sectors/sec-equipments.webp";
+import secTechniques from "../../assets/images/sectors/sec-techniques.webp";
+import secSustainability from "../../assets/images/sectors/sec-sustainability.webp";
+import secSmartbuilding from "../../assets/images/sectors/sec-smartbuilding.webp";
+import secRealestate from "../../assets/images/sectors/sec-realestate.webp";
+import secAcademics from "../../assets/images/sectors/sec-academics.webp";
+import secGovernment from "../../assets/images/sectors/sec-government.webp";
+import khArchitects from "../../assets/images/key_highlights/kh-architects.webp";
+import khMarketers from "../../assets/images/key_highlights/kh-marketers.webp";
+import khEngagement from "../../assets/images/key_highlights/kh-engagement.webp";
+import khBrand from "../../assets/images/key_highlights/kh-brand.webp";
+import khFinancing from "../../assets/images/key_highlights/kh-financing.webp";
+import khExperts from "../../assets/images/key_highlights/kh-experts.webp";
+import khArt from "../../assets/images/key_highlights/kh-art.webp";
+import khMedia from "../../assets/images/key_highlights/kh-media.webp";
+import khSkyline from "../../assets/images/key_highlights/image.webp";
 
 import {
   Megaphone,
