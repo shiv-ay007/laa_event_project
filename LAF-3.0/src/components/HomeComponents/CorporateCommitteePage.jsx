@@ -32,7 +32,7 @@ import ecAnshu from "../../assets/LAF/Executive Comittee/Ar. ANSHU SINGH.webp";
 import ecUmesh from "../../assets/LAF/Executive Comittee/Ar. UMESH KUMAR GUPTA.webp";
 import ecAlok from "../../assets/LAF/Executive Comittee/Ar. ALOK KUMAR VERMA.webp";
 import ecVaibhav from "../../assets/LAF/Executive Comittee/Ar. VAIBHAV GOEL.webp";
-import ecHimanshu from "../../assets/LAF/Executive Comittee/Ar. Himanshu Diwakar.webp";
+import ecHimanshu from "../../assets/LAF/Executive Comittee/himanshu-2.webp";
 import ecRoli from "../../assets/LAF/Executive Comittee/Ar. ROLI SINGH.webp";
 import ecAnjaneya from "../../assets/LAF/Executive Comittee/Ar. ANJANEYA SHARMA.webp";
 import ecNitin from "../../assets/LAF/Executive Comittee/Ar. NITIN SAXENA.webp";

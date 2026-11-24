@@ -30,7 +30,7 @@ import curArvind from "../assets/LAF/CURATORS/Ar. Arvind Yadav.webp";
 
 import jcFaraz from "../assets/LAF/JOINT COORDINATOR/Ar. Faraz Usmani.webp";
 import jcAlok from "../assets/LAF/JOINT COORDINATOR/Ar. Alok Kumar.webp";
-import jcVishal from "../assets/LAF/JOINT COORDINATOR/Ar. Vishal Jain.webp";
+import jcVishal from "../assets/LAF/JOINT COORDINATOR/Ar. Vishal-Jain.png";
 import jcLayak from "../assets/LAF/JOINT COORDINATOR/Ar.Layak Singh.webp";
 import jcPragya from "../assets/LAF/JOINT COORDINATOR/Ar Pragya Singh.webp";
 import jcChhaya from "../assets/LAF/JOINT COORDINATOR/Ar. Chhaya Shukla.webp";
@@ -39,7 +39,7 @@ import jcRajit from "../assets/LAF/JOINT COORDINATOR/Ar. Rajit Agrawal.webp";
 import jcGaurav from "../assets/LAF/JOINT COORDINATOR/GAURAV GUPTA.webp";
 import jcAshutoshS from "../assets/LAF/JOINT COORDINATOR/Ar. Ashutosh Sahu.webp";
 import jcDevyani from "../assets/LAF/JOINT COORDINATOR/Ar. Devyani Dayal.webp";
-import jcShipra from "../assets/LAF/JOINT COORDINATOR/SHIPRA SINGH.webp";
+import jcShipra from "../assets/LAF/JOINT COORDINATOR/ssp.webp";
 import jcRohit from "../assets/LAF/JOINT COORDINATOR/Ar. Rohit Gupta.webp";
 import jcPankaj from "../assets/LAF/JOINT COORDINATOR/Ar. Pankaj Mishra.webp";
 import jcAshutoshG from "../assets/LAF/JOINT COORDINATOR/Ar. Ashutosh Gupta.webp";

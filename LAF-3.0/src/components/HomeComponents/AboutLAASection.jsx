@@ -42,7 +42,7 @@ import eduDeepti from "../../assets/LAF/Edu Formation Committee/Ar. Deepti Pande
 import sportsShubhendra from "../../assets/LAF/Sports Committee/Ar. Shubhendra Bajpal.png";
 import sportsSandeep from "../../assets/LAF/Sports Committee/Ar. Sandeep Negi.jpeg";
 import hospVaibhav from "../../assets/LAF/Hospitality & Welfare Committee/Ar. VAIBHAV GOEL.png";
-import hospAviral from "../../assets/LAF/Hospitality & Welfare Committee/Ar. Aviral Agrawal.png";
+import hospAviral from "../../assets/LAF/Hospitality & Welfare Committee/av-2.webp";
 import cultShubhra from "../../assets/LAF/Cultural & Exhibition Committee/Ar. Shubhra Mittal.png";
 import cultRohit from "../../assets/LAF/Cultural & Exhibition Committee/Ar. Rohit Parmar.png";
 
@@ -1047,13 +1047,13 @@ const AboutLAASection = () => {
                 {/* 2 Leads in Red Curved Arch Boxes side-by-side */}
                 <div className="grid grid-cols-2 gap-4 sm:gap-5 w-full max-w-sm justify-items-center">
                   {committee.leads.map((lead) => (
-                    <div key={lead.name} className="group flex flex-col items-center w-full">
-                      {/* Red Curved Arch Frame (Matching Upper Sections) */}
-                      <div className="relative w-24 h-34 sm:w-28 sm:h-40 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_20px_rgba(216,35,42,0.18)] transition-all duration-300">
+                    <div key={lead.name} className="group flex flex-col items-center text-center w-28 sm:w-32 md:w-36">
+                      {/* Red Curved Arch Frame (Matching Intellect Council Box Size) */}
+                      <div className="relative w-28 h-32 sm:w-32 sm:h-36 md:w-36 md:h-40 rounded-t-full border-2 border-[#D8232A] bg-white overflow-hidden flex items-end justify-center shadow-xs group-hover:shadow-[0_8px_24px_rgba(216,35,42,0.18)] transition-all duration-300">
                         <img
                           src={lead.image}
                           alt={lead.name}
-                          className="w-full aspect-square object-cover object-bottom group-hover:scale-105 transition-transform duration-500"
+                          className="w-full h-[84%] object-cover object-top group-hover:scale-105 transition-transform duration-500"
                           loading="lazy"
                         />
                       </div>
