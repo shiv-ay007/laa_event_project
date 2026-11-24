@@ -323,7 +323,7 @@ export default function Footer() {
         <div>
           <div className="grid gap-3 md:grid-cols-3">
             <a
-              href="tel:+918874184076"
+              href="tel:+918871184076"
               className="group flex items-center gap-3 py-1 px-2 rounded-xl hover:bg-white/[0.04] transition-colors"
             >
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-800/80 border border-neutral-700 text-[#D8232A] group-hover:border-[#D8232A] group-hover:bg-[#D8232A] group-hover:text-white transition-all duration-300 shrink-0">
@@ -334,13 +334,12 @@ export default function Footer() {
                   TASK MARKETING SOLUTIONS
                 </p>
                 <span className="text-xs sm:text-sm font-semibold text-white group-hover:text-[#D8232A] transition-colors">
-                  +91 8874 1840 76
+                  +91 88711 84076
                 </span>
               </div>
             </a>
 
-            <a
-              href="tel:+919335210024"
+            <div
               className="group flex items-center gap-3 py-1 px-2 rounded-xl hover:bg-white/[0.04] transition-colors"
             >
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-800/80 border border-neutral-700 text-[#D8232A] group-hover:border-[#D8232A] group-hover:bg-[#D8232A] group-hover:text-white transition-all duration-300 shrink-0">
@@ -350,14 +349,26 @@ export default function Footer() {
                 <p className="text-[9px] font-mono tracking-[0.18em] text-[#D8232A] font-bold uppercase">
                   LUCKNOW ARCHITECTS ASSOCIATION
                 </p>
-                <span className="text-xs sm:text-sm font-semibold text-white group-hover:text-[#D8232A] transition-colors">
-                  +91 9335 2100 24
-                </span>
+                <div className="flex flex-wrap items-center gap-1.5 text-xs sm:text-sm font-semibold text-white">
+                  <a
+                    href="tel:+917007973079"
+                    className="hover:text-[#D8232A] transition-colors"
+                  >
+                    +91 70079 73079
+                  </a>
+                  <span className="text-neutral-500 font-normal">|</span>
+                  <a
+                    href="tel:+918400112222"
+                    className="hover:text-[#D8232A] transition-colors"
+                  >
+                    +91 84001 12222
+                  </a>
+                </div>
               </div>
-            </a>
+            </div>
 
             <a
-              href="mailto:info@taskmarketingsolutions.in"
+              href="mailto:lucknowarchitects@gmail.com"
               className="group flex items-center gap-3 py-1 px-2 rounded-xl hover:bg-white/[0.04] transition-colors"
             >
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-800/80 border border-neutral-700 text-[#D8232A] group-hover:border-[#D8232A] group-hover:bg-[#D8232A] group-hover:text-white transition-all duration-300 shrink-0">
@@ -368,7 +379,7 @@ export default function Footer() {
                   EMAIL ENQUIRIES
                 </p>
                 <span className="text-xs sm:text-sm font-semibold text-white group-hover:text-[#D8232A] transition-colors break-all">
-                  info@taskmarketingsolutions.in
+                  lucknowarchitects@gmail.com
                 </span>
               </div>
             </a>

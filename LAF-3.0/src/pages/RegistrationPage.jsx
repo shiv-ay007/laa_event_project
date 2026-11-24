@@ -1849,13 +1849,21 @@ const RegistrationPage = () => {
                   Have questions regarding COA verification, stall dimensions or payment assistance?
                 </p>
                 <div className="pt-2 space-y-2 text-xs">
-                  <a href="tel:917007973079" className="flex items-center gap-2.5 text-neutral-700 hover:text-[#B77A27] transition-colors font-medium">
-                    <PhoneCall className="w-4 h-4 text-[#B77A27]" />
-                    <span>+91 70079 73079</span>
-                  </a>
-                  <a href="mailto:info@lucknowarchitects.com" className="flex items-center gap-2.5 text-neutral-700 hover:text-[#B77A27] transition-colors font-medium">
+                  <div className="space-y-1.5">
+                    <a href="tel:+917007973079" className="flex items-center gap-2.5 text-neutral-700 hover:text-[#B77A27] transition-colors font-medium">
+                      <PhoneCall className="w-4 h-4 text-[#B77A27]" />
+                      <span>+91 70079 73079</span>
+                    </a>
+                    <a href="tel:+918400112222" className="flex items-center gap-2.5 text-neutral-700 hover:text-[#B77A27] transition-colors font-medium pl-6.5">
+                      <span>+91 84001 12222</span>
+                    </a>
+                    <a href="tel:+918871184076" className="flex items-center gap-2.5 text-neutral-700 hover:text-[#B77A27] transition-colors font-medium pl-6.5">
+                      <span>+91 88711 84076</span>
+                    </a>
+                  </div>
+                  <a href="mailto:lucknowarchitects@gmail.com" className="flex items-center gap-2.5 text-neutral-700 hover:text-[#B77A27] transition-colors font-medium">
                     <Mail className="w-4 h-4 text-[#B77A27]" />
-                    <span>info@lucknowarchitects.com</span>
+                    <span>lucknowarchitects@gmail.com</span>
                   </a>
                   <div className="flex items-start gap-2.5 text-neutral-500 text-[11px] pt-1">
                     <MapPin className="w-4 h-4 text-[#B77A27] shrink-0 mt-0.5" />

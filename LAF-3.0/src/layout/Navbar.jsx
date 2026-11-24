@@ -15,7 +15,7 @@ import {
 
 import laaLogo from '../assets/images/download.png';
 import LAFLogo from '../assets/images/logo.webp';
-import taskLogo from '../assets/images/logo-right.webp';
+import taskLogo from '../assets/images/TASK LOGO BIG PNG.png';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -144,7 +144,7 @@ const Navbar = () => {
                 <img
                   src={laaLogo}
                   alt="Lucknow Architects Association"
-                  className="h-7 sm:h-10 md:h-11 lg:h-12 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="h-8 sm:h-11 md:h-12 lg:h-14 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </Link>
             </div>
@@ -157,16 +157,15 @@ const Navbar = () => {
             </div>
 
             {/* Main LAF Logo - Highlighted */}
-            <div className="flex items-center justify-center flex-[1.2] min-w-0">
+            <div className="flex items-center justify-center flex-initial min-w-0">
               <Link
                 to="/"
-                className="group relative bg-white hover:bg-white rounded-xl md:rounded-2xl px-3 py-1.5 sm:px-6 sm:py-2 border-2 border-[#D4AF37]/60 hover:border-[#D4AF37] shadow-[0_4px_20px_rgba(212,175,55,0.22)] hover:shadow-[0_6px_25px_rgba(212,175,55,0.32)] transition-all duration-300 flex items-center justify-center max-w-[340px] w-full transform hover:scale-[1.02]"
+                className="group relative bg-white hover:bg-white rounded-xl md:rounded-2xl px-3.5 py-1 sm:px-5 sm:py-1.5 border-2 border-[#D4AF37]/60 hover:border-[#D4AF37] shadow-[0_4px_20px_rgba(212,175,55,0.22)] hover:shadow-[0_6px_25px_rgba(212,175,55,0.32)] transition-all duration-300 inline-flex items-center justify-center w-auto transform hover:scale-[1.02]"
               >
-                <div className="absolute top-0.5 left-2 sm:top-1 sm:left-3 text-[7px] sm:text-[8px] text-[#D4AF37] font-bold font-mono tracking-wider">✦ LAF 3.0</div>
                 <img
                   src={LAFLogo}
                   alt="Lucknow Architecture Festival 3.0"
-                  className="h-8 sm:h-11 md:h-13 lg:h-15 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
+                  className="h-10 sm:h-13 md:h-15 lg:h-[68px] w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
                 />
               </Link>
             </div>
@@ -184,7 +183,7 @@ const Navbar = () => {
                 <img
                   src={taskLogo}
                   alt="Task Marketing Solutions"
-                  className="h-6 sm:h-9 md:h-10 lg:h-11 w-auto max-w-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105"
+                  className="h-7 sm:h-10 md:h-12 lg:h-[54px] w-auto max-w-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             </div>

@@ -329,24 +329,33 @@ const GetInTouchSection = () => {
                     </h4>
                     <div>
                       <p className="text-[10px] font-mono tracking-wider text-neutral-400 uppercase">
-                        Task Marketing Solutions
+                        Lucknow Architects Association
                       </p>
-                      <a
-                        href="tel:+918874184076"
-                        className="text-sm font-semibold text-[#0F172A] hover:text-[#D8232A] transition-colors"
-                      >
-                        +91 8874 1840 76
-                      </a>
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <a
+                          href="tel:+917007973079"
+                          className="text-sm font-semibold text-[#0F172A] hover:text-[#D8232A] transition-colors"
+                        >
+                          +91 70079 73079
+                        </a>
+                        <span className="text-neutral-300 font-normal">|</span>
+                        <a
+                          href="tel:+918400112222"
+                          className="text-sm font-semibold text-[#0F172A] hover:text-[#D8232A] transition-colors"
+                        >
+                          +91 84001 12222
+                        </a>
+                      </div>
                     </div>
                     <div>
                       <p className="text-[10px] font-mono tracking-wider text-neutral-400 uppercase">
-                        Lucknow Architects Association
+                        Task Marketing Solutions
                       </p>
                       <a
-                        href="tel:+919335210024"
+                        href="tel:+918871184076"
                         className="text-sm font-semibold text-[#0F172A] hover:text-[#D8232A] transition-colors"
                       >
-                        +91 9335 2100 24
+                        +91 88711 84076
                       </a>
                     </div>
                   </div>
@@ -364,10 +373,10 @@ const GetInTouchSection = () => {
                       Email
                     </h4>
                     <a
-                      href="mailto:info@taskmarketingsolutions.in"
+                      href="mailto:lucknowarchitects@gmail.com"
                       className="text-sm font-semibold text-[#0F172A] hover:text-[#D8232A] transition-colors break-all"
                     >
-                      info@taskmarketingsolutions.in
+                      lucknowarchitects@gmail.com
                     </a>
                   </div>
                 </div>
