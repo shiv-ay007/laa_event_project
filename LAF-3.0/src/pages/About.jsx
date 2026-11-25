@@ -8,21 +8,21 @@ const About = () => {
   }, []);
 
   return (
-    <div className="w-full bg-[#FAF7F2] text-[#171717] font-sans selection:bg-[#D4AF37]/30 relative">
-      {/* Background Architectural Watermark Grid */}
+    <div className="w-full bg-[#FAF8F5] text-[#171717] font-sans selection:bg-[#D8232A]/20 relative">
+      {/* Background Architectural Watermark Grid matching Home Theme */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-[0.22]"
+          className="absolute inset-0 opacity-[0.25]"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(180, 140, 60, 0.08) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(180, 140, 60, 0.08) 1px, transparent 1px)
+              linear-gradient(rgba(120, 90, 40, 0.07) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(120, 90, 40, 0.07) 1px, transparent 1px)
             `,
-            backgroundSize: "48px 48px",
+            backgroundSize: "44px 44px",
           }}
         />
-        <div className="absolute left-[5%] top-0 bottom-0 w-px bg-[#D4AF37]/15" />
-        <div className="absolute right-[5%] top-0 bottom-0 w-px bg-[#D4AF37]/15" />
+        <div className="absolute left-[5%] top-0 bottom-0 w-px bg-[#E7E2DA]" />
+        <div className="absolute right-[5%] top-0 bottom-0 w-px bg-[#E7E2DA]" />
       </div>
 
       <div className="relative z-10 overflow-hidden">

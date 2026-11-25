@@ -5,7 +5,6 @@ import {
   ArrowLeft,
   ChevronRight,
   ChevronLeft,
-  Search,
   GraduationCap,
   BookOpen,
   Trophy,
@@ -66,9 +65,9 @@ const MemberCard = ({ member, index }) => {
   const formattedIndex = index < 10 ? `0${index}` : index;
 
   return (
-    <div className="group relative flex flex-col items-center justify-between p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl bg-white hover:bg-[#FDFBF7] border border-[#E6DFD3] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_35px_rgba(236,38,86,0.12)] transition-all duration-300 cursor-pointer text-center w-full h-full hover:-translate-y-1 overflow-hidden">
+    <div className="group relative flex flex-col items-center justify-between p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl bg-white hover:bg-[#FAF8F5] border border-[#E7E2DA] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_35px_rgba(216,35,42,0.12)] transition-all duration-300 cursor-pointer text-center w-full h-full hover:-translate-y-1 overflow-hidden">
       {/* Avatar circular frame */}
-      <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full p-1 bg-gradient-to-b from-[#FB7801] via-[#EC2656] to-[#930777] transition-all duration-300 shadow-sm group-hover:shadow-[0_0_22px_rgba(236,38,86,0.25)] mb-3 sm:mb-4">
+      <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full p-1 bg-gradient-to-b from-[#D8232A] via-[#B91C1C] to-[#1C1917] transition-all duration-300 shadow-sm group-hover:shadow-[0_0_22px_rgba(216,35,42,0.25)] mb-3 sm:mb-4">
         <div className="w-full h-full rounded-full bg-white overflow-hidden border-2 border-white flex items-center justify-center">
           {member.image && !imgError ? (
             <img
@@ -89,17 +88,10 @@ const MemberCard = ({ member, index }) => {
       </div>
 
       <div className="w-full flex-1 flex flex-col justify-center">
-        <span
-          className="text-[9.5px] font-mono tracking-widest font-bold uppercase block truncate"
-          style={{
-            background: "linear-gradient(90deg, #FB7801, #930777)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
+        <span className="text-[9.5px] font-mono tracking-widest font-bold uppercase block truncate text-[#D8232A]">
           LAF 3.0 · #{formattedIndex}
         </span>
-        <h4 className="font-serif text-sm sm:text-base font-bold text-neutral-900 group-hover:text-[#EC2656] transition-colors mt-1 leading-snug line-clamp-2 min-h-[2.5rem] flex items-center justify-center">
+        <h4 className="font-serif text-sm sm:text-base font-bold text-neutral-900 group-hover:text-[#D8232A] transition-colors mt-1 leading-snug line-clamp-2 min-h-[2.5rem] flex items-center justify-center">
           {member.name}
         </h4>
         <p className="text-[11px] sm:text-xs text-neutral-500 font-medium mt-1 truncate">
@@ -107,13 +99,8 @@ const MemberCard = ({ member, index }) => {
         </p>
       </div>
 
-      {/* Bottom Shimmer Line */}
-      <div
-        className="absolute bottom-0 left-0 h-[2px] w-0 transition-all duration-500 group-hover:w-full"
-        style={{
-          background: "linear-gradient(90deg, #FB7801, #EC2656, #930777, #3C086E)",
-        }}
-      />
+      {/* Bottom Accent Line */}
+      <div className="absolute bottom-0 left-0 h-[2px] w-0 transition-all duration-500 group-hover:w-full bg-[#D8232A]" />
     </div>
   );
 };
@@ -157,40 +144,27 @@ const CommitteeSliderRow = ({ committee, index }) => {
       className="mb-14"
     >
       {/* COMMITTEE HEADING CARD */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6DFD3] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6 relative overflow-hidden">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E7E2DA] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6 relative overflow-hidden">
         {/* Theme Top Accent Bar */}
-        <div
-          className="absolute top-0 left-0 right-0 h-[2.5px] rounded-t-3xl"
-          style={{
-            background:
-              "linear-gradient(90deg, #FB7801 0%, #EC2656 25%, #930777 75%, #3C086E 100%)",
-          }}
-        />
+        <div className="absolute top-0 left-0 right-0 h-[2.5px] rounded-t-3xl bg-[#D8232A]" />
 
-        <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-orange-400/5 to-purple-400/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-48 h-48 bg-red-100/10 rounded-full blur-3xl pointer-events-none" />
 
         <div>
           {/* Top Category Tag */}
           <div className="flex items-center gap-2 mb-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#EC2656] animate-pulse shrink-0" />
-            <span
-              className="text-xs font-mono font-bold tracking-[0.3em] uppercase"
-              style={{
-                background: "linear-gradient(90deg, #FB7801, #930777)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
+            <span className="w-2.5 h-2.5 rounded-full bg-[#D8232A] animate-pulse shrink-0" />
+            <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase text-[#D8232A]">
               {committee.id} · {committee.category?.toUpperCase()}
             </span>
           </div>
 
           {/* Heading + Icon */}
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-2xl bg-gradient-to-br from-orange-50 to-purple-50 border border-orange-100/80 flex items-center justify-center text-[#EC2656] shrink-0 shadow-2xs">
+            <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-2xl bg-[#D8232A]/10 border border-[#D8232A]/20 flex items-center justify-center text-[#D8232A] shrink-0 shadow-2xs">
               <IconComponent size={22} strokeWidth={1.5} />
             </div>
-            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 group-hover:text-[#EC2656] transition-colors">
+            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 group-hover:text-[#D8232A] transition-colors">
               {committee.title}
             </h3>
           </div>
@@ -205,7 +179,7 @@ const CommitteeSliderRow = ({ committee, index }) => {
 
         {/* MEMBER COUNT BADGE */}
         <div className="flex items-center gap-4 self-start md:self-auto shrink-0">
-          <span className="font-mono text-xs font-bold tracking-[0.25em] text-[#EC2656] uppercase bg-gradient-to-r from-orange-50 to-purple-50 px-4 py-2 rounded-full border border-orange-100 shadow-2xs">
+          <span className="font-mono text-xs font-bold tracking-[0.25em] text-[#D8232A] uppercase bg-[#D8232A]/10 px-4 py-2 rounded-full border border-[#D8232A]/20 shadow-2xs">
             MEMBERS ({allMembers.length.toString().padStart(2, "0")})
           </span>
         </div>
@@ -445,7 +419,6 @@ export const categories = [
 
 export default function CommitteesPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -453,77 +426,45 @@ export default function CommitteesPage() {
 
   const filteredCommittees = useMemo(() => {
     return committeesData.filter((item) => {
-      const matchesCategory =
-        selectedCategory === "All" || item.category === selectedCategory;
-      const matchesSearch =
-        searchQuery === "" ||
-        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.subtitle?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (item.conveners || []).some((c) =>
-          c.name.toLowerCase().includes(searchQuery.toLowerCase())
-        ) ||
-        (item.members || []).some((m) =>
-          typeof m === "string"
-            ? m.toLowerCase().includes(searchQuery.toLowerCase())
-            : m.name.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-      return matchesCategory && matchesSearch;
+      return selectedCategory === "All" || item.category === selectedCategory;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#171717] font-sans selection:bg-[#D4AF37]/30">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#171717] font-sans selection:bg-[#D8232A]/20">
       {/* Background Architectural Blueprint Grid */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-[0.2]"
+          className="absolute inset-0 opacity-[0.22]"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(147, 7, 119, 0.07) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(78, 12, 123, 0.07) 1px, transparent 1px)
+              linear-gradient(rgba(120, 90, 40, 0.07) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(120, 90, 40, 0.07) 1px, transparent 1px)
             `,
-            backgroundSize: "52px 52px",
+            backgroundSize: "44px 44px",
           }}
         />
-        <div
-          className="absolute top-0 left-0 right-0 h-[420px] opacity-[0.055] pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(135deg, #FB7801 0%, #EC2656 25%, #930777 60%, #3C086E 100%)",
-          }}
-        />
-        <div className="absolute left-[6%] top-0 bottom-0 w-px bg-gradient-to-b from-[#FB7801]/20 via-[#930777]/15 to-transparent" />
-        <div className="absolute right-[6%] top-0 bottom-0 w-px bg-gradient-to-b from-[#FB7801]/20 via-[#930777]/15 to-transparent" />
+        <div className="absolute left-[6%] top-0 bottom-0 w-px bg-[#E7E2DA]" />
+        <div className="absolute right-[6%] top-0 bottom-0 w-px bg-[#E7E2DA]" />
       </div>
 
       {/* Top Breadcrumb Bar */}
-      <div className="relative z-10 bg-[#FAF7F2]/90 backdrop-blur-md border-b border-[#D4AF37]/20 py-4">
+      <div className="relative z-10 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-[#E7E2DA] py-4">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 flex flex-wrap items-center justify-between gap-4">
           <Link
             to="/"
-            className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white transition-colors rounded-full px-4 py-2 shadow-md border border-white/20"
-            style={{
-              background:
-                "linear-gradient(90deg, #FB7801 0%, #EC2656 60%, #930777 100%)",
-            }}
+            className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white transition-all rounded-full px-4 py-2 bg-[#D8232A] hover:bg-[#BF1E24] shadow-sm"
           >
             <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Home</span>
           </Link>
 
           <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-neutral-500 uppercase">
-            <Link to="/" className="hover:text-[#EC2656] transition-colors">
+            <Link to="/" className="hover:text-[#D8232A] transition-colors">
               LAF 3.0
             </Link>
-            <ChevronRight className="w-3 h-3 text-[#930777]" />
-            <span
-              className="font-bold"
-              style={{
-                background: "linear-gradient(90deg, #FB7801, #930777)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
+            <ChevronRight className="w-3 h-3 text-[#D8232A]" />
+            <span className="font-bold text-[#D8232A]">
               LAA COMMITTEES
             </span>
           </div>
@@ -534,56 +475,26 @@ export default function CommitteesPage() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 py-10 sm:py-14">
         {/* HEADER & FILTER BAR */}
         <div className="mb-12">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between border-b border-[#E6DFD3] pb-6 gap-6">
+          <div className="border-b border-[#E7E2DA] pb-6">
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <span className="flex h-2 w-2 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#EC2656]"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D8232A] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D8232A]"></span>
                 </span>
-                <span
-                  className="text-[11px] font-mono font-bold tracking-[0.25em] uppercase"
-                  style={{
-                    background: "linear-gradient(90deg, #FB7801, #930777)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
+                <span className="text-[11px] font-mono font-bold tracking-[0.25em] uppercase text-[#D8232A]">
                   LAA WORKING STRUCTURE
                 </span>
               </div>
               <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-neutral-900">
                 LAA{" "}
-                <span
-                  className="italic font-serif font-normal"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, #FB7801, #EC2656, #930777)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
+                <span className="italic font-serif font-normal text-[#D8232A]">
                   Committees
                 </span>
               </h1>
               <p className="mt-2 text-xs sm:text-sm text-neutral-600 max-w-xl">
                 Explore the working committees of Lucknow Architects Association powering the architecture fraternity and LAF 3.0.
               </p>
-            </div>
-
-            {/* SEARCH BAR */}
-            <div className="relative w-full lg:w-72">
-              <Search
-                size={16}
-                className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400"
-              />
-              <input
-                type="text"
-                placeholder="Search committee or member..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-full bg-white border border-[#E6DFD3] text-xs focus:outline-hidden focus:border-[#EC2656]/60 focus:ring-1 focus:ring-[#EC2656]/30 transition-all placeholder:text-neutral-400 shadow-2xs"
-              />
             </div>
           </div>
 
@@ -597,18 +508,10 @@ export default function CommitteesPage() {
                   px-4 py-2 rounded-full text-xs whitespace-nowrap transition-all duration-300 cursor-pointer
                   ${
                     selectedCategory === cat
-                      ? "text-white shadow-sm font-semibold"
-                      : "bg-white hover:bg-[#FDFBF7] text-neutral-700 border border-[#E6DFD3] hover:border-[#EC2656]/40 font-medium"
+                      ? "bg-[#D8232A] text-white shadow-sm font-semibold"
+                      : "bg-white hover:bg-[#FAF8F5] text-neutral-700 border border-[#E7E2DA] hover:border-[#D8232A]/40 font-medium"
                   }
                 `}
-                style={
-                  selectedCategory === cat
-                    ? {
-                        background:
-                          "linear-gradient(90deg, #FB7801 0%, #EC2656 40%, #930777 80%, #3C086E 100%)",
-                      }
-                    : undefined
-                }
               >
                 {cat}
               </button>
@@ -630,21 +533,15 @@ export default function CommitteesPage() {
         </div>
 
         {filteredCommittees.length === 0 && (
-          <div className="text-center py-16 bg-white/50 rounded-2xl border border-[#E6DFD3]">
+          <div className="text-center py-16 bg-white/50 rounded-2xl border border-[#E7E2DA]">
             <p className="text-neutral-500 font-serif text-lg">
-              No committee or member found matching "{searchQuery}"
+              No committee found in "{selectedCategory}"
             </p>
             <button
-              onClick={() => {
-                setSearchQuery("");
-                setSelectedCategory("All");
-              }}
-              className="mt-4 px-5 py-2 rounded-full text-white text-xs font-medium transition-all shadow-sm cursor-pointer"
-              style={{
-                background: "linear-gradient(90deg, #FB7801, #EC2656, #930777)",
-              }}
+              onClick={() => setSelectedCategory("All")}
+              className="mt-4 px-5 py-2 rounded-full text-white text-xs font-medium bg-[#D8232A] hover:bg-[#BF1E24] transition-all shadow-sm cursor-pointer"
             >
-              Reset Search Filters
+              Reset Filters
             </button>
           </div>
         )}
@@ -655,16 +552,16 @@ export default function CommitteesPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-12 sm:mt-16 border-y border-[#D9D0C2] py-8"
+          className="mt-12 sm:mt-16 border-y border-[#E7E2DA] py-8"
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-              <span className="text-[9.5px] font-bold tracking-[0.3em] uppercase text-[#B77A27]">
+              <span className="text-[9.5px] font-bold tracking-[0.3em] uppercase text-[#D8232A]">
                 THE LAA VISION
               </span>
               <h3 className="mt-2 max-w-3xl font-serif text-2xl sm:text-3xl lg:text-4xl leading-tight text-[#171717]">
                 Building a stronger architectural community through{" "}
-                <span className="font-serif italic text-[#B77A27]">
+                <span className="font-serif italic text-[#D8232A]">
                   ideas, collaboration and shared purpose.
                 </span>
               </h3>
@@ -672,11 +569,7 @@ export default function CommitteesPage() {
 
             <Link
               to="/team"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all hover:scale-105 shrink-0"
-              style={{
-                background:
-                  "linear-gradient(90deg, #FB7801 0%, #EC2656 60%, #930777 100%)",
-              }}
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all bg-[#D8232A] hover:bg-[#BF1E24] shrink-0"
             >
               <span>Explore Festival Team</span>
               <ChevronRight size={14} />

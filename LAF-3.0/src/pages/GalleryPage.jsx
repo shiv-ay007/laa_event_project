@@ -25,7 +25,19 @@ import {
   ArrowUpRight
 } from "lucide-react";
 
-// Image Imports
+// Image Imports from Events
+import laf1 from "../assets/images/Events/LAF-3-event/laf1.webp";
+import laf2 from "../assets/images/Events/LAF-3-event/laf2.webp";
+import laf3 from "../assets/images/Events/LAF-3-event/laf3.webp";
+import laf4 from "../assets/images/Events/LAF-3-event/laf4.webp";
+import laf5 from "../assets/images/Events/LAF-3-event/laf5.webp";
+import laf6 from "../assets/images/Events/LAF-3-event/laf6.webp";
+import laf7 from "../assets/images/Events/LAF-3-event/laf7.webp";
+import laf8 from "../assets/images/Events/LAF-3-event/laf8.webp";
+import laf9 from "../assets/images/Events/LAF-3-event/laf9.webp";
+import laf10 from "../assets/images/Events/LAF-3-event/laf10.webp";
+import laf11 from "../assets/images/Events/LAF-3-event/laf11.webp";
+
 import event01 from "../assets/images/LAFevent1.webp";
 import event02 from "../assets/images/LAFevent2.webp";
 import event03 from "../assets/images/LAFEvent3.webp";
@@ -57,23 +69,23 @@ import lucknowImg from "../assets/images/lucknow-img.webp";
 const galleryData = [
   {
     id: "g-01",
-    src: event01,
-    title: "Art Contest Winners • Junior Category",
-    subtitle: "Young creative minds receiving awards at the LAF Art & Culture Pavilion.",
-    category: "art",
-    categoryLabel: "Art & Culture",
-    edition: "LAF 2.0 Archive",
+    src: laf1,
+    title: "LAF 3.0 Grand Conclave & Stage Celebration",
+    subtitle: "Dignitaries, keynotes and felicitation ceremony at Lucknow Architecture Festival 3.0.",
+    category: "conclave",
+    categoryLabel: "Conclave & Stage",
+    edition: "LAF 3.0 Event",
     aspect: "landscape",
     featured: true,
   },
   {
     id: "g-02",
-    src: event02,
-    title: "Art Contest Winners • Senior Category",
-    subtitle: "Award felicitation for senior architectural students and artists.",
-    category: "art",
-    categoryLabel: "Art & Culture",
-    edition: "LAF 2.0 Archive",
+    src: laf2,
+    title: "Architectural Exhibition Hall & Trade Stalls",
+    subtitle: "Architects and delegates exploring leading building materials and interior stalls.",
+    category: "exhibitions",
+    categoryLabel: "Exhibitions & Stalls",
+    edition: "LAF 3.0 Event",
     aspect: "landscape",
     featured: true,
   },
@@ -310,12 +322,12 @@ const galleryData = [
   },
   {
     id: "g-24",
-    src: image6,
-    title: "Awadh Architectural Heritage & Aesthetics",
-    subtitle: "Architectural monuments of Lucknow showcasing timeless design inspiration.",
-    category: "pavilions",
-    categoryLabel: "Pavilions & Design",
-    edition: "Heritage Spotlight",
+    src: laf3,
+    title: "LAF 3.0 Conclave Auditorium & Keynote Session",
+    subtitle: "Architectural visionaries and council members delivering addresses at LAF 3.0.",
+    category: "conclave",
+    categoryLabel: "Conclave & Stage",
+    edition: "LAF 3.0 Event",
     aspect: "landscape",
     featured: true,
   }
@@ -368,27 +380,27 @@ const GalleryPage = () => {
   }, [lightboxIndex, filteredData]);
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#0F172A] font-sans selection:bg-[#EC2656]/20 selection:text-[#0B1536] relative overflow-x-clip">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#171717] font-sans selection:bg-[#D8232A] selection:text-white relative overflow-x-clip">
       
       {/* =========================================================
           1. HERO HEADER MATCHING HOME PAGE THEME
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#FAF8F5] text-[#0F172A] pt-8 pb-12 border-b border-[#FED7AA]/60">
+      <section className="relative overflow-hidden bg-[#FAF8F5] text-[#171717] pt-8 pb-12 border-b border-[#E7E2DA]">
         
         {/* Background Architectural Grid (Matches Home Page) */}
         <div className="absolute inset-0 pointer-events-none">
           <div
-            className="absolute inset-0 opacity-[0.32]"
+            className="absolute inset-0 opacity-[0.35]"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(217, 119, 6, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(217, 119, 6, 0.08) 1px, transparent 1px)
+                linear-gradient(rgba(120, 90, 40, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(120, 90, 40, 0.07) 1px, transparent 1px)
               `,
-              backgroundSize: "36px 36px",
+              backgroundSize: "44px 44px",
             }}
           />
-          <div className="absolute -left-32 top-10 w-[420px] h-[420px] rounded-full bg-gradient-to-br from-orange-200/25 to-amber-200/10 blur-3xl" />
-          <div className="absolute -right-32 bottom-10 w-[460px] h-[460px] rounded-full bg-gradient-to-tl from-purple-200/25 to-pink-200/10 blur-3xl" />
+          <div className="absolute -left-32 top-10 w-[420px] h-[420px] rounded-full bg-[#D8232A]/5 blur-3xl" />
+          <div className="absolute -right-32 bottom-10 w-[460px] h-[460px] rounded-full bg-amber-500/5 blur-3xl" />
         </div>
 
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
@@ -397,44 +409,38 @@ const GalleryPage = () => {
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
             <Link
               to="/"
-              className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0B1536] hover:text-[#EA580C] transition-colors bg-white/90 border border-[#FED7AA] hover:border-[#F97316] rounded-full px-4 py-2 shadow-xs"
+              className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#171717] hover:text-[#D8232A] transition-colors bg-white border border-[#E7E2DA] hover:border-[#D8232A] rounded-full px-4 py-2 shadow-xs"
             >
               <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
               <span>Back to Home</span>
             </Link>
 
             <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-neutral-500 uppercase">
-              <Link to="/" className="hover:text-[#EA580C] transition-colors">Home</Link>
-              <ChevronRight className="w-3 h-3 text-[#E11D48]" />
-              <span className="text-[#E11D48] font-bold">Visual Gallery</span>
+              <Link to="/" className="hover:text-[#D8232A] transition-colors">Home</Link>
+              <ChevronRight className="w-3 h-3 text-neutral-400" />
+              <span className="text-[#D8232A] font-bold">Visual Gallery</span>
             </div>
           </div>
 
-          <div className="bg-white rounded-[24px] sm:rounded-[32px] p-6 sm:p-10 border-[2px] border-[#F97316] shadow-[0_4px_30px_rgba(249,115,22,0.06)] relative overflow-hidden">
+          <div className="bg-white rounded-[24px] sm:rounded-[32px] p-6 sm:p-10 border border-[#E7E2DA] shadow-[0_4px_30px_rgba(0,0,0,0.03)] relative overflow-hidden">
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
               
               {/* Left Hero Text */}
               <div className="lg:col-span-7 space-y-6">
                 
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-50 to-rose-50 border border-[#FED7AA] text-[#EA580C] text-xs font-mono font-bold tracking-[0.2em] uppercase">
-                  <Camera className="w-3.5 h-3.5 text-[#EA580C] animate-pulse" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#D8232A]/10 border border-[#D8232A]/20 text-[#D8232A] text-xs font-mono font-bold tracking-[0.2em] uppercase">
+                  <Camera className="w-3.5 h-3.5 text-[#D8232A] animate-pulse" />
                   <span>Visual Archive &amp; Event Photo Collection</span>
                 </div>
 
                 <div>
-                  <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.12] text-[#0B1536]">
+                  <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.12] text-[#171717]">
                     LAF Festival{" "}
-                    <span
-                      className="italic text-transparent bg-clip-text"
-                      style={{
-                        backgroundImage:
-                          "linear-gradient(90deg, #F97316 0%, #EC2656 55%, #7C2D92 100%)",
-                      }}
-                    >
+                    <span className="italic text-[#D8232A]">
                       Visual Gallery
                     </span>
                   </h1>
-                  <div className="w-24 sm:w-32 h-[5px] rounded-full bg-gradient-to-r from-[#EA580C] via-[#D91A5B] to-[#7C2D92] mt-4" />
+                  <div className="w-24 sm:w-32 h-[4px] rounded-full bg-[#D8232A] mt-4" />
                 </div>
 
                 <p className="text-neutral-600 text-base sm:text-lg leading-relaxed max-w-2xl">
@@ -443,48 +449,48 @@ const GalleryPage = () => {
 
                 {/* Quick Stat Pill Cards */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                  <div className="p-3.5 rounded-2xl bg-gradient-to-br from-orange-50/70 to-white border border-[#FED7AA]/80 hover:border-[#F97316] transition-colors shadow-2xs">
-                    <div className="text-2xl font-serif font-bold text-[#EA580C]">24+</div>
+                  <div className="p-3.5 rounded-2xl bg-white border border-[#E7E2DA] hover:border-[#D8232A] transition-colors shadow-xs">
+                    <div className="text-2xl font-serif font-bold text-[#D8232A]">24+</div>
                     <div className="text-[11px] text-neutral-600 uppercase tracking-wider font-mono mt-0.5">HD Visuals</div>
                   </div>
-                  <div className="p-3.5 rounded-2xl bg-gradient-to-br from-rose-50/70 to-white border border-[#FED7AA]/80 hover:border-[#E11D48] transition-colors shadow-2xs">
-                    <div className="text-2xl font-serif font-bold text-[#E11D48]">04</div>
+                  <div className="p-3.5 rounded-2xl bg-white border border-[#E7E2DA] hover:border-[#D8232A] transition-colors shadow-xs">
+                    <div className="text-2xl font-serif font-bold text-[#D8232A]">04</div>
                     <div className="text-[11px] text-neutral-600 uppercase tracking-wider font-mono mt-0.5">Categories</div>
                   </div>
-                  <div className="p-3.5 rounded-2xl bg-gradient-to-br from-purple-50/70 to-white border border-[#FED7AA]/80 hover:border-[#7C2D92] transition-colors shadow-2xs">
-                    <div className="text-2xl font-serif font-bold text-[#7C2D92]">10,000+</div>
+                  <div className="p-3.5 rounded-2xl bg-white border border-[#E7E2DA] hover:border-[#D8232A] transition-colors shadow-xs">
+                    <div className="text-2xl font-serif font-bold text-[#D8232A]">10,000+</div>
                     <div className="text-[11px] text-neutral-600 uppercase tracking-wider font-mono mt-0.5">Attendees</div>
                   </div>
-                  <div className="p-3.5 rounded-2xl bg-gradient-to-br from-amber-50/70 to-white border border-[#FED7AA]/80 hover:border-[#D97706] transition-colors shadow-2xs">
-                    <div className="text-2xl font-serif font-bold text-[#D97706]">100%</div>
+                  <div className="p-3.5 rounded-2xl bg-white border border-[#E7E2DA] hover:border-[#D8232A] transition-colors shadow-xs">
+                    <div className="text-2xl font-serif font-bold text-[#D8232A]">100%</div>
                     <div className="text-[11px] text-neutral-600 uppercase tracking-wider font-mono mt-0.5">Authentic</div>
                   </div>
                 </div>
 
               </div>
 
-              {/* Right Hero Image Collage */}
+              {/* Right Hero Image Collage - Updated with LAF 3.0 Event Images */}
               <div className="lg:col-span-5 relative">
-                <div className="relative mx-auto max-w-md lg:max-w-none grid grid-cols-2 gap-3 p-3 rounded-3xl bg-gradient-to-br from-orange-50/80 via-white to-purple-50/80 border-2 border-[#FED7AA] shadow-[0_8px_30px_rgba(249,115,22,0.1)]">
+                <div className="relative mx-auto max-w-md lg:max-w-none grid grid-cols-2 gap-3 p-3 rounded-3xl bg-white border border-[#E7E2DA] shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
                   <div className="relative h-44 sm:h-52 rounded-2xl overflow-hidden group">
-                    <img src={event01} alt="Art Contest" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <img src={laf1} alt="LAF 3.0 Conclave Stage" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                    <span className="absolute bottom-2 left-2 text-[9px] font-mono font-bold text-[#FFB800] uppercase">Art Winners</span>
+                    <span className="absolute bottom-2 left-2 text-[9px] font-mono font-bold text-amber-300 uppercase">Grand Conclave</span>
                   </div>
                   <div className="relative h-44 sm:h-52 rounded-2xl overflow-hidden group">
-                    <img src={event12} alt="Keynote Speaker Stage" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <img src={laf2} alt="Exhibition Hall" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                    <span className="absolute bottom-2 left-2 text-[9px] font-mono font-bold text-[#FFB800] uppercase">Keynote Stage</span>
+                    <span className="absolute bottom-2 left-2 text-[9px] font-mono font-bold text-amber-300 uppercase">Exhibition Expo</span>
                   </div>
                   <div className="relative h-44 sm:h-52 rounded-2xl overflow-hidden group">
-                    <img src={event07} alt="Sustainable Pavilion" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <img src={laf4} alt="Stage & Keynotes" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                    <span className="absolute bottom-2 left-2 text-[9px] font-mono font-bold text-[#FFB800] uppercase">Green Pavilion</span>
+                    <span className="absolute bottom-2 left-2 text-[9px] font-mono font-bold text-amber-300 uppercase">Keynote Stage</span>
                   </div>
                   <div className="relative h-44 sm:h-52 rounded-2xl overflow-hidden group">
-                    <img src={event16} alt="Conclave Auditorium" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <img src={laf5} alt="Delegates & Stalls" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                    <span className="absolute bottom-2 left-2 text-[9px] font-mono font-bold text-[#FFB800] uppercase">Delegates Gathering</span>
+                    <span className="absolute bottom-2 left-2 text-[9px] font-mono font-bold text-amber-300 uppercase">Delegates Gathering</span>
                   </div>
                 </div>
               </div>
@@ -496,9 +502,9 @@ const GalleryPage = () => {
       </section>
 
       {/* =========================================================
-          2. STICKY FILTER & SEARCH CONTROLS BAR
+          2. STICKY FILTER CONTROLS BAR (SEARCH BOX REMOVED)
       ========================================================= */}
-      <div className="sticky top-16 z-40 bg-white/95 backdrop-blur-xl border-b border-[#FED7AA]/70 shadow-xs py-4">
+      <div className="sticky top-16 z-40 bg-white/95 backdrop-blur-xl border-b border-[#E7E2DA] shadow-xs py-4">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
           
           {/* Category Tabs */}
@@ -513,19 +519,14 @@ const GalleryPage = () => {
                   onClick={() => setActiveCategory(cat.id)}
                   className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer ${
                     isActive
-                      ? "text-white shadow-[0_6px_18px_rgba(236,38,86,0.28)]"
-                      : "bg-[#FFF4ED] text-[#0B1536] border border-[#FED7AA]/60 hover:border-[#F97316] hover:text-[#EA580C]"
+                      ? "bg-[#D8232A] text-white shadow-md border border-[#D8232A]"
+                      : "bg-[#FAF8F5] text-[#171717] border border-[#E7E2DA] hover:border-[#D8232A] hover:text-[#D8232A]"
                   }`}
-                  style={
-                    isActive
-                      ? { background: "linear-gradient(90deg, #FB7801 0%, #EC2656 55%, #7C2D92 100%)" }
-                      : undefined
-                  }
                 >
-                  <CatIcon className={`w-3.5 h-3.5 ${isActive ? "text-white" : "text-[#EA580C]"}`} />
+                  <CatIcon className={`w-3.5 h-3.5 ${isActive ? "text-white" : "text-[#D8232A]"}`} />
                   <span>{cat.label}</span>
                   <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
-                    isActive ? "bg-white/20 text-white" : "bg-white text-[#EA580C] border border-[#FED7AA]"
+                    isActive ? "bg-white/20 text-white" : "bg-neutral-100 text-[#D8232A] border border-[#E7E2DA]"
                   }`}>
                     {count}
                   </span>
@@ -534,15 +535,13 @@ const GalleryPage = () => {
             })}
           </div>
 
-          {/* Search & Layout View Toggles */}
-          <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
-            
-            {/* Grid Column Toggles */}
-            <div className="hidden sm:flex items-center gap-1 bg-[#FFF4ED] p-1 rounded-full border border-[#FED7AA]">
+          {/* Layout View Toggles */}
+          <div className="flex items-center gap-3 w-full md:w-auto justify-end">
+            <div className="flex items-center gap-1 bg-neutral-100 p-1 rounded-full border border-[#E7E2DA]">
               <button
                 onClick={() => setGridColumns(3)}
                 className={`p-1.5 rounded-full text-xs transition-colors cursor-pointer ${
-                  gridColumns === 3 ? "bg-[#EA580C] text-white shadow-xs" : "text-[#0B1536] hover:text-[#EA580C]"
+                  gridColumns === 3 ? "bg-[#D8232A] text-white shadow-xs" : "text-[#171717] hover:text-[#D8232A]"
                 }`}
                 title="3 Columns Grid"
               >
@@ -551,34 +550,13 @@ const GalleryPage = () => {
               <button
                 onClick={() => setGridColumns(4)}
                 className={`p-1.5 rounded-full text-xs transition-colors cursor-pointer ${
-                  gridColumns === 4 ? "bg-[#EA580C] text-white shadow-xs" : "text-[#0B1536] hover:text-[#EA580C]"
+                  gridColumns === 4 ? "bg-[#D8232A] text-white shadow-xs" : "text-[#171717] hover:text-[#D8232A]"
                 }`}
                 title="4 Columns Grid"
               >
                 <LayoutGrid className="w-4 h-4" />
               </button>
             </div>
-
-            {/* Search Box */}
-            <div className="relative w-full sm:w-64">
-              <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#EA580C]" />
-              <input
-                type="text"
-                placeholder="Search photos..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-9 py-2 rounded-full bg-[#FAF8F5] border border-[#FED7AA] text-xs text-[#0B1536] placeholder-neutral-400 focus:outline-none focus:border-[#F97316] transition-colors"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-[#E11D48]"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              )}
-            </div>
-
           </div>
 
         </div>
@@ -590,12 +568,12 @@ const GalleryPage = () => {
       <main className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 py-12">
         
         {/* Results Counter */}
-        <div className="flex flex-wrap items-center justify-between gap-2 mb-8 pb-4 border-b border-[#FED7AA]/70">
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-8 pb-4 border-b border-[#E7E2DA]">
           <span className="text-xs font-mono text-neutral-600 uppercase tracking-widest">
             Showing {filteredData.length} of {galleryData.length} Visual Assets
           </span>
-          <span className="text-xs font-mono text-[#E11D48] font-semibold uppercase tracking-wider flex items-center gap-1">
-            <Sparkles className="w-3.5 h-3.5 text-[#EA580C]" />
+          <span className="text-xs font-mono text-[#D8232A] font-semibold uppercase tracking-wider flex items-center gap-1">
+            <Sparkles className="w-3.5 h-3.5 text-[#D8232A]" />
             Click any image to view full screen
           </span>
         </div>
@@ -618,10 +596,10 @@ const GalleryPage = () => {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4, delay: index * 0.03 }}
                   onClick={() => setLightboxIndex(index)}
-                  className="group relative rounded-3xl overflow-hidden bg-white border border-[#FED7AA]/80 hover:border-[#F97316] shadow-[0_4px_20px_rgba(234,88,12,0.05)] hover:shadow-[0_12px_32px_rgba(234,88,12,0.16)] transition-all duration-500 cursor-pointer flex flex-col"
+                  className="group relative rounded-3xl overflow-hidden bg-white border border-[#E7E2DA] hover:border-[#D8232A] shadow-xs hover:shadow-xl transition-all duration-500 cursor-pointer flex flex-col"
                 >
                   {/* Image Container */}
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#1E0A33]">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#18181B]">
                     <img
                       src={item.src}
                       alt={item.title}
@@ -633,20 +611,20 @@ const GalleryPage = () => {
 
                     {/* Top Badges */}
                     <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
-                      <span className="px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md text-[9px] font-mono font-bold text-[#FFB800] border border-[#F97316]/40 uppercase tracking-widest">
+                      <span className="px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md text-[9px] font-mono font-bold text-white border border-white/20 uppercase tracking-widest">
                         {item.categoryLabel}
                       </span>
                       <div className="w-8 h-8 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Maximize2 className="w-3.5 h-3.5 text-[#FFB800]" />
+                        <Maximize2 className="w-3.5 h-3.5 text-white" />
                       </div>
                     </div>
 
                     {/* Bottom Info on Image */}
                     <div className="absolute bottom-4 left-4 right-4 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <span className="text-[9px] font-mono text-orange-200/80 uppercase tracking-widest mb-1 block">
+                      <span className="text-[9px] font-mono text-neutral-300 uppercase tracking-widest mb-1 block">
                         {item.edition}
                       </span>
-                      <h3 className="font-serif text-lg text-white font-semibold group-hover:text-[#FFB800] transition-colors line-clamp-1">
+                      <h3 className="font-serif text-lg text-white font-semibold group-hover:text-amber-300 transition-colors line-clamp-1">
                         {item.title}
                       </h3>
                       <p className="text-[11px] text-neutral-200 line-clamp-2 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -661,21 +639,17 @@ const GalleryPage = () => {
             </AnimatePresence>
           </motion.div>
         ) : (
-          <div className="text-center py-20 bg-white rounded-3xl border border-[#FED7AA] space-y-4">
-            <Camera className="w-12 h-12 text-[#EA580C]/40 mx-auto" />
-            <h3 className="font-serif text-xl text-[#0B1536] font-bold">No Visual Assets Found</h3>
+          <div className="text-center py-20 bg-white rounded-3xl border border-[#E7E2DA] space-y-4">
+            <Camera className="w-12 h-12 text-[#D8232A]/40 mx-auto" />
+            <h3 className="font-serif text-xl text-[#171717] font-bold">No Visual Assets Found</h3>
             <p className="text-xs text-neutral-500 max-w-sm mx-auto">
-              We couldn't find any photos matching your current search query "{searchQuery}". Try changing categories or clearing the search.
+              We couldn't find any photos in this category. Try selecting another category.
             </p>
             <button
               onClick={() => {
                 setActiveCategory("all");
-                setSearchQuery("");
               }}
-              className="px-5 py-2.5 rounded-full text-white font-bold text-xs uppercase tracking-wider shadow-md cursor-pointer"
-              style={{
-                background: "linear-gradient(90deg, #FB7801 0%, #EC2656 55%, #7C2D92 100%)",
-              }}
+              className="px-5 py-2.5 rounded-full text-white bg-[#D8232A] hover:bg-[#BF1E24] font-bold text-xs uppercase tracking-wider shadow-md cursor-pointer transition-colors"
             >
               Reset Filters
             </button>
@@ -699,7 +673,7 @@ const GalleryPage = () => {
             {/* Top Bar */}
             <div className="flex items-center justify-between text-white z-10">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-mono text-[#FFB800] uppercase tracking-widest bg-[#4E0C7B]/60 px-3 py-1 rounded-full border border-[#F97316]/40">
+                <span className="text-xs font-mono text-white uppercase tracking-widest bg-white/10 px-3 py-1 rounded-full border border-white/20">
                   {filteredData[lightboxIndex].categoryLabel}
                 </span>
                 <span className="text-xs font-mono text-neutral-400">
@@ -712,14 +686,14 @@ const GalleryPage = () => {
                   href={filteredData[lightboxIndex].src}
                   download={`LAF_Gallery_${filteredData[lightboxIndex].id}.png`}
                   onClick={(e) => e.stopPropagation()}
-                  className="p-2.5 rounded-full bg-white/10 hover:bg-[#EA580C] text-white transition-colors"
+                  className="p-2.5 rounded-full bg-white/10 hover:bg-[#D8232A] text-white transition-colors"
                   title="Download Image"
                 >
                   <Download className="w-4 h-4" />
                 </a>
                 <button
                   onClick={() => setLightboxIndex(null)}
-                  className="p-2.5 rounded-full bg-white/10 hover:bg-[#E11D48] text-white transition-colors"
+                  className="p-2.5 rounded-full bg-white/10 hover:bg-[#D8232A] text-white transition-colors"
                   title="Close (Esc)"
                 >
                   <X className="w-5 h-5" />
@@ -736,7 +710,7 @@ const GalleryPage = () => {
                   e.stopPropagation();
                   setLightboxIndex((prev) => (prev > 0 ? prev - 1 : filteredData.length - 1));
                 }}
-                className="absolute left-2 sm:left-6 z-20 p-3 rounded-full bg-black/60 hover:bg-[#EA580C] text-white border border-white/20 transition-all"
+                className="absolute left-2 sm:left-6 z-20 p-3 rounded-full bg-black/60 hover:bg-[#D8232A] text-white border border-white/20 transition-all"
                 title="Previous Image (Left Arrow)"
               >
                 <ChevronLeft className="w-6 h-6" />
@@ -758,7 +732,7 @@ const GalleryPage = () => {
                   e.stopPropagation();
                   setLightboxIndex((prev) => (prev < filteredData.length - 1 ? prev + 1 : 0));
                 }}
-                className="absolute right-2 sm:right-6 z-20 p-3 rounded-full bg-black/60 hover:bg-[#EA580C] text-white border border-white/20 transition-all"
+                className="absolute right-2 sm:right-6 z-20 p-3 rounded-full bg-black/60 hover:bg-[#D8232A] text-white border border-white/20 transition-all"
                 title="Next Image (Right Arrow)"
               >
                 <ChevronRight className="w-6 h-6" />
@@ -775,7 +749,7 @@ const GalleryPage = () => {
                 {filteredData[lightboxIndex].subtitle}
               </p>
               <div className="flex items-center justify-center gap-4 text-[10px] font-mono text-neutral-400 pt-2 border-t border-white/10">
-                <span className="flex items-center gap-1 text-[#FFB800]">
+                <span className="flex items-center gap-1 text-amber-300">
                   <MapPin className="w-3 h-3" />
                   Lucknow, Uttar Pradesh
                 </span>
@@ -792,23 +766,19 @@ const GalleryPage = () => {
           5. CTA BANNER FOR PARTICIPATION
       ========================================================= */}
       <section className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 pb-20">
-        <div
-          className="text-white rounded-[24px] sm:rounded-[32px] p-8 sm:p-12 border-2 border-[#F97316]/50 shadow-[0_12px_40px_rgba(78,12,123,0.26)] relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8"
-          style={{
-            background: "linear-gradient(135deg, #2D0A4E 0%, #4E0C7B 55%, #7C1382 100%)",
-          }}
-        >
-          <div className="absolute -right-20 -top-20 w-72 h-72 bg-gradient-to-bl from-[#F97316]/20 to-[#EC2656]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="text-white rounded-[24px] sm:rounded-[32px] p-8 sm:p-12 bg-[#18181B] border border-neutral-800 shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#D8232A]" />
+          <div className="absolute -right-20 -top-20 w-72 h-72 bg-[#D8232A]/10 rounded-full blur-3xl pointer-events-none" />
           
           <div className="space-y-4 max-w-xl text-center md:text-left relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-[#FFB800]/40 text-[#FFB800] text-xs font-mono uppercase tracking-widest">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#D8232A] text-xs font-mono uppercase tracking-widest font-bold">
+              <Sparkles className="w-3.5 h-3.5 text-[#D8232A]" />
               <span>Be Part of LAF 3.0</span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl text-white font-bold">
-              Want your brand or project showcased in our <span className="italic text-[#FFB800]">Next Archive?</span>
+              Want your brand or project showcased in our <span className="text-[#D8232A]">Next Archive?</span>
             </h2>
-            <p className="text-purple-100/90 text-xs sm:text-sm">
+            <p className="text-neutral-300 text-xs sm:text-sm">
               Join North India's largest architecture, luxury &amp; lifestyle conclave as an exhibitor, delegate, or sponsor.
             </p>
           </div>
@@ -816,16 +786,13 @@ const GalleryPage = () => {
           <div className="flex flex-wrap items-center gap-4 relative z-10">
             <Link
               to="/participate"
-              className="px-6 py-3 rounded-full text-white font-bold text-xs uppercase tracking-wider shadow-[0_8px_25px_rgba(236,38,86,0.35)] hover:shadow-[0_12px_32px_rgba(236,38,86,0.5)] hover:scale-105 transition-all"
-              style={{
-                background: "linear-gradient(90deg, #FB7801 0%, #EC2656 55%, #930777 100%)",
-              }}
+              className="px-6 py-3 rounded-full bg-[#D8232A] hover:bg-[#BF1E24] text-white font-bold text-xs uppercase tracking-wider shadow-[0_8px_25px_rgba(216,35,42,0.35)] hover:scale-105 transition-all"
             >
               Participate at LAF 3.0
             </Link>
             <Link
               to="/highlights"
-              className="px-6 py-3 rounded-full bg-white/10 border border-white/25 text-white font-semibold text-xs uppercase tracking-wider hover:bg-white hover:text-[#4E0C7B] transition-colors"
+              className="px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white font-semibold text-xs uppercase tracking-wider hover:bg-white hover:text-black transition-colors"
             >
               Explore Highlights
             </Link>
