@@ -9,6 +9,7 @@ import {
   Clock,
   CheckCircle2,
   XCircle,
+  FileText,
 } from "lucide-react";
 
 import {
@@ -154,47 +155,53 @@ const chartData = [
 const COLORS = ["#dc2626", "#171717", "#fca5a5"];
 
   return (
-    <div className="space-y-7">
+    <div className="space-y-3.5">
 
       {/* Welcome Section */}
+      <section className="relative overflow-hidden bg-neutral-950 rounded-xl px-5 py-3.5 lg:px-6 lg:py-3.5 text-white shadow-sm border border-neutral-800">
 
-      <section className="relative overflow-hidden bg-neutral-950 rounded-xl p-7 lg:p-9 text-white">
+        <div className="absolute -right-10 -top-16 w-60 h-60 rounded-full border border-red-600/20 pointer-events-none" />
+        <div className="absolute -right-4 -top-8 w-40 h-40 rounded-full border border-red-600/15 pointer-events-none" />
 
-        <div className="absolute -right-16 -top-24 w-80 h-80 rounded-full border border-red-600/30" />
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-2.5">
 
-        <div className="absolute -right-8 -top-12 w-56 h-56 rounded-full border border-red-600/20" />
+          <div>
 
-        <div className="relative z-10">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
+              <p className="text-red-500 text-[10px] sm:text-[11px] font-bold tracking-[2.5px] uppercase">
+                Lucknow Architecture Festival 3.0 • Live Portal
+              </p>
+            </div>
 
-          <p className="text-red-500 text-xs font-semibold tracking-[3px] uppercase">
-            Event Management Dashboard
-          </p>
+            <h1 className="text-base sm:text-lg lg:text-xl font-bold mt-1 text-white">
+              LAF 3.0 Central Operations & Registration Hub
+            </h1>
 
-          <h1 className="text-2xl lg:text-4xl font-bold mt-3">
-            Welcome, {admin?.name || "Admin"}
-          </h1>
+            <p className="text-neutral-400 text-xs mt-0.5 max-w-2xl">
+              Real-time monitoring of participants, architect & engineer entries, exhibitor spaces, and fee payments.
+            </p>
 
-          <p className="text-neutral-400 text-sm mt-3">
-            Manage registrations, participants and payments
-            for Lucknow Architecture Festival 3.0.
-          </p>
+          </div>
 
-          <p className="text-neutral-500 text-xs mt-5">
-            {new Date().toLocaleDateString("en-IN", {
-              weekday: "long",
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </p>
+          <div className="hidden sm:flex items-center gap-2 shrink-0 bg-neutral-900/90 border border-neutral-800 px-3 py-1.5 rounded-lg text-xs text-neutral-300">
+            <span className="text-neutral-500">Event Date:</span>
+            <span className="font-semibold text-white">
+              {new Date().toLocaleDateString("en-IN", {
+                weekday: "short",
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
+            </span>
+          </div>
 
         </div>
 
       </section>
 
       {/* Statistics */}
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-4 gap-3">
 
         {stats.map((stat) => (
           <StatCard key={stat.title} {...stat} />
@@ -202,254 +209,257 @@ const COLORS = ["#dc2626", "#171717", "#fca5a5"];
 
       </div>
 
-
       {loading && (
-  <p className="text-sm text-neutral-500">
-    Loading dashboard data...
-  </p>
-)}
+        <p className="text-sm text-neutral-500">
+          Loading dashboard data...
+        </p>
+      )}
 
-{error && (
-  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-    <p className="text-red-600 text-sm">
-      {error}
-    </p>
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+          <p className="text-red-600 text-sm">
+            {error}
+          </p>
 
-    <button
-      onClick={fetchDashboardData}
-      className="mt-2 text-sm font-semibold text-red-600 cursor-pointer"
-    >
-      Try Again
-    </button>
-  </div>
-)}
+          <button
+            onClick={fetchDashboardData}
+            className="mt-1.5 text-sm font-semibold text-red-600 cursor-pointer"
+          >
+            Try Again
+          </button>
+        </div>
+      )}
 
-     {/* Analytics Section */}
+      {/* Analytics Section */}
+      {dashboardData && (
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-3">
 
-{dashboardData && (
-  <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
+          {/* Bar Chart */}
+          <div className="xl:col-span-2 bg-white border border-neutral-200 rounded-xl p-3.5 sm:p-4 min-w-0">
 
-    {/* Bar Chart */}
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-sm sm:text-base font-bold text-neutral-900">
+                  Registration Overview
+                </h2>
+                <p className="text-[11px] text-neutral-400 mt-0.5">
+                  Category-wise registration statistics
+                </p>
+              </div>
+            </div>
 
-    <div className="xl:col-span-2 bg-white border border-neutral-200 rounded-xl p-6 min-w-0">
+            <div className="h-[195px] mt-2">
 
-      <h2 className="text-lg font-bold text-neutral-900">
-        Registration Overview
-      </h2>
+              <ResponsiveContainer width="100%" height="100%">
 
-      <p className="text-sm text-neutral-400 mt-1">
-        Category-wise registration statistics
-      </p>
+                <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
 
-      <div className="h-[300px] mt-6">
-
-        <ResponsiveContainer width="100%" height="100%">
-
-          <BarChart data={chartData}>
-
-            <CartesianGrid
-              strokeDasharray="3 3"
-              vertical={false}
-              stroke="#e5e7eb"
-            />
-
-            <XAxis
-              dataKey="name"
-              axisLine={false}
-              tickLine={false}
-              tick={{ fontSize: 12 }}
-            />
-
-            <YAxis
-              allowDecimals={false}
-              axisLine={false}
-              tickLine={false}
-            />
-
-            <Tooltip />
-
-            <Bar
-              dataKey="total"
-              name="Registrations"
-              radius={[6, 6, 0, 0]}
-              maxBarSize={65}
-            >
-
-              {chartData.map((item, index) => (
-                <Cell
-                  key={item.name}
-                  fill={COLORS[index]}
-                />
-              ))}
-
-            </Bar>
-
-          </BarChart>
-
-        </ResponsiveContainer>
-
-      </div>
-
-    </div>
-
-    {/* Pie Chart */}
-
-    <div className="bg-white border border-neutral-200 rounded-xl p-6 min-w-0">
-
-      <h2 className="text-lg font-bold text-neutral-900">
-        Registration Breakdown
-      </h2>
-
-      <p className="text-sm text-neutral-400 mt-1">
-        Participant distribution
-      </p>
-
-      <div className="h-[300px] mt-6">
-
-        {dashboardData.totalRegistrations > 0 ? (
-
-          <ResponsiveContainer width="100%" height="100%">
-
-            <PieChart>
-
-              <Pie
-                data={chartData}
-                dataKey="total"
-                nameKey="name"
-                cx="50%"
-                cy="45%"
-                innerRadius={60}
-                outerRadius={95}
-                paddingAngle={3}
-              >
-
-                {chartData.map((item, index) => (
-                  <Cell
-                    key={item.name}
-                    fill={COLORS[index]}
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    vertical={false}
+                    stroke="#f3f4f6"
                   />
-                ))}
 
-              </Pie>
+                  <XAxis
+                    dataKey="name"
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fontSize: 11 }}
+                  />
 
-              <Tooltip />
+                  <YAxis
+                    allowDecimals={false}
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fontSize: 11 }}
+                  />
 
-              <Legend
-                verticalAlign="bottom"
-                iconType="circle"
-              />
+                  <Tooltip contentStyle={{ fontSize: "12px", borderRadius: "8px" }} />
 
-            </PieChart>
+                  <Bar
+                    dataKey="total"
+                    name="Registrations"
+                    radius={[6, 6, 0, 0]}
+                    maxBarSize={48}
+                  >
 
-          </ResponsiveContainer>
+                    {chartData.map((item, index) => (
+                      <Cell
+                        key={item.name}
+                        fill={COLORS[index]}
+                      />
+                    ))}
 
-        ) : (
+                  </Bar>
 
-          <div className="h-full flex items-center justify-center text-sm text-neutral-400">
-            No registrations available
+                </BarChart>
+
+              </ResponsiveContainer>
+
+            </div>
+
           </div>
 
-        )}
+          {/* Pie Chart */}
+          <div className="bg-white border border-neutral-200 rounded-xl p-3.5 sm:p-4 min-w-0">
 
-      </div>
+            <div>
+              <h2 className="text-sm sm:text-base font-bold text-neutral-900">
+                Registration Breakdown
+              </h2>
+              <p className="text-[11px] text-neutral-400 mt-0.5">
+                Participant distribution
+              </p>
+            </div>
 
-    </div>
+            <div className="h-[195px] mt-2">
 
-  </div>
-)}
+              {dashboardData.totalRegistrations > 0 ? (
 
+                <ResponsiveContainer width="100%" height="100%">
 
+                  <PieChart margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
 
-{/* Engineer Registration Summary */}
+                    <Pie
+                      data={chartData}
+                      dataKey="total"
+                      nameKey="name"
+                      cx="50%"
+                      cy="44%"
+                      innerRadius={45}
+                      outerRadius={72}
+                      paddingAngle={3}
+                    >
 
-<div className="bg-white border border-neutral-200 rounded-xl p-6">
+                      {chartData.map((item, index) => (
+                        <Cell
+                          key={item.name}
+                          fill={COLORS[index]}
+                        />
+                      ))}
 
-  <h2 className="text-lg font-bold text-neutral-900">
-    Engineer Registration Summary
-  </h2>
+                    </Pie>
 
-  <p className="text-sm text-neutral-400 mt-1">
-    Free and paid engineer registrations
-  </p>
+                    <Tooltip contentStyle={{ fontSize: "12px", borderRadius: "8px" }} />
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-6">
+                    <Legend
+                      verticalAlign="bottom"
+                      iconType="circle"
+                      wrapperStyle={{ fontSize: "11px", paddingTop: "4px" }}
+                    />
 
-    {/* Free Engineers */}
+                  </PieChart>
 
-    <div className="bg-neutral-50 border border-neutral-200 rounded-xl p-6">
+                </ResponsiveContainer>
 
-      <div className="flex items-center justify-between">
+              ) : (
 
-        <p className="text-sm font-medium text-neutral-600">
-          Free Engineers
+                <div className="h-full flex items-center justify-center text-xs text-neutral-400">
+                  No registrations available
+                </div>
+
+              )}
+
+            </div>
+
+          </div>
+
+        </div>
+      )}
+
+      {/* Engineer Registration Summary */}
+      <div className="bg-white border border-neutral-200 rounded-xl p-3.5 sm:p-4">
+
+        <h2 className="text-sm sm:text-base font-bold text-neutral-900">
+          Engineer Registration Summary
+        </h2>
+
+        <p className="text-[11px] text-neutral-400 mt-0.5">
+          Free and paid engineer registrations
         </p>
 
-        <Users size={23} className="text-neutral-700" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+
+          {/* Free Engineers */}
+          <div className="bg-neutral-50 border border-neutral-200 rounded-xl p-3.5">
+
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold text-neutral-600">
+                Free Engineers
+              </p>
+              <Users size={19} className="text-neutral-700" />
+            </div>
+
+            <h3 className="text-2xl font-bold text-neutral-900 mt-1.5">
+              {dashboardData?.freeEngineers ?? "—"}
+            </h3>
+
+            <p className="text-[11px] text-neutral-500 mt-1">
+              LAA Members — Free Registration
+            </p>
+
+          </div>
+
+          {/* Paid Engineers */}
+          <div className="bg-red-50 border border-red-100 rounded-xl p-3.5">
+
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold text-red-700">
+                Paid Engineers
+              </p>
+              <Wallet size={19} className="text-red-600" />
+            </div>
+
+            <h3 className="text-2xl font-bold text-red-600 mt-1.5">
+              {dashboardData?.paidEngineers ?? "—"}
+            </h3>
+
+            <p className="text-[11px] text-red-500 mt-1">
+              Other than LAA — ₹2,000 Registration Fee
+            </p>
+
+          </div>
+
+        </div>
 
       </div>
-
-      <h3 className="text-4xl font-bold text-neutral-900 mt-4">
-        {dashboardData?.freeEngineers ?? "—"}
-      </h3>
-
-      <p className="text-xs text-neutral-500 mt-3">
-        LAA Members — Free Registration
-      </p>
-
-    </div>
-
-    {/* Paid Engineers */}
-
-    <div className="bg-red-50 border border-red-100 rounded-xl p-6">
-
-      <div className="flex items-center justify-between">
-
-        <p className="text-sm font-medium text-red-700">
-          Paid Engineers
-        </p>
-
-        <Wallet size={23} className="text-red-600" />
-
-      </div>
-
-      <h3 className="text-4xl font-bold text-red-600 mt-4">
-        {dashboardData?.paidEngineers ?? "—"}
-      </h3>
-
-      <p className="text-xs text-red-500 mt-3">
-        Other than LAA — ₹2,000 Registration Fee
-      </p>
-
-    </div>
-
-  </div>
-
-</div>
       
 
       {/* Recent Registrations */}
+      <div className="bg-white border border-neutral-200 rounded-xl overflow-hidden shadow-sm border-t-4 border-t-red-600">
 
-      <div className="bg-white border border-neutral-200 rounded-xl overflow-hidden">
+        <div className="p-3.5 sm:p-4 border-b border-neutral-100 bg-gradient-to-r from-red-50/40 via-white to-white flex items-center justify-between">
 
-        <div className="p-6 border-b border-neutral-100">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-red-600/10 text-red-600 flex items-center justify-center font-bold shrink-0">
+              <FileText size={16} />
+            </div>
+            <div>
+              <h2 className="text-sm sm:text-base font-bold text-neutral-900 flex items-center gap-2">
+                Recent Registrations
+                <span className="text-[10px] bg-red-100 text-red-700 font-semibold px-2 py-0.5 rounded-full">
+                  Latest 10
+                </span>
+              </h2>
+              <p className="text-[11px] text-neutral-400 mt-0.5">
+                Live applicant stream & status tracking
+              </p>
+            </div>
+          </div>
 
-          <h2 className="text-lg font-bold text-neutral-900">
-            Recent Registrations
-          </h2>
-
-          <p className="text-sm text-neutral-400 mt-1">
-  Latest 10 applications received
-</p>
+          <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-100">
+            <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
+            Live Stream
+          </span>
         </div>
 
         <div className="overflow-x-auto">
 
           <table className="w-full text-left text-sm whitespace-nowrap">
 
-            <thead className="bg-neutral-50 text-neutral-500">
+            <thead className="bg-neutral-900 text-neutral-200 text-xs font-semibold uppercase tracking-wider">
 
               <tr>
-
                 {[
                   "Registration ID",
                   "Name",
@@ -460,124 +470,143 @@ const COLORS = ["#dc2626", "#171717", "#fca5a5"];
                 ].map((heading) => (
                   <th
                     key={heading}
-                    className="px-6 py-4 font-medium"
+                    className="px-5 py-3 font-semibold"
                   >
                     {heading}
                   </th>
                 ))}
-
               </tr>
 
             </thead>
 
-          <tbody className="divide-y divide-neutral-100">
+            <tbody className="divide-y divide-neutral-100">
 
-  {recentLoading ? (
-    <tr>
-      <td
-        colSpan={6}
-        className="text-center text-neutral-400 py-14"
-      >
-        Loading registrations...
-      </td>
-    </tr>
+              {recentLoading ? (
+                <tr>
+                  <td
+                    colSpan={6}
+                    className="text-center text-neutral-400 py-12 text-sm"
+                  >
+                    Loading registrations...
+                  </td>
+                </tr>
+              ) : recentError ? (
+                <tr>
+                  <td
+                    colSpan={6}
+                    className="text-center text-red-600 py-12 text-sm"
+                  >
+                    {recentError}
+                    <button
+                      onClick={fetchRecentRegistrations}
+                      className="block mx-auto mt-2 font-semibold text-xs text-red-700 underline cursor-pointer"
+                    >
+                      Try Again
+                    </button>
+                  </td>
+                </tr>
+              ) : recentRegistrations.length === 0 ? (
+                <tr>
+                  <td
+                    colSpan={6}
+                    className="text-center text-neutral-400 py-12 text-sm"
+                  >
+                    No registrations found
+                  </td>
+                </tr>
+              ) : (
+                recentRegistrations.map((item) => {
+                  const cat = (item.category || "").toLowerCase();
+                  const catClass = cat.includes("architect")
+                    ? "bg-red-50 text-red-700 border border-red-200/80 font-semibold"
+                    : cat.includes("paid")
+                    ? "bg-rose-50 text-rose-700 border border-rose-200/80 font-semibold"
+                    : cat.includes("free")
+                    ? "bg-blue-50 text-blue-700 border border-blue-200/80 font-semibold"
+                    : cat.includes("exhibitor")
+                    ? "bg-purple-50 text-purple-700 border border-purple-200/80 font-semibold"
+                    : "bg-neutral-100 text-neutral-700 border border-neutral-200 font-semibold";
 
-  ) : recentError ? (
-    <tr>
-      <td
-        colSpan={6}
-        className="text-center text-red-600 py-14"
-      >
-        {recentError}
+                  const pay = (item.paymentStatus || "").toLowerCase();
+                  const payClass = pay === "verified"
+                    ? "bg-emerald-50 text-emerald-700 border border-emerald-200/80"
+                    : pay === "not_required"
+                    ? "bg-neutral-100 text-neutral-600 border border-neutral-200/80"
+                    : pay === "rejected"
+                    ? "bg-red-50 text-red-700 border border-red-200/80"
+                    : "bg-amber-50 text-amber-700 border border-amber-200/80";
 
-        <button
-          onClick={fetchRecentRegistrations}
-          className="block mx-auto mt-3 font-semibold cursor-pointer"
-        >
-          Try Again
-        </button>
-      </td>
-    </tr>
+                  const st = (item.status || "").toLowerCase();
+                  const stClass = st === "approved"
+                    ? "bg-emerald-50 text-emerald-700 border border-emerald-200/80"
+                    : st === "rejected"
+                    ? "bg-red-50 text-red-700 border border-red-200/80"
+                    : "bg-amber-50 text-amber-700 border border-amber-200/80";
 
-  ) : recentRegistrations.length === 0 ? (
-    <tr>
-      <td
-        colSpan={6}
-        className="text-center text-neutral-400 py-14"
-      >
-        No registrations found
-      </td>
-    </tr>
+                  return (
+                    <tr
+                      key={item.registrationId}
+                      className="hover:bg-red-50/20 transition-colors group"
+                    >
+                      {/* Registration ID */}
+                      <td className="px-5 py-3">
+                        <span
+                          title={item.registrationId}
+                          className="font-mono text-xs text-neutral-700 bg-neutral-100 px-2 py-0.5 rounded border border-neutral-200"
+                        >
+                          {item.registrationId?.slice(0, 16)}...
+                        </span>
+                      </td>
 
-  ) : (
-    recentRegistrations.map((item) => (
-      <tr
-        key={item.registrationId}
-        className="hover:bg-neutral-50 transition-colors"
-      >
+                      {/* Name */}
+                      <td className="px-5 py-3 font-semibold text-neutral-900 group-hover:text-red-600 transition-colors">
+                        {item.name}
+                      </td>
 
-        {/* Registration ID */}
-        <td
-          title={item.registrationId}
-          className="px-6 py-4 text-xs text-neutral-500"
-        >
-          {item.registrationId?.slice(0, 18)}...
-        </td>
+                      {/* Category */}
+                      <td className="px-5 py-3">
+                        <span className={`px-2.5 py-0.5 rounded-md text-xs ${catClass}`}>
+                          {item.category}
+                        </span>
+                      </td>
 
-        {/* Name */}
-        <td className="px-6 py-4 font-semibold text-neutral-900">
-          {item.name}
-        </td>
+                      {/* Date */}
+                      <td className="px-5 py-3 text-xs text-neutral-500 font-medium">
+                        {new Date(item.createdAt).toLocaleDateString("en-IN")}
+                      </td>
 
-        {/* Category */}
-        <td className="px-6 py-4 text-neutral-600">
-          {item.category}
-        </td>
+                      {/* Payment Status */}
+                      <td className="px-5 py-3">
+                        <span
+                          className={`px-2.5 py-1 rounded-full text-xs font-semibold capitalize inline-flex items-center gap-1 ${payClass}`}
+                        >
+                          {pay === "verified" && <CheckCircle2 size={12} className="text-emerald-600" />}
+                          {pay === "rejected" && <XCircle size={12} className="text-red-600" />}
+                          {pay === "pending" && <Clock size={12} className="text-amber-600" />}
+                          {item.paymentStatus === "not_required"
+                            ? "Not Required"
+                            : item.paymentStatus}
+                        </span>
+                      </td>
 
-        {/* Date */}
-        <td className="px-6 py-4 text-neutral-500">
-          {new Date(item.createdAt).toLocaleDateString("en-IN")}
-        </td>
+                      {/* Registration Status */}
+                      <td className="px-5 py-3">
+                        <span
+                          className={`px-2.5 py-1 rounded-full text-xs font-semibold capitalize inline-flex items-center gap-1 ${stClass}`}
+                        >
+                          {st === "approved" && <CheckCircle2 size={12} className="text-emerald-600" />}
+                          {st === "rejected" && <XCircle size={12} className="text-red-600" />}
+                          {st === "pending" && <Clock size={12} className="text-amber-600" />}
+                          {item.status}
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
 
-        {/* Payment Status */}
-        <td className="px-6 py-4">
-          <span
-            className={`px-3 py-1 rounded-full text-xs font-medium capitalize ${
-              item.paymentStatus === "verified"
-                ? "bg-green-100 text-green-700"
-                : item.paymentStatus === "not_required"
-                ? "bg-neutral-100 text-neutral-600"
-                : item.paymentStatus === "rejected"
-                ? "bg-red-100 text-red-700"
-                : "bg-amber-100 text-amber-700"
-            }`}
-          >
-            {item.paymentStatus === "not_required"
-              ? "Not Required"
-              : item.paymentStatus}
-          </span>
-        </td>
+            </tbody>
 
-        {/* Registration Status */}
-        <td className="px-6 py-4">
-          <span
-            className={`px-3 py-1 rounded-full text-xs font-medium capitalize ${
-              item.status === "approved"
-                ? "bg-green-100 text-green-700"
-                : item.status === "rejected"
-                ? "bg-red-100 text-red-700"
-                : "bg-amber-100 text-amber-700"
-            }`}
-          >
-            {item.status}
-          </span>
-        </td>
-
-      </tr>
-    ))
-  )}
-
-</tbody>
           </table>
 
         </div>

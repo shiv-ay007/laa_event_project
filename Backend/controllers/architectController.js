@@ -1,8 +1,26 @@
 import Architect from "../models/architectModel.js";
 import uploadToCloudinary from "../utils/uploadToCloudinary.js";
 import cloudinary from "../config/cloudinary.js";
-import { randomUUID } from "node:crypto";
 import { fileTypeFromBuffer } from "file-type";
+import ArchitectUnique from "../models/unique/architectUnique.model.js";
+
+const generateUniqueArchitectId = async () => {
+  const year = new Date().getFullYear();
+
+  const counter = await ArchitectUnique.findOneAndUpdate(
+    { year: year },
+    {
+      $inc: { sequence: 1 },
+    },
+    {
+      new: true,
+      upsert: true,
+    }
+  );
+
+  return `${year}${counter.sequence}`;
+};
+
 
 export const createArchitect = async (req, res) => {
   const uploadedFiles = [];
@@ -99,8 +117,7 @@ export const createArchitect = async (req, res) => {
 
     // Prepare Registration
     const architect = new Architect({
-      registrationId: `LAF-ARCH-${randomUUID()}`,
-      title,
+      registrationId: `LAF-ARCH-${await generateUniqueArchitectId()}`, title,
       fullName,
       email,
       phone,
@@ -183,6 +200,250 @@ export const createArchitect = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Unable to submit registration",
+    });
+  }
+};
+
+// Get All Architects
+export const getAllArchitects = async (req, res) => {
+  try {
+
+    const architects = await Architect.find()
+      .select(
+        "registrationId title fullName email phone coaNumber category status paymentStatus createdAt"
+      )
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      message: "Architects fetched successfully",
+      total: architects.length,
+      data: architects,
+    });
+
+  } catch (error) {
+
+    console.log("Get Architects Error:", error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch architects",
+    });
+
+  }
+};
+
+// Get Single Architect
+export const getSingleArchitect = async (req, res) => {
+  try {
+
+    const { id } = req.params;
+
+    const architect = await Architect.findById(id);
+
+    if (!architect) {
+      return res.status(404).json({
+        success: false,
+        message: "Architect not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Architect details fetched successfully",
+      data: architect,
+    });
+
+  } catch (error) {
+
+    console.log("Get Architect Error:", error.message);
+
+    res.status(error.name === "CastError" ? 400 : 500).json({
+      success: false,
+      message:
+        error.name === "CastError"
+          ? "Invalid architect ID"
+          : "Failed to fetch architect details",
+    });
+
+  }
+};
+
+// View Architect Document
+export const viewArchitectDocument = async (req, res) => {
+  try {
+    const { id, documentType } = req.params;
+
+    const architect = await Architect.findById(id);
+
+    if (!architect) {
+      return res.status(404).json({
+        success: false,
+        message: "Architect not found",
+      });
+    }
+
+    let document;
+
+    if (documentType === "certificate") {
+      document = architect.coaCertificate;
+    } else if (documentType === "receipt") {
+      document = architect.paymentReceipt;
+    } else {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid document type",
+      });
+    }
+
+    if (!document?.publicId) {
+      return res.status(404).json({
+        success: false,
+        message: "Document not found",
+      });
+    }
+
+    const url = cloudinary.utils.private_download_url(
+      document.publicId,
+      document.resourceType === "raw"
+        ? ""
+        : document.format,
+      {
+        resource_type: document.resourceType,
+        type: "authenticated",
+        expires_at: Math.floor(Date.now() / 1000) + 300,
+        attachment: false,
+      }
+    );
+
+    res.status(200).json({
+      success: true,
+      url,
+    });
+
+  } catch (error) {
+    console.log("Document Error:", error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to open document",
+    });
+  }
+};
+
+// Update Architect Payment Status
+export const updatePaymentStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { paymentStatus } = req.body;
+
+    if (!["verified", "rejected"].includes(paymentStatus)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid payment status",
+      });
+    }
+
+    const architect = await Architect.findById(id);
+
+    if (!architect) {
+      return res.status(404).json({
+        success: false,
+        message: "Architect not found",
+      });
+    }
+
+    architect.paymentStatus = paymentStatus;
+
+    // If payment is rejected, application cannot remain approved
+    if (
+      paymentStatus === "rejected" &&
+      architect.status === "approved"
+    ) {
+      architect.status = "pending";
+    }
+
+    await architect.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Payment status updated successfully",
+      data: architect,
+    });
+
+  } catch (error) {
+    console.log("Payment Status Error:", error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to update payment status",
+    });
+  }
+};
+
+// Update Architect Application Status
+export const updateApplicationStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status, adminRemarks } = req.body;
+
+    if (!["approved", "rejected"].includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid application status",
+      });
+    }
+
+    const architect = await Architect.findById(id);
+
+    if (!architect) {
+      return res.status(404).json({
+        success: false,
+        message: "Architect not found",
+      });
+    }
+
+    // Payment must be verified before approval
+    if (
+      status === "approved" &&
+      architect.paymentStatus !== "verified"
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Please verify payment before approving application",
+      });
+    }
+
+    if (
+      adminRemarks !== undefined &&
+      typeof adminRemarks !== "string"
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid admin remarks",
+      });
+    }
+
+    architect.status = status;
+
+    if (adminRemarks !== undefined) {
+      architect.adminRemarks = adminRemarks.trim();
+    }
+
+    await architect.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Application status updated successfully",
+      data: architect,
+    });
+
+  } catch (error) {
+    console.log("Application Status Error:", error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to update application status",
     });
   }
 };

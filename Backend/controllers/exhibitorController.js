@@ -3,6 +3,25 @@ import uploadToCloudinary from "../utils/uploadToCloudinary.js";
 import cloudinary from "../config/cloudinary.js";
 import { randomUUID } from "node:crypto";
 import { fileTypeFromBuffer } from "file-type";
+import ExhibitorUnique from "../models/unique/exhibitorUnique.model.js";
+
+const generateUniqueExhibitorId = async () => {
+  const year = new Date().getFullYear();
+
+  const counter = await ExhibitorUnique.findOneAndUpdate(
+    { year: year },
+    {
+      $inc: { sequence: 1 },
+    },
+    {
+      new: true,
+      upsert: true,
+    }
+  );
+
+  return `${year}${counter.sequence}`;
+};
+
 
 export const createExhibitor = async (req, res) => {
   const uploadedFiles = [];
@@ -187,8 +206,7 @@ export const createExhibitor = async (req, res) => {
 
     // Create Exhibitor Registration
     const exhibitor = new Exhibitor({
-      registrationId: `LAF-EXH-${randomUUID()}`,
-
+    registrationId: `LAF-EXH-${await generateUniqueExhibitorId()}`,
       companyName,
       contactPerson,
       designation,
@@ -261,6 +279,253 @@ export const createExhibitor = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Unable to submit registration",
+    });
+  }
+};
+
+// Get All Exhibitors
+
+export const getAllExhibitors = async (req, res) => {
+  try {
+    const exhibitors = await Exhibitor.find()
+      .select(
+        "registrationId companyName contactPerson email phone industrySector spaceRequired amount paymentStatus status createdAt"
+      )
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      message: "Exhibitors fetched successfully",
+      total: exhibitors.length,
+      data: exhibitors,
+    });
+
+  } catch (error) {
+    console.log("Get Exhibitors Error:", error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch exhibitors",
+    });
+  }
+};
+
+// Get Single Exhibitor
+
+export const getSingleExhibitor = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const exhibitor = await Exhibitor.findById(id);
+
+    if (!exhibitor) {
+      return res.status(404).json({
+        success: false,
+        message: "Exhibitor not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Exhibitor details fetched successfully",
+      data: exhibitor,
+    });
+
+  } catch (error) {
+    console.log("Exhibitor Details Error:", error.message);
+
+    if (error.name === "CastError") {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid exhibitor ID",
+      });
+    }
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch exhibitor details",
+    });
+  }
+};
+
+// View Exhibitor Documents
+
+export const viewExhibitorDocument = async (req, res) => {
+  try {
+    const { id, documentType } = req.params;
+
+    const exhibitor = await Exhibitor.findById(id);
+
+    if (!exhibitor) {
+      return res.status(404).json({
+        success: false,
+        message: "Exhibitor not found",
+      });
+    }
+
+    let document;
+
+    if (documentType === "logo") {
+      document = exhibitor.brandLogo;
+
+    } else if (documentType === "receipt") {
+      document = exhibitor.paymentReceipt;
+
+    } else {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid document type",
+      });
+    }
+
+    if (!document?.publicId) {
+      return res.status(404).json({
+        success: false,
+        message: "Document not found",
+      });
+    }
+
+    const url = cloudinary.utils.private_download_url(
+      document.publicId,
+      document.resourceType === "raw"
+        ? ""
+        : document.format,
+      {
+        resource_type: document.resourceType,
+        type: "authenticated",
+        expires_at: Math.floor(Date.now() / 1000) + 300,
+        attachment: false,
+      }
+    );
+
+    res.status(200).json({
+      success: true,
+      url,
+    });
+
+  } catch (error) {
+    console.log("Exhibitor Document Error:", error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to open document",
+    });
+  }
+};
+
+// Update Exhibitor Payment Status
+
+export const updateExhibitorPaymentStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { paymentStatus } = req.body;
+
+    if (!["verified", "rejected"].includes(paymentStatus)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid payment status",
+      });
+    }
+
+    const exhibitor = await Exhibitor.findById(id);
+
+    if (!exhibitor) {
+      return res.status(404).json({
+        success: false,
+        message: "Exhibitor not found",
+      });
+    }
+
+    exhibitor.paymentStatus = paymentStatus;
+
+    if (
+      paymentStatus === "rejected" &&
+      exhibitor.status === "approved"
+    ) {
+      exhibitor.status = "pending";
+    }
+
+    await exhibitor.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Payment status updated successfully",
+      data: exhibitor,
+    });
+
+  } catch (error) {
+    console.log("Payment Status Error:", error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to update payment status",
+    });
+  }
+};
+
+// Update Exhibitor Application Status
+
+export const updateExhibitorApplicationStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status, adminRemarks } = req.body;
+
+    if (!["approved", "rejected"].includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid application status",
+      });
+    }
+
+    const exhibitor = await Exhibitor.findById(id);
+
+    if (!exhibitor) {
+      return res.status(404).json({
+        success: false,
+        message: "Exhibitor not found",
+      });
+    }
+
+    if (
+      status === "approved" &&
+      exhibitor.paymentStatus !== "verified"
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Please verify payment before approving application",
+      });
+    }
+
+    if (
+      adminRemarks !== undefined &&
+      typeof adminRemarks !== "string"
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid admin remarks",
+      });
+    }
+
+    exhibitor.status = status;
+
+    if (adminRemarks !== undefined) {
+      exhibitor.adminRemarks = adminRemarks.trim();
+    }
+
+    await exhibitor.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Application status updated successfully",
+      data: exhibitor,
+    });
+
+  } catch (error) {
+    console.log("Application Status Error:", error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to update application status",
     });
   }
 };

@@ -12,6 +12,9 @@ import AdminLayout from "./components/AdminLayout";
 
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Architects from "./pages/Architects";
+import Engineers from "./pages/Engineers";
+import Exhibitors from "./pages/Exhibitors";
 
 const ComingSoon = ({ title }) => {
   return (
@@ -59,17 +62,17 @@ const App = () => {
 
               <Route
                 path="/architects"
-                element={<ComingSoon title="Architects" />}
+                element={<Architects />}
               />
 
               <Route
                 path="/engineers"
-                element={<ComingSoon title="Engineers" />}
+                element={<Engineers />}
               />
 
               <Route
                 path="/exhibitors"
-                element={<ComingSoon title="Exhibitors" />}
+                element={<Exhibitors />}
               />
 
               <Route
