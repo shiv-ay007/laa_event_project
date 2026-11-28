@@ -394,7 +394,7 @@ const Exhibitors = () => {
                         title={x.registrationId}
                         className="font-mono text-xs text-neutral-700 bg-neutral-100 px-2 py-0.5 rounded border border-neutral-200 font-medium"
                       >
-                        {x.registrationId?.slice(0, 16)}...
+                        {x.registrationId}
                       </span>
                     </td>
 

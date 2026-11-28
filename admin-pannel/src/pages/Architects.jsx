@@ -386,7 +386,7 @@ const Architects = () => {
                                                 title={item.registrationId}
                                                 className="font-mono text-xs text-neutral-700 bg-neutral-100 px-2 py-0.5 rounded border border-neutral-200"
                                             >
-                                                {item.registrationId?.slice(0, 16)}...
+                                                {item.registrationId}
                                             </span>
                                         </td>
 
