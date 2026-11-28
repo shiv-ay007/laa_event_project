@@ -291,17 +291,9 @@ const Payments = () => {
           <table className="w-full text-left text-sm whitespace-nowrap">
             <thead className="bg-neutral-900 text-neutral-200 text-xs font-semibold uppercase tracking-wider">
               <tr>
-                {/* S.No. (Sticky) */}
-                <th className="sticky left-0 z-20 bg-neutral-900 w-14 min-w-[56px] px-3 py-3 font-semibold text-center border-r border-neutral-800">
-                  S.No.
-                </th>
-
-                {/* Actions (Sticky) */}
-                <th className="sticky left-[56px] z-20 bg-neutral-900 w-20 min-w-[72px] px-3 py-3 font-semibold text-center border-r border-neutral-800 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.4)]">
-                  Actions
-                </th>
-
                 {[
+                  "S.No.",
+                  "Actions",
                   "Registration ID",
                   "Applicant",
                   "Category",
@@ -312,7 +304,11 @@ const Payments = () => {
                 ].map((heading) => (
                   <th
                     key={heading}
-                    className="px-4 py-3 font-semibold"
+                    className={`px-4 py-3 font-semibold ${
+                      heading === "S.No." || heading === "Actions"
+                        ? "text-center"
+                        : ""
+                    }`}
                   >
                     {heading}
                   </th>
@@ -359,13 +355,13 @@ const Payments = () => {
                     key={`${payment.type}-${payment._id}`}
                     className="hover:bg-red-50/20 transition-colors group"
                   >
-                    {/* S.No. (Sticky) */}
-                    <td className="sticky left-0 z-10 bg-white group-hover:bg-red-50/50 w-14 min-w-[56px] px-3 py-2.5 text-center text-xs font-mono font-medium text-neutral-500 border-r border-neutral-100 transition-colors">
+                    {/* S.No. */}
+                    <td className="px-4 py-2.5 text-center text-xs font-mono font-medium text-neutral-500">
                       {(pagination.currentPage - 1) * pagination.limit + index + 1}
                     </td>
 
-                    {/* Action (Sticky) */}
-                    <td className="sticky left-[56px] z-10 bg-white group-hover:bg-red-50/50 w-20 min-w-[72px] px-3 py-2.5 text-center border-r border-neutral-100 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.06)] transition-colors">
+                    {/* Action */}
+                    <td className="px-4 py-2.5 text-center">
                       <button
                         onClick={() => setSelectedPayment(payment)}
                         title="View Details"
