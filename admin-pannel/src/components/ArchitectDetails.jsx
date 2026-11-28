@@ -12,7 +12,12 @@ import {
     ClipboardCheck,
 } from "lucide-react";
 import Swal from "sweetalert2";
-import api from "../services/api";
+import {
+    getSingleArchitect,
+    viewArchitectDocument,
+    updateArchitectPaymentStatus,
+    updateArchitectApplicationStatus,
+} from "../api/architectApi";
 import StatusBadge from "./StatusBadge";
 
 // Reusable Detail Component
@@ -51,9 +56,7 @@ const ArchitectDetails = ({
             setLoading(true);
             setError("");
 
-            const response = await api.get(
-                `/architects/${architectId}`
-            );
+            const response = await getSingleArchitect(architectId);
 
             if (response.data.success) {
                 setArchitect(response.data.data);
@@ -90,8 +93,9 @@ const ArchitectDetails = ({
         try {
             setDocumentLoading(documentType);
 
-            const response = await api.get(
-                `/architects/${architectId}/document/${documentType}`
+            const response = await viewArchitectDocument(
+                architectId,
+                documentType
             );
 
             if (response.data.success && response.data.url) {
@@ -149,8 +153,8 @@ const ArchitectDetails = ({
 
             setUpdating(true);
 
-            const response = await api.patch(
-                `/architects/${architectId}/payment-status`,
+            const response = await updateArchitectPaymentStatus(
+                architectId,
                 {
                     paymentStatus,
                 }
@@ -235,8 +239,8 @@ const ArchitectDetails = ({
 
             setUpdating(true);
 
-            const response = await api.patch(
-                `/architects/${architectId}/application-status`,
+            const response = await updateArchitectApplicationStatus(
+                architectId,
                 {
                     status,
                     adminRemarks,

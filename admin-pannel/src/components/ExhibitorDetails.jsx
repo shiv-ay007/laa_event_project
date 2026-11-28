@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { X, Building2, User, FileText, Eye, Wallet, ClipboardCheck, CheckCircle2, XCircle } from "lucide-react";
 import Swal from "sweetalert2";
-import api from "../services/api";
+import {
+  getSingleExhibitor,
+  viewExhibitorDocument,
+  updateExhibitorPaymentStatus,
+  updateExhibitorApplicationStatus,
+} from "../api/exhibitorApi";
 import StatusBadge from "./StatusBadge";
 
 const DetailItem = ({label,value}) => <div><p className="text-xs text-neutral-500 mb-1">{label}</p><p className="text-sm font-medium break-words">{value || "—"}</p></div>;
@@ -15,7 +20,7 @@ const ExhibitorDetails = ({exhibitorId,onClose,onUpdate}) => {
   const [documentLoading,setDocumentLoading] = useState("");
   const fetchDetails = async () => {
     setLoading(true); setError("");
-    try { const {data} = await api.get(`/exhibitors/${exhibitorId}`); if (!data.success) throw new Error(data.message); setExhibitor(data.data); setRemarks(data.data.adminRemarks || ""); }
+    try { const {data} = await getSingleExhibitor(exhibitorId); if (!data.success) throw new Error(data.message); setExhibitor(data.data); setRemarks(data.data.adminRemarks || ""); }
     catch(err) { setError(err.response?.data?.message || "Unable to load exhibitor details"); }
     finally {setLoading(false);}
   };
@@ -24,7 +29,7 @@ const ExhibitorDetails = ({exhibitorId,onClose,onUpdate}) => {
     const tab = window.open("about:blank","_blank");
     if (!tab) { alert("Please allow browser popups"); return; }
     tab.opener = null; setDocumentLoading(type);
-    try { const {data} = await api.get(`/exhibitors/${exhibitorId}/document/${type}`); if (!data.success || !data.url) throw new Error("Unable to open document"); tab.location.href=data.url; }
+    try { const {data} = await viewExhibitorDocument(exhibitorId, type); if (!data.success || !data.url) throw new Error("Unable to open document"); tab.location.href=data.url; }
     catch(err) {tab.close(); alert(err.response?.data?.message || "Unable to open document");}
     finally {setDocumentLoading("");}
   };
@@ -36,7 +41,9 @@ const ExhibitorDetails = ({exhibitorId,onClose,onUpdate}) => {
       const result = await Swal.fire({title:`Confirm ${value === "verified" ? "payment verification" : value === "approved" ? "application approval" : type + " rejection"}?`,text:type === "payment" && value === "verified" ? "Confirm the required deposit amount and actual bank transaction before verifying." : type === "payment" ? "An approved application will return to pending." : "Confirm that the application has been reviewed.",icon:"warning",showCancelButton:true,confirmButtonColor:"#dc2626"});
       if (!result.isConfirmed) return;
       const body = type === "payment" ? {paymentStatus:value} : {status:value,adminRemarks:remarks};
-      const {data} = await api.patch(`/exhibitors/${exhibitorId}/${type}-status`,body);
+      const {data} = type === "payment"
+        ? await updateExhibitorPaymentStatus(exhibitorId, body)
+        : await updateExhibitorApplicationStatus(exhibitorId, body);
       if (!data.success) throw new Error(data.message);
       setExhibitor(data.data);
       if (type === "application") setRemarks(data.data.adminRemarks || "");

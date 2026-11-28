@@ -13,7 +13,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-import api from "../services/api";
+import { getAllExhibitors } from "../api/exhibitorApi";
 import StatCard from "../components/StatCard";
 import StatusBadge from "../components/StatusBadge";
 import ExhibitorDetails from "../components/ExhibitorDetails";
@@ -22,94 +22,174 @@ const Exhibitors = () => {
   const [exhibitors, setExhibitors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [selectedId, setSelectedId] = useState(null);
+
+  // Search and Filters
   const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [stall, setStall] = useState("all");
   const [sector, setSector] = useState("all");
   const [status, setStatus] = useState("all");
-  const [page, setPage] = useState(1);
-  const [selectedId, setSelectedId] = useState(null);
 
-  const fetchExhibitors = async () => {
-    setLoading(true);
-    setError("");
-    try {
-      const { data } = await api.get("/exhibitors");
-      if (!data.success) throw new Error(data.message);
-      setExhibitors(data.data);
-      setPage(1);
-    } catch (err) {
-      setError(err.response?.data?.message || "Unable to fetch exhibitors");
-    } finally {
-      setLoading(false);
-    }
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalRecords, setTotalRecords] = useState(0);
+
+  const itemsPerPage = 10;
+
+  // Refresh State
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  // Server Side Statistics
+  const [statistics, setStatistics] = useState({
+    totalExhibitors: 0,
+    pendingApplications: 0,
+    approvedApplications: 0,
+    rejectedApplications: 0,
+    verifiedPayments: 0,
+    pendingPayments: 0,
+  });
+
+  // Search Debounce
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search.trim());
+      setCurrentPage(1);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  // Fetch Exhibitors From Backend
+  useEffect(() => {
+    let active = true;
+
+    const loadExhibitors = async () => {
+      try {
+        setLoading(true);
+        setError("");
+
+        const response = await getAllExhibitors({
+          page: currentPage,
+          limit: itemsPerPage,
+          search: debouncedSearch,
+          stall,
+          sector,
+          status,
+        });
+
+        if (!active) return;
+
+        if (response.data.success) {
+          const { data, stats, pagination } = response.data;
+
+          setExhibitors(data);
+          setStatistics(stats);
+
+          setTotalPages(pagination.totalPages);
+          setTotalRecords(pagination.totalRecords);
+          setCurrentPage(pagination.currentPage);
+        } else {
+          setError("Failed to fetch exhibitors");
+        }
+      } catch (err) {
+        if (!active) return;
+
+        console.log("Exhibitors Error:", err);
+        setError(
+          err.response?.data?.message || "Unable to fetch exhibitors"
+        );
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
+      }
+    };
+
+    loadExhibitors();
+
+    return () => {
+      active = false;
+    };
+  }, [
+    currentPage,
+    debouncedSearch,
+    stall,
+    sector,
+    status,
+    refreshKey,
+  ]);
+
+  const fetchExhibitors = () => {
+    setRefreshKey((prev) => prev + 1);
   };
 
-  useEffect(() => {
-    fetchExhibitors();
-  }, []);
-
-  useEffect(() => {
-    setPage(1);
-  }, [search, stall, sector, status]);
-
   const stats = [
-    ["Total Exhibitors", exhibitors.length, Store, "All registrations"],
-    [
-      "Pending",
-      exhibitors.filter((x) => x.status === "pending").length,
-      Clock,
-      "Awaiting approval",
-    ],
-    [
-      "Approved",
-      exhibitors.filter((x) => x.status === "approved").length,
-      CheckCircle2,
-      "Approved applications",
-    ],
-    [
-      "Rejected",
-      exhibitors.filter((x) => x.status === "rejected").length,
-      XCircle,
-      "Rejected applications",
-    ],
-    [
-      "Verified Payments",
-      exhibitors.filter((x) => x.paymentStatus === "verified").length,
-      Wallet,
-      "Verified transactions",
-    ],
-    [
-      "Pending Payments",
-      exhibitors.filter((x) => x.paymentStatus === "pending").length,
-      CreditCard,
-      "Awaiting verification",
-    ],
+    {
+      title: "Total Exhibitors",
+      value: statistics.totalExhibitors,
+      icon: Store,
+      description: "All registrations",
+    },
+    {
+      title: "Pending",
+      value: statistics.pendingApplications,
+      icon: Clock,
+      description: "Awaiting approval",
+    },
+    {
+      title: "Approved",
+      value: statistics.approvedApplications,
+      icon: CheckCircle2,
+      description: "Approved applications",
+    },
+    {
+      title: "Rejected",
+      value: statistics.rejectedApplications,
+      icon: XCircle,
+      description: "Rejected applications",
+    },
+    {
+      title: "Verified Payments",
+      value: statistics.verifiedPayments,
+      icon: Wallet,
+      description: "Verified transactions",
+    },
+    {
+      title: "Pending Payments",
+      value: statistics.pendingPayments,
+      icon: CreditCard,
+      description: "Awaiting verification",
+    },
   ];
-
-  const filtered = exhibitors.filter(
-    (x) =>
-      [
-        x.companyName,
-        x.contactPerson,
-        x.email,
-        x.phone,
-        x.registrationId,
-      ].some((v) =>
-        String(v || "")
-          .toLowerCase()
-          .includes(search.trim().toLowerCase())
-      ) &&
-      (stall === "all" || x.spaceRequired === stall) &&
-      (sector === "all" || x.industrySector === sector) &&
-      (status === "all" || x.status === status)
-  );
-
-  const totalPages = Math.max(1, Math.ceil(filtered.length / 10));
-  const currentPage = Math.min(page, totalPages);
-  const start = (currentPage - 1) * 10;
 
   const selectClass =
     "border border-neutral-200 rounded-lg px-3 py-2 text-xs outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 bg-neutral-50/60 hover:bg-white font-medium text-neutral-700 cursor-pointer transition-all";
+
+  const startRecord = totalRecords
+    ? (currentPage - 1) * itemsPerPage + 1
+    : 0;
+  const endRecord = totalRecords
+    ? Math.min((currentPage - 1) * itemsPerPage + exhibitors.length, totalRecords)
+    : 0;
+
+  const stallOptions = [
+    "Executive Stall (9 sqm)",
+    "Gold Stall (18 sqm)",
+    "Platinum Pavilion (36 sqm)",
+    "Custom Open Space / Sponsor Deck",
+  ];
+
+  const sectorOptions = [
+    "Luxury Interiors & Decor",
+    "Architectural Lighting & Automation",
+    "Structural & Facade Materials",
+    "Tiles, Bathware & Stone",
+    "Furniture & Outdoor Solutions",
+    "Green Building Tech & HVAC",
+    "Other Premium Products",
+  ];
 
   return (
     <div className="space-y-4">
@@ -147,11 +227,11 @@ const Exhibitors = () => {
 
       {/* Statistics Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3">
-        {stats.map(([title, value, icon, description]) => (
+        {stats.map(({ title, value, icon, description }) => (
           <StatCard
             key={title}
             title={title}
-            value={loading || error ? "—" : value}
+            value={loading && !statistics.totalExhibitors ? "—" : value}
             icon={icon}
             description={description}
           />
@@ -179,15 +259,14 @@ const Exhibitors = () => {
             <select
               aria-label="Stall type"
               value={stall}
-              onChange={(e) => setStall(e.target.value)}
+              onChange={(e) => {
+                setStall(e.target.value);
+                setCurrentPage(1);
+              }}
               className={selectClass}
             >
               <option value="all">All Stalls</option>
-              {[
-                ...new Set(
-                  exhibitors.map((x) => x.spaceRequired).filter(Boolean)
-                ),
-              ].map((v) => (
+              {stallOptions.map((v) => (
                 <option key={v} value={v}>
                   {v}
                 </option>
@@ -197,15 +276,14 @@ const Exhibitors = () => {
             <select
               aria-label="Industry sector"
               value={sector}
-              onChange={(e) => setSector(e.target.value)}
+              onChange={(e) => {
+                setSector(e.target.value);
+                setCurrentPage(1);
+              }}
               className={selectClass}
             >
               <option value="all">All Sectors</option>
-              {[
-                ...new Set(
-                  exhibitors.map((x) => x.industrySector).filter(Boolean)
-                ),
-              ].map((v) => (
+              {sectorOptions.map((v) => (
                 <option key={v} value={v}>
                   {v}
                 </option>
@@ -215,7 +293,10 @@ const Exhibitors = () => {
             <select
               aria-label="Application status"
               value={status}
-              onChange={(e) => setStatus(e.target.value)}
+              onChange={(e) => {
+                setStatus(e.target.value);
+                setCurrentPage(1);
+              }}
               className={selectClass}
             >
               <option value="all">All Status</option>
@@ -231,6 +312,16 @@ const Exhibitors = () => {
           <table className="w-full text-left text-sm whitespace-nowrap">
             <thead className="bg-neutral-900 text-neutral-200 text-xs font-semibold uppercase tracking-wider">
               <tr>
+                {/* S.No. (Sticky) */}
+                <th className="sticky left-0 z-20 bg-neutral-900 w-14 min-w-[56px] px-3 py-3 font-semibold text-center border-r border-neutral-800">
+                  S.No.
+                </th>
+
+                {/* Actions (Sticky) */}
+                <th className="sticky left-[56px] z-20 bg-neutral-900 w-20 min-w-[72px] px-3 py-3 font-semibold text-center border-r border-neutral-800 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.4)]">
+                  Actions
+                </th>
+
                 {[
                   "Registration ID",
                   "Company",
@@ -241,9 +332,8 @@ const Exhibitors = () => {
                   "Payment",
                   "Status",
                   "Date",
-                  "Action",
                 ].map((h) => (
-                  <th key={h} className="px-5 py-3 font-semibold">
+                  <th key={h} className="px-4 py-3 font-semibold">
                     {h}
                   </th>
                 ))}
@@ -251,25 +341,58 @@ const Exhibitors = () => {
             </thead>
 
             <tbody className="divide-y divide-neutral-100">
-              {loading || error || !filtered.length ? (
+              {loading && !exhibitors.length ? (
                 <tr>
                   <td
-                    colSpan={10}
+                    colSpan={11}
                     className="text-center py-12 text-neutral-400 text-sm"
                   >
-                    {loading
-                      ? "Loading exhibitors..."
-                      : error || "No exhibitors found."}
+                    Loading exhibitors...
+                  </td>
+                </tr>
+              ) : error ? (
+                <tr>
+                  <td
+                    colSpan={11}
+                    className="text-center py-12 text-red-500 text-sm"
+                  >
+                    {error}
+                  </td>
+                </tr>
+              ) : !exhibitors.length ? (
+                <tr>
+                  <td
+                    colSpan={11}
+                    className="text-center py-12 text-neutral-400 text-sm"
+                  >
+                    No exhibitors found.
                   </td>
                 </tr>
               ) : (
-                filtered.slice(start, start + 10).map((x) => (
+                exhibitors.map((x, index) => (
                   <tr
                     key={x._id}
                     className="hover:bg-red-50/20 transition-colors group"
                   >
+                    {/* S.No. (Sticky) */}
+                    <td className="sticky left-0 z-10 bg-white group-hover:bg-red-50/50 w-14 min-w-[56px] px-3 py-2.5 text-center text-xs font-mono font-medium text-neutral-500 border-r border-neutral-100 transition-colors">
+                      {(currentPage - 1) * itemsPerPage + index + 1}
+                    </td>
+
+                    {/* Action (Sticky) */}
+                    <td className="sticky left-[56px] z-10 bg-white group-hover:bg-red-50/50 w-20 min-w-[72px] px-3 py-2.5 text-center border-r border-neutral-100 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.06)] transition-colors">
+                      <button
+                        onClick={() => setSelectedId(x._id)}
+                        title="View Details"
+                        aria-label="View Details"
+                        className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-red-600 hover:bg-red-700 text-white shadow-xs shadow-red-600/30 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                      >
+                        <Eye size={15} />
+                      </button>
+                    </td>
+
                     {/* Registration ID */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <span
                         title={x.registrationId}
                         className="font-mono text-xs text-neutral-700 bg-neutral-100 px-2 py-0.5 rounded border border-neutral-200 font-medium"
@@ -279,7 +402,7 @@ const Exhibitors = () => {
                     </td>
 
                     {/* Company */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <p className="font-semibold text-neutral-900 group-hover:text-red-600 transition-colors text-sm">
                         {x.companyName}
                       </p>
@@ -289,7 +412,7 @@ const Exhibitors = () => {
                     </td>
 
                     {/* Contact */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <p className="text-xs font-medium text-neutral-800">
                         {x.email}
                       </p>
@@ -299,21 +422,21 @@ const Exhibitors = () => {
                     </td>
 
                     {/* Industry Sector */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <span className="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200/80 inline-block">
                         {x.industrySector}
                       </span>
                     </td>
 
                     {/* Stall Type */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <span className="px-2 py-0.5 rounded-md text-xs font-medium bg-neutral-50 text-neutral-700 border border-neutral-200/80 inline-block">
                         {x.spaceRequired}
                       </span>
                     </td>
 
                     {/* Amount */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <span className="font-semibold text-xs text-neutral-900 bg-neutral-50 px-2 py-1 rounded border border-neutral-200/80">
                         {x.amount == null
                           ? "Not set"
@@ -322,29 +445,18 @@ const Exhibitors = () => {
                     </td>
 
                     {/* Payment Status */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <StatusBadge status={x.paymentStatus} />
                     </td>
 
                     {/* Registration Status */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <StatusBadge status={x.status} />
                     </td>
 
                     {/* Registration Date */}
-                    <td className="px-5 py-3 text-xs text-neutral-500 font-medium">
+                    <td className="px-4 py-2.5 text-xs text-neutral-500 font-medium">
                       {new Date(x.createdAt).toLocaleDateString("en-IN")}
-                    </td>
-
-                    {/* Action */}
-                    <td className="px-5 py-3">
-                      <button
-                        onClick={() => setSelectedId(x._id)}
-                        className="flex items-center gap-1.5 text-white bg-red-600 hover:bg-red-700 shadow-sm shadow-red-600/20 px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all hover:scale-105 active:scale-95"
-                      >
-                        <Eye size={13} />
-                        View
-                      </button>
                     </td>
                   </tr>
                 ))
@@ -354,20 +466,20 @@ const Exhibitors = () => {
         </div>
 
         {/* Pagination */}
-        {filtered.length > 0 && (
+        {totalRecords > 0 && (
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3.5 sm:p-4 border-t border-neutral-100 text-xs text-neutral-500">
             <p>
               Showing{" "}
               <span className="font-semibold text-neutral-800">
-                {filtered.length ? start + 1 : 0}
+                {startRecord}
               </span>{" "}
               to{" "}
               <span className="font-semibold text-neutral-800">
-                {Math.min(start + 10, filtered.length)}
+                {endRecord}
               </span>{" "}
               of{" "}
               <span className="font-semibold text-neutral-800">
-                {filtered.length}
+                {totalRecords}
               </span>{" "}
               exhibitors
             </p>
@@ -375,8 +487,8 @@ const Exhibitors = () => {
             <div className="flex items-center gap-2">
               <button
                 aria-label="Previous page"
-                disabled={currentPage === 1}
-                onClick={() => setPage(currentPage - 1)}
+                disabled={currentPage <= 1 || loading}
+                onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
                 className="border border-neutral-200 p-1.5 rounded-lg cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:border-red-300 hover:text-red-600 transition-colors"
               >
                 <ChevronLeft size={16} />
@@ -392,8 +504,8 @@ const Exhibitors = () => {
 
               <button
                 aria-label="Next page"
-                disabled={currentPage >= totalPages}
-                onClick={() => setPage(currentPage + 1)}
+                disabled={currentPage >= totalPages || loading}
+                onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
                 className="border border-neutral-200 p-1.5 rounded-lg cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:border-red-300 hover:text-red-600 transition-colors"
               >
                 <ChevronRight size={16} />

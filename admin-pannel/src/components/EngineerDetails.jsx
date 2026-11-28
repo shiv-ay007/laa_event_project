@@ -12,7 +12,12 @@ import {
     ClipboardCheck,
 } from "lucide-react";
 import Swal from "sweetalert2";
-import api from "../services/api";
+import {
+    getSingleEngineer,
+    viewEngineerDocument,
+    updateEngineerPaymentStatus,
+    updateEngineerApplicationStatus,
+} from "../api/engineerApi";
 import StatusBadge from "./StatusBadge";
 
 // Reusable Detail Component
@@ -52,9 +57,7 @@ const EngineerDetails = ({
             setLoading(true);
             setError("");
 
-            const response = await api.get(
-                `/engineers/${engineerId}`
-            );
+            const response = await getSingleEngineer(engineerId);
 
             if (response.data.success) {
                 setEngineer(response.data.data);
@@ -91,8 +94,9 @@ const EngineerDetails = ({
         try {
             setDocumentLoading(documentType);
 
-            const response = await api.get(
-                `/engineers/${engineerId}/document/${documentType}`
+            const response = await viewEngineerDocument(
+                engineerId,
+                documentType
             );
 
             if (response.data.success && response.data.url) {
@@ -151,8 +155,8 @@ const EngineerDetails = ({
 
             setUpdating(true);
 
-            const response = await api.patch(
-                `/engineers/${engineerId}/payment-status`,
+            const response = await updateEngineerPaymentStatus(
+                engineerId,
                 {
                     paymentStatus,
                 }
@@ -241,8 +245,8 @@ const EngineerDetails = ({
 
             setUpdating(true);
 
-            const response = await api.patch(
-                `/engineers/${engineerId}/application-status`,
+            const response = await updateEngineerApplicationStatus(
+                engineerId,
                 {
                     status,
                     adminRemarks,

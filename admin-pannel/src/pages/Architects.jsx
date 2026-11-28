@@ -11,8 +11,7 @@ import {
     ChevronLeft,
     ChevronRight,
 } from "lucide-react";
-
-import api from "../services/api";
+import { getAllArchitects } from "../api/architectApi";
 import StatCard from "../components/StatCard";
 import StatusBadge from "../components/StatusBadge";
 import ArchitectDetails from "../components/ArchitectDetails";
@@ -20,125 +19,151 @@ import ArchitectDetails from "../components/ArchitectDetails";
 const Architects = () => {
 
     // States
-
     const [architects, setArchitects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
-    const [selectedArchitectId, setSelectedArchitectId] = useState(null);
 
+    const [selectedArchitectId, setSelectedArchitectId] =
+        useState(null);
+
+    // Search and Filters
     const [search, setSearch] = useState("");
+    const [debouncedSearch, setDebouncedSearch] = useState("");
     const [statusFilter, setStatusFilter] = useState("all");
     const [categoryFilter, setCategoryFilter] = useState("all");
 
+    // Pagination
     const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [totalRecords, setTotalRecords] = useState(0);
 
     const itemsPerPage = 10;
 
-    // Fetch All Architects
+    // Refresh State
+    const [refreshKey, setRefreshKey] = useState(0);
 
-    const fetchArchitects = async () => {
-        try {
-            setLoading(true);
-            setError("");
+    // Server Side Statistics
+    const [statistics, setStatistics] = useState({
+        totalArchitects: 0,
+        pendingApplications: 0,
+        approvedApplications: 0,
+        rejectedApplications: 0,
+    });
 
-            const response = await api.get("/architects");
+    // Search Debounce
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedSearch(search.trim());
+            setCurrentPage(1);
+        }, 400);
 
-            if (response.data.success) {
-                setArchitects(response.data.data);
-                setCurrentPage(1);
-            } else {
-                setError("Failed to fetch architects");
+        return () => clearTimeout(timer);
+    }, [search]);
+
+    // Fetch Architects From Backend
+    useEffect(() => {
+        let active = true;
+
+        const loadArchitects = async () => {
+            try {
+                setLoading(true);
+                setError("");
+
+                const response = await getAllArchitects({
+                    page: currentPage,
+                    limit: itemsPerPage,
+                    search: debouncedSearch,
+                    status: statusFilter,
+                    category: categoryFilter,
+                });
+
+                if (!active) return;
+
+                if (response.data.success) {
+                    const {
+                        data,
+                        stats,
+                        pagination,
+                    } = response.data;
+
+                    setArchitects(data);
+                    setStatistics(stats);
+
+                    setTotalPages(pagination.totalPages);
+                    setTotalRecords(pagination.totalRecords);
+
+                    setCurrentPage(pagination.currentPage);
+
+                } else {
+                    setError("Failed to fetch architects");
+                }
+
+            } catch (error) {
+                if (!active) return;
+
+                console.log("Architects Error:", error);
+
+                setError(
+                    error.response?.data?.message ||
+                    "Unable to load architects"
+                );
+
+            } finally {
+                if (active) {
+                    setLoading(false);
+                }
             }
+        };
 
-        } catch (error) {
-            console.log("Architects Error:", error);
-            setError("Unable to load architects");
+        loadArchitects();
 
-        } finally {
-            setLoading(false);
-        }
+        return () => {
+            active = false;
+        };
+
+    }, [
+        currentPage,
+        debouncedSearch,
+        statusFilter,
+        categoryFilter,
+        refreshKey,
+    ]);
+
+    // Refresh Data
+    const fetchArchitects = () => {
+        setRefreshKey((prev) => prev + 1);
     };
 
-    useEffect(() => {
-        fetchArchitects();
-    }, []);
-
     // Statistics Cards Data
-
     const stats = [
         {
             title: "Total Architects",
-            value: architects.length,
+            value: statistics.totalArchitects,
             icon: Users,
             description: "Total registrations",
         },
         {
             title: "Pending Applications",
-            value: architects.filter(
-                (item) => item.status === "pending"
-            ).length,
+            value: statistics.pendingApplications,
             icon: Clock,
             description: "Awaiting approval",
         },
         {
             title: "Approved Applications",
-            value: architects.filter(
-                (item) => item.status === "approved"
-            ).length,
+            value: statistics.approvedApplications,
             icon: CheckCircle2,
             description: "Approved registrations",
         },
         {
             title: "Rejected Applications",
-            value: architects.filter(
-                (item) => item.status === "rejected"
-            ).length,
+            value: statistics.rejectedApplications,
             icon: XCircle,
             description: "Rejected registrations",
         },
     ];
 
-    // Search and Filters
-
-    const filteredArchitects = architects.filter((item) => {
-
-        const searchText = search.toLowerCase().trim();
-
-        const matchesSearch =
-            item.fullName?.toLowerCase().includes(searchText) ||
-            item.email?.toLowerCase().includes(searchText) ||
-            item.phone?.includes(searchText) ||
-            item.coaNumber?.toLowerCase().includes(searchText) ||
-            item.registrationId?.toLowerCase().includes(searchText);
-
-        const matchesStatus =
-            statusFilter === "all" ||
-            item.status === statusFilter;
-
-        const matchesCategory =
-            categoryFilter === "all" ||
-            item.category === categoryFilter;
-
-        return matchesSearch && matchesStatus && matchesCategory;
-    });
-
-    // Pagination
-
-    const totalPages = Math.max(
-        1,
-        Math.ceil(filteredArchitects.length / itemsPerPage)
-    );
-
+    // Pagination Starting Index
     const startIndex = (currentPage - 1) * itemsPerPage;
-
-    const paginatedArchitects = filteredArchitects.slice(
-        startIndex,
-        startIndex + itemsPerPage
-    );
-
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [search, statusFilter, categoryFilter]);
 
     return (
         <div className="space-y-4">
@@ -219,7 +244,10 @@ const Architects = () => {
                         {/* Status Filter */}
                         <select
                             value={statusFilter}
-                            onChange={(e) => setStatusFilter(e.target.value)}
+                            onChange={(e) => {
+                                setStatusFilter(e.target.value);
+                                setCurrentPage(1);
+                            }}
                             className="border border-neutral-200 rounded-lg px-3 py-2 text-xs outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 bg-neutral-50/60 hover:bg-white font-medium text-neutral-700 cursor-pointer transition-all"
                         >
                             <option value="all">All Status</option>
@@ -231,7 +259,10 @@ const Architects = () => {
                         {/* Category Filter */}
                         <select
                             value={categoryFilter}
-                            onChange={(e) => setCategoryFilter(e.target.value)}
+                            onChange={(e) => {
+                                setCategoryFilter(e.target.value);
+                                setCurrentPage(1);
+                            }}
                             className="border border-neutral-200 rounded-lg px-3 py-2 text-xs outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 bg-neutral-50/60 hover:bg-white font-medium text-neutral-700 cursor-pointer transition-all"
                         >
                             <option value="all">All Categories</option>
@@ -254,6 +285,16 @@ const Architects = () => {
 
                             <tr>
 
+                                {/* S.No. (Sticky) */}
+                                <th className="sticky left-0 z-20 bg-neutral-900 w-14 min-w-[56px] px-3 py-3 font-semibold text-center border-r border-neutral-800">
+                                    S.No.
+                                </th>
+
+                                {/* Actions (Sticky) */}
+                                <th className="sticky left-[56px] z-20 bg-neutral-900 w-20 min-w-[72px] px-3 py-3 font-semibold text-center border-r border-neutral-800 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.4)]">
+                                    Actions
+                                </th>
+
                                 {[
                                     "Registration ID",
                                     "Architect Name",
@@ -263,11 +304,10 @@ const Architects = () => {
                                     "Payment",
                                     "Status",
                                     "Date",
-                                    "Action",
                                 ].map((heading) => (
                                     <th
                                         key={heading}
-                                        className="px-5 py-3 font-semibold"
+                                        className="px-4 py-3 font-semibold"
                                     >
                                         {heading}
                                     </th>
@@ -283,7 +323,7 @@ const Architects = () => {
 
                                 <tr>
                                     <td
-                                        colSpan={9}
+                                        colSpan={10}
                                         className="text-center py-12 text-neutral-400 text-sm"
                                     >
                                         Loading architects...
@@ -294,7 +334,7 @@ const Architects = () => {
 
                                 <tr>
                                     <td
-                                        colSpan={9}
+                                        colSpan={10}
                                         className="text-center py-12 text-red-600 text-sm"
                                     >
                                         {error}
@@ -308,11 +348,10 @@ const Architects = () => {
                                     </td>
                                 </tr>
 
-                            ) : paginatedArchitects.length === 0 ? (
-
+                            ) : architects.length === 0 ? (
                                 <tr>
                                     <td
-                                        colSpan={9}
+                                        colSpan={10}
                                         className="text-center py-12 text-neutral-400 text-sm"
                                     >
                                         No architects found
@@ -321,15 +360,32 @@ const Architects = () => {
 
                             ) : (
 
-                                paginatedArchitects.map((item) => (
+                                architects.map((item, index) => (
 
                                     <tr
                                         key={item._id}
                                         className="hover:bg-red-50/20 transition-colors group"
                                     >
 
+                                        {/* S.No. (Sticky) */}
+                                        <td className="sticky left-0 z-10 bg-white group-hover:bg-red-50/50 w-14 min-w-[56px] px-3 py-2.5 text-center text-xs font-mono font-medium text-neutral-500 border-r border-neutral-100 transition-colors">
+                                            {startIndex + index + 1}
+                                        </td>
+
+                                        {/* Action Button (Sticky) */}
+                                        <td className="sticky left-[56px] z-10 bg-white group-hover:bg-red-50/50 w-20 min-w-[72px] px-3 py-2.5 text-center border-r border-neutral-100 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.06)] transition-colors">
+                                            <button
+                                                onClick={() => setSelectedArchitectId(item._id)}
+                                                title="View Details"
+                                                aria-label="View Details"
+                                                className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-red-600 hover:bg-red-700 text-white shadow-xs shadow-red-600/30 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                                            >
+                                                <Eye size={15} />
+                                            </button>
+                                        </td>
+
                                         {/* Registration ID */}
-                                        <td className="px-5 py-3">
+                                        <td className="px-4 py-2.5">
                                             <span
                                                 title={item.registrationId}
                                                 className="font-mono text-xs text-neutral-700 bg-neutral-100 px-2 py-0.5 rounded border border-neutral-200"
@@ -339,12 +395,12 @@ const Architects = () => {
                                         </td>
 
                                         {/* Architect Name */}
-                                        <td className="px-5 py-3 font-semibold text-neutral-900 group-hover:text-red-600 transition-colors">
+                                        <td className="px-4 py-2.5 font-semibold text-neutral-900 group-hover:text-red-600 transition-colors">
                                             {item.title} {item.fullName}
                                         </td>
 
                                         {/* Contact */}
-                                        <td className="px-5 py-3">
+                                        <td className="px-4 py-2.5">
                                             <p className="text-xs font-medium text-neutral-800">
                                                 {item.email}
                                             </p>
@@ -354,43 +410,32 @@ const Architects = () => {
                                         </td>
 
                                         {/* COA Number */}
-                                        <td className="px-5 py-3">
+                                        <td className="px-4 py-2.5">
                                             <span className="font-mono text-xs text-neutral-800 bg-neutral-50 px-2 py-0.5 rounded border border-neutral-200 font-semibold">
                                                 {item.coaNumber}
                                             </span>
                                         </td>
 
                                         {/* Category */}
-                                        <td className="px-5 py-3">
+                                        <td className="px-4 py-2.5">
                                             <span className="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-red-50 text-red-700 border border-red-200/80 inline-block">
                                                 {item.category}
                                             </span>
                                         </td>
 
                                         {/* Payment Status */}
-                                        <td className="px-5 py-3">
+                                        <td className="px-4 py-2.5">
                                             <StatusBadge status={item.paymentStatus} />
                                         </td>
 
                                         {/* Registration Status */}
-                                        <td className="px-5 py-3">
+                                        <td className="px-4 py-2.5">
                                             <StatusBadge status={item.status} />
                                         </td>
 
                                         {/* Registration Date */}
-                                        <td className="px-5 py-3 text-xs text-neutral-500 font-medium">
+                                        <td className="px-4 py-2.5 text-xs text-neutral-500 font-medium">
                                             {new Date(item.createdAt).toLocaleDateString("en-IN")}
-                                        </td>
-
-                                        {/* Action Button */}
-                                        <td className="px-5 py-3">
-                                            <button
-                                                onClick={() => setSelectedArchitectId(item._id)}
-                                                className="flex items-center gap-1.5 text-white bg-red-600 hover:bg-red-700 shadow-sm shadow-red-600/20 px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all hover:scale-105 active:scale-95"
-                                            >
-                                                <Eye size={13} />
-                                                View
-                                            </button>
                                         </td>
 
                                     </tr>
@@ -406,42 +451,67 @@ const Architects = () => {
                 </div>
 
                 {/* Pagination */}
-                {!loading && !error && filteredArchitects.length > 0 && (
+                {/* Pagination */}
+                {!loading && !error && totalRecords > 0 && (
 
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3.5 sm:p-4 border-t border-neutral-100 text-xs text-neutral-500">
 
                         <p>
-                            Showing <span className="font-semibold text-neutral-800">{startIndex + 1}</span> to{" "}
+                            Showing{" "}
+
+                            <span className="font-semibold text-neutral-800">
+                                {startIndex + 1}
+                            </span>
+
+                            {" "}to{" "}
+
                             <span className="font-semibold text-neutral-800">
                                 {Math.min(
-                                    startIndex + itemsPerPage,
-                                    filteredArchitects.length
+                                    startIndex + architects.length,
+                                    totalRecords
                                 )}
-                            </span>{" "}
-                            of <span className="font-semibold text-neutral-800">{filteredArchitects.length}</span> architects
+                            </span>
+
+                            {" "}of{" "}
+
+                            <span className="font-semibold text-neutral-800">
+                                {totalRecords}
+                            </span>
+
+                            {" "}architects
                         </p>
 
                         <div className="flex items-center gap-2">
 
+                            {/* Previous Button */}
                             <button
-                                disabled={currentPage === 1}
-                                onClick={() => setCurrentPage((prev) => prev - 1)}
+                                disabled={currentPage <= 1 || loading}
+                                onClick={() =>
+                                    setCurrentPage((prev) => prev - 1)
+                                }
                                 className="border border-neutral-200 p-1.5 rounded-lg cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:border-red-300 hover:text-red-600 transition-colors"
                             >
                                 <ChevronLeft size={16} />
                             </button>
 
+                            {/* Current Page */}
                             <span className="bg-red-600 text-white font-semibold px-3 py-1 rounded-lg text-xs shadow-sm shadow-red-600/30">
                                 {currentPage}
                             </span>
 
+                            {/* Total Pages */}
                             <span className="text-xs text-neutral-400">
                                 of {totalPages}
                             </span>
 
+                            {/* Next Button */}
                             <button
-                                disabled={currentPage >= totalPages}
-                                onClick={() => setCurrentPage((prev) => prev + 1)}
+                                disabled={
+                                    currentPage >= totalPages || loading
+                                }
+                                onClick={() =>
+                                    setCurrentPage((prev) => prev + 1)
+                                }
                                 className="border border-neutral-200 p-1.5 rounded-lg cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:border-red-300 hover:text-red-600 transition-colors"
                             >
                                 <ChevronRight size={16} />

@@ -283,27 +283,173 @@ export const createExhibitor = async (req, res) => {
   }
 };
 
-// Get All Exhibitors
-
+// Get All Exhibitors - Server Side
 export const getAllExhibitors = async (req, res) => {
   try {
-    const exhibitors = await Exhibitor.find()
+    const {
+      search = "",
+      status = "all",
+      stall = "all",
+      spaceRequired = "all",
+      sector = "all",
+      industrySector = "all",
+    } = req.query;
+
+    const selectedStall = stall !== "all" ? stall : spaceRequired;
+    const selectedSector = sector !== "all" ? sector : industrySector;
+
+    // Validate Filters
+    const allowedStatuses = [
+      "all",
+      "pending",
+      "approved",
+      "rejected",
+    ];
+
+    const allowedSectors = [
+      "all",
+      "Luxury Interiors & Decor",
+      "Architectural Lighting & Automation",
+      "Structural & Facade Materials",
+      "Tiles, Bathware & Stone",
+      "Furniture & Outdoor Solutions",
+      "Green Building Tech & HVAC",
+      "Other Premium Products",
+    ];
+
+    const allowedStalls = [
+      "all",
+      "Executive Stall (9 sqm)",
+      "Gold Stall (18 sqm)",
+      "Platinum Pavilion (36 sqm)",
+      "Custom Open Space / Sponsor Deck",
+    ];
+
+    if (
+      typeof search !== "string" ||
+      search.length > 200 ||
+      !allowedStatuses.includes(status) ||
+      !allowedSectors.includes(selectedSector) ||
+      !allowedStalls.includes(selectedStall)
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid search or filter parameters",
+      });
+    }
+
+    // Pagination
+    const requestedPage = Math.max(
+      1,
+      parseInt(req.query.page, 10) || 1
+    );
+
+    const limit = Math.min(
+      100,
+      Math.max(1, parseInt(req.query.limit, 10) || 10)
+    );
+
+    // MongoDB Query
+    const query = {};
+
+    // Server Side Search
+    if (search.trim()) {
+      const searchText = search
+        .trim()
+        .replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+      query.$or = [
+        { companyName: { $regex: searchText, $options: "i" } },
+        { contactPerson: { $regex: searchText, $options: "i" } },
+        { email: { $regex: searchText, $options: "i" } },
+        { phone: { $regex: searchText, $options: "i" } },
+        { registrationId: { $regex: searchText, $options: "i" } },
+      ];
+    }
+
+    // Status Filter
+    if (status !== "all") {
+      query.status = status;
+    }
+
+    // Space Required Filter
+    if (selectedStall !== "all") {
+      query.spaceRequired = selectedStall;
+    }
+
+    // Industry Sector Filter
+    if (selectedSector !== "all") {
+      query.industrySector = selectedSector;
+    }
+
+    // Total Records and Statistics
+    const [
+      totalRecords,
+      totalExhibitors,
+      pendingApplications,
+      approvedApplications,
+      rejectedApplications,
+      verifiedPayments,
+      pendingPayments,
+    ] = await Promise.all([
+      Exhibitor.countDocuments(query),
+      Exhibitor.countDocuments(),
+      Exhibitor.countDocuments({ status: "pending" }),
+      Exhibitor.countDocuments({ status: "approved" }),
+      Exhibitor.countDocuments({ status: "rejected" }),
+      Exhibitor.countDocuments({ paymentStatus: "verified" }),
+      Exhibitor.countDocuments({ paymentStatus: "pending" }),
+    ]);
+
+    const totalPages = Math.max(
+      1,
+      Math.ceil(totalRecords / limit)
+    );
+
+    const page = Math.min(requestedPage, totalPages);
+
+    const skip = (page - 1) * limit;
+
+    // Fetch Only Required Records
+    const exhibitors = await Exhibitor.find(query)
       .select(
         "registrationId companyName contactPerson email phone industrySector spaceRequired amount paymentStatus status createdAt"
       )
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1, _id: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
 
-    res.status(200).json({
+    // Response
+    return res.status(200).json({
       success: true,
       message: "Exhibitors fetched successfully",
-      total: exhibitors.length,
+
+      total: totalRecords,
+
+      stats: {
+        totalExhibitors,
+        pendingApplications,
+        approvedApplications,
+        rejectedApplications,
+        verifiedPayments,
+        pendingPayments,
+      },
+
+      pagination: {
+        currentPage: page,
+        limit,
+        totalRecords,
+        totalPages,
+      },
+
       data: exhibitors,
     });
 
   } catch (error) {
     console.log("Get Exhibitors Error:", error.message);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Failed to fetch exhibitors",
     });

@@ -15,154 +15,175 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-import api from "../services/api";
+import { getAllEngineers } from "../api/engineerApi";
 import StatCard from "../components/StatCard";
 import StatusBadge from "../components/StatusBadge";
 import EngineerDetails from "../components/EngineerDetails";
 
 const Engineers = () => {
+
+  // States
   const [engineers, setEngineers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const [selectedEngineerId, setSelectedEngineerId] =
+    useState(null);
+
+  // Search and Filters
   const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
 
+  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedEngineerId, setSelectedEngineerId] = useState(null);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalRecords, setTotalRecords] = useState(0);
+
   const itemsPerPage = 10;
 
-  // Fetch Engineers
+  // Refresh State
+  const [refreshKey, setRefreshKey] = useState(0);
 
-  const fetchEngineers = async () => {
-    try {
-      setLoading(true);
-      setError("");
+  // Server Side Statistics
+  const [statistics, setStatistics] = useState({
+    totalEngineers: 0,
+    freeEngineers: 0,
+    paidEngineers: 0,
+    pendingApplications: 0,
+    approvedApplications: 0,
+    rejectedApplications: 0,
+  });
 
-      const response = await api.get("/engineers");
+  // Search Debounce
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search.trim());
+      setCurrentPage(1);
+    }, 400);
 
-      if (response.data.success) {
-        setEngineers(response.data.data);
-        setCurrentPage(1);
-      } else {
-        setError("Unable to fetch engineers");
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  // Server Side Data Fetching
+  useEffect(() => {
+    let active = true;
+
+    const loadEngineers = async () => {
+      try {
+        setLoading(true);
+        setError("");
+
+        const response = await getAllEngineers({
+          page: currentPage,
+          limit: itemsPerPage,
+          search: debouncedSearch,
+          category: categoryFilter,
+          status: statusFilter,
+        });
+
+        if (!active) return;
+
+        if (response.data.success) {
+
+          const {
+            data,
+            stats,
+            pagination,
+          } = response.data;
+
+          setEngineers(data);
+          setStatistics(stats);
+
+          setTotalRecords(pagination.totalRecords);
+          setTotalPages(pagination.totalPages);
+          setCurrentPage(pagination.currentPage);
+
+        } else {
+          setError("Unable to fetch engineers");
+        }
+
+      } catch (error) {
+
+        if (!active) return;
+
+        console.log("Engineers Error:", error);
+
+        setError(
+          error.response?.data?.message ||
+          "Failed to fetch engineers"
+        );
+
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
       }
-    } catch (error) {
-      setError(
-        error.response?.data?.message ||
-        "Failed to fetch engineers"
-      );
-    } finally {
-      setLoading(false);
-    }
+    };
+
+    loadEngineers();
+
+    return () => {
+      active = false;
+    };
+
+  }, [
+    currentPage,
+    debouncedSearch,
+    categoryFilter,
+    statusFilter,
+    refreshKey,
+  ]);
+
+  // Refresh Engineers
+  const fetchEngineers = () => {
+    setRefreshKey((prev) => prev + 1);
   };
 
-  useEffect(() => {
-    fetchEngineers();
-  }, []);
-
-  // Statistics
-
+  // Statistics Cards
   const stats = [
     {
       title: "Total Engineers",
-      value: engineers.length,
+      value: statistics.totalEngineers,
       icon: Users,
       description: "All registered engineers",
     },
     {
       title: "Free Engineers",
-      value: engineers.filter(
-        (item) => item.category === "LAA Member"
-      ).length,
+      value: statistics.freeEngineers,
       icon: UserCheck,
       description: "LAA members",
     },
     {
       title: "Paid Engineers",
-      value: engineers.filter(
-        (item) => item.category === "Other than LAA"
-      ).length,
+      value: statistics.paidEngineers,
       icon: Wallet,
       description: "Non-LAA members",
     },
     {
       title: "Pending",
-      value: engineers.filter(
-        (item) => item.status === "pending"
-      ).length,
+      value: statistics.pendingApplications,
       icon: Clock,
       description: "Awaiting approval",
     },
     {
       title: "Approved",
-      value: engineers.filter(
-        (item) => item.status === "approved"
-      ).length,
+      value: statistics.approvedApplications,
       icon: CheckCircle2,
       description: "Approved applications",
     },
     {
       title: "Rejected",
-      value: engineers.filter(
-        (item) => item.status === "rejected"
-      ).length,
+      value: statistics.rejectedApplications,
       icon: XCircle,
       description: "Rejected applications",
     },
   ];
 
-  // Search and Filters
-
-  const filteredEngineers = engineers.filter((item) => {
-    const searchValue = search.trim().toLowerCase();
-
-    const matchesSearch = [
-      item.fullName,
-      item.email,
-      item.phone,
-      item.regNumber,
-      item.registrationId,
-    ].some((value) =>
-      String(value || "")
-        .toLowerCase()
-        .includes(searchValue)
-    );
-
-    const matchesCategory =
-      categoryFilter === "all" ||
-      item.category === categoryFilter;
-
-    const matchesStatus =
-      statusFilter === "all" ||
-      item.status === statusFilter;
-
-    return (
-      matchesSearch &&
-      matchesCategory &&
-      matchesStatus
-    );
-  });
-
-  // Pagination
-
-  const totalPages = Math.max(
-    1,
-    Math.ceil(filteredEngineers.length / itemsPerPage)
-  );
-
+  // Pagination Starting Index
   const startIndex = (currentPage - 1) * itemsPerPage;
-
-  const currentEngineers = filteredEngineers.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [search, categoryFilter, statusFilter]);
-
   return (
     <div className="space-y-4">
 
@@ -242,9 +263,10 @@ const Engineers = () => {
 
             <select
               value={categoryFilter}
-              onChange={(e) =>
-                setCategoryFilter(e.target.value)
-              }
+              onChange={(e) => {
+                setCategoryFilter(e.target.value);
+                setCurrentPage(1);
+              }}
               className="border border-neutral-200 rounded-lg px-3 py-2 text-xs outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 bg-neutral-50/60 hover:bg-white font-medium text-neutral-700 cursor-pointer transition-all"
             >
               <option value="all">All Categories</option>
@@ -258,9 +280,10 @@ const Engineers = () => {
 
             <select
               value={statusFilter}
-              onChange={(e) =>
-                setStatusFilter(e.target.value)
-              }
+              onChange={(e) => {
+                setStatusFilter(e.target.value);
+                setCurrentPage(1);
+              }}
               className="border border-neutral-200 rounded-lg px-3 py-2 text-xs outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 bg-neutral-50/60 hover:bg-white font-medium text-neutral-700 cursor-pointer transition-all"
             >
               <option value="all">All Status</option>
@@ -282,6 +305,16 @@ const Engineers = () => {
 
               <tr>
 
+                {/* S.No. (Sticky) */}
+                <th className="sticky left-0 z-20 bg-neutral-900 w-14 min-w-[56px] px-3 py-3 font-semibold text-center border-r border-neutral-800">
+                  S.No.
+                </th>
+
+                {/* Actions (Sticky) */}
+                <th className="sticky left-[56px] z-20 bg-neutral-900 w-20 min-w-[72px] px-3 py-3 font-semibold text-center border-r border-neutral-800 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.4)]">
+                  Actions
+                </th>
+
                 {[
                   "Registration ID",
                   "Engineer Name",
@@ -292,11 +325,10 @@ const Engineers = () => {
                   "Payment",
                   "Status",
                   "Date",
-                  "Action",
                 ].map((heading) => (
                   <th
                     key={heading}
-                    className="px-5 py-3 font-semibold"
+                    className="px-4 py-3 font-semibold"
                   >
                     {heading}
                   </th>
@@ -311,7 +343,7 @@ const Engineers = () => {
               {loading ? (
 
                 <tr>
-                  <td colSpan={10} className="text-center py-12 text-neutral-400 text-sm">
+                  <td colSpan={11} className="text-center py-12 text-neutral-400 text-sm">
                     Loading engineers...
                   </td>
                 </tr>
@@ -319,7 +351,7 @@ const Engineers = () => {
               ) : error ? (
 
                 <tr>
-                  <td colSpan={10} className="text-center py-12 text-red-600 text-sm">
+                  <td colSpan={11} className="text-center py-12 text-red-600 text-sm">
                     {error}
                     <button
                       onClick={fetchEngineers}
@@ -330,25 +362,42 @@ const Engineers = () => {
                   </td>
                 </tr>
 
-              ) : currentEngineers.length === 0 ? (
+             ) : engineers.length === 0 ? (
 
                 <tr>
-                  <td colSpan={10} className="text-center py-12 text-neutral-400 text-sm">
+                  <td colSpan={11} className="text-center py-12 text-neutral-400 text-sm">
                     No engineers found.
                   </td>
                 </tr>
 
               ) : (
 
-                currentEngineers.map((item) => (
+                engineers.map((item, index) => (
 
                   <tr
                     key={item._id}
                     className="hover:bg-red-50/20 transition-colors group"
                   >
 
+                    {/* S.No. (Sticky) */}
+                    <td className="sticky left-0 z-10 bg-white group-hover:bg-red-50/50 w-14 min-w-[56px] px-3 py-2.5 text-center text-xs font-mono font-medium text-neutral-500 border-r border-neutral-100 transition-colors">
+                      {startIndex + index + 1}
+                    </td>
+
+                    {/* Action Button (Sticky) */}
+                    <td className="sticky left-[56px] z-10 bg-white group-hover:bg-red-50/50 w-20 min-w-[72px] px-3 py-2.5 text-center border-r border-neutral-100 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.06)] transition-colors">
+                      <button
+                        onClick={() => setSelectedEngineerId(item._id)}
+                        title="View Details"
+                        aria-label="View Details"
+                        className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-red-600 hover:bg-red-700 text-white shadow-xs shadow-red-600/30 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                      >
+                        <Eye size={15} />
+                      </button>
+                    </td>
+
                     {/* Registration ID */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <span
                         title={item.registrationId}
                         className="font-mono text-xs text-neutral-700 bg-neutral-100 px-2 py-0.5 rounded border border-neutral-200 font-medium"
@@ -358,12 +407,12 @@ const Engineers = () => {
                     </td>
 
                     {/* Engineer Name */}
-                    <td className="px-5 py-3 font-semibold text-neutral-900 group-hover:text-red-600 transition-colors">
+                    <td className="px-4 py-2.5 font-semibold text-neutral-900 group-hover:text-red-600 transition-colors">
                       {item.title} {item.fullName}
                     </td>
 
                     {/* Contact */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <p className="text-xs font-medium text-neutral-800">{item.email}</p>
                       <p className="text-[11px] text-neutral-400 font-mono mt-0.5">
                         {item.phone}
@@ -371,21 +420,20 @@ const Engineers = () => {
                     </td>
 
                     {/* Registration No. */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <span className="font-mono text-xs text-neutral-800 bg-neutral-50 px-2 py-0.5 rounded border border-neutral-200 font-semibold">
                         {item.regNumber}
                       </span>
                     </td>
 
                     {/* Category */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <div className="flex flex-col gap-0.5">
                         <span
-                          className={`px-2.5 py-0.5 rounded-md text-xs font-semibold inline-block w-fit border ${
-                            item.category === "LAA Member"
-                              ? "bg-blue-50 text-blue-700 border-blue-200/80"
-                              : "bg-rose-50 text-rose-700 border-rose-200/80"
-                          }`}
+                          className={`px-2.5 py-0.5 rounded-md text-xs font-semibold inline-block w-fit border ${item.category === "LAA Member"
+                            ? "bg-blue-50 text-blue-700 border-blue-200/80"
+                            : "bg-rose-50 text-rose-700 border-rose-200/80"
+                            }`}
                         >
                           {item.category === "LAA Member"
                             ? "Free (LAA)"
@@ -398,36 +446,25 @@ const Engineers = () => {
                     </td>
 
                     {/* Amount */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <span className="font-semibold text-xs text-neutral-900 bg-neutral-50 px-2 py-1 rounded border border-neutral-200/80">
                         ₹{Number(item.amount || 0).toLocaleString("en-IN")}
                       </span>
                     </td>
 
                     {/* Payment Status */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <StatusBadge status={item.paymentStatus} />
                     </td>
 
                     {/* Registration Status */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <StatusBadge status={item.status} />
                     </td>
 
                     {/* Registration Date */}
-                    <td className="px-5 py-3 text-xs text-neutral-500 font-medium">
+                    <td className="px-4 py-2.5 text-xs text-neutral-500 font-medium">
                       {new Date(item.createdAt).toLocaleDateString("en-IN")}
-                    </td>
-
-                    {/* Action Button */}
-                    <td className="px-5 py-3">
-                      <button
-                        onClick={() => setSelectedEngineerId(item._id)}
-                        className="flex items-center gap-1.5 text-white bg-red-600 hover:bg-red-700 shadow-sm shadow-red-600/20 px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all hover:scale-105 active:scale-95"
-                      >
-                        <Eye size={13} />
-                        View
-                      </button>
                     </td>
 
                   </tr>
@@ -443,53 +480,75 @@ const Engineers = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3.5 sm:p-4 border-t border-neutral-100 text-xs text-neutral-500">
+         {/* Pagination */}
+{!loading && !error && (
 
-          <p>
-            Showing{" "}
-            <span className="font-semibold text-neutral-800">
-              {filteredEngineers.length === 0 ? 0 : startIndex + 1}
-            </span>{" "}
-            to{" "}
-            <span className="font-semibold text-neutral-800">
-              {Math.min(startIndex + itemsPerPage, filteredEngineers.length)}
-            </span>{" "}
-            of <span className="font-semibold text-neutral-800">{filteredEngineers.length}</span> engineers
-          </p>
+  <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3.5 sm:p-4 border-t border-neutral-100 text-xs text-neutral-500">
 
-          <div className="flex items-center gap-2">
+    <p>
+      Showing{" "}
 
-            <button
-              onClick={() =>
-                setCurrentPage((prev) => prev - 1)
-              }
-              disabled={currentPage === 1}
-              className="border border-neutral-200 p-1.5 rounded-lg cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:border-red-300 hover:text-red-600 transition-colors"
-            >
-              <ChevronLeft size={16} />
-            </button>
+      <span className="font-semibold text-neutral-800">
+        {totalRecords === 0 ? 0 : startIndex + 1}
+      </span>
 
-            <span className="bg-red-600 text-white font-semibold px-3 py-1 rounded-lg text-xs shadow-sm shadow-red-600/30">
-              {currentPage}
-            </span>
+      {" "}to{" "}
 
-            <span className="text-xs text-neutral-400">
-              of {totalPages}
-            </span>
+      <span className="font-semibold text-neutral-800">
+        {Math.min(
+          startIndex + engineers.length,
+          totalRecords
+        )}
+      </span>
 
-            <button
-              onClick={() =>
-                setCurrentPage((prev) => prev + 1)
-              }
-              disabled={currentPage >= totalPages}
-              className="border border-neutral-200 p-1.5 rounded-lg cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:border-red-300 hover:text-red-600 transition-colors"
-            >
-              <ChevronRight size={16} />
-            </button>
+      {" "}of{" "}
 
-          </div>
+      <span className="font-semibold text-neutral-800">
+        {totalRecords}
+      </span>
 
-        </div>
+      {" "}engineers
+    </p>
+
+    <div className="flex items-center gap-2">
+
+      {/* Previous Button */}
+      <button
+        onClick={() =>
+          setCurrentPage((prev) => prev - 1)
+        }
+        disabled={currentPage <= 1 || loading}
+        className="border border-neutral-200 p-1.5 rounded-lg cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:border-red-300 hover:text-red-600 transition-colors"
+      >
+        <ChevronLeft size={16} />
+      </button>
+
+      {/* Current Page */}
+      <span className="bg-red-600 text-white font-semibold px-3 py-1 rounded-lg text-xs shadow-sm shadow-red-600/30">
+        {currentPage}
+      </span>
+
+      {/* Total Pages */}
+      <span className="text-xs text-neutral-400">
+        of {totalPages}
+      </span>
+
+      {/* Next Button */}
+      <button
+        onClick={() =>
+          setCurrentPage((prev) => prev + 1)
+        }
+        disabled={currentPage >= totalPages || loading}
+        className="border border-neutral-200 p-1.5 rounded-lg cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:border-red-300 hover:text-red-600 transition-colors"
+      >
+        <ChevronRight size={16} />
+      </button>
+
+    </div>
+
+  </div>
+
+)}
 
       </div>
 

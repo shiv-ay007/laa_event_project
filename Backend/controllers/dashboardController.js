@@ -4,48 +4,74 @@ import Exhibitor from "../models/exhibitorModel.js";
 
 export const getDashboardStats = async (req, res) => {
   try {
-    // Total registrations
-    const totalArchitects = await Architect.countDocuments();
-    const totalEngineers = await Engineer.countDocuments();
-    const totalExhibitors = await Exhibitor.countDocuments();
+    const [
+      totalArchitects,
+      totalEngineers,
+      totalExhibitors,
+      freeEngineers,
+      paidEngineers,
+      pendingArchitects,
+      pendingEngineers,
+      pendingExhibitors,
+      approvedArchitects,
+      approvedEngineers,
+      approvedExhibitors,
+      rejectedArchitects,
+      rejectedEngineers,
+      rejectedExhibitors,
+      verifiedArchitects,
+      verifiedEngineers,
+      verifiedExhibitors,
+    ] = await Promise.all([
+      Architect.countDocuments(),
+      Engineer.countDocuments(),
+      Exhibitor.countDocuments(),
+      Engineer.countDocuments({ category: "LAA Member" }),
+      Engineer.countDocuments({ category: "Other than LAA" }),
+      Architect.countDocuments({ status: "pending" }),
+      Engineer.countDocuments({ status: "pending" }),
+      Exhibitor.countDocuments({ status: "pending" }),
+      Architect.countDocuments({ status: "approved" }),
+      Engineer.countDocuments({ status: "approved" }),
+      Exhibitor.countDocuments({ status: "approved" }),
+      Architect.countDocuments({ status: "rejected" }),
+      Engineer.countDocuments({ status: "rejected" }),
+      Exhibitor.countDocuments({ status: "rejected" }),
+      Architect.countDocuments({ paymentStatus: "verified" }),
+      Engineer.countDocuments({ paymentStatus: "verified" }),
+      Exhibitor.countDocuments({ paymentStatus: "verified" }),
+    ]);
 
     const totalRegistrations =
       totalArchitects + totalEngineers + totalExhibitors;
 
-    // Free and paid engineers
-    const freeEngineers = await Engineer.countDocuments({
-      category: "LAA Member",
-    });
-
-    const paidEngineers = await Engineer.countDocuments({
-      category: "Other than LAA",
-    });
-
-    // Pending applications
     const pendingApplications =
-      (await Architect.countDocuments({ status: "pending" })) +
-      (await Engineer.countDocuments({ status: "pending" })) +
-      (await Exhibitor.countDocuments({ status: "pending" }));
+      pendingArchitects + pendingEngineers + pendingExhibitors;
 
-    // Approved applications
     const approvedApplications =
-      (await Architect.countDocuments({ status: "approved" })) +
-      (await Engineer.countDocuments({ status: "approved" })) +
-      (await Exhibitor.countDocuments({ status: "approved" }));
+      approvedArchitects + approvedEngineers + approvedExhibitors;
 
-    // Rejected applications
     const rejectedApplications =
-      (await Architect.countDocuments({ status: "rejected" })) +
-      (await Engineer.countDocuments({ status: "rejected" })) +
-      (await Exhibitor.countDocuments({ status: "rejected" }));
+      rejectedArchitects + rejectedEngineers + rejectedExhibitors;
 
-    // Verified payment count
     const verifiedPayments =
-      (await Architect.countDocuments({ paymentStatus: "verified" })) +
-      (await Engineer.countDocuments({ paymentStatus: "verified" })) +
-      (await Exhibitor.countDocuments({ paymentStatus: "verified" }));
+      verifiedArchitects + verifiedEngineers + verifiedExhibitors;
 
-    // Send response
+    const chartData = [
+      {
+        name: "Architects",
+        total: totalArchitects,
+      },
+      {
+        name: "Engineers",
+        total: totalEngineers,
+      },
+      {
+        name: "Exhibitors",
+        total: totalExhibitors,
+      },
+    ];
+
     res.status(200).json({
       success: true,
       message: "Dashboard data fetched successfully",
@@ -60,9 +86,9 @@ export const getDashboardStats = async (req, res) => {
         approvedApplications,
         rejectedApplications,
         verifiedPayments,
+        chartData,
       },
     });
-
   } catch (error) {
     console.log("Dashboard Error:", error.message);
 
@@ -76,23 +102,27 @@ export const getDashboardStats = async (req, res) => {
 // Get Recent Registrations
 export const getRecentRegistrations = async (req, res) => {
   try {
-    // Get latest architects
-    const architects = await Architect.find()
-      .select("registrationId fullName status paymentStatus createdAt")
-      .sort({ createdAt: -1 })
-      .limit(10);
+    const [architects, engineers, exhibitors] = await Promise.all([
+      Architect.find()
+        .select("registrationId fullName status paymentStatus createdAt")
+        .sort({ createdAt: -1 })
+        .limit(10)
+        .lean(),
 
-    // Get latest engineers
-    const engineers = await Engineer.find()
-      .select("registrationId fullName category status paymentStatus createdAt")
-      .sort({ createdAt: -1 })
-      .limit(10);
+      Engineer.find()
+        .select(
+          "registrationId fullName category status paymentStatus createdAt"
+        )
+        .sort({ createdAt: -1 })
+        .limit(10)
+        .lean(),
 
-    // Get latest exhibitors
-    const exhibitors = await Exhibitor.find()
-      .select("registrationId companyName status paymentStatus createdAt")
-      .sort({ createdAt: -1 })
-      .limit(10);
+      Exhibitor.find()
+        .select("registrationId companyName status paymentStatus createdAt")
+        .sort({ createdAt: -1 })
+        .limit(10)
+        .lean(),
+    ]);
 
     // Format architect data
     const architectData = architects.map((item) => ({
@@ -144,7 +174,6 @@ export const getRecentRegistrations = async (req, res) => {
       message: "Recent registrations fetched successfully",
       data: recentRegistrations,
     });
-
   } catch (error) {
     console.log("Recent Registrations Error:", error.message);
 

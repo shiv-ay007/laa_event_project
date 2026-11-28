@@ -12,36 +12,36 @@ import {
 
 const InstagramIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
   </svg>
 );
 
 const FacebookIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
   </svg>
 );
 
 const LinkedinIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-    <rect x="2" y="9" width="4" height="12"/>
-    <circle cx="4" cy="4" r="2"/>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
   </svg>
 );
 
 const TwitterIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
   </svg>
 );
 
 const YoutubeIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
   </svg>
 );
 
@@ -62,15 +62,69 @@ const GetInTouchSection = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.firstName || !formData.email || !formData.message) return;
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
+    if (submitting) return;
+
+    const trimmedFirstName = formData.firstName.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMessage = formData.message.trim();
+    const trimmedContactNumber = formData.contactNumber.trim();
+
+    if (!trimmedFirstName) {
+      setError("Please enter your first name.");
+      return;
+    }
+
+    if (!trimmedEmail || !/^\S+@\S+\.\S+$/.test(trimmedEmail)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    if (!trimmedMessage) {
+      setError("Please enter your message.");
+      return;
+    }
+
+    try {
+      setSubmitting(true);
+      setError("");
+
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+
+      const response = await fetch(`${apiUrl}/contacts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: trimmedFirstName,
+          contactNumber: trimmedContactNumber,
+          email: trimmedEmail,
+          message: trimmedMessage,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Failed to submit enquiry.");
+      }
+
+      setSubmitted(true);
       setFormData({ firstName: "", contactNumber: "", email: "", message: "" });
-    }, 4000);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    } catch (err) {
+      console.error("Contact Form Error:", err);
+      setError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -136,7 +190,7 @@ const GetInTouchSection = () => {
             MAIN FORM & CONTACT INFO GRID
         ====================================================== */}
         <div className="grid gap-8 lg:gap-10 lg:grid-cols-12 items-stretch">
-          
+
           {/* ================= LEFT COLUMN: FORM ================= */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -237,14 +291,22 @@ const GetInTouchSection = () => {
                   </div>
                 </div>
 
+                {/* ERROR MESSAGE */}
+                {error && (
+                  <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 font-medium">
+                    {error}
+                  </div>
+                )}
+
                 {/* SUBMIT BUTTON */}
                 <div className="pt-4">
                   <button
                     type="submit"
-                    className="group relative inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 rounded-xl bg-[#D8232A] hover:bg-[#b81d23] text-white text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_rgba(216,35,42,0.3)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                    disabled={submitting}
+                    className="group relative inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 rounded-xl bg-[#D8232A] hover:bg-[#b81d23] text-white text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300 shadow-md hover:shadow-[0_8px_25px_rgba(216,35,42,0.3)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    <span>SUBMIT</span>
-                    <Send size={15} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    <span>{submitting ? "SUBMITTING..." : "SUBMIT"}</span>
+                    <Send size={15} className={`transition-transform ${submitting ? "animate-pulse" : "group-hover:translate-x-1 group-hover:-translate-y-1"}`} />
                   </button>
                 </div>
               </form>
@@ -261,7 +323,7 @@ const GetInTouchSection = () => {
           >
             {/* CONTACT DETAILS CARD */}
             <div className="bg-white rounded-[24px] sm:rounded-[32px] border border-[#E8E2D8] hover:border-[#D8232A]/40 p-6 sm:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_30px_rgba(216,35,42,0.08)] space-y-6 h-full flex flex-col justify-between transition-all duration-300">
-              
+
               {/* FOLLOW US */}
               <div>
                 <div className="flex items-center gap-2 mb-3">

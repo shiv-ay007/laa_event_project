@@ -10,6 +10,7 @@ import exhibitorRoutes from "./routes/exhibitorRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
+import contactRoutes from "./routes/contactRoutes.js";
 
 dotenv.config();
 
@@ -33,6 +34,8 @@ app.use("/api/architects", architectRoutes);
 app.use("/api/engineers", engineerRoutes);
 app.use("/api/exhibitors", exhibitorRoutes);
 app.use("/api/payments", paymentRoutes);
+app.use("/api/contact", contactRoutes);
+app.use("/api/contacts", contactRoutes);
 
 // Admin Routes
 app.use("/api/admin", adminRoutes);

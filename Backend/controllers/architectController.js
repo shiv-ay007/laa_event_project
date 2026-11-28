@@ -13,7 +13,7 @@ const generateUniqueArchitectId = async () => {
       $inc: { sequence: 1 },
     },
     {
-      new: true,
+      returnDocument: "after",
       upsert: true,
     }
   );
@@ -204,32 +204,147 @@ export const createArchitect = async (req, res) => {
   }
 };
 
-// Get All Architects
+// Get All Architects - Server Side
 export const getAllArchitects = async (req, res) => {
   try {
+    const {
+      search = "",
+      status = "all",
+      category = "all",
+    } = req.query;
 
-    const architects = await Architect.find()
+    // Validate Filters
+    const allowedStatuses = [
+      "all",
+      "pending",
+      "approved",
+      "rejected",
+    ];
+
+    const allowedCategories = [
+      "all",
+      "Life Member Architect",
+      "Executive Member",
+      "Associate Architect",
+      "Student Architect",
+    ];
+
+    if (
+      typeof search !== "string" ||
+      search.length > 200 ||
+      !allowedStatuses.includes(status) ||
+      !allowedCategories.includes(category)
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid search or filter parameters",
+      });
+    }
+
+    // Pagination
+    const requestedPage = Math.max(
+      1,
+      parseInt(req.query.page, 10) || 1
+    );
+
+    const limit = Math.min(
+      100,
+      Math.max(1, parseInt(req.query.limit, 10) || 10)
+    );
+
+    // MongoDB Query
+    const query = {};
+
+    // Server Side Search
+    if (search.trim()) {
+      const searchText = search
+        .trim()
+        .replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+      query.$or = [
+        { fullName: { $regex: searchText, $options: "i" } },
+        { email: { $regex: searchText, $options: "i" } },
+        { phone: { $regex: searchText, $options: "i" } },
+        { coaNumber: { $regex: searchText, $options: "i" } },
+        { registrationId: { $regex: searchText, $options: "i" } },
+      ];
+    }
+
+    // Status Filter
+    if (status !== "all") {
+      query.status = status;
+    }
+
+    // Category Filter
+    if (category !== "all") {
+      query.category = category;
+    }
+
+    // Total Records and Statistics
+    const [
+      totalRecords,
+      totalArchitects,
+      pendingApplications,
+      approvedApplications,
+      rejectedApplications,
+    ] = await Promise.all([
+      Architect.countDocuments(query),
+      Architect.countDocuments(),
+      Architect.countDocuments({ status: "pending" }),
+      Architect.countDocuments({ status: "approved" }),
+      Architect.countDocuments({ status: "rejected" }),
+    ]);
+
+    const totalPages = Math.max(
+      1,
+      Math.ceil(totalRecords / limit)
+    );
+
+    const page = Math.min(requestedPage, totalPages);
+
+    const skip = (page - 1) * limit;
+
+    // Fetch Only Required Records
+    const architects = await Architect.find(query)
       .select(
         "registrationId title fullName email phone coaNumber category status paymentStatus createdAt"
       )
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1, _id: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
 
-    res.status(200).json({
+    // Response
+    return res.status(200).json({
       success: true,
       message: "Architects fetched successfully",
-      total: architects.length,
+
+      total: totalRecords,
+
+      stats: {
+        totalArchitects,
+        pendingApplications,
+        approvedApplications,
+        rejectedApplications,
+      },
+
+      pagination: {
+        currentPage: page,
+        limit,
+        totalRecords,
+        totalPages,
+      },
+
       data: architects,
     });
 
   } catch (error) {
-
     console.log("Get Architects Error:", error.message);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Failed to fetch architects",
     });
-
   }
 };
 

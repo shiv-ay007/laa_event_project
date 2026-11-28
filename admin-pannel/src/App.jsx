@@ -16,6 +16,7 @@ import Architects from "./pages/Architects";
 import Engineers from "./pages/Engineers";
 import Exhibitors from "./pages/Exhibitors";
 import Payments from "./pages/Payments";
+import Contact from "./pages/Contact";
 
 const ComingSoon = ({ title }) => {
   return (
@@ -79,6 +80,11 @@ const App = () => {
               <Route
                 path="/payments"
                 element={<Payments />}
+              />
+
+              <Route
+                path="/contact"
+                element={<Contact />}
               />
 
               <Route

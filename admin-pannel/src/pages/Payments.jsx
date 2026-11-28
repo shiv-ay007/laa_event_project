@@ -291,6 +291,16 @@ const Payments = () => {
           <table className="w-full text-left text-sm whitespace-nowrap">
             <thead className="bg-neutral-900 text-neutral-200 text-xs font-semibold uppercase tracking-wider">
               <tr>
+                {/* S.No. (Sticky) */}
+                <th className="sticky left-0 z-20 bg-neutral-900 w-14 min-w-[56px] px-3 py-3 font-semibold text-center border-r border-neutral-800">
+                  S.No.
+                </th>
+
+                {/* Actions (Sticky) */}
+                <th className="sticky left-[56px] z-20 bg-neutral-900 w-20 min-w-[72px] px-3 py-3 font-semibold text-center border-r border-neutral-800 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.4)]">
+                  Actions
+                </th>
+
                 {[
                   "Registration ID",
                   "Applicant",
@@ -299,11 +309,10 @@ const Payments = () => {
                   "Amount",
                   "Payment Date",
                   "Status",
-                  "Action",
                 ].map((heading) => (
                   <th
                     key={heading}
-                    className="px-5 py-3 font-semibold"
+                    className="px-4 py-3 font-semibold"
                   >
                     {heading}
                   </th>
@@ -314,7 +323,7 @@ const Payments = () => {
             <tbody className="divide-y divide-neutral-100">
               {loading ? (
                 <tr>
-                  <td colSpan={8} className="text-center py-12 text-neutral-400 text-sm">
+                  <td colSpan={9} className="text-center py-12 text-neutral-400 text-sm">
                     <RefreshCw
                       size={20}
                       className="mx-auto mb-2 animate-spin text-red-600"
@@ -325,7 +334,7 @@ const Payments = () => {
               ) : error ? (
                 <tr>
                   <td
-                    colSpan={8}
+                    colSpan={9}
                     className="text-center py-12 text-red-600 text-sm"
                   >
                     {error}
@@ -333,7 +342,7 @@ const Payments = () => {
                 </tr>
               ) : payments.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="text-center py-12 text-neutral-400 text-sm">
+                  <td colSpan={9} className="text-center py-12 text-neutral-400 text-sm">
                     <Wallet
                       size={32}
                       className="mx-auto mb-2 text-neutral-300"
@@ -345,13 +354,30 @@ const Payments = () => {
                   </td>
                 </tr>
               ) : (
-                payments.map((payment) => (
+                payments.map((payment, index) => (
                   <tr
                     key={`${payment.type}-${payment._id}`}
                     className="hover:bg-red-50/20 transition-colors group"
                   >
+                    {/* S.No. (Sticky) */}
+                    <td className="sticky left-0 z-10 bg-white group-hover:bg-red-50/50 w-14 min-w-[56px] px-3 py-2.5 text-center text-xs font-mono font-medium text-neutral-500 border-r border-neutral-100 transition-colors">
+                      {(pagination.currentPage - 1) * pagination.limit + index + 1}
+                    </td>
+
+                    {/* Action (Sticky) */}
+                    <td className="sticky left-[56px] z-10 bg-white group-hover:bg-red-50/50 w-20 min-w-[72px] px-3 py-2.5 text-center border-r border-neutral-100 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.06)] transition-colors">
+                      <button
+                        onClick={() => setSelectedPayment(payment)}
+                        title="View Details"
+                        aria-label="View Details"
+                        className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-red-600 hover:bg-red-700 text-white shadow-xs shadow-red-600/30 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                      >
+                        <Eye size={15} />
+                      </button>
+                    </td>
+
                     {/* Registration ID */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <span
                         title={payment.registrationId}
                         className="font-mono text-xs text-neutral-700 bg-neutral-100 px-2 py-0.5 rounded border border-neutral-200 font-medium"
@@ -361,7 +387,7 @@ const Payments = () => {
                     </td>
 
                     {/* Applicant */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <p className="font-semibold text-neutral-900 group-hover:text-red-600 transition-colors text-sm">
                         {payment.name || "—"}
                       </p>
@@ -371,7 +397,7 @@ const Payments = () => {
                     </td>
 
                     {/* Category */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <span
                         className={`px-2.5 py-0.5 rounded-md text-xs font-semibold inline-flex items-center gap-1.5 border ${
                           payment.type === "Architect"
@@ -389,7 +415,7 @@ const Payments = () => {
                     </td>
 
                     {/* Transaction ID */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       {payment.txnId ? (
                         <span
                           title={payment.txnId}
@@ -403,31 +429,20 @@ const Payments = () => {
                     </td>
 
                     {/* Amount */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <span className="font-semibold text-xs text-neutral-900 bg-neutral-50 px-2.5 py-1 rounded border border-neutral-200/80">
                         {formatAmount(payment.amount)}
                       </span>
                     </td>
 
                     {/* Payment Date */}
-                    <td className="px-5 py-3 text-xs text-neutral-500 font-medium">
+                    <td className="px-4 py-2.5 text-xs text-neutral-500 font-medium">
                       {formatDate(payment.paymentDate)}
                     </td>
 
                     {/* Status Badge */}
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-2.5">
                       <StatusBadge status={payment.paymentStatus} />
-                    </td>
-
-                    {/* Action */}
-                    <td className="px-5 py-3">
-                      <button
-                        onClick={() => setSelectedPayment(payment)}
-                        className="flex items-center gap-1.5 text-white bg-red-600 hover:bg-red-700 shadow-sm shadow-red-600/20 px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all hover:scale-105 active:scale-95"
-                      >
-                        <Eye size={13} />
-                        View
-                      </button>
                     </td>
                   </tr>
                 ))

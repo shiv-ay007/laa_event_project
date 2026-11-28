@@ -14,8 +14,8 @@ const generateUniqueEngineerId = async () => {
       $inc: { sequence: 1 },
     },
     {
-      new: true,
-      upsert: true,
+       returnDocument: "after",
+       upsert: true,
     }
   );
 
@@ -283,27 +283,165 @@ export const createEngineer = async (req, res) => {
   }
 };
 
-// Get All Engineers
-
+// Get All Engineers - Server Side
 export const getAllEngineers = async (req, res) => {
   try {
-    const engineers = await Engineer.find()
+    const {
+      search = "",
+      status = "all",
+      category = "all",
+    } = req.query;
+
+    // Validate Filters
+    const allowedStatuses = [
+      "all",
+      "pending",
+      "approved",
+      "rejected",
+    ];
+
+    const allowedCategories = [
+      "all",
+      "LAA Member",
+      "Other than LAA",
+    ];
+
+    if (
+      typeof search !== "string" ||
+      search.length > 200 ||
+      !allowedStatuses.includes(status) ||
+      !allowedCategories.includes(category)
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid search or filter parameters",
+      });
+    }
+
+    // Pagination
+    const requestedPage = Math.max(
+      1,
+      parseInt(req.query.page, 10) || 1
+    );
+
+    const limit = Math.min(
+      100,
+      Math.max(1, parseInt(req.query.limit, 10) || 10)
+    );
+
+    // MongoDB Query
+    const query = {};
+
+    // Server Side Search
+    if (search.trim()) {
+      const searchText = search
+        .trim()
+        .replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+      query.$or = [
+        { fullName: { $regex: searchText, $options: "i" } },
+        { email: { $regex: searchText, $options: "i" } },
+        { phone: { $regex: searchText, $options: "i" } },
+        { regNumber: { $regex: searchText, $options: "i" } },
+        { registrationId: { $regex: searchText, $options: "i" } },
+      ];
+    }
+
+    // Status Filter
+    if (status !== "all") {
+      query.status = status;
+    }
+
+    // Category Filter
+    if (category !== "all") {
+      query.category = category;
+    }
+
+    // Server Side Statistics
+    const [
+      totalRecords,
+      totalEngineers,
+      freeEngineers,
+      paidEngineers,
+      pendingApplications,
+      approvedApplications,
+      rejectedApplications,
+    ] = await Promise.all([
+      Engineer.countDocuments(query),
+
+      Engineer.countDocuments(),
+
+      Engineer.countDocuments({
+        category: "LAA Member",
+      }),
+
+      Engineer.countDocuments({
+        category: "Other than LAA",
+      }),
+
+      Engineer.countDocuments({
+        status: "pending",
+      }),
+
+      Engineer.countDocuments({
+        status: "approved",
+      }),
+
+      Engineer.countDocuments({
+        status: "rejected",
+      }),
+    ]);
+
+    // Calculate Pagination
+    const totalPages = Math.max(
+      1,
+      Math.ceil(totalRecords / limit)
+    );
+
+    const page = Math.min(requestedPage, totalPages);
+
+    const skip = (page - 1) * limit;
+
+    // Fetch Required Records Only
+    const engineers = await Engineer.find(query)
       .select(
         "registrationId title fullName email phone regNumber category amount status paymentStatus createdAt"
       )
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1, _id: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
 
-    res.status(200).json({
+    // Response
+    return res.status(200).json({
       success: true,
       message: "Engineers fetched successfully",
-      total: engineers.length,
+
+      total: totalRecords,
+
+      stats: {
+        totalEngineers,
+        freeEngineers,
+        paidEngineers,
+        pendingApplications,
+        approvedApplications,
+        rejectedApplications,
+      },
+
+      pagination: {
+        currentPage: page,
+        limit,
+        totalRecords,
+        totalPages,
+      },
+
       data: engineers,
     });
 
   } catch (error) {
     console.log("Get Engineers Error:", error.message);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Failed to fetch engineers",
     });

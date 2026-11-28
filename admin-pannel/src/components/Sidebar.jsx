@@ -5,6 +5,7 @@ import {
   HardHat,
   Store,
   Wallet,
+  Mail,
   LogOut,
   X,
 } from "lucide-react";
@@ -37,6 +38,11 @@ const menuItems = [
     name: "Payments",
     path: "/payments",
     icon: Wallet,
+  },
+  {
+    name: "Contact",
+    path: "/contact",
+    icon: Mail,
   },
 ];
 

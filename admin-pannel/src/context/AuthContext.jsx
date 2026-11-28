@@ -5,7 +5,7 @@ import {
   useState,
 } from "react";
 
-import api from "../services/api";
+import { getAdminProfile, loginAdmin } from "../api/authApi";
 
 const AuthContext = createContext(null);
 
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     try {
-      const response = await api.get("/admin/profile");
+      const response = await getAdminProfile();
 
       if (response.data.success) {
         setAdmin(response.data.admin);
@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
   // Admin Login
   const login = async (email, password) => {
     try {
-      const response = await api.post("/admin/login", {
+      const response = await loginAdmin({
         email,
         password,
       });

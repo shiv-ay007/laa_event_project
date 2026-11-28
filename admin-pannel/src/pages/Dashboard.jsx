@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import api from "../services/api";
+import { getDashboardStats, getRecentRegistrations } from "../api/dashboardApi";
 import {
   Users,
   Building2,
@@ -45,7 +45,7 @@ const fetchDashboardData = async () => {
     setLoading(true);
     setError("");
 
-    const response = await api.get("/dashboard/stats");
+    const response = await getDashboardStats();
 
     if (response.data.success) {
       setDashboardData(response.data.data);
@@ -65,7 +65,7 @@ const fetchRecentRegistrations = async () => {
     setRecentLoading(true);
     setRecentError("");
 
-    const response = await api.get("/dashboard/recent");
+    const response = await getRecentRegistrations();
 
     if (response.data.success) {
       setRecentRegistrations(response.data.data);
@@ -137,7 +137,7 @@ useEffect(() => {
   },
 ];
 
-const chartData = [
+const chartData = dashboardData?.chartData || [
   {
     name: "Architects",
     total: dashboardData?.totalArchitects ?? 0,
