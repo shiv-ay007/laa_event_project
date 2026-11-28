@@ -16,8 +16,26 @@ dotenv.config();
 
 const app = express();
 
+// Allowed Frontend Origins
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://laf-event-dzbp.onrender.com",
+  "https://lucknowarchitecturefestival.in/",
+  "http://lucknowarchitecturefestival.in/",
+  "https://laf-admin-pannel.onrender.com/"
+];
+
+// CORS Configuration
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
 // Middlewares
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -33,8 +51,11 @@ app.get("/", (req, res) => {
 app.use("/api/architects", architectRoutes);
 app.use("/api/engineers", engineerRoutes);
 app.use("/api/exhibitors", exhibitorRoutes);
+
+// Payment Route
 app.use("/api/payments", paymentRoutes);
-app.use("/api/contact", contactRoutes);
+
+// Contact Route
 app.use("/api/contacts", contactRoutes);
 
 // Admin Routes
@@ -76,7 +97,6 @@ const startServer = async () => {
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
-
   } catch (error) {
     console.error("Server startup failed:", error.message);
     process.exit(1);
