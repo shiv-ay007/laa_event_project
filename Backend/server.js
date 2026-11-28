@@ -9,6 +9,7 @@ import engineerRoutes from "./routes/engineerRoutes.js";
 import exhibitorRoutes from "./routes/exhibitorRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
 app.use("/api/architects", architectRoutes);
 app.use("/api/engineers", engineerRoutes);
 app.use("/api/exhibitors", exhibitorRoutes);
+app.use("/api/payments", paymentRoutes);
 
 // Admin Routes
 app.use("/api/admin", adminRoutes);

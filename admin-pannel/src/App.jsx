@@ -15,6 +15,7 @@ import Dashboard from "./pages/Dashboard";
 import Architects from "./pages/Architects";
 import Engineers from "./pages/Engineers";
 import Exhibitors from "./pages/Exhibitors";
+import Payments from "./pages/Payments";
 
 const ComingSoon = ({ title }) => {
   return (
@@ -77,7 +78,7 @@ const App = () => {
 
               <Route
                 path="/payments"
-                element={<ComingSoon title="Payments" />}
+                element={<Payments />}
               />
 
               <Route
